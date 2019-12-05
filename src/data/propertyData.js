@@ -1,5 +1,5 @@
 export const medianListPricesData = {
-  zipArea: [
+  zipSelected: [
     {
       price: 533540,
       date: new Date(2019, 0)
@@ -45,7 +45,7 @@ export const medianListPricesData = {
       date: new Date(2019, 10)
     }
   ],
-  zipBlue: [
+  zipComparison1: [
     {
       price: 532540,
       date: new Date(2019, 0)
@@ -91,7 +91,7 @@ export const medianListPricesData = {
       date: new Date(2019, 10)
     }
   ],
-  zipYellow: [
+  zipComparison2: [
     {
       price: 528650,
       date: new Date(2019, 0)
@@ -183,7 +183,7 @@ export const medianListPricesData = {
       date: new Date(2019, 10)
     }
   ],
-  house: [
+  selectedProperty: [
     {
       price: 532281,
       date: new Date(2019, 8)
@@ -200,13 +200,13 @@ export const medianListPricesData = {
 }
 
 export const avgListToSaleRatio = {
-  zipArea: [
+  zipSelected: [
     {
       price: -0.09,
       date: new Date(2019, 0)
     },
     {
-      price: 0,
+      price: -0.01,
       date: new Date(2019, 1)
     },
     {
@@ -238,7 +238,7 @@ export const avgListToSaleRatio = {
       date: new Date(2019, 8)
     },
     {
-      price: 0,
+      price: -0.03,
       date: new Date(2019, 9)
     },
     {
@@ -246,7 +246,7 @@ export const avgListToSaleRatio = {
       date: new Date(2019, 10)
     }
   ],
-  zipBlue: [
+  zipComparison1: [
     {
       price: -0.1,
       date: new Date(2019, 0)
@@ -292,7 +292,7 @@ export const avgListToSaleRatio = {
       date: new Date(2019, 10)
     }
   ],
-  zipYellow: [
+  zipComparison2: [
     {
       price: -0.07,
       date: new Date(2019, 0)
