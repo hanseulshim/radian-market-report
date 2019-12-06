@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@amcharts/amcharts4": "^4.7.11",
+    "jspdf": "^1.5.3",
+    "moment": "^2.24.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-scripts": "3.2.0",
@@ -13,8 +15,12 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy:alpha": "react-scripts build && aws s3 sync  ./build s3://alpha.boostlabs/celebrity/ --acl public-read --profile boost",
+    "deploy:beta": "react-scripts build && aws s3 sync  ./build s3://beta.boostlabs/celebrity/ --acl public-read --profile boost",
+    "deploy:dev": "react-scripts build && aws s3 sync  ./build s3://dev.boostlabs/celebrity/ --acl public-read --profile boost"
   },
+  "homepage": ".",
   "eslintConfig": {
     "extends": "react-app"
   },
@@ -29,5 +35,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "eslint": "^6.7.2",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-node": "^10.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react": "^7.17.0",
+    "eslint-plugin-standard": "^4.0.1"
   }
 }
