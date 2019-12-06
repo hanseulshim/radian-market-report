@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Title from './Title'
-import MedianListPrices from './MedianListPrices'
+import MedianPrices from './MedianPrices'
 import AvgListToSaleRatio from './AvgListToSaleRatio'
 
 const ColumnContainer = styled.div`
@@ -25,7 +25,7 @@ const PropertyRelatedData = () => (
     <ColumnContainer>
       <ColumnInfoContainer>INFO</ColumnInfoContainer>
       <ColumnChartContainer>
-        <MedianListPrices />
+        <MedianPrices />
         <AvgListToSaleRatio />
       </ColumnChartContainer>
     </ColumnContainer>

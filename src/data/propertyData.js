@@ -1,4 +1,4 @@
-export const medianListPricesData = {
+export const medianPricesData = {
   zipSelected: [
     {
       price: 533540,

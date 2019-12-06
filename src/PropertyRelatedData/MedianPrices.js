@@ -2,19 +2,27 @@ import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated'
-import { avgListToSaleRatio } from '../data/propertyData'
+import { medianPricesData } from '../data/propertyData'
+import home from '../assets/home.svg'
 import config from '../config'
 am4core.useTheme(am4themesAnimated)
 
-const { zipSelected, zipComparison1, zipComparison2 } = avgListToSaleRatio
-const { avgSaleToListRatio, sectionOneChartConfig } = config
+const {
+  zipSelected,
+  zipComparison1,
+  zipComparison2,
+  sold,
+  selectedProperty
+} = medianPricesData
 
-const AvgListToSaleRatio = () => {
+const { medianPricesConfig, sectionOneChartConfig } = config
+
+const MedianPrices = () => {
   useEffect(() => {
-    const chart = am4core.create(avgSaleToListRatio.id, am4charts.XYChart)
+    const chart = am4core.create('medianPricesDiv', am4charts.XYChart)
 
     const label = chart.createChild(am4core.Label)
-    label.text = avgSaleToListRatio.title
+    label.text = medianPricesConfig.title
     label.config = sectionOneChartConfig.label
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
@@ -29,13 +37,11 @@ const AvgListToSaleRatio = () => {
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.renderer.minGridDistance = 50
     valueAxis.numberFormatter = new am4core.NumberFormatter()
-    valueAxis.numberFormatter.numberFormat = '#%'
+    valueAxis.numberFormatter.numberFormat = '$#a'
     valueAxis.renderer.line.strokeOpacity = 1
     valueAxis.renderer.line.strokeWidth = 2
 
-    const selectedPropertySeries = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
+    const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
     selectedPropertySeries.data = zipSelected
     selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
 
@@ -47,6 +53,28 @@ const AvgListToSaleRatio = () => {
     comparisonProperty2.data = zipComparison2
     comparisonProperty2.config = sectionOneChartConfig.comparisonProperty2
 
+    const soldProperties = chart.series.push(new am4charts.LineSeries())
+    soldProperties.data = sold
+    soldProperties.config = sectionOneChartConfig.soldProperties
+
+    const iconSeries = chart.series.push(new am4charts.LineSeries())
+    iconSeries.data = selectedProperty
+    iconSeries.dataFields.dateX = 'date'
+    iconSeries.dataFields.valueY = 'price'
+    iconSeries.strokeWidth = 4
+    iconSeries.stroke = am4core.color('#000000')
+    iconSeries.name = 'Home'
+
+    const bullet = iconSeries.bullets.push(new am4charts.CircleBullet())
+    bullet.circle.radius = 15
+    bullet.circle.fill = am4core.color('#000000')
+    const image = bullet.createChild(am4core.Image)
+    image.href = home
+    image.width = 20
+    image.height = 20
+    image.horizontalCenter = 'middle'
+    image.verticalCenter = 'middle'
+
     return () => {
       chart.dispose()
     }
@@ -54,10 +82,10 @@ const AvgListToSaleRatio = () => {
 
   return (
     <div
-      id={avgSaleToListRatio.id}
-      style={{ width: '100%', height: avgSaleToListRatio.height }}
+      id={medianPricesConfig.id}
+      style={{ width: '100%', height: medianPricesConfig.height }}
     ></div>
   )
 }
 
-export default AvgListToSaleRatio
+export default MedianPrices
