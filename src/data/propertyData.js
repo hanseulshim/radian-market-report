@@ -45,7 +45,7 @@ export const medianPricesData = {
       date: new Date(2019, 10)
     }
   ],
-  zipComparison1: [
+  comparisonProperty1: [
     {
       price: 532540,
       date: new Date(2019, 0)
@@ -91,7 +91,7 @@ export const medianPricesData = {
       date: new Date(2019, 10)
     }
   ],
-  zipComparison2: [
+  comparisonProperty2: [
     {
       price: 528650,
       date: new Date(2019, 0)
@@ -137,7 +137,7 @@ export const medianPricesData = {
       date: new Date(2019, 10)
     }
   ],
-  sold: [
+  soldProperty: [
     {
       price: 531580,
       date: new Date(2019, 0)
@@ -246,7 +246,7 @@ export const avgSaleToListRatio = {
       date: new Date(2019, 10)
     }
   ],
-  zipComparison1: [
+  comparisonProperty1: [
     {
       price: -0.1,
       date: new Date(2019, 0)
@@ -292,7 +292,7 @@ export const avgSaleToListRatio = {
       date: new Date(2019, 10)
     }
   ],
-  zipComparison2: [
+  comparisonProperty2: [
     {
       price: -0.07,
       date: new Date(2019, 0)

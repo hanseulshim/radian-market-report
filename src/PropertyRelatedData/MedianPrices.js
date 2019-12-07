@@ -9,9 +9,9 @@ am4core.useTheme(am4themesAnimated)
 
 const {
   selectedProperty,
-  zipComparison1,
-  zipComparison2,
-  sold,
+  comparisonProperty1,
+  comparisonProperty2,
+  soldProperty,
   selectedPropertyHome
 } = medianPricesData
 
@@ -36,16 +36,20 @@ const MedianPrices = () => {
     selectedPropertySeries.data = selectedProperty
     selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
 
-    const comparisonProperty1 = chart.series.push(new am4charts.LineSeries())
-    comparisonProperty1.data = zipComparison1
-    comparisonProperty1.config = sectionOneChartConfig.comparisonProperty1
+    const comparisonProperty1Series = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty1Series.data = comparisonProperty1
+    comparisonProperty1Series.config = sectionOneChartConfig.comparisonProperty1
 
-    const comparisonProperty2 = chart.series.push(new am4charts.LineSeries())
-    comparisonProperty2.data = zipComparison2
-    comparisonProperty2.config = sectionOneChartConfig.comparisonProperty2
+    const comparisonProperty2Series = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty2Series.data = comparisonProperty2
+    comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
 
     const soldProperties = chart.series.push(new am4charts.LineSeries())
-    soldProperties.data = sold
+    soldProperties.data = soldProperty
     soldProperties.config = sectionOneChartConfig.soldProperties
 
     const iconSeries = chart.series.push(new am4charts.LineSeries())
