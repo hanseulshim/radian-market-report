@@ -31,6 +31,8 @@ const MedianPrices = () => {
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = sectionOneChartConfig.valueAxis
     valueAxis.numberFormatter.numberFormat = '$#a'
+    const asdf = valueAxis.renderer.labels.template
+    console.log(sectionOneChartConfig.valueAxis)
 
     const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
     selectedPropertySeries.data = zipSelected

@@ -30,6 +30,12 @@ export default {
         line: {
           strokeOpacity: 1,
           strokeWidth: 2
+        },
+        labels: {
+          width: 70,
+          maxWidth: 70,
+          truncate: true,
+          textAlign: 'end'
         }
       },
       numberFormatter: {

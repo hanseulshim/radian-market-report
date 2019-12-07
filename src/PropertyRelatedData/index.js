@@ -9,7 +9,6 @@ const ColumnContainer = styled.div`
 `
 const ColumnInfoContainer = styled.div`
   flex: 1;
-  margin-right: 10px;
   background: gray;
 `
 
