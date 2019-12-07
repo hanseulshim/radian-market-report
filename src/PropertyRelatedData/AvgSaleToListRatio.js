@@ -2,19 +2,19 @@ import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated'
-import { avgListToSaleRatio } from '../data/propertyData'
+import { avgSaleToListRatio } from '../data/propertyData'
 import config from '../config'
 am4core.useTheme(am4themesAnimated)
 
-const { zipSelected, zipComparison1, zipComparison2 } = avgListToSaleRatio
-const { avgSaleToListRatio, sectionOneChartConfig } = config
+const { zipSelected, zipComparison1, zipComparison2 } = avgSaleToListRatio
+const { avgSaleToListRatioConfig, sectionOneChartConfig } = config
 
-const AvgListToSaleRatio = () => {
+const AvgSaleToListRatio = () => {
   useEffect(() => {
-    const chart = am4core.create(avgSaleToListRatio.id, am4charts.XYChart)
+    const chart = am4core.create(avgSaleToListRatioConfig.id, am4charts.XYChart)
 
     const label = chart.createChild(am4core.Label)
-    label.text = avgSaleToListRatio.title
+    label.text = avgSaleToListRatioConfig.title
     label.config = sectionOneChartConfig.label
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
@@ -45,10 +45,10 @@ const AvgListToSaleRatio = () => {
 
   return (
     <div
-      id={avgSaleToListRatio.id}
-      style={{ width: '100%', height: avgSaleToListRatio.height }}
+      id={avgSaleToListRatioConfig.id}
+      style={{ width: '100%', height: avgSaleToListRatioConfig.height }}
     ></div>
   )
 }
 
-export default AvgListToSaleRatio
+export default AvgSaleToListRatio

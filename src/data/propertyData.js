@@ -199,7 +199,7 @@ export const medianPricesData = {
   ]
 }
 
-export const avgListToSaleRatio = {
+export const avgSaleToListRatio = {
   zipSelected: [
     {
       price: -0.09,

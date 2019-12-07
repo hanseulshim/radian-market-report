@@ -4,7 +4,7 @@ export default {
     height: '500px',
     title: 'Median Prices of Active Listings'
   },
-  avgSaleToListRatio: {
+  avgSaleToListRatioConfig: {
     id: 'avgSaleToListRatioDiv',
     height: '250px',
     title: 'Avg Sale to List Ratio'
