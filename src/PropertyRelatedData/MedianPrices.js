@@ -8,11 +8,11 @@ import config from '../config'
 am4core.useTheme(am4themesAnimated)
 
 const {
-  zipSelected,
+  selectedProperty,
   zipComparison1,
   zipComparison2,
   sold,
-  selectedProperty
+  selectedPropertyHome
 } = medianPricesData
 
 const { medianPricesConfig, sectionOneChartConfig } = config
@@ -31,11 +31,9 @@ const MedianPrices = () => {
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = sectionOneChartConfig.valueAxis
     valueAxis.numberFormatter.numberFormat = '$#a'
-    const asdf = valueAxis.renderer.labels.template
-    console.log(sectionOneChartConfig.valueAxis)
 
     const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
-    selectedPropertySeries.data = zipSelected
+    selectedPropertySeries.data = selectedProperty
     selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
 
     const comparisonProperty1 = chart.series.push(new am4charts.LineSeries())
@@ -51,7 +49,7 @@ const MedianPrices = () => {
     soldProperties.config = sectionOneChartConfig.soldProperties
 
     const iconSeries = chart.series.push(new am4charts.LineSeries())
-    iconSeries.data = selectedProperty
+    iconSeries.data = selectedPropertyHome
     iconSeries.dataFields.dateX = 'date'
     iconSeries.dataFields.valueY = 'price'
     iconSeries.strokeWidth = 4

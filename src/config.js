@@ -25,6 +25,7 @@ export default {
       paddingRight: 20
     },
     valueAxis: {
+      width: 70,
       renderer: {
         minGridDistance: 50,
         line: {

@@ -1,5 +1,5 @@
 export const medianPricesData = {
-  zipSelected: [
+  selectedProperty: [
     {
       price: 533540,
       date: new Date(2019, 0)
@@ -183,7 +183,7 @@ export const medianPricesData = {
       date: new Date(2019, 10)
     }
   ],
-  selectedProperty: [
+  selectedPropertyHome: [
     {
       price: 532281,
       date: new Date(2019, 8)
@@ -200,7 +200,7 @@ export const medianPricesData = {
 }
 
 export const avgSaleToListRatio = {
-  zipSelected: [
+  selectedProperty: [
     {
       price: -0.09,
       date: new Date(2019, 0)

@@ -6,7 +6,7 @@ import { avgSaleToListRatio } from '../data/propertyData'
 import config from '../config'
 am4core.useTheme(am4themesAnimated)
 
-const { zipSelected, zipComparison1, zipComparison2 } = avgSaleToListRatio
+const { selectedProperty, zipComparison1, zipComparison2 } = avgSaleToListRatio
 const { avgSaleToListRatioConfig, sectionOneChartConfig } = config
 
 const AvgSaleToListRatio = () => {
@@ -21,14 +21,20 @@ const AvgSaleToListRatio = () => {
     dateAxis.config = sectionOneChartConfig.dateAxis
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+    const range = valueAxis.axisRanges.create()
+    range.value = 0
+    range.grid.strokeWidth = 4
+    range.grid.strokeOpacity = 1
     valueAxis.config = sectionOneChartConfig.valueAxis
     valueAxis.numberFormatter.numberFormat = '#%'
 
     const selectedPropertySeries = chart.series.push(
       new am4charts.ColumnSeries()
     )
-    selectedPropertySeries.data = zipSelected
+    chart.seriesContainer.zIndex = -1
+    selectedPropertySeries.data = selectedProperty
     selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
+    selectedPropertySeries.strokeWidth = 0
 
     const comparisonProperty1 = chart.series.push(new am4charts.LineSeries())
     comparisonProperty1.data = zipComparison1
