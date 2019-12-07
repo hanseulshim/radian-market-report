@@ -26,20 +26,11 @@ const MedianPrices = () => {
     label.config = sectionOneChartConfig.label
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
-    dateAxis.dateFormats.setKey('month', 'MMM')
-    dateAxis.periodChangeDateFormats.setKey('month', 'YY MMM')
-    dateAxis.renderer.minGridDistance = 50
-    dateAxis.renderer.grid.template.location = 0.5
-    dateAxis.startLocation = 0.5
-    dateAxis.endLocation = 0.5
-    dateAxis.paddingRight = 20
+    dateAxis.config = sectionOneChartConfig.dateAxis
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.renderer.minGridDistance = 50
-    valueAxis.numberFormatter = new am4core.NumberFormatter()
+    valueAxis.config = sectionOneChartConfig.valueAxis
     valueAxis.numberFormatter.numberFormat = '$#a'
-    valueAxis.renderer.line.strokeOpacity = 1
-    valueAxis.renderer.line.strokeWidth = 2
 
     const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
     selectedPropertySeries.data = zipSelected

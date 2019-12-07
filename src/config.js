@@ -6,10 +6,36 @@ export default {
   },
   avgSaleToListRatio: {
     id: 'avgSaleToListRatioDiv',
-    height: '500px',
-    title: 'Median Prices of Active Listings'
+    height: '250px',
+    title: 'Avg Sale to List Ratio'
   },
   sectionOneChartConfig: {
+    dateAxis: {
+      renderer: {
+        minGridDistance: 50
+      },
+      dateFormats: {
+        month: 'MMM'
+      },
+      periodChangeDateFormats: {
+        month: 'YY MMM'
+      },
+      startLocation: 0.5,
+      endLocation: 0.5,
+      paddingRight: 20
+    },
+    valueAxis: {
+      renderer: {
+        minGridDistance: 50,
+        line: {
+          strokeOpacity: 1,
+          strokeWidth: 2
+        }
+      },
+      numberFormatter: {
+        numberFormat: '#'
+      }
+    },
     label: {
       fontSize: 15,
       align: 'center',
