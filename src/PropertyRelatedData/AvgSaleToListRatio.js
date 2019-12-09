@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import am4themesAnimated from '@amcharts/amcharts4/themes/animated'
-import { avgSaleToListRatio } from '../data/propertyData'
+import { propertyData } from '../data/data.json'
 import config from '../config'
 am4core.useTheme(am4themesAnimated)
 
@@ -10,7 +10,7 @@ const {
   selectedProperty,
   comparisonProperty1,
   comparisonProperty2
-} = avgSaleToListRatio
+} = propertyData
 const { avgSaleToListRatioConfig, sectionOneChartConfig } = config
 
 const AvgSaleToListRatio = () => {
@@ -37,20 +37,20 @@ const AvgSaleToListRatio = () => {
       new am4charts.ColumnSeries()
     )
     chart.seriesContainer.zIndex = -1
-    selectedPropertySeries.data = selectedProperty
+    selectedPropertySeries.data = selectedProperty.avgSaleToListRatio
     selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
     selectedPropertySeries.strokeWidth = 0
 
     const comparisonProperty1Series = chart.series.push(
       new am4charts.LineSeries()
     )
-    comparisonProperty1Series.data = comparisonProperty1
+    comparisonProperty1Series.data = comparisonProperty1.avgSaleToListRatio
     comparisonProperty1Series.config = sectionOneChartConfig.comparisonProperty1
 
     const comparisonProperty2Series = chart.series.push(
       new am4charts.LineSeries()
     )
-    comparisonProperty2Series.data = comparisonProperty2
+    comparisonProperty2Series.data = comparisonProperty2.avgSaleToListRatio
     comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
 
     return () => {

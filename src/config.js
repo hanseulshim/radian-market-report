@@ -62,7 +62,7 @@ export default {
       hiddenInLegend: true,
       dataFields: {
         dateX: 'date',
-        valueY: 'price'
+        valueY: 'value'
       },
       strokeWidth: 4,
       fill: '#5B7482',
@@ -73,7 +73,7 @@ export default {
       hiddenInLegend: true,
       dataFields: {
         dateX: 'date',
-        valueY: 'price'
+        valueY: 'value'
       },
       strokeWidth: 4,
       stroke: '#A9DAD2'
@@ -82,7 +82,7 @@ export default {
       hiddenInLegend: true,
       dataFields: {
         dateX: 'date',
-        valueY: 'price'
+        valueY: 'value'
       },
       strokeWidth: 4,
       stroke: '#FEC847'
@@ -91,7 +91,7 @@ export default {
       name: 'Sold',
       dataFields: {
         dateX: 'date',
-        valueY: 'price'
+        valueY: 'value'
       },
       strokeWidth: 4,
       strokeDasharray: '4, 4',
