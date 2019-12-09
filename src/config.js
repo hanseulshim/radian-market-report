@@ -14,6 +14,11 @@ export default {
     height: '275px',
     title: 'Inventory'
   },
+  makretStrengthConfig: {
+    id: 'marketStrengthDiv',
+    height: '250px',
+    title: 'Market Strength'
+  },
   legendConfig: {
     position: 'top',
     contentAlign: 'right',
@@ -63,6 +68,14 @@ export default {
       x: 75,
       y: 10
     },
+    hand: {
+      pin: {
+        radius: 15
+      },
+      radius: '85%',
+      y: -15,
+      startWidth: 30
+    },
     selectedProperty: {
       hiddenInLegend: true,
       dataFields: {
@@ -81,7 +94,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 4,
-      stroke: '#A9DAD2'
+      stroke: '#8ce0cf',
+      fill: '#8ce0cf'
     },
     comparisonProperty2: {
       hiddenInLegend: true,
@@ -90,7 +104,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 4,
-      stroke: '#FEC847'
+      stroke: '#ffc700',
+      fill: '#ffc700'
     },
     soldProperties: {
       name: 'Sold',

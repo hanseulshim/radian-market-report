@@ -40,7 +40,8 @@
         { "value": 175, "date": "2020-09-01T00:00:00" },
         { "value": 150, "date": "2020-10-01T00:00:00" },
         { "value": 125, "date": "2020-11-01T00:00:00" }
-      ]
+      ],
+      "marketStrength": 250
     },
     "comparisonProperty1": {
       "label": "20855",
@@ -82,7 +83,8 @@
         { "value": 130, "date": "2020-09-01T00:00:00" },
         { "value": 125, "date": "2020-10-01T00:00:00" },
         { "value": 120, "date": "2020-11-01T00:00:00" }
-      ]
+      ],
+      "marketStrength": 225
     },
     "comparisonProperty2": {
       "label": 20856,
@@ -124,7 +126,8 @@
         { "value": 135, "date": "2020-09-01T00:00:00" },
         { "value": 125, "date": "2020-10-01T00:00:00" },
         { "value": 120, "date": "2020-11-01T00:00:00" }
-      ]
+      ],
+      "marketStrength": 175
     },
     "soldProperty": {
       "medianPrices": [
