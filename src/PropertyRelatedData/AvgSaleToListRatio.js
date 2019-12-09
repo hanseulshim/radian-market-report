@@ -16,6 +16,7 @@ const { avgSaleToListRatioConfig, sectionOneChartConfig } = config
 const AvgSaleToListRatio = () => {
   useEffect(() => {
     const chart = am4core.create(avgSaleToListRatioConfig.id, am4charts.XYChart)
+    chart.id = avgSaleToListRatioConfig.id
 
     const label = chart.createChild(am4core.Label)
     label.text = avgSaleToListRatioConfig.title
