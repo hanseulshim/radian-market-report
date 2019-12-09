@@ -9,6 +9,14 @@ export default {
     height: '250px',
     title: 'Avg Sale to List Ratio'
   },
+  legendConfig: {
+    position: 'top',
+    contentAlign: 'right',
+    fontSize: 14,
+    labels: {
+      marginLeft: 10
+    }
+  },
   sectionOneChartConfig: {
     dateAxis: {
       renderer: {
@@ -51,6 +59,7 @@ export default {
       y: 10
     },
     selectedProperty: {
+      hiddenInLegend: true,
       dataFields: {
         dateX: 'date',
         valueY: 'price'
@@ -61,6 +70,7 @@ export default {
       stroke: '#5B7482'
     },
     comparisonProperty1: {
+      hiddenInLegend: true,
       dataFields: {
         dateX: 'date',
         valueY: 'price'
@@ -69,6 +79,7 @@ export default {
       stroke: '#A9DAD2'
     },
     comparisonProperty2: {
+      hiddenInLegend: true,
       dataFields: {
         dateX: 'date',
         valueY: 'price'
@@ -77,6 +88,7 @@ export default {
       stroke: '#FEC847'
     },
     soldProperties: {
+      name: 'Sold',
       dataFields: {
         dateX: 'date',
         valueY: 'price'

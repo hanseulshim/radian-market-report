@@ -15,7 +15,7 @@ const {
   selectedPropertyHome
 } = medianPricesData
 
-const { medianPricesConfig, sectionOneChartConfig } = config
+const { legendConfig, medianPricesConfig, sectionOneChartConfig } = config
 
 const MedianPrices = () => {
   useEffect(() => {
@@ -24,6 +24,7 @@ const MedianPrices = () => {
     const label = chart.createChild(am4core.Label)
     label.text = medianPricesConfig.title
     label.config = sectionOneChartConfig.label
+    label.y = label.y + 50
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.config = sectionOneChartConfig.dateAxis
@@ -58,17 +59,21 @@ const MedianPrices = () => {
     iconSeries.dataFields.valueY = 'price'
     iconSeries.strokeWidth = 4
     iconSeries.stroke = am4core.color('#000000')
-    iconSeries.name = 'Home'
+    iconSeries.name = 'Selected Property'
 
     const bullet = iconSeries.bullets.push(new am4charts.CircleBullet())
-    bullet.circle.radius = 15
+    bullet.circle.radius = 12
     bullet.circle.fill = am4core.color('#000000')
     const image = bullet.createChild(am4core.Image)
     image.href = home
-    image.width = 20
-    image.height = 20
+    image.width = 15
+    image.height = 15
     image.horizontalCenter = 'middle'
     image.verticalCenter = 'middle'
+
+    chart.legend = new am4charts.Legend()
+    chart.legend.parent = chart.chartContainer
+    chart.legend.config = legendConfig
 
     return () => {
       chart.dispose()
@@ -76,10 +81,12 @@ const MedianPrices = () => {
   }, [])
 
   return (
-    <div
-      id={medianPricesConfig.id}
-      style={{ width: '100%', height: medianPricesConfig.height }}
-    ></div>
+    <>
+      <div
+        id={medianPricesConfig.id}
+        style={{ width: '100%', height: medianPricesConfig.height }}
+      ></div>
+    </>
   )
 }
 
