@@ -1,13 +1,18 @@
 export default {
   medianPricesConfig: {
     id: 'medianPricesDiv',
-    height: '500px',
+    height: '400px',
     title: 'Median Prices of Active Listings'
   },
   avgSaleToListRatioConfig: {
     id: 'avgSaleToListRatioDiv',
     height: '250px',
     title: 'Avg Sale to List Ratio'
+  },
+  inventoryConfig: {
+    id: 'inventoryDiv',
+    height: '275px',
+    title: 'Inventory'
   },
   legendConfig: {
     position: 'top',

@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import Title from './Title'
 import MedianPrices from './MedianPrices'
 import AvgSaleToListRatio from './AvgSaleToListRatio'
+import Inventory from './Inventory'
 
 const ColumnContainer = styled.div`
   display: flex;
@@ -26,6 +27,7 @@ const PropertyRelatedData = () => (
       <ColumnChartContainer>
         <MedianPrices />
         <AvgSaleToListRatio />
+        <Inventory />
       </ColumnChartContainer>
     </ColumnContainer>
   </>
