@@ -70,11 +70,11 @@ export default {
     },
     hand: {
       pin: {
-        radius: 15
+        radius: 12
       },
       radius: '85%',
       y: -15,
-      startWidth: 30
+      startWidth: 24
     },
     selectedProperty: {
       hiddenInLegend: true,
