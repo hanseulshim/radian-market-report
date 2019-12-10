@@ -14,10 +14,15 @@ export default {
     height: '275px',
     title: 'Inventory'
   },
-  makretStrengthConfig: {
+  marketStrengthConfig: {
     id: 'marketStrengthDiv',
     height: '250px',
     title: 'Market Strength'
+  },
+  avgHpiByBedsConfig: {
+    id: 'avgHpiByBedsDiv',
+    height: '250px',
+    title: ''
   },
   legendConfig: {
     position: 'top',

@@ -5,6 +5,7 @@ import MedianPrices from './MedianPrices'
 import AvgSaleToListRatio from './AvgSaleToListRatio'
 import Inventory from './Inventory'
 import MarketStrength from './MarketStrength'
+import AvgHpiByBeds from './AvgHpiByBeds'
 
 const ColumnContainer = styled.div`
   display: flex;
@@ -46,7 +47,7 @@ const PropertyRelatedData = () => (
           <MarketStrength />
         </RowChartSingleContainer>
         <RowChartSingleContainer>
-          <div>soijdf</div>
+          <AvgHpiByBeds />
         </RowChartSingleContainer>
         <RowChartSingleContainer>
           <div>isdf</div>

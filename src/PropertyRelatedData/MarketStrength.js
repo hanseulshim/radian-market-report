@@ -11,7 +11,7 @@ const {
   comparisonProperty2
 } = propertyData
 
-const { makretStrengthConfig, sectionOneChartConfig } = config
+const { marketStrengthConfig, sectionOneChartConfig } = config
 
 const Inventory = () => {
   useEffect(() => {
@@ -45,13 +45,13 @@ const Inventory = () => {
           }
         ]
       },
-      makretStrengthConfig.id,
+      marketStrengthConfig.id,
       am4charts.GaugeChart
     )
-    chart.id = makretStrengthConfig.id
+    chart.id = marketStrengthConfig.id
 
     const label = chart.createChild(am4core.Label)
-    label.text = makretStrengthConfig.title
+    label.text = marketStrengthConfig.title
     label.config = sectionOneChartConfig.label
     label.horizontalCenter = 'middle'
     label.fontWeight = 'bold'
@@ -88,8 +88,8 @@ const Inventory = () => {
   return (
     <>
       <div
-        id={makretStrengthConfig.id}
-        style={{ width: '100%', height: makretStrengthConfig.height }}
+        id={marketStrengthConfig.id}
+        style={{ width: '100%', height: marketStrengthConfig.height }}
       ></div>
     </>
   )
