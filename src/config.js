@@ -62,6 +62,7 @@ export default {
     },
     label: {
       fontSize: 15,
+      fontWeight: 'bold',
       align: 'center',
       isMeasured: false,
       x: 75,
