@@ -5,7 +5,7 @@ import * as am4core from '@amcharts/amcharts4/core'
 am4core.options.commercialLicense = true
 
 const Container = styled.div`
-  max-width: 1200px;
+  max-width: 1600px;
   margin: auto;
   padding: 30px;
 `

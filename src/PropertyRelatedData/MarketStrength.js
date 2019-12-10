@@ -13,12 +13,12 @@ const {
 
 const { marketStrengthConfig, sectionOneChartConfig } = config
 
-const Inventory = () => {
+const MarketStrength = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
       {
-        paddingTop: 25,
-        paddingBottom: -30,
+        paddingTop: 40,
+        paddingBottom: 5,
         xAxes: [
           {
             type: 'ValueAxis',
@@ -56,7 +56,7 @@ const Inventory = () => {
     label.horizontalCenter = 'middle'
     label.fontWeight = 'bold'
     label.x = '50%'
-    label.y = -10
+    label.y = -35
 
     const comparisonProperty2Hand = chart.hands.push(new am4charts.ClockHand())
     comparisonProperty2Hand.config = sectionOneChartConfig.hand
@@ -95,4 +95,4 @@ const Inventory = () => {
   )
 }
 
-export default Inventory
+export default MarketStrength

@@ -12,12 +12,12 @@ const {
   soldProperty
 } = propertyData
 
-const { avgHpiByBedsConfig, sectionOneChartConfig } = config
+const { avgHpiByBedsConfig, sectionTwoChartConfig } = config
 
 const AvgHpiByBeds = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      sectionOneChartConfig.chart,
+      sectionTwoChartConfig.chart,
       avgHpiByBedsConfig.id,
       am4charts.XYChart
     )
@@ -25,34 +25,34 @@ const AvgHpiByBeds = () => {
 
     const label = chart.createChild(am4core.Label)
     label.text = avgHpiByBedsConfig.title
-    label.config = sectionOneChartConfig.label
+    label.config = sectionTwoChartConfig.label
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
-    dateAxis.config = sectionOneChartConfig.dateAxis
+    dateAxis.config = sectionTwoChartConfig.dateAxis
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = sectionOneChartConfig.valueAxis
+    valueAxis.config = sectionTwoChartConfig.valueAxis
     valueAxis.min = 0
 
     const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
     selectedPropertySeries.data = selectedProperty.inventory
-    selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
+    selectedPropertySeries.config = sectionTwoChartConfig.selectedProperty
 
     const comparisonProperty1Series = chart.series.push(
       new am4charts.LineSeries()
     )
     comparisonProperty1Series.data = comparisonProperty1.inventory
-    comparisonProperty1Series.config = sectionOneChartConfig.comparisonProperty1
+    comparisonProperty1Series.config = sectionTwoChartConfig.comparisonProperty1
 
     const comparisonProperty2Series = chart.series.push(
       new am4charts.LineSeries()
     )
     comparisonProperty2Series.data = comparisonProperty2.inventory
-    comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
+    comparisonProperty2Series.config = sectionTwoChartConfig.comparisonProperty2
 
     const soldProperties = chart.series.push(new am4charts.LineSeries())
     soldProperties.data = soldProperty.inventory
-    soldProperties.config = sectionOneChartConfig.soldProperties
+    soldProperties.config = sectionTwoChartConfig.soldProperties
 
     return () => {
       chart.dispose()

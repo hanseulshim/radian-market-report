@@ -16,12 +16,12 @@ export default {
   },
   marketStrengthConfig: {
     id: 'marketStrengthDiv',
-    height: '250px',
+    height: '175px',
     title: 'Market Strength'
   },
   avgHpiByBedsConfig: {
     id: 'avgHpiByBedsDiv',
-    height: '250px',
+    height: '175px',
     title: ''
   },
   legendConfig: {
@@ -38,17 +38,19 @@ export default {
     },
     dateAxis: {
       renderer: {
-        minGridDistance: 50
+        minGridDistance: 50,
+        grid: {
+          location: 0.5
+        }
       },
       dateFormats: {
         month: 'MMM'
       },
       periodChangeDateFormats: {
-        month: 'YY MMM'
+        month: 'MMM'
       },
       startLocation: 0.5,
-      endLocation: 0.5,
-      paddingRight: 20
+      endLocation: 0.5
     },
     valueAxis: {
       width: 70,
@@ -122,6 +124,84 @@ export default {
       strokeDasharray: '4, 4',
       stroke: '#000000',
       fill: '#000000'
+    }
+  },
+  sectionTwoChartConfig: {
+    chart: {
+      paddingTop: 40,
+      paddingBottom: 5,
+      paddingLeft: 0,
+      paddingRight: 20
+    },
+    selectedProperty: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      strokeWidth: 3,
+      fill: '#D1D3D5',
+      fillOpacity: 1,
+      stroke: '#747575'
+    },
+    comparisonProperty1: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      strokeWidth: 4,
+      stroke: '#4B73B7',
+      fill: '#4B73B7'
+    },
+    comparisonProperty2: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      strokeWidth: 4,
+      stroke: '#95D3C9',
+      fill: '#95D3C9'
+    },
+    soldProperties: {
+      name: 'Sold',
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      strokeWidth: 4,
+      strokeDasharray: '4, 4',
+      stroke: '#000000',
+      fill: '#000000'
+    },
+    dateAxis: {
+      renderer: {
+        minGridDistance: 30,
+        grid: {
+          location: 0.5
+        }
+      },
+      dateFormats: {
+        month: 'MMM'
+      },
+      periodChangeDateFormats: {
+        month: 'MMM'
+      },
+      startLocation: 0.5,
+      endLocation: 0.5
+    },
+    valueAxis: {
+      renderer: {
+        minGridDistance: 25,
+        labels: {
+          truncate: true,
+          textAlign: 'end'
+        }
+      },
+      numberFormatter: {
+        numberFormat: '#'
+      }
     }
   }
 }

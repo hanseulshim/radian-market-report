@@ -27,8 +27,13 @@ const RowChartContainer = styled.div`
   display: flex;
   justify-content: space-between;
 `
-const RowChartSingleContainer = styled.div`
-  width: 32%
+const RowChartDialContainer = styled.div`
+  width: 25%
+  background: #efefef;
+`
+
+const RowChartLineContainer = styled.div`
+  width: 37%
   background: #efefef;
 `
 
@@ -43,15 +48,15 @@ const PropertyRelatedData = () => (
         <Inventory />
       </ColumnChartContainer>
       <RowChartContainer>
-        <RowChartSingleContainer>
+        <RowChartDialContainer>
           <MarketStrength />
-        </RowChartSingleContainer>
-        <RowChartSingleContainer>
+        </RowChartDialContainer>
+        <RowChartLineContainer>
           <AvgHpiByBeds />
-        </RowChartSingleContainer>
-        <RowChartSingleContainer>
+        </RowChartLineContainer>
+        <RowChartLineContainer>
           <div>isdf</div>
-        </RowChartSingleContainer>
+        </RowChartLineContainer>
       </RowChartContainer>
     </ColumnContainer>
   </>
