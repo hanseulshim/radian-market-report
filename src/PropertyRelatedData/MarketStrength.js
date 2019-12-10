@@ -76,8 +76,8 @@ const Inventory = () => {
 
     const selectedPropertyHand = chart.hands.push(new am4charts.ClockHand())
     selectedPropertyHand.config = sectionOneChartConfig.hand
-    selectedPropertyHand.stroke = sectionOneChartConfig.selectedProperty.stroke
-    selectedPropertyHand.fill = sectionOneChartConfig.selectedProperty.fill
+    selectedPropertyHand.stroke = sectionOneChartConfig.soldProperties.stroke
+    selectedPropertyHand.fill = sectionOneChartConfig.soldProperties.fill
     selectedPropertyHand.value = selectedProperty.marketStrength
 
     return () => {

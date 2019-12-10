@@ -28,6 +28,9 @@ export default {
     }
   },
   sectionOneChartConfig: {
+    chart: {
+      paddingTop: 20
+    },
     dateAxis: {
       renderer: {
         minGridDistance: 50
@@ -46,10 +49,6 @@ export default {
       width: 70,
       renderer: {
         minGridDistance: 50,
-        line: {
-          strokeOpacity: 1,
-          strokeWidth: 2
-        },
         labels: {
           width: 70,
           maxWidth: 70,
@@ -66,7 +65,7 @@ export default {
       align: 'center',
       isMeasured: false,
       x: 75,
-      y: 10
+      y: -20
     },
     hand: {
       pin: {
@@ -82,10 +81,10 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
-      strokeWidth: 4,
-      fill: '#5B7482',
+      strokeWidth: 3,
+      fill: '#D1D3D5',
       fillOpacity: 1,
-      stroke: '#5B7482'
+      stroke: '#747575'
     },
     comparisonProperty1: {
       hiddenInLegend: true,
@@ -94,8 +93,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 4,
-      stroke: '#8ce0cf',
-      fill: '#8ce0cf'
+      stroke: '#4B73B7',
+      fill: '#4B73B7'
     },
     comparisonProperty2: {
       hiddenInLegend: true,
@@ -104,8 +103,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 4,
-      stroke: '#ffc700',
-      fill: '#ffc700'
+      stroke: '#95D3C9',
+      fill: '#95D3C9'
     },
     soldProperties: {
       name: 'Sold',
@@ -115,7 +114,8 @@ export default {
       },
       strokeWidth: 4,
       strokeDasharray: '4, 4',
-      stroke: '#000000'
+      stroke: '#000000',
+      fill: '#000000'
     }
   }
 }

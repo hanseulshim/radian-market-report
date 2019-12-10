@@ -16,13 +16,17 @@ const { legendConfig, medianPricesConfig, sectionOneChartConfig } = config
 
 const MedianPrices = () => {
   useEffect(() => {
-    const chart = am4core.create(medianPricesConfig.id, am4charts.XYChart)
+    const chart = am4core.createFromConfig(
+      sectionOneChartConfig.chart,
+      medianPricesConfig.id,
+      am4charts.XYChart
+    )
     chart.id = medianPricesConfig.id
 
     const label = chart.createChild(am4core.Label)
     label.text = medianPricesConfig.title
     label.config = sectionOneChartConfig.label
-    label.y = label.y + 50
+    label.y = label.y + 35
 
     chart.legend = new am4charts.Legend()
     chart.legend.parent = chart.chartContainer

@@ -16,7 +16,11 @@ const { inventoryConfig, sectionOneChartConfig } = config
 
 const Inventory = () => {
   useEffect(() => {
-    const chart = am4core.create(inventoryConfig.id, am4charts.XYChart)
+    const chart = am4core.createFromConfig(
+      sectionOneChartConfig.chart,
+      inventoryConfig.id,
+      am4charts.XYChart
+    )
     chart.id = inventoryConfig.id
 
     const label = chart.createChild(am4core.Label)
