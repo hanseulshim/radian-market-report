@@ -5,12 +5,7 @@ import am4themesAnimated from '@amcharts/amcharts4/themes/animated'
 import { propertyData } from '../data/data.json'
 import config from '../config'
 am4core.useTheme(am4themesAnimated)
-const {
-  selectedProperty,
-  comparisonProperty1,
-  comparisonProperty2,
-  soldProperty
-} = propertyData
+const { selectedProperty } = propertyData
 
 const { avgHpiByBedsConfig, sectionTwoChartConfig } = config
 
@@ -23,9 +18,13 @@ const AvgHpiByBeds = () => {
     )
     chart.id = avgHpiByBedsConfig.id
 
+    chart.legend = new am4charts.Legend()
+    chart.legend.parent = chart.tooltipContainer
+    chart.legend.config = sectionTwoChartConfig.legendConfig
+
     const label = chart.createChild(am4core.Label)
     label.config = sectionTwoChartConfig.label
-    label.text = 'Avg 20854 HPI by Beds'
+    label.text = `Avg ${selectedProperty.label} HPI by Beds`
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.config = sectionTwoChartConfig.dateAxis
@@ -34,25 +33,25 @@ const AvgHpiByBeds = () => {
     valueAxis.config = sectionTwoChartConfig.valueAxis
     valueAxis.min = 0
 
-    const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
-    selectedPropertySeries.data = selectedProperty.inventory
-    selectedPropertySeries.config = sectionTwoChartConfig.selectedProperty
+    const series1 = chart.series.push(new am4charts.LineSeries())
+    series1.name = '1BR'
+    series1.data = selectedProperty.avgHpiByBeds.br1
+    series1.config = sectionTwoChartConfig.series1
 
-    const comparisonProperty1Series = chart.series.push(
-      new am4charts.LineSeries()
-    )
-    comparisonProperty1Series.data = comparisonProperty1.inventory
-    comparisonProperty1Series.config = sectionTwoChartConfig.comparisonProperty1
+    const series2 = chart.series.push(new am4charts.LineSeries())
+    series2.name = '2BR'
+    series2.data = selectedProperty.avgHpiByBeds.br2
+    series2.config = sectionTwoChartConfig.series2
 
-    const comparisonProperty2Series = chart.series.push(
-      new am4charts.LineSeries()
-    )
-    comparisonProperty2Series.data = comparisonProperty2.inventory
-    comparisonProperty2Series.config = sectionTwoChartConfig.comparisonProperty2
+    const series3 = chart.series.push(new am4charts.LineSeries())
+    series3.name = '3BR'
+    series3.data = selectedProperty.avgHpiByBeds.br3
+    series3.config = sectionTwoChartConfig.series3
 
-    const soldProperties = chart.series.push(new am4charts.LineSeries())
-    soldProperties.data = soldProperty.inventory
-    soldProperties.config = sectionTwoChartConfig.soldProperties
+    const series4 = chart.series.push(new am4charts.LineSeries())
+    series4.name = '4BR'
+    series4.data = selectedProperty.avgHpiByBeds.br4
+    series4.config = sectionTwoChartConfig.series4
 
     return () => {
       chart.dispose()

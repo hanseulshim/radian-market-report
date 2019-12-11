@@ -60,6 +60,7 @@ const MarketStrength = () => {
     label.config = sectionTwoChartConfig.label
     label.horizontalCenter = 'middle'
     label.x = '50%'
+    label.y = label.y - 5
 
     const comparisonProperty2Hand = chart.hands.push(new am4charts.ClockHand())
     comparisonProperty2Hand.config = sectionTwoChartConfig.hand

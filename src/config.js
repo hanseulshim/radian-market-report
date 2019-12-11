@@ -1,3 +1,14 @@
+const RIPTIDE = '#8CE0CF'
+const SUPERNOVA = '#FFC700'
+const JORDY_BLUE = '#96D9F2'
+const DEEP_KOAMARU = '#0F2682'
+const DODGER_BLUE = '#2478FA'
+const SUNSET_ORANGE = '#FC5247'
+const WHITE = '#FFFFFF'
+const ALABASTER = '#F7F7F7'
+const BOTTICELLI = '#D9E3ED'
+const BLACK = '#000000'
+
 export default {
   medianPricesConfig: {
     id: 'medianPricesDiv',
@@ -24,14 +35,6 @@ export default {
     height: '130px',
     title: ''
   },
-  legendConfig: {
-    position: 'top',
-    contentAlign: 'right',
-    fontSize: 14,
-    labels: {
-      marginLeft: 10
-    }
-  },
   sectionOneChartConfig: {
     chart: {
       paddingTop: 20,
@@ -40,13 +43,21 @@ export default {
       },
       fontSize: 12
     },
+    legendConfig: {
+      position: 'top',
+      contentAlign: 'right',
+      fontSize: 14,
+      labels: {
+        marginLeft: 10
+      }
+    },
     dateAxis: {
       renderer: {
         minGridDistance: 50,
         grid: {
           location: 0.5,
           strokeOpacity: 0.5,
-          stroke: '#DFDFDF'
+          stroke: ALABASTER
         }
       },
       dateFormats: {
@@ -74,8 +85,8 @@ export default {
         },
         axisFills: {
           disabled: false,
-          fillOpacity: 0.5,
-          fill: '#EFEFEF'
+          fillOpacity: 0.3,
+          fill: ALABASTER
         }
       },
       numberFormatter: {
@@ -97,9 +108,10 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      fill: '#D1D3D5',
-      fillOpacity: 1,
-      stroke: '#747575'
+      strokeOpacity: 0.5,
+      stroke: BLACK,
+      fill: BLACK,
+      fillOpacity: 0.1
     },
     comparisonProperty1: {
       hiddenInLegend: true,
@@ -108,8 +120,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: '#4B73B7',
-      fill: '#4B73B7'
+      stroke: DODGER_BLUE,
+      fill: DODGER_BLUE
     },
     comparisonProperty2: {
       hiddenInLegend: true,
@@ -118,8 +130,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: '#95D3C9',
-      fill: '#95D3C9'
+      stroke: RIPTIDE,
+      fill: RIPTIDE
     },
     soldProperties: {
       name: 'Sold',
@@ -127,10 +139,10 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
-      strokeWidth: 3,
-      strokeDasharray: '4, 4',
-      stroke: '#000000',
-      fill: '#000000'
+      strokeWidth: 2,
+      strokeDasharray: '5, 5',
+      stroke: BLACK,
+      fill: BLACK
     }
   },
   sectionTwoChartConfig: {
@@ -140,6 +152,17 @@ export default {
       paddingLeft: 0,
       paddingRight: 20,
       fontSize: 12
+    },
+    legendConfig: {
+      contentAlign: 'right',
+      fontSize: 14,
+      labels: {
+        marginLeft: -35
+      },
+      markers: {
+        dx: -10,
+        dy: 7
+      }
     },
     dateAxis: {
       renderer: {
@@ -158,6 +181,7 @@ export default {
       endLocation: 0.5
     },
     valueAxis: {
+      strokeWidth: 0,
       renderer: {
         minGridDistance: 25,
         grid: {
@@ -173,8 +197,8 @@ export default {
       fontWeight: 'bold',
       align: 'center',
       isMeasured: false,
-      x: 10,
-      y: -35
+      x: 40,
+      y: -30
     },
     hand: {
       pin: {
@@ -184,47 +208,41 @@ export default {
       y: -5,
       startWidth: 24
     },
-    selectedProperty: {
-      hiddenInLegend: true,
+    series1: {
       dataFields: {
         dateX: 'date',
         valueY: 'value'
       },
       strokeWidth: 3,
-      fill: '#D1D3D5',
-      fillOpacity: 1,
-      stroke: '#747575'
+      strokeOpacity: 0.5,
+      stroke: DODGER_BLUE
     },
-    comparisonProperty1: {
-      hiddenInLegend: true,
+    series2: {
       dataFields: {
         dateX: 'date',
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: '#4B73B7',
-      fill: '#4B73B7'
+      strokeOpacity: 0.5,
+      stroke: BLACK
     },
-    comparisonProperty2: {
-      hiddenInLegend: true,
+    series3: {
       dataFields: {
         dateX: 'date',
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: '#95D3C9',
-      fill: '#95D3C9'
+      strokeOpacity: 0.5,
+      stroke: SUNSET_ORANGE
     },
-    soldProperties: {
-      name: 'Sold',
+    series4: {
       dataFields: {
         dateX: 'date',
         valueY: 'value'
       },
       strokeWidth: 3,
-      strokeDasharray: '4, 4',
-      stroke: '#000000',
-      fill: '#000000'
+      strokeOpacity: 0.5,
+      stroke: SUPERNOVA
     }
   }
 }

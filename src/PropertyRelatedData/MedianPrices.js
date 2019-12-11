@@ -12,7 +12,7 @@ const {
   soldProperty
 } = propertyData
 
-const { legendConfig, medianPricesConfig, sectionOneChartConfig } = config
+const { medianPricesConfig, sectionOneChartConfig } = config
 
 const MedianPrices = () => {
   useEffect(() => {
@@ -26,11 +26,10 @@ const MedianPrices = () => {
     const label = chart.createChild(am4core.Label)
     label.text = medianPricesConfig.title
     label.config = sectionOneChartConfig.label
-    label.y = label.y + 35
 
     chart.legend = new am4charts.Legend()
-    chart.legend.parent = chart.chartContainer
-    chart.legend.config = legendConfig
+    chart.legend.parent = chart.tooltipContainer
+    chart.legend.config = sectionOneChartConfig.legendConfig
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.config = sectionOneChartConfig.dateAxis
