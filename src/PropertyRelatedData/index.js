@@ -6,6 +6,7 @@ import AvgSaleToListRatio from './AvgSaleToListRatio'
 import Inventory from './Inventory'
 import MarketStrength from './MarketStrength'
 import AvgHpiByBeds from './AvgHpiByBeds'
+import AvgHpiBySqFt from './AvgHpiBySqFt'
 
 const ColumnContainer = styled.div`
   display: flex;
@@ -55,7 +56,7 @@ const PropertyRelatedData = () => (
           <AvgHpiByBeds />
         </RowChartLineContainer>
         <RowChartLineContainer>
-          <div>isdf</div>
+          <AvgHpiBySqFt />
         </RowChartLineContainer>
       </RowChartContainer>
     </ColumnContainer>

@@ -33,7 +33,12 @@ export default {
   avgHpiByBedsConfig: {
     id: 'avgHpiByBedsDiv',
     height: '130px',
-    title: ''
+    title: 'Avg {SELECTED_PROPERTY} by Beds'
+  },
+  avgHpiBySqFtConfig: {
+    id: 'avgHpiBySqFtDiv',
+    height: '130px',
+    title: 'Avg {SELECTED_PROPERTY} by Sq Ft'
   },
   sectionOneChartConfig: {
     chart: {
@@ -161,7 +166,7 @@ export default {
       },
       markers: {
         dx: -10,
-        dy: 7
+        dy: 8
       }
     },
     dateAxis: {
@@ -183,7 +188,7 @@ export default {
     valueAxis: {
       strokeWidth: 0,
       renderer: {
-        minGridDistance: 25,
+        minGridDistance: 10,
         grid: {
           disabled: true
         }
