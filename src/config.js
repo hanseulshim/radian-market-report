@@ -34,7 +34,10 @@ export default {
   },
   sectionOneChartConfig: {
     chart: {
-      paddingTop: 20
+      paddingTop: 20,
+      seriesContainer: {
+        zIndex: -1
+      }
     },
     dateAxis: {
       renderer: {
@@ -74,14 +77,6 @@ export default {
       isMeasured: false,
       x: 75,
       y: -20
-    },
-    hand: {
-      pin: {
-        radius: 12
-      },
-      radius: '85%',
-      y: -15,
-      startWidth: 24
     },
     selectedProperty: {
       hiddenInLegend: true,
@@ -133,6 +128,49 @@ export default {
       paddingLeft: 0,
       paddingRight: 20
     },
+    dateAxis: {
+      renderer: {
+        minGridDistance: 30,
+        grid: {
+          disabled: true
+        }
+      },
+      dateFormats: {
+        month: 'MMM'
+      },
+      periodChangeDateFormats: {
+        month: 'MMM'
+      },
+      startLocation: 0.5,
+      endLocation: 0.5
+    },
+    valueAxis: {
+      renderer: {
+        minGridDistance: 25,
+        grid: {
+          disabled: true
+        }
+      },
+      numberFormatter: {
+        numberFormat: '#'
+      }
+    },
+    label: {
+      fontSize: 15,
+      fontWeight: 'bold',
+      align: 'center',
+      isMeasured: false,
+      x: 10,
+      y: -35
+    },
+    hand: {
+      pin: {
+        radius: 12
+      },
+      radius: '85%',
+      y: -15,
+      startWidth: 24
+    },
     selectedProperty: {
       hiddenInLegend: true,
       dataFields: {
@@ -174,34 +212,6 @@ export default {
       strokeDasharray: '4, 4',
       stroke: '#000000',
       fill: '#000000'
-    },
-    dateAxis: {
-      renderer: {
-        minGridDistance: 30,
-        grid: {
-          location: 0.5
-        }
-      },
-      dateFormats: {
-        month: 'MMM'
-      },
-      periodChangeDateFormats: {
-        month: 'MMM'
-      },
-      startLocation: 0.5,
-      endLocation: 0.5
-    },
-    valueAxis: {
-      renderer: {
-        minGridDistance: 25,
-        labels: {
-          truncate: true,
-          textAlign: 'end'
-        }
-      },
-      numberFormatter: {
-        numberFormat: '#'
-      }
     }
   }
 }

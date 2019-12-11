@@ -24,8 +24,8 @@ const AvgHpiByBeds = () => {
     chart.id = avgHpiByBedsConfig.id
 
     const label = chart.createChild(am4core.Label)
-    label.text = avgHpiByBedsConfig.title
     label.config = sectionTwoChartConfig.label
+    label.text = 'Avg 20854 HPI by Beds'
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.config = sectionTwoChartConfig.dateAxis

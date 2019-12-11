@@ -11,7 +11,11 @@ const {
   comparisonProperty2
 } = propertyData
 
-const { marketStrengthConfig, sectionOneChartConfig } = config
+const {
+  marketStrengthConfig,
+  sectionOneChartConfig,
+  sectionTwoChartConfig
+} = config
 
 const MarketStrength = () => {
   useEffect(() => {
@@ -52,14 +56,12 @@ const MarketStrength = () => {
 
     const label = chart.createChild(am4core.Label)
     label.text = marketStrengthConfig.title
-    label.config = sectionOneChartConfig.label
+    label.config = sectionTwoChartConfig.label
     label.horizontalCenter = 'middle'
-    label.fontWeight = 'bold'
     label.x = '50%'
-    label.y = -35
 
     const comparisonProperty2Hand = chart.hands.push(new am4charts.ClockHand())
-    comparisonProperty2Hand.config = sectionOneChartConfig.hand
+    comparisonProperty2Hand.config = sectionTwoChartConfig.hand
     comparisonProperty2Hand.stroke =
       sectionOneChartConfig.comparisonProperty2.stroke
     comparisonProperty2Hand.fill =
@@ -67,7 +69,7 @@ const MarketStrength = () => {
     comparisonProperty2Hand.value = comparisonProperty2.marketStrength
 
     const comparisonProperty1Hand = chart.hands.push(new am4charts.ClockHand())
-    comparisonProperty1Hand.config = sectionOneChartConfig.hand
+    comparisonProperty1Hand.config = sectionTwoChartConfig.hand
     comparisonProperty1Hand.stroke =
       sectionOneChartConfig.comparisonProperty1.stroke
     comparisonProperty1Hand.fill =
@@ -75,7 +77,7 @@ const MarketStrength = () => {
     comparisonProperty1Hand.value = comparisonProperty1.marketStrength
 
     const selectedPropertyHand = chart.hands.push(new am4charts.ClockHand())
-    selectedPropertyHand.config = sectionOneChartConfig.hand
+    selectedPropertyHand.config = sectionTwoChartConfig.hand
     selectedPropertyHand.stroke = sectionOneChartConfig.soldProperties.stroke
     selectedPropertyHand.fill = sectionOneChartConfig.soldProperties.fill
     selectedPropertyHand.value = selectedProperty.marketStrength
