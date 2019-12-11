@@ -23,6 +23,7 @@ const MarketStrength = () => {
       {
         paddingTop: 40,
         paddingBottom: 5,
+        fontSize: 12,
         xAxes: [
           {
             type: 'ValueAxis',
@@ -31,7 +32,7 @@ const MarketStrength = () => {
             strictMinMax: true,
             renderer: {
               labels: {
-                radius: 0
+                radius: 5
               }
             },
             axisRanges: [

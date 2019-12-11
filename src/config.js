@@ -1,27 +1,27 @@
 export default {
   medianPricesConfig: {
     id: 'medianPricesDiv',
-    height: '400px',
+    height: '300px',
     title: 'Median Prices of Active Listings'
   },
   avgSaleToListRatioConfig: {
     id: 'avgSaleToListRatioDiv',
-    height: '250px',
+    height: '150px',
     title: 'Avg Sale to List Ratio'
   },
   inventoryConfig: {
     id: 'inventoryDiv',
-    height: '275px',
+    height: '150px',
     title: 'Inventory'
   },
   marketStrengthConfig: {
     id: 'marketStrengthDiv',
-    height: '175px',
+    height: '130px',
     title: 'Market Strength'
   },
   avgHpiByBedsConfig: {
     id: 'avgHpiByBedsDiv',
-    height: '175px',
+    height: '130px',
     title: ''
   },
   legendConfig: {
@@ -37,7 +37,8 @@ export default {
       paddingTop: 20,
       seriesContainer: {
         zIndex: -1
-      }
+      },
+      fontSize: 12
     },
     dateAxis: {
       renderer: {
@@ -58,7 +59,7 @@ export default {
     valueAxis: {
       width: 70,
       renderer: {
-        minGridDistance: 50,
+        minGridDistance: 25,
         labels: {
           width: 70,
           maxWidth: 70,
@@ -95,7 +96,7 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
-      strokeWidth: 4,
+      strokeWidth: 3,
       stroke: '#4B73B7',
       fill: '#4B73B7'
     },
@@ -105,7 +106,7 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
-      strokeWidth: 4,
+      strokeWidth: 3,
       stroke: '#95D3C9',
       fill: '#95D3C9'
     },
@@ -115,7 +116,7 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
-      strokeWidth: 4,
+      strokeWidth: 3,
       strokeDasharray: '4, 4',
       stroke: '#000000',
       fill: '#000000'
@@ -124,9 +125,10 @@ export default {
   sectionTwoChartConfig: {
     chart: {
       paddingTop: 40,
-      paddingBottom: 5,
+      paddingBottom: -5,
       paddingLeft: 0,
-      paddingRight: 20
+      paddingRight: 20,
+      fontSize: 12
     },
     dateAxis: {
       renderer: {
@@ -168,7 +170,7 @@ export default {
         radius: 12
       },
       radius: '85%',
-      y: -15,
+      y: -5,
       startWidth: 24
     },
     selectedProperty: {
@@ -188,7 +190,7 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
-      strokeWidth: 4,
+      strokeWidth: 3,
       stroke: '#4B73B7',
       fill: '#4B73B7'
     },
@@ -198,7 +200,7 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
-      strokeWidth: 4,
+      strokeWidth: 3,
       stroke: '#95D3C9',
       fill: '#95D3C9'
     },
@@ -208,7 +210,7 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
-      strokeWidth: 4,
+      strokeWidth: 3,
       strokeDasharray: '4, 4',
       stroke: '#000000',
       fill: '#000000'
