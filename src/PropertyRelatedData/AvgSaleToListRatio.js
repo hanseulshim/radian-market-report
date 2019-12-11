@@ -30,12 +30,12 @@ const AvgSaleToListRatio = () => {
     dateAxis.config = sectionOneChartConfig.dateAxis
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    const range = valueAxis.axisRanges.create()
-    range.value = 0
-    range.grid.strokeWidth = 4
-    range.grid.strokeOpacity = 1
     valueAxis.config = sectionOneChartConfig.valueAxis
     valueAxis.numberFormatter.numberFormat = '#%'
+    const range = valueAxis.axisRanges.create()
+    range.value = 0
+    range.grid.strokeOpacity = 1
+    range.grid.strokeWidth = 2
 
     const selectedPropertySeries = chart.series.push(
       new am4charts.ColumnSeries()

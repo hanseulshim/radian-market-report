@@ -44,7 +44,9 @@ export default {
       renderer: {
         minGridDistance: 50,
         grid: {
-          location: 0.5
+          location: 0.5,
+          strokeOpacity: 0.5,
+          stroke: '#DFDFDF'
         }
       },
       dateFormats: {
@@ -58,13 +60,22 @@ export default {
     },
     valueAxis: {
       width: 70,
+      strokeWidth: 0,
       renderer: {
-        minGridDistance: 25,
+        minGridDistance: 20,
         labels: {
           width: 70,
           maxWidth: 70,
           truncate: true,
           textAlign: 'end'
+        },
+        grid: {
+          disabled: true
+        },
+        axisFills: {
+          disabled: false,
+          fillOpacity: 0.5,
+          fill: '#EFEFEF'
         }
       },
       numberFormatter: {
