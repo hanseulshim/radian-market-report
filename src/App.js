@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import PropertyRelatedData from './PropertyRelatedData'
 import * as am4core from '@amcharts/amcharts4/core'
-import 'antd/dist/antd.css'
 am4core.options.commercialLicense = true
 
 const Container = styled.div`

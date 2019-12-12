@@ -7,6 +7,7 @@ const SUNSET_ORANGE = '#FC5247'
 const WHITE = '#FFFFFF'
 const ALABASTER = '#F7F7F7'
 const BOTTICELLI = '#D9E3ED'
+const GALLERY = '#efefef'
 const BLACK = '#000000'
 
 export default {
@@ -257,6 +258,7 @@ export default {
     JORDY_BLUE,
     DEEP_KOAMARU,
     DODGER_BLUE,
+    GALLERY,
     SUNSET_ORANGE,
     WHITE,
     ALABASTER,

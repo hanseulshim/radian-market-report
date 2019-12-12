@@ -1,7 +1,13 @@
 {
   "propertyData": {
     "stats": {
-      "description": "A few sentences here talking about the selected property’s zip vs 2 other comperable zips. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
+      "description": "A few sentences here talking about the selected property’s zip vs 2 other comperable zips. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
+      "similarProperties": {
+        "type": "Single Family",
+        "bedroom": "3BR",
+        "area": "2500-3000 sqft"
+      },
+      "soldProperties": "Properties sold last 1 month"
     },
     "selectedProperty": {
       "label": "20854",
