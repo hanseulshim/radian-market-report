@@ -43,6 +43,7 @@ export default {
   sectionOneChartConfig: {
     chart: {
       paddingTop: 20,
+      paddingLeft: -5,
       seriesContainer: {
         zIndex: -1
       },
@@ -249,5 +250,17 @@ export default {
       strokeOpacity: 0.5,
       stroke: SUPERNOVA
     }
+  },
+  colors: {
+    RIPTIDE,
+    SUPERNOVA,
+    JORDY_BLUE,
+    DEEP_KOAMARU,
+    DODGER_BLUE,
+    SUNSET_ORANGE,
+    WHITE,
+    ALABASTER,
+    BOTTICELLI,
+    BLACK
   }
 }

@@ -1,7 +1,19 @@
 {
   "propertyData": {
+    "stats": {
+      "description": "A few sentences here talking about the selected property’s zip vs 2 other comperable zips. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
+    },
     "selectedProperty": {
       "label": "20854",
+      "address": "1234 Property Dr",
+      "city": "Potomac",
+      "state": "MD",
+      "zip": "20854",
+      "total": 531000,
+      "avgListedPrice": 538000,
+      "avgSoldPrice": 538000,
+      "activeInventory": 131,
+      "soldInventory": 128,
       "medianPrices": [
         { "value": 533540, "date": "2020-01-01T00:00:00" },
         { "value": 545000, "date": "2020-02-01T00:00:00" },
@@ -153,6 +165,10 @@
     },
     "comparisonProperty1": {
       "label": "20855",
+      "avgListedPrice": 555000,
+      "avgSoldPrice": 551000,
+      "activeInventory": 102,
+      "soldInventory": 120,
       "medianPrices": [
         { "value": 532540, "date": "2020-01-01T00:00:00" },
         { "value": 550000, "date": "2020-02-01T00:00:00" },
@@ -196,6 +212,10 @@
     },
     "comparisonProperty2": {
       "label": 20856,
+      "avgListedPrice": 531000,
+      "avgSoldPrice": 527000,
+      "activeInventory": 103,
+      "soldInventory": 125,
       "medianPrices": [
         { "value": 528650, "date": "2020-01-01T00:00:00" },
         { "value": 543250, "date": "2020-02-01T00:00:00" },

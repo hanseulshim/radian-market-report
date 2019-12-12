@@ -4,7 +4,9 @@ import moment from 'moment'
 import { doc } from '../pdf'
 
 const Container = styled.div`
-  margin-bottom: 100px;
+  margin-bottom: 25px;
+  background: #f6f6f5;
+  padding: 50px 50px 25px 50px;
 `
 
 const Date = styled.div`
@@ -14,7 +16,8 @@ const Report = styled.div`
   font-size: 150%;
 `
 const Section = styled.div`
-  font-size: 250%;
+  font-weight: bold;
+  font-size: 300%;
 `
 
 const Button = styled.button`
@@ -35,7 +38,7 @@ const Button = styled.button`
 const Title = () => {
   return (
     <Container>
-      <Button onClick={() => doc.save('test.pdf')}>EXPORT PDF</Button>
+      {/* <Button onClick={() => doc.save('test.pdf')}>EXPORT PDF</Button> */}
       <Date>{moment().format('MMMM DD, YYYY')}</Date>
       <Report>Market Report</Report>
       <Section>Property Related Data</Section>
