@@ -41,6 +41,11 @@ export default {
     height: '130px',
     title: 'Avg {SELECTED_PROPERTY} by Sq Ft'
   },
+  ageOfPropertiesConfig: {
+    id: 'ageOfPropertiesDiv',
+    height: '400px',
+    title: 'Age of Properties Across Markets'
+  },
   sectionOneChartConfig: {
     chart: {
       paddingTop: 20,
@@ -250,6 +255,60 @@ export default {
       strokeWidth: 3,
       strokeOpacity: 0.5,
       stroke: SUPERNOVA
+    }
+  },
+  sectionThreeChartConfig: {
+    chart: {
+      paddingTop: 40,
+      paddingBottom: -5,
+      paddingLeft: 0,
+      paddingRight: 20,
+      fontSize: 12
+    },
+    categoryAxis: {
+      dataFields: {
+        category: 'category'
+      },
+      // renderer: {
+      //   minGridDistance: 30,
+      //   grid: {
+      //     disabled: true
+      //   }
+      // },
+      startLocation: 0.5,
+      endLocation: 0.5
+    },
+    valueAxis: {
+      strokeWidth: 0,
+      renderer: {
+        minGridDistance: 10,
+        grid: {
+          disabled: true
+        }
+      },
+      numberFormatter: {
+        numberFormat: '#'
+      }
+    },
+    label: {
+      fontSize: 15,
+      fontWeight: 'bold',
+      align: 'center',
+      isMeasured: false,
+      x: 40,
+      y: -30
+    },
+    selectedProperty: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'value'
+      },
+      strokeWidth: 3,
+      strokeOpacity: 0.5,
+      stroke: BLACK,
+      fill: BLACK,
+      fillOpacity: 0.1
     }
   },
   colors: {

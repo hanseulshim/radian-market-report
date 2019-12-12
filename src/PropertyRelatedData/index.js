@@ -8,6 +8,7 @@ import Inventory from './Inventory'
 import MarketStrength from './MarketStrength'
 import AvgHpiByBeds from './AvgHpiByBeds'
 import AvgHpiBySqFt from './AvgHpiBySqFt'
+import AgeOfProperties from './AgeOfProperties'
 import config from '../config'
 
 const { GALLERY } = config.colors
@@ -22,19 +23,20 @@ const SubTitle = styled.div`
 const ColumnContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  padding: 0 50px 50px 0;
 `
 
 const ColumnChartContainer = styled.div`
   flex: 3;
   display: flex;
   flex-direction: column;
+  margin-right: 50px;
 `
 
 const RowChartContainer = styled.div`
   width: 100%;
   margin-top: 20px;
   margin-left: 50px;
+  margin-right: 50px;
   display: flex;
   justify-content: space-between;
 `
@@ -48,6 +50,14 @@ const RowChartLineContainer = styled.div`
   flex: 1.75;
   margin-left: 10px;
   background: ${GALLERY};
+`
+
+const MarketContainer = styled.div`
+  margin-top: 25px;
+  background: ${GALLERY};
+  flex: 1;
+  padding: 25px 50px;
+  display: flex;
 `
 
 const PropertyRelatedData = () => (
@@ -72,6 +82,10 @@ const PropertyRelatedData = () => (
           <AvgHpiBySqFt />
         </RowChartLineContainer>
       </RowChartContainer>
+      <MarketContainer>
+        <AgeOfProperties />
+        <div style={{ flex: 3 }}>sodifj</div>
+      </MarketContainer>
     </ColumnContainer>
   </>
 )

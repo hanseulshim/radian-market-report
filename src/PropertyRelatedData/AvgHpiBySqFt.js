@@ -1,10 +1,8 @@
 import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
-import am4themesAnimated from '@amcharts/amcharts4/themes/animated'
 import { propertyData } from '../data/data.json'
 import config from '../config'
-am4core.useTheme(am4themesAnimated)
 const { selectedProperty } = propertyData
 
 const { avgHpiBySqFtConfig, sectionTwoChartConfig } = config
