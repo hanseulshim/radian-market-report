@@ -1,6 +1,8 @@
 {
   "propertyData": {
     "stats": {
+      "agentFirst": "Catelina",
+      "agentLast": "Castillos",
       "description": "A few sentences here talking about the selected property’s zip vs 2 other comperable zips. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
       "similarProperties": {
         "type": "Single Family",
