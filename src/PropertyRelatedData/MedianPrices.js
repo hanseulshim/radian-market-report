@@ -64,6 +64,22 @@ const MedianPrices = () => {
     soldProperties.data = selectedProperty.soldProperty.medianPrices
     soldProperties.config = sectionOneChartConfig.soldProperties
 
+    const comparisonProperty1SoldSeries = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty1SoldSeries.data =
+      comparisonProperty1.soldProperty.medianPrices
+    comparisonProperty1SoldSeries.config =
+      sectionOneChartConfig.comparisonProperty1Sold
+
+    const comparisonProperty2SoldSeries = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty2SoldSeries.data =
+      comparisonProperty2.soldProperty.medianPrices
+    comparisonProperty2SoldSeries.config =
+      sectionOneChartConfig.comparisonProperty2Sold
+
     return () => {
       chart.dispose()
     }

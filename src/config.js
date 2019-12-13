@@ -159,6 +159,28 @@ export default {
       strokeDasharray: '5, 5',
       stroke: BLACK,
       fill: BLACK
+    },
+    comparisonProperty1Sold: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      strokeWidth: 2,
+      strokeDasharray: '5, 5',
+      stroke: STEEL_BLUE,
+      fill: STEEL_BLUE
+    },
+    comparisonProperty2Sold: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      strokeWidth: 2,
+      strokeDasharray: '5, 5',
+      stroke: SINBAD,
+      fill: SINBAD
     }
   },
   sectionTwoChartConfig: {
