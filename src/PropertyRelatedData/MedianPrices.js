@@ -7,8 +7,7 @@ import LegendSold from '../assets/legendSold.svg'
 const {
   selectedProperty,
   comparisonProperty1,
-  comparisonProperty2,
-  soldProperty
+  comparisonProperty2
 } = propertyData
 
 const { medianPricesConfig, sectionOneChartConfig } = config
@@ -62,7 +61,7 @@ const MedianPrices = () => {
     comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
 
     const soldProperties = chart.series.push(new am4charts.LineSeries())
-    soldProperties.data = soldProperty.medianPrices
+    soldProperties.data = selectedProperty.soldProperty.medianPrices
     soldProperties.config = sectionOneChartConfig.soldProperties
 
     return () => {

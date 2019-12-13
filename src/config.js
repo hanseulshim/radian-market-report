@@ -52,9 +52,6 @@ export default {
     chart: {
       paddingTop: 20,
       paddingLeft: -5,
-      seriesContainer: {
-        zIndex: -1
-      },
       fontSize: 12
     },
     legendConfig: {
@@ -104,7 +101,7 @@ export default {
         },
         axisFills: {
           disabled: false,
-          fillOpacity: 0.3,
+          fillOpacity: 1,
           fill: WILD_SAND
         }
       },
@@ -276,21 +273,28 @@ export default {
       dataFields: {
         category: 'category'
       },
-      // renderer: {
-      //   minGridDistance: 30,
-      //   grid: {
-      //     disabled: true
-      //   }
-      // },
+      renderer: {
+        minGridDistance: 30,
+        grid: {
+          location: 0.5,
+          strokeOpacity: 0.1,
+          stroke: BLACK
+        }
+      },
       startLocation: 0.5,
       endLocation: 0.5
     },
     valueAxis: {
       strokeWidth: 0,
       renderer: {
-        minGridDistance: 10,
+        minGridDistance: 20,
         grid: {
           disabled: true
+        },
+        axisFills: {
+          disabled: false,
+          fillOpacity: 1,
+          fill: WILD_SAND
         }
       },
       numberFormatter: {

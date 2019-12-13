@@ -101,7 +101,7 @@ const IndicatorStats = styled.div`
   margin-top: 15px;
 `
 
-const IndicatorStatsTitle = styled.div`
+const IndicatorStatsTitle = styled.span`
   font-weight: bold;
 `
 
@@ -230,15 +230,14 @@ const InfoArea = () => {
           <div>{comparisonProperty2.label}</div>
         </IndicatorRow>
         <IndicatorStats>
-          <IndicatorStatsTitle>Similar Properties:</IndicatorStatsTitle>
           <div>
             {stats.similarProperties.type} -{stats.similarProperties.bedroom} -
             {stats.similarProperties.area}
           </div>
         </IndicatorStats>
         <IndicatorStats>
-          <IndicatorStatsTitle>Sold Properties:</IndicatorStatsTitle>
-          <div>{stats.soldProperties}</div>
+          <IndicatorStatsTitle>Sold Properties:</IndicatorStatsTitle>{' '}
+          <span>{stats.soldProperties}</span>
         </IndicatorStats>
       </Indicator>
     </Container>
