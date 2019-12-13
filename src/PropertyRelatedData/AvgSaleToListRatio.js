@@ -42,6 +42,7 @@ const AvgSaleToListRatio = () => {
     selectedPropertySeries.data = selectedProperty.avgSaleToListRatio
     selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
     selectedPropertySeries.strokeWidth = 0
+    selectedPropertySeries.fillOpacity = 0.25
 
     const comparisonProperty1Series = chart.series.push(
       new am4charts.LineSeries()
