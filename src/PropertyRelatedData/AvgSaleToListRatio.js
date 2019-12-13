@@ -26,6 +26,7 @@ const AvgSaleToListRatio = () => {
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.config = sectionOneChartConfig.dateAxis
+    dateAxis.renderer.labels.template.disabled = true
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = sectionOneChartConfig.valueAxis

@@ -14,7 +14,7 @@ import config from '../config'
 const { GALLERY } = config.colors
 
 const SubTitle = styled.div`
-  font-size: 150%;
+  font-size: 200%;
   font-weight: bold;
   margin-left: 50px;
   margin-bottom: 25px;

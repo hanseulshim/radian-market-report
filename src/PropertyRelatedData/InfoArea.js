@@ -6,7 +6,7 @@ import { Table } from 'antd'
 import { propertyData } from '../data/data.json'
 import config from '../config'
 
-const { RIPTIDE, DODGER_BLUE, GALLERY } = config.colors
+const { SINBAD, STEEL_BLUE, GALLERY, IRON } = config.colors
 
 const {
   selectedProperty,
@@ -20,6 +20,7 @@ const Container = styled.div`
 `
 
 const StatsArea = styled.div`
+  font-weight: bold;
   font-size: 125%;
   margin-left: 50px;
 `
@@ -41,7 +42,7 @@ const Address = styled.div`
 `
 
 const Total = styled.div`
-  font-size: 150%;
+  font-size: 160%;
   font-weight: bold;
 `
 
@@ -54,11 +55,11 @@ const TableHeader = styled.div`
   padding: 3px 2px;
   background: ${props =>
     props.selectedProperty
-      ? 'rgba(0, 0, 0, 0.2)'
+      ? IRON
       : props.comparisonProperty1
-      ? DODGER_BLUE
+      ? STEEL_BLUE
       : props.comparisonProperty2
-      ? RIPTIDE
+      ? SINBAD
       : '#FFFFFF'};
   color: ${props => (props.comparisonProperty1 ? '#FFF' : 'Initial')};
   font-weight: 500;
@@ -83,14 +84,14 @@ const IndicatorRow = styled.div`
   margin-top: ${props => (props.selectedProperty ? '10px' : '3px')};
   display: flex;
   justify-content: space-between;
-  padding: 7px 5px;
+  padding: 7px 10px;
   background: ${props =>
     props.selectedProperty
-      ? 'rgba(0, 0, 0, 0.2)'
+      ? IRON
       : props.comparisonProperty1
-      ? DODGER_BLUE
+      ? STEEL_BLUE
       : props.comparisonProperty2
-      ? RIPTIDE
+      ? SINBAD
       : '#FFFFFF'};
   color: ${props => (props.comparisonProperty1 ? '#FFF' : 'Initial')};
   font-weight: 500;

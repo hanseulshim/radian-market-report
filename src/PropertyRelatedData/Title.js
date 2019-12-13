@@ -17,7 +17,7 @@ const Report = styled.div`
 `
 const Section = styled.div`
   font-weight: bold;
-  font-size: 300%;
+  font-size: 340%;
 `
 
 const Button = styled.button`

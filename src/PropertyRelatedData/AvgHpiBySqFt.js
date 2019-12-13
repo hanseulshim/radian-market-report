@@ -19,8 +19,9 @@ const AvgHpiBySqFt = () => {
     chart.legend = new am4charts.Legend()
     chart.legend.parent = chart.tooltipContainer
     chart.legend.config = sectionTwoChartConfig.legendConfig
-    chart.legend.labels.template.marginLeft = -30
-    chart.legend.markers.template.dx = 5
+    chart.legend.labels.template.marginLeft = -50
+    chart.legend.markers.template.dx = -7
+    chart.legend.markers.template.width = 40
 
     const label = chart.createChild(am4core.Label)
     label.config = sectionTwoChartConfig.label

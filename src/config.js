@@ -1,14 +1,16 @@
-const RIPTIDE = '#8CE0CF'
+const SINBAD = '#95D4C9'
 const SUPERNOVA = '#FFC700'
 const JORDY_BLUE = '#96D9F2'
 const DEEP_KOAMARU = '#0F2682'
-const DODGER_BLUE = '#2478FA'
+const STEEL_BLUE = '#4A73B9'
 const SUNSET_ORANGE = '#FC5247'
 const WHITE = '#FFFFFF'
 const ALABASTER = '#F7F7F7'
 const BOTTICELLI = '#D9E3ED'
 const GALLERY = '#efefef'
 const BLACK = '#000000'
+const WILD_SAND = '#F4F4F4'
+const IRON = '#D0D3D5'
 
 export default {
   medianPricesConfig: {
@@ -58,9 +60,14 @@ export default {
     legendConfig: {
       position: 'top',
       contentAlign: 'right',
+      useDefaultMarker: true,
       fontSize: 14,
       labels: {
         marginLeft: 10
+      },
+      markers: {
+        dx: -5,
+        dy: -5
       }
     },
     dateAxis: {
@@ -68,8 +75,8 @@ export default {
         minGridDistance: 50,
         grid: {
           location: 0.5,
-          strokeOpacity: 0.5,
-          stroke: ALABASTER
+          strokeOpacity: 0.1,
+          stroke: BLACK
         }
       },
       dateFormats: {
@@ -85,7 +92,7 @@ export default {
       width: 70,
       strokeWidth: 0,
       renderer: {
-        minGridDistance: 20,
+        minGridDistance: 25,
         labels: {
           width: 70,
           maxWidth: 70,
@@ -98,7 +105,7 @@ export default {
         axisFills: {
           disabled: false,
           fillOpacity: 0.3,
-          fill: ALABASTER
+          fill: WILD_SAND
         }
       },
       numberFormatter: {
@@ -132,8 +139,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: DODGER_BLUE,
-      fill: DODGER_BLUE
+      stroke: STEEL_BLUE,
+      fill: STEEL_BLUE
     },
     comparisonProperty2: {
       hiddenInLegend: true,
@@ -142,8 +149,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: RIPTIDE,
-      fill: RIPTIDE
+      stroke: SINBAD,
+      fill: SINBAD
     },
     soldProperties: {
       name: 'Sold',
@@ -214,11 +221,11 @@ export default {
     },
     hand: {
       pin: {
-        radius: 12
+        radius: 6
       },
       radius: '85%',
       y: -5,
-      startWidth: 24
+      startWidth: 12
     },
     series1: {
       dataFields: {
@@ -227,7 +234,7 @@ export default {
       },
       strokeWidth: 3,
       strokeOpacity: 0.5,
-      stroke: DODGER_BLUE
+      stroke: STEEL_BLUE
     },
     series2: {
       dataFields: {
@@ -312,16 +319,18 @@ export default {
     }
   },
   colors: {
-    RIPTIDE,
+    SINBAD,
     SUPERNOVA,
     JORDY_BLUE,
     DEEP_KOAMARU,
-    DODGER_BLUE,
+    STEEL_BLUE,
     GALLERY,
     SUNSET_ORANGE,
     WHITE,
     ALABASTER,
     BOTTICELLI,
-    BLACK
+    BLACK,
+    WILD_SAND,
+    IRON
   }
 }

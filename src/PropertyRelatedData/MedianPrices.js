@@ -3,6 +3,7 @@ import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import { propertyData } from '../data/data.json'
 import config from '../config'
+import LegendSold from '../assets/legendSold.svg'
 const {
   selectedProperty,
   comparisonProperty1,
@@ -29,8 +30,16 @@ const MedianPrices = () => {
     chart.legend.parent = chart.tooltipContainer
     chart.legend.config = sectionOneChartConfig.legendConfig
 
+    const marker = chart.legend.markers.template
+    marker.disposeChildren()
+    const image = marker.createChild(am4core.Image)
+    image.width = 30
+    image.height = 30
+    image.href = LegendSold
+
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.config = sectionOneChartConfig.dateAxis
+    dateAxis.renderer.labels.template.disabled = true
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = sectionOneChartConfig.valueAxis
