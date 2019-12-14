@@ -16,7 +16,7 @@ const {
 } = propertyData
 
 const Container = styled.div`
-  flex: 1;
+  flex: 1.2;
 `
 
 const StatsArea = styled.div`
@@ -37,12 +37,11 @@ const AddressBox = styled.div`
 `
 
 const Address = styled.div`
-  font-size: 80%;
   font-weight: bold;
 `
 
-const Total = styled.div`
-  font-size: 160%;
+const Price = styled.div`
+  font-size: 180%;
   font-weight: bold;
 `
 
@@ -51,7 +50,6 @@ const TableContainer = styled(Table)`
 `
 
 const TableHeader = styled.div`
-  font-weight: normal;
   padding: 3px 2px;
   background: ${props =>
     props.selectedProperty
@@ -62,7 +60,6 @@ const TableHeader = styled.div`
       ? SINBAD
       : '#FFFFFF'};
   color: ${props => (props.comparisonProperty1 ? '#FFF' : 'Initial')};
-  font-weight: 500;
 `
 
 const Description = styled.div`
@@ -142,7 +139,7 @@ const columns = [
     className: 'stat-column',
     dataIndex: 'category',
     key: 'category',
-    width: 200
+    width: 125
   },
   {
     // eslint-disable-next-line react/display-name
@@ -157,7 +154,6 @@ const columns = [
       i.key.toLowerCase().includes('price')
         ? numeral(price).format('$0a')
         : price
-    // width: '25%'
   },
   {
     // eslint-disable-next-line react/display-name
@@ -172,7 +168,6 @@ const columns = [
       i.key.toLowerCase().includes('price')
         ? numeral(price).format('$0a')
         : price
-    // width: '25%'
   },
   {
     // eslint-disable-next-line react/display-name
@@ -187,7 +182,6 @@ const columns = [
       i.key.toLowerCase().includes('price')
         ? numeral(price).format('$0a')
         : price
-    // width: '25%'
   }
 ]
 
@@ -205,7 +199,7 @@ const InfoArea = () => {
             {selectedProperty.zip}
           </div>
         </Address>
-        <Total>{numeral(selectedProperty.total).format('$0a')}</Total>
+        <Price>{numeral(selectedProperty.price).format('$0a')}</Price>
       </AddressBox>
       <TableContainer
         rowClassName="stat-row"
@@ -230,14 +224,11 @@ const InfoArea = () => {
           <div>{comparisonProperty2.label}</div>
         </IndicatorRow>
         <IndicatorStats>
+          <IndicatorStatsTitle>Property Attributes:</IndicatorStatsTitle>{' '}
           <div>
-            {stats.similarProperties.type} -{stats.similarProperties.bedroom} -
-            {stats.similarProperties.area}
+            {stats.similarProperties.type}, {stats.similarProperties.bedroom},{' '}
+            {stats.similarProperties.area}, {stats.soldProperties}
           </div>
-        </IndicatorStats>
-        <IndicatorStats>
-          <IndicatorStatsTitle>Sold Properties:</IndicatorStatsTitle>{' '}
-          <span>{stats.soldProperties}</span>
         </IndicatorStats>
       </Indicator>
     </Container>

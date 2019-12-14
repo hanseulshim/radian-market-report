@@ -16,7 +16,7 @@ export default {
   medianPricesConfig: {
     id: 'medianPricesDiv',
     height: '300px',
-    title: 'Median Prices of Active Listings'
+    title: 'Median Listing Prices'
   },
   avgSaleToListRatioConfig: {
     id: 'avgSaleToListRatioDiv',
@@ -30,17 +30,17 @@ export default {
   },
   marketStrengthConfig: {
     id: 'marketStrengthDiv',
-    height: '130px',
+    height: '150px',
     title: 'Market Strength'
   },
   avgHpiByBedsConfig: {
     id: 'avgHpiByBedsDiv',
-    height: '130px',
+    height: '150px',
     title: 'Avg {SELECTED_PROPERTY} by Beds'
   },
   avgHpiBySqFtConfig: {
     id: 'avgHpiBySqFtDiv',
-    height: '130px',
+    height: '150px',
     title: 'Avg {SELECTED_PROPERTY} by Sq Ft'
   },
   ageOfPropertiesConfig: {
@@ -204,7 +204,7 @@ export default {
     },
     dateAxis: {
       renderer: {
-        minGridDistance: 30,
+        minGridDistance: 10,
         grid: {
           disabled: true
         }
@@ -221,7 +221,7 @@ export default {
     valueAxis: {
       strokeWidth: 0,
       renderer: {
-        minGridDistance: 10,
+        minGridDistance: 20,
         grid: {
           disabled: true
         }
@@ -240,11 +240,11 @@ export default {
     },
     hand: {
       pin: {
-        radius: 6
+        radius: 9
       },
       radius: '85%',
       y: -5,
-      startWidth: 12
+      startWidth: 18
     },
     series1: {
       dataFields: {

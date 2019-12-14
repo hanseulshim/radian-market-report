@@ -22,6 +22,7 @@ body {
   border-top: 1px solid #e8e8e8;
   border-bottom: none;
   font-size: 12px;
+  font-weight: bold;
 }
 
 .ant-table-thead > tr > th.stat-column {

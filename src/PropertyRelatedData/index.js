@@ -42,12 +42,12 @@ const RowChartContainer = styled.div`
 `
 
 const RowChartDialContainer = styled.div`
-  flex: 1;
+  flex: 1.2;
   background: ${GALLERY};
 `
 
 const RowChartLineContainer = styled.div`
-  flex: 1.75;
+  flex: 1.71;
   margin-left: 10px;
   background: ${GALLERY};
 `

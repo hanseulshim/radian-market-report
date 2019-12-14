@@ -26,7 +26,7 @@ const MarketStrength = () => {
           {
             type: 'ValueAxis',
             min: 0,
-            max: 400,
+            max: 100,
             strictMinMax: true,
             renderer: {
               labels: {
@@ -36,7 +36,7 @@ const MarketStrength = () => {
             axisRanges: [
               {
                 value: -1,
-                endValue: 400,
+                endValue: 100,
                 axisFill: {
                   fillOpacity: 1,
                   fill: '#FFF',
