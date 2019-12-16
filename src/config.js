@@ -50,7 +50,7 @@ export default {
   },
   domVsPriceConfig: {
     id: 'domVsPriceDiv',
-    height: '200px',
+    height: '300px',
     title: 'DOM vs Price of Listings',
   },
   sectionOneChartConfig: {
@@ -347,6 +347,92 @@ export default {
       stroke: BLACK,
       fill: BLACK,
       fillOpacity: 0.1,
+    },
+  },
+  sectionFourChartConfig: {
+    chart: {
+      paddingTop: 40,
+      paddingBottom: -5,
+      paddingLeft: 0,
+      paddingRight: 20,
+      fontSize: 12,
+    },
+    categoryAxis: {
+      dataFields: {
+        category: 'category',
+      },
+      renderer: {
+        minGridDistance: 10,
+        grid: {
+          location: 0,
+          strokeOpacity: 0.1,
+          stroke: BLACK,
+        },
+      },
+      startLocation: 0,
+      endLocation: 0,
+    },
+    valueAxis: {
+      strokeWidth: 0,
+      renderer: {
+        minGridDistance: 50,
+        grid: {},
+        axisFills: {
+          disabled: false,
+          fillOpacity: 1,
+          fill: WILD_SAND,
+        },
+      },
+      numberFormatter: {
+        numberFormat: '#',
+      },
+    },
+    label: {
+      fontSize: 15,
+      fontWeight: 'bold',
+      align: 'center',
+      isMeasured: false,
+      x: 40,
+      y: -30,
+    },
+    selectedProperty: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'high',
+        openValueY: 'low',
+      },
+      strokeWidth: 0,
+      strokeOpacity: 0.5,
+      stroke: BLACK,
+      fill: BLACK,
+      fillOpacity: 0.1,
+    },
+    comparisonProperty1: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'high',
+        openValueY: 'low',
+      },
+      strokeWidth: 0,
+      strokeOpacity: 0.5,
+      stroke: STEEL_BLUE,
+      fill: STEEL_BLUE,
+      fillOpacity: 0.5,
+    },
+    comparisonProperty2: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'high',
+        openValueY: 'low',
+      },
+      strokeWidth: 0,
+      strokeOpacity: 0.5,
+      stroke: SINBAD,
+      fill: SINBAD,
+      fillOpacity: 0.5,
     },
   },
   colors: {

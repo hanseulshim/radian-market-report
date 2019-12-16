@@ -268,94 +268,75 @@
       "priceOfListings": [
         {
           "category": "01-05",
-          "open": 555000,
-          "high": 575000,
+          "high": 555000,
           "low": 431000,
-          "close": 431000
+          "average": 520000
         },
         {
           "category": "06-10",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 535000,
+          "low": 411000,
+          "average": 460000
         },
         {
           "category": "11-15",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 559000,
+          "low": 467000,
+          "average": 500000
         },
         {
           "category": "16-20",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 585000,
+          "low": 531000,
+          "average": 539000
         },
         {
           "category": "21-25",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 555000,
+          "low": 471000,
+          "average": 520000
         },
         {
           "category": "26-30",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 615000,
+          "low": 481000,
+          "average": 500000
         },
         {
           "category": "31-35",
-          "open": 555000,
-          "high": 575000,
+          "high": 615000,
           "low": 431000,
-          "close": 431000
+          "average": 450000
         },
         {
           "category": "36-40",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 595000,
+          "low": 481000,
+          "average": 510000
         },
         {
           "category": "41-45",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 585000,
+          "low": 465000,
+          "average": 540000
         },
         {
           "category": "46-50",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 615000,
+          "low": 541000,
+          "average": 600000
         },
         {
           "category": "51-55",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 525000,
+          "low": 411000,
+          "average": 500000
         },
         {
           "category": "56-60",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
-        },
-        {
-          "category": "61-65",
-          "open": 555000,
-          "high": 575000,
-          "low": 431000,
-          "close": 431000
+          "high": 585000,
+          "low": 411000,
+          "average": 515000
         }
       ],
       "soldProperty": {
@@ -519,6 +500,80 @@
         { "value": 120, "date": "2020-11-01T00:00:00" },
         { "value": 120, "date": "2020-12-01T00:00:00" }
       ],
+      "priceOfListings": [
+        {
+          "category": "01-05",
+          "high": 495000,
+          "low": 411000,
+          "average": 460000
+        },
+        {
+          "category": "06-10",
+          "high": 585000,
+          "low": 421000,
+          "average": 500000
+        },
+        {
+          "category": "11-15",
+          "high": 615000,
+          "low": 531000,
+          "average": 550000
+        },
+        {
+          "category": "16-20",
+          "high": 595000,
+          "low": 461000,
+          "average": 510000
+        },
+        {
+          "category": "21-25",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "26-30",
+          "high": 535000,
+          "low": 461000,
+          "average": 480000
+        },
+        {
+          "category": "31-35",
+          "high": 575000,
+          "low": 531000,
+          "average": 540000
+        },
+        {
+          "category": "36-40",
+          "high": 545000,
+          "low": 521000,
+          "average": 530000
+        },
+        {
+          "category": "41-45",
+          "high": 575000,
+          "low": 531000,
+          "average": 541000
+        },
+        {
+          "category": "46-50",
+          "high": 555000,
+          "low": 531000,
+          "average": 541000
+        },
+        {
+          "category": "51-55",
+          "high": 565000,
+          "low": 538000,
+          "average": 550000
+        },
+        {
+          "category": "56-60",
+          "high": 535000,
+          "low": 511000,
+          "average": 515000
+        }
+      ],
       "soldProperty": {
         "medianListingPrices": [
           { "value": 536000, "date": "2020-01-01T00:00:00" },
@@ -598,6 +653,80 @@
         { "value": 125, "date": "2020-10-01T00:00:00" },
         { "value": 120, "date": "2020-11-01T00:00:00" },
         { "value": 120, "date": "2020-12-01T00:00:00" }
+      ],
+      "priceOfListings": [
+        {
+          "category": "01-05",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "06-10",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "11-15",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "16-20",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "21-25",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "26-30",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "31-35",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "36-40",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "41-45",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "46-50",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "51-55",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        },
+        {
+          "category": "56-60",
+          "high": 555000,
+          "low": 431000,
+          "average": 500000
+        }
       ],
       "soldProperty": {
         "medianListingPrices": [
