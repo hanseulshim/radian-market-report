@@ -16,7 +16,7 @@ export default {
   medianPricesConfig: {
     id: 'medianPricesDiv',
     height: '300px',
-    title: 'Median Prices of Active Listings',
+    title: 'Median Listing Prices',
   },
   avgSaleToListRatioConfig: {
     id: 'avgSaleToListRatioDiv',
@@ -30,17 +30,17 @@ export default {
   },
   marketStrengthConfig: {
     id: 'marketStrengthDiv',
-    height: '130px',
+    height: '150px',
     title: 'Market Strength',
   },
   avgHpiByBedsConfig: {
     id: 'avgHpiByBedsDiv',
-    height: '130px',
+    height: '150px',
     title: 'Avg {SELECTED_PROPERTY} by Beds',
   },
   avgHpiBySqFtConfig: {
     id: 'avgHpiBySqFtDiv',
-    height: '130px',
+    height: '150px',
     title: 'Avg {SELECTED_PROPERTY} by Sq Ft',
   },
   ageOfPropertiesConfig: {
@@ -57,9 +57,6 @@ export default {
     chart: {
       paddingTop: 20,
       paddingLeft: -5,
-      seriesContainer: {
-        zIndex: -1,
-      },
       fontSize: 12,
     },
     legendConfig: {
@@ -109,7 +106,7 @@ export default {
         },
         axisFills: {
           disabled: false,
-          fillOpacity: 0.3,
+          fillOpacity: 1,
           fill: WILD_SAND,
         },
       },
@@ -168,6 +165,28 @@ export default {
       stroke: BLACK,
       fill: BLACK,
     },
+    comparisonProperty1Sold: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value',
+      },
+      strokeWidth: 2,
+      strokeDasharray: '5, 5',
+      stroke: STEEL_BLUE,
+      fill: STEEL_BLUE,
+    },
+    comparisonProperty2Sold: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value',
+      },
+      strokeWidth: 2,
+      strokeDasharray: '5, 5',
+      stroke: SINBAD,
+      fill: SINBAD,
+    },
   },
   sectionTwoChartConfig: {
     chart: {
@@ -190,7 +209,7 @@ export default {
     },
     dateAxis: {
       renderer: {
-        minGridDistance: 30,
+        minGridDistance: 10,
         grid: {
           disabled: true,
         },
@@ -207,7 +226,7 @@ export default {
     valueAxis: {
       strokeWidth: 0,
       renderer: {
-        minGridDistance: 10,
+        minGridDistance: 20,
         grid: {
           disabled: true,
         },
@@ -226,11 +245,11 @@ export default {
     },
     hand: {
       pin: {
-        radius: 6,
+        radius: 9,
       },
       radius: '85%',
       y: -5,
-      startWidth: 12,
+      startWidth: 18,
     },
     series1: {
       dataFields: {
@@ -281,21 +300,28 @@ export default {
       dataFields: {
         category: 'category',
       },
-      // renderer: {
-      //   minGridDistance: 30,
-      //   grid: {
-      //     disabled: true
-      //   }
-      // },
+      renderer: {
+        minGridDistance: 30,
+        grid: {
+          location: 0.5,
+          strokeOpacity: 0.1,
+          stroke: BLACK,
+        },
+      },
       startLocation: 0.5,
       endLocation: 0.5,
     },
     valueAxis: {
       strokeWidth: 0,
       renderer: {
-        minGridDistance: 10,
+        minGridDistance: 20,
         grid: {
           disabled: true,
+        },
+        axisFills: {
+          disabled: false,
+          fillOpacity: 1,
+          fill: WILD_SAND,
         },
       },
       numberFormatter: {

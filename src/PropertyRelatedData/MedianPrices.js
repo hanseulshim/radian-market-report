@@ -7,8 +7,7 @@ import LegendSold from '../assets/legendSold.svg'
 const {
   selectedProperty,
   comparisonProperty1,
-  comparisonProperty2,
-  soldProperty
+  comparisonProperty2
 } = propertyData
 
 const { medianPricesConfig, sectionOneChartConfig } = config
@@ -46,24 +45,40 @@ const MedianPrices = () => {
     valueAxis.numberFormatter.numberFormat = '$#a'
 
     const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
-    selectedPropertySeries.data = selectedProperty.medianPrices
+    selectedPropertySeries.data = selectedProperty.medianListingPrices
     selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
 
     const comparisonProperty1Series = chart.series.push(
       new am4charts.LineSeries()
     )
-    comparisonProperty1Series.data = comparisonProperty1.medianPrices
+    comparisonProperty1Series.data = comparisonProperty1.medianListingPrices
     comparisonProperty1Series.config = sectionOneChartConfig.comparisonProperty1
 
     const comparisonProperty2Series = chart.series.push(
       new am4charts.LineSeries()
     )
-    comparisonProperty2Series.data = comparisonProperty2.medianPrices
+    comparisonProperty2Series.data = comparisonProperty2.medianListingPrices
     comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
 
     const soldProperties = chart.series.push(new am4charts.LineSeries())
-    soldProperties.data = soldProperty.medianPrices
+    soldProperties.data = selectedProperty.soldProperty.medianListingPrices
     soldProperties.config = sectionOneChartConfig.soldProperties
+
+    const comparisonProperty1SoldSeries = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty1SoldSeries.data =
+      comparisonProperty1.soldProperty.medianListingPrices
+    comparisonProperty1SoldSeries.config =
+      sectionOneChartConfig.comparisonProperty1Sold
+
+    const comparisonProperty2SoldSeries = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty2SoldSeries.data =
+      comparisonProperty2.soldProperty.medianListingPrices
+    comparisonProperty2SoldSeries.config =
+      sectionOneChartConfig.comparisonProperty2Sold
 
     return () => {
       chart.dispose()

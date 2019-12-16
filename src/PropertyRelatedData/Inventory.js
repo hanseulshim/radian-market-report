@@ -6,8 +6,7 @@ import config from '../config'
 const {
   selectedProperty,
   comparisonProperty1,
-  comparisonProperty2,
-  soldProperty
+  comparisonProperty2
 } = propertyData
 
 const { inventoryConfig, sectionOneChartConfig } = config
@@ -49,8 +48,24 @@ const Inventory = () => {
     comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
 
     const soldProperties = chart.series.push(new am4charts.LineSeries())
-    soldProperties.data = soldProperty.inventory
+    soldProperties.data = selectedProperty.soldProperty.inventory
     soldProperties.config = sectionOneChartConfig.soldProperties
+
+    const comparisonProperty1SoldSeries = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty1SoldSeries.data =
+      comparisonProperty1.soldProperty.inventory
+    comparisonProperty1SoldSeries.config =
+      sectionOneChartConfig.comparisonProperty1Sold
+
+    const comparisonProperty2SoldSeries = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty2SoldSeries.data =
+      comparisonProperty2.soldProperty.inventory
+    comparisonProperty2SoldSeries.config =
+      sectionOneChartConfig.comparisonProperty2Sold
 
     return () => {
       chart.dispose()

@@ -17,10 +17,12 @@ body {
 
 .ant-table-thead > tr > th.stat-column,
 .ant-table-tbody > tr.stat-row > td {
-  padding: 5px 0 5px 1px;
+  padding: 5px 0 5px 5px;
   background: #fff;
   border-top: 1px solid #e8e8e8;
   border-bottom: none;
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .ant-table-thead > tr > th.stat-column {
