@@ -57,17 +57,22 @@ const DomVsPrice = () => {
     valueAxis.config = sectionFourChartConfig.valueAxis
     valueAxis.numberFormatter.numberFormat = '$#a'
 
+    // SELECTED PROPERTY
+
     const selectedPropertySeries = chart.series.push(
       new am4charts.ColumnSeries()
     )
-
     selectedPropertySeries.data = selectedProperty.priceOfListings
     selectedPropertySeries.config = sectionFourChartConfig.selectedProperty
-    selectedPropertySeries.dataFields.categoryX = 'category'
-    selectedPropertySeries.dataFields.valueY = 'high'
-    selectedPropertySeries.dataFields.openValueY = 'low'
-    selectedPropertySeries.columns.template.width = am4core.percent(80)
-    selectedPropertySeries.columns.template.strokeWidth = 0
+
+    const selectedPropertyLineSeries = chart.series.push(
+      new am4charts.StepLineSeries()
+    )
+    selectedPropertyLineSeries.data = selectedProperty.priceOfListings
+    selectedPropertyLineSeries.config =
+      sectionFourChartConfig.selectedPropertyLineSeries
+
+    // COMPARISON PROPERTY 1
 
     const comparisonProperty1Series = chart.series.push(
       new am4charts.ColumnSeries()
@@ -76,10 +81,15 @@ const DomVsPrice = () => {
     comparisonProperty1Series.data = comparisonProperty1.priceOfListings
     comparisonProperty1Series.config =
       sectionFourChartConfig.comparisonProperty1
-    comparisonProperty1Series.dataFields.categoryX = 'category'
-    comparisonProperty1Series.dataFields.valueY = 'high'
-    comparisonProperty1Series.dataFields.openValueY = 'low'
-    comparisonProperty1Series.columns.template.width = am4core.percent(80)
+
+    const comparisonProperty1LineSeries = chart.series.push(
+      new am4charts.StepLineSeries()
+    )
+    comparisonProperty1LineSeries.data = comparisonProperty1.priceOfListings
+    comparisonProperty1LineSeries.config =
+      sectionFourChartConfig.comparisonProperty1LineSeries
+
+    // COMPARISON PROPERTY 2
 
     const comparisonProperty2Series = chart.series.push(
       new am4charts.ColumnSeries()
@@ -88,32 +98,17 @@ const DomVsPrice = () => {
     comparisonProperty2Series.data = comparisonProperty2.priceOfListings
     comparisonProperty2Series.config =
       sectionFourChartConfig.comparisonProperty2
-    comparisonProperty2Series.dataFields.categoryX = 'category'
-    comparisonProperty2Series.dataFields.valueY = 'high'
-    comparisonProperty2Series.dataFields.openValueY = 'low'
-    comparisonProperty2Series.columns.template.width = am4core.percent(80)
+
+    const comparisonProperty2LineSeries = chart.series.push(
+      new am4charts.StepLineSeries()
+    )
+    comparisonProperty2LineSeries.data = comparisonProperty2.priceOfListings
+    comparisonProperty2LineSeries.config =
+      sectionFourChartConfig.comparisonProperty2LineSeries
 
     // const soldProperties = chart.series.push(new am4charts.CandlestickSeries())
     // soldProperties.data = soldProperty.medianPrices
     // soldProperties.config = sectionFourChartConfig.soldProperties
-
-    // var medianaSeries = chart.series.push(new am4charts.StepLineSeries())
-    // medianaSeries.noRisers = true
-    // medianaSeries.startLocation = -0.1
-    // medianaSeries.endLocation = 1.1
-    // medianaSeries.dataFields.valueY = 'average'
-    // medianaSeries.dataFields.categoryX = 'category'
-    // medianaSeries.strokeWidth = 2
-    // medianaSeries.stroke = am4core.color('#fc1303')
-
-    // addMediana()
-
-    // function addMediana () {
-    //   for (var i = 0; i < chart.data.length; i++) {
-    //     var dataItem = chart.data[i]
-    //     dataItem.medianaColor = i
-    //   }
-    // }
 
     return () => {
       chart.dispose()

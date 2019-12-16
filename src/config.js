@@ -408,6 +408,18 @@ export default {
       fill: BLACK,
       fillOpacity: 0.1,
     },
+    selectedPropertyLineSeries: {
+      noRisers: true,
+      startLocation: 0.1,
+      endLocation: 0.4,
+      dataFields: {
+        valueY: 'average',
+        categoryX: 'category',
+      },
+      stroke: BLACK,
+      strokeWidth: 2,
+      strokeOpacity: 0.5,
+    },
     comparisonProperty1: {
       hiddenInLegend: true,
       dataFields: {
@@ -421,6 +433,18 @@ export default {
       fill: STEEL_BLUE,
       fillOpacity: 0.5,
     },
+    comparisonProperty1LineSeries: {
+      noRisers: true,
+      startLocation: 0.35,
+      endLocation: 0.65,
+      dataFields: {
+        valueY: 'average',
+        categoryX: 'category',
+      },
+      stroke: STEEL_BLUE,
+      strokeWidth: 2,
+      strokeOpacity: 0.75,
+    },
     comparisonProperty2: {
       hiddenInLegend: true,
       dataFields: {
@@ -433,6 +457,18 @@ export default {
       stroke: SINBAD,
       fill: SINBAD,
       fillOpacity: 0.5,
+    },
+    comparisonProperty2LineSeries: {
+      noRisers: true,
+      startLocation: 0.6,
+      endLocation: 0.95,
+      dataFields: {
+        valueY: 'average',
+        categoryX: 'category',
+      },
+      stroke: SINBAD,
+      strokeWidth: 2,
+      strokeOpacity: 1,
     },
   },
   colors: {
