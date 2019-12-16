@@ -10,6 +10,7 @@ import AvgHpiByBeds from './AvgHpiByBeds'
 import AvgHpiBySqFt from './AvgHpiBySqFt'
 import AgeOfProperties from './AgeOfProperties'
 import config from '../config'
+import DomVsPrice from './DomVsPrice'
 
 const { GALLERY } = config.colors
 
@@ -84,7 +85,7 @@ const PropertyRelatedData = () => (
       </RowChartContainer>
       <MarketContainer>
         <AgeOfProperties />
-        <div style={{ flex: 3 }}>sodifj</div>
+        <DomVsPrice />
       </MarketContainer>
     </ColumnContainer>
   </>
