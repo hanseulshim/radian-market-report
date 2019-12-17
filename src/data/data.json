@@ -312,6 +312,64 @@
           "value": 65
         }
       ],
+      "averageDomOverTime": [
+        {
+          "category": "06",
+          "value": 38
+        },
+        {
+          "category": "07",
+          "value": 30
+        },
+        {
+          "category": "08",
+          "value": 40
+        },
+        {
+          "category": "09",
+          "value": 35
+        },
+        {
+          "category": "10",
+          "value": 40
+        },
+        {
+          "category": "11",
+          "value": 30
+        },
+        {
+          "category": "12",
+          "value": 39
+        },
+        {
+          "category": "13",
+          "value": 40
+        },
+        {
+          "category": "14",
+          "value": 38
+        },
+        {
+          "category": "15",
+          "value": 50
+        },
+        {
+          "category": "16",
+          "value": 45
+        },
+        {
+          "category": "17",
+          "value": 55
+        },
+        {
+          "category": "18",
+          "value": 50
+        },
+        {
+          "category": "19",
+          "value": 55
+        }
+      ],
       "soldProperty": {
         "medianListingPrices": [
           { "value": 531580, "date": "2020-01-01T00:00:00" },
@@ -362,7 +420,65 @@
           { "date": "2005", "value": 75 },
           { "date": "2010", "value": 65 }
         ],
-        "ageOfPropertiesAvg": [{ "value": 220, "date": "1957" }]
+        "ageOfPropertiesAvg": [{ "value": 220, "date": "1957" }],
+        "averageDomOverTime": [
+          {
+            "category": "06",
+            "value": 55
+          },
+          {
+            "category": "07",
+            "value": 50
+          },
+          {
+            "category": "08",
+            "value": 55
+          },
+          {
+            "category": "09",
+            "value": 50
+          },
+          {
+            "category": "10",
+            "value": 50
+          },
+          {
+            "category": "11",
+            "value": 38
+          },
+          {
+            "category": "12",
+            "value": 40
+          },
+          {
+            "category": "13",
+            "value": 38
+          },
+          {
+            "category": "14",
+            "value": 30
+          },
+          {
+            "category": "15",
+            "value": 40
+          },
+          {
+            "category": "16",
+            "value": 35
+          },
+          {
+            "category": "17",
+            "value": 40
+          },
+          {
+            "category": "18",
+            "value": 30
+          },
+          {
+            "category": "19",
+            "value": 35
+          }
+        ]
       },
       "ageOfProperties": [
         { "date": "1920", "value": 25 },
@@ -557,6 +673,64 @@
         {
           "category": "56-60",
           "value": 33
+        }
+      ],
+      "averageDomOverTime": [
+        {
+          "category": "06",
+          "value": 40
+        },
+        {
+          "category": "07",
+          "value": 35
+        },
+        {
+          "category": "08",
+          "value": 30
+        },
+        {
+          "category": "09",
+          "value": 25
+        },
+        {
+          "category": "10",
+          "value": 38
+        },
+        {
+          "category": "11",
+          "value": 38
+        },
+        {
+          "category": "12",
+          "value": 30
+        },
+        {
+          "category": "13",
+          "value": 38
+        },
+        {
+          "category": "14",
+          "value": 40
+        },
+        {
+          "category": "15",
+          "value": 40
+        },
+        {
+          "category": "16",
+          "value": 41
+        },
+        {
+          "category": "17",
+          "value": 42
+        },
+        {
+          "category": "18",
+          "value": 45
+        },
+        {
+          "category": "19",
+          "value": 45
         }
       ],
       "soldProperty": {
@@ -783,6 +957,64 @@
         {
           "category": "56-60",
           "value": 50
+        }
+      ],
+      "averageDomOverTime": [
+        {
+          "category": "06",
+          "value": 21
+        },
+        {
+          "category": "07",
+          "value": 25
+        },
+        {
+          "category": "08",
+          "value": 21
+        },
+        {
+          "category": "09",
+          "value": 21
+        },
+        {
+          "category": "10",
+          "value": 21
+        },
+        {
+          "category": "11",
+          "value": 30
+        },
+        {
+          "category": "12",
+          "value": 25
+        },
+        {
+          "category": "13",
+          "value": 25
+        },
+        {
+          "category": "14",
+          "value": 30
+        },
+        {
+          "category": "15",
+          "value": 25
+        },
+        {
+          "category": "16",
+          "value": 30
+        },
+        {
+          "category": "17",
+          "value": 35
+        },
+        {
+          "category": "18",
+          "value": 35
+        },
+        {
+          "category": "19",
+          "value": 36
         }
       ],
       "soldProperty": {

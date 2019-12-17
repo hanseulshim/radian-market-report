@@ -11,56 +11,63 @@ const {
 } = propertyData
 
 const {
-  inventoryPerDomConfig,
+  averageDomOverTimeConfig,
   sectionOneChartConfig,
   sectionFourChartConfig,
   sectionFiveChartConfig
 } = config
 
-const InventoryPerDom = () => {
+const AverageDomOverTime = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
       sectionFourChartConfig.chart,
-      inventoryPerDomConfig.id,
+      averageDomOverTimeConfig.id,
       am4charts.XYChart
     )
-    chart.id = inventoryPerDomConfig.id
-    chart.data = selectedProperty.inventoryListings
+    chart.id = averageDomOverTimeConfig.id
+    chart.data = selectedProperty.averageDomOverTime
 
     const label = chart.createChild(am4core.Label)
-    label.text = inventoryPerDomConfig.title
+    label.text = averageDomOverTimeConfig.title
     label.config = sectionFourChartConfig.label
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-    categoryAxis.config = sectionFourChartConfig.categoryAxis
+    categoryAxis.config = sectionFiveChartConfig.categoryAxis
 
     categoryAxis.renderer.cellStartLocation = 0.1
     categoryAxis.renderer.cellEndLocation = 0.9
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = sectionOneChartConfig.valueAxis
+    valueAxis.min = 0
 
     // SELECTED PROPERTY
 
-    const selectedPropertySeries = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-    selectedPropertySeries.data = selectedProperty.inventoryListings
+    const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
+    selectedPropertySeries.data = selectedProperty.averageDomOverTime
     selectedPropertySeries.config = sectionFiveChartConfig.selectedProperty
+    selectedPropertySeries.strokeWidth = 3
 
     const comparisonProperty1Series = chart.series.push(
-      new am4charts.ColumnSeries()
+      new am4charts.LineSeries()
     )
-    comparisonProperty1Series.data = comparisonProperty1.inventoryListings
+    comparisonProperty1Series.data = comparisonProperty1.averageDomOverTime
     comparisonProperty1Series.config =
       sectionFiveChartConfig.comparisonProperty1
+    comparisonProperty1Series.strokeWidth = 3
 
     const comparisonProperty2Series = chart.series.push(
-      new am4charts.ColumnSeries()
+      new am4charts.LineSeries()
     )
-    comparisonProperty2Series.data = comparisonProperty2.inventoryListings
+    comparisonProperty2Series.data = comparisonProperty2.averageDomOverTime
     comparisonProperty2Series.config =
       sectionFiveChartConfig.comparisonProperty2
+    comparisonProperty2Series.strokeWidth = 3
+
+    const soldPropertySeries = chart.series.push(new am4charts.LineSeries())
+    soldPropertySeries.data = selectedProperty.soldProperty.averageDomOverTime
+    soldPropertySeries.config = sectionFiveChartConfig.soldProperty
+    soldPropertySeries.strokeWidth = 3
 
     return () => {
       chart.dispose()
@@ -70,11 +77,11 @@ const InventoryPerDom = () => {
   return (
     <>
       <div
-        id={inventoryPerDomConfig.id}
-        style={{ width: '100%', height: inventoryPerDomConfig.height }}
+        id={averageDomOverTimeConfig.id}
+        style={{ width: '100%', height: averageDomOverTimeConfig.height }}
       ></div>
     </>
   )
 }
 
-export default InventoryPerDom
+export default AverageDomOverTime

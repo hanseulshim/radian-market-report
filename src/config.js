@@ -1,9 +1,10 @@
-const SINBAD = '#95D4C9'
-const SUPERNOVA = '#FFC700'
+const SINBAD = '#71BAAF'
+const SUPERNOVA = '#FFC907'
 const JORDY_BLUE = '#96D9F2'
 const DEEP_KOAMARU = '#0F2682'
-const STEEL_BLUE = '#4A73B9'
-const SUNSET_ORANGE = '#FC5247'
+const STEEL_BLUE1 = '#4A73B9'
+const STEEL_BLUE = '#3A62A3'
+const SUNSET_ORANGE = '#D04A42'
 const WHITE = '#FFFFFF'
 const ALABASTER = '#F7F7F7'
 const BOTTICELLI = '#D9E3ED'
@@ -50,13 +51,18 @@ export default {
   },
   domVsPriceConfig: {
     id: 'domVsPriceDiv',
-    height: '300px',
+    height: '220px',
     title: 'DOM vs Price of Listings'
   },
   inventoryPerDomConfig: {
     id: 'inventoryPerDomDiv',
-    height: '200px',
+    height: '150px',
     title: 'Inventory of Listings Per DOM'
+  },
+  averageDomOverTimeConfig: {
+    id: 'averageDomOverTimeDiv',
+    height: '150px',
+    title: 'Average DOM Over Time'
   },
   sectionOneChartConfig: {
     chart: {
@@ -72,6 +78,7 @@ export default {
       labels: {
         marginLeft: 10
       },
+      dy: -12,
       markers: {
         dx: -5,
         dy: -5
@@ -105,14 +112,6 @@ export default {
           maxWidth: 70,
           truncate: true,
           textAlign: 'end'
-        },
-        grid: {
-          disabled: true
-        },
-        axisFills: {
-          disabled: false,
-          fillOpacity: 1,
-          fill: WILD_SAND
         }
       },
       numberFormatter: {
@@ -134,7 +133,6 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      strokeOpacity: 0.5,
       stroke: BLACK,
       fill: BLACK,
       fillOpacity: 0.1
@@ -262,8 +260,7 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      strokeOpacity: 0.5,
-      stroke: STEEL_BLUE
+      stroke: STEEL_BLUE1
     },
     series2: {
       dataFields: {
@@ -271,7 +268,6 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      strokeOpacity: 0.5,
       stroke: BLACK
     },
     series3: {
@@ -280,7 +276,6 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      strokeOpacity: 0.5,
       stroke: SUNSET_ORANGE
     },
     series4: {
@@ -289,16 +284,13 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      strokeOpacity: 0.5,
       stroke: SUPERNOVA
     }
   },
   sectionThreeChartConfig: {
     chart: {
-      paddingTop: 40,
-      paddingBottom: -5,
-      paddingLeft: 0,
-      paddingRight: 20,
+      paddingTop: 20,
+      paddingLeft: -5,
       fontSize: 12
     },
     label: {
@@ -308,6 +300,15 @@ export default {
       isMeasured: false,
       x: 40,
       y: -30
+    },
+    valueAxis: {
+      strokeWidth: 0,
+      renderer: {
+        minGridDistance: 20
+      },
+      numberFormatter: {
+        numberFormat: '#'
+      }
     },
     selectedPropertySeriesAvg: {
       hiddenInLegend: true,
@@ -412,10 +413,9 @@ export default {
   },
   sectionFourChartConfig: {
     chart: {
-      paddingTop: 40,
-      paddingBottom: -5,
-      paddingLeft: 0,
-      paddingRight: 20,
+      paddingTop: 20,
+      paddingLeft: -5,
+      paddingBottom: 0,
       fontSize: 12
     },
     categoryAxis: {
@@ -433,28 +433,12 @@ export default {
       startLocation: 0,
       endLocation: 0
     },
-    valueAxis: {
-      strokeWidth: 0,
-      renderer: {
-        minGridDistance: 50,
-        grid: {},
-        axisFills: {
-          disabled: false,
-          fillOpacity: 1,
-          fill: WILD_SAND
-        }
-      },
-      numberFormatter: {
-        numberFormat: '#'
-      }
-    },
     label: {
-      fontSize: 15,
-      fontWeight: 'bold',
+      fontSize: 12,
       align: 'center',
       isMeasured: false,
-      x: 40,
-      y: -30
+      x: 70,
+      y: -20
     },
     selectedProperty: {
       hiddenInLegend: true,
@@ -464,22 +448,18 @@ export default {
         openValueY: 'low'
       },
       strokeWidth: 0,
-      strokeOpacity: 0.5,
-      stroke: BLACK,
-      fill: BLACK,
-      fillOpacity: 0.1
+      fill: BLACK
     },
     selectedPropertyLineSeries: {
       noRisers: true,
       startLocation: 0.1,
-      endLocation: 0.4,
+      endLocation: 0.37,
       dataFields: {
         valueY: 'average',
         categoryX: 'category'
       },
       stroke: BLACK,
-      strokeWidth: 3,
-      strokeOpacity: 0.5
+      strokeWidth: 3
     },
     comparisonProperty1: {
       hiddenInLegend: true,
@@ -489,10 +469,7 @@ export default {
         openValueY: 'low'
       },
       strokeWidth: 0,
-      strokeOpacity: 0.5,
-      stroke: STEEL_BLUE,
-      fill: STEEL_BLUE,
-      fillOpacity: 0.5
+      fill: STEEL_BLUE
     },
     comparisonProperty1LineSeries: {
       noRisers: true,
@@ -503,8 +480,7 @@ export default {
         categoryX: 'category'
       },
       stroke: STEEL_BLUE,
-      strokeWidth: 3,
-      strokeOpacity: 0.75
+      strokeWidth: 3
     },
     comparisonProperty2: {
       hiddenInLegend: true,
@@ -514,10 +490,7 @@ export default {
         openValueY: 'low'
       },
       strokeWidth: 0,
-      strokeOpacity: 0.5,
-      stroke: SINBAD,
-      fill: SINBAD,
-      fillOpacity: 0.5
+      fill: SINBAD
     },
     comparisonProperty2LineSeries: {
       noRisers: true,
@@ -528,59 +501,10 @@ export default {
         categoryX: 'category'
       },
       stroke: SINBAD,
-      strokeWidth: 3,
-      strokeOpacity: 1
+      strokeWidth: 3
     }
   },
   sectionFiveChartConfig: {
-    chart: {
-      paddingTop: 40,
-      paddingBottom: -5,
-      paddingLeft: 0,
-      paddingRight: 20,
-      fontSize: 12
-    },
-    categoryAxis: {
-      dataFields: {
-        category: 'category'
-      },
-      renderer: {
-        minGridDistance: 10,
-        grid: {
-          location: 0,
-          strokeOpacity: 0.1,
-          stroke: BLACK
-        }
-      },
-      startLocation: 0,
-      endLocation: 0
-    },
-    valueAxis: {
-      strokeWidth: 0,
-      dataFields: {
-        value: 'value'
-      },
-      renderer: {
-        minGridDistance: 50,
-        grid: {},
-        axisFills: {
-          disabled: false,
-          fillOpacity: 1,
-          fill: WILD_SAND
-        }
-      },
-      numberFormatter: {
-        numberFormat: '#'
-      }
-    },
-    label: {
-      fontSize: 15,
-      fontWeight: 'bold',
-      align: 'center',
-      isMeasured: false,
-      x: 40,
-      y: -30
-    },
     selectedProperty: {
       hiddenInLegend: true,
       dataFields: {
@@ -588,22 +512,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 0,
-      strokeOpacity: 0.5,
-      stroke: BLACK,
       fill: BLACK,
-      fillOpacity: 0.1
-    },
-    selectedPropertyLineSeries: {
-      noRisers: true,
-      startLocation: 0.1,
-      endLocation: 0.4,
-      dataFields: {
-        valueY: 'value',
-        categoryX: 'category'
-      },
-      stroke: BLACK,
-      strokeWidth: 3,
-      strokeOpacity: 0.5
+      stroke: BLACK
     },
     comparisonProperty1: {
       hiddenInLegend: true,
@@ -612,22 +522,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 0,
-      strokeOpacity: 0.5,
-      stroke: STEEL_BLUE,
       fill: STEEL_BLUE,
-      fillOpacity: 0.5
-    },
-    comparisonProperty1LineSeries: {
-      noRisers: true,
-      startLocation: 0.35,
-      endLocation: 0.65,
-      dataFields: {
-        valueY: 'value',
-        categoryX: 'category'
-      },
-      stroke: STEEL_BLUE,
-      strokeWidth: 3,
-      strokeOpacity: 0.75
+      stroke: STEEL_BLUE
     },
     comparisonProperty2: {
       hiddenInLegend: true,
@@ -636,22 +532,32 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 0,
-      strokeOpacity: 0.5,
-      stroke: SINBAD,
       fill: SINBAD,
-      fillOpacity: 0.5
+      stroke: SINBAD
     },
-    comparisonProperty2LineSeries: {
-      noRisers: true,
-      startLocation: 0.6,
-      endLocation: 0.95,
+    soldProperty: {
       dataFields: {
-        valueY: 'value',
-        categoryX: 'category'
+        categoryX: 'category',
+        valueY: 'value'
       },
-      stroke: SINBAD,
-      strokeWidth: 3,
-      strokeOpacity: 1
+      strokeWidth: 2,
+      strokeDasharray: '5, 5',
+      stroke: BLACK
+    },
+    categoryAxis: {
+      dataFields: {
+        category: 'category'
+      },
+      renderer: {
+        minGridDistance: 10,
+        grid: {
+          location: 0.5,
+          strokeOpacity: 0.1,
+          stroke: BLACK
+        }
+      },
+      startLocation: 0.5,
+      endLocation: 0.5
     }
   },
   colors: {

@@ -12,6 +12,7 @@ import AgeOfProperties from './AgeOfProperties'
 import config from '../config'
 import DomVsPrice from './DomVsPrice'
 import InventoryPerDom from './InventoryPerDom'
+import AverageDomOverTime from './AverageDomOverTime'
 
 const { GALLERY } = config.colors
 
@@ -89,6 +90,7 @@ const PropertyRelatedData = () => (
         <ColumnChartContainer>
           <DomVsPrice />
           <InventoryPerDom />
+          <AverageDomOverTime />
         </ColumnChartContainer>
       </MarketContainer>
     </ColumnContainer>

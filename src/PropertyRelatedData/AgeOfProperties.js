@@ -4,6 +4,7 @@ import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import { propertyData } from '../data/data.json'
 import Home from '../assets/home.svg'
+import legendAge from '../assets/legendAge.svg'
 import config from '../config'
 
 const {
@@ -36,16 +37,24 @@ const Title = styled.div`
 const ChartTitle = styled.div`
   font-weight: bold;
   font-size: 150%;
-  margin-left: 35px;
+  margin-left: 20px;
+  margin-right: 15px
   margin-bottom: 10px;
   margin-top: 30px;
   border-bottom: 1px solid #000;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+`
+const Legend = styled.img`
+  height: 40px;
+  margin-bottom: 5px;
 `
 
 const AgeOfProperties = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      sectionOneChartConfig.chart,
+      sectionThreeChartConfig.chart,
       ageOfPropertiesConfig.id,
       am4charts.XYChart
     )
@@ -56,7 +65,7 @@ const AgeOfProperties = () => {
     const yLabel = chart.createChild(am4core.Label)
     yLabel.text = 'Count'
     yLabel.config = sectionOneChartConfig.label
-    yLabel.x = 50
+    yLabel.x = 30
     yLabel.fontSize = 12
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
@@ -65,7 +74,7 @@ const AgeOfProperties = () => {
     dateAxis.title.fontWeight = 'bold'
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = sectionOneChartConfig.valueAxis
+    valueAxis.config = sectionThreeChartConfig.valueAxis
     valueAxis.min = 0
 
     const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
@@ -141,14 +150,15 @@ const AgeOfProperties = () => {
     const bullet = ageOfPropertySeries.bullets.push(
       new am4charts.CircleBullet()
     )
-    bullet.circle.radius = 13
-    bullet.circle.stroke = am4core.color('#000')
+    bullet.circle.radius = 11
+    bullet.circle.strokeWidth = 0
     bullet.circle.fill = am4core.color('#FFF')
+    bullet.filters.push(new am4core.DropShadowFilter())
 
     const image = bullet.createChild(am4core.Image)
     image.href = Home
-    image.width = 17
-    image.height = 17
+    image.width = 15
+    image.height = 15
     image.horizontalCenter = 'middle'
     image.verticalCenter = 'middle'
 
@@ -173,7 +183,10 @@ const AgeOfProperties = () => {
         <Title>Days on Market</Title>
         <div>{stats.daysOnMarket}</div>
       </Info>
-      <ChartTitle>Age of Properties Across Markets</ChartTitle>
+      <ChartTitle>
+        <span>Age of Properties Across Markets</span>
+        <Legend src={legendAge} />
+      </ChartTitle>
       <div
         id={ageOfPropertiesConfig.id}
         style={{ width: '100%', height: ageOfPropertiesConfig.height }}

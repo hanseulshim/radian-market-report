@@ -6,7 +6,7 @@ import { Table } from 'antd'
 import { propertyData } from '../data/data.json'
 import config from '../config'
 
-const { SINBAD, STEEL_BLUE, GALLERY, IRON } = config.colors
+const { SINBAD, STEEL_BLUE, GALLERY, BLACK } = config.colors
 
 const {
   selectedProperty,
@@ -53,13 +53,14 @@ const TableHeader = styled.div`
   padding: 3px 2px;
   background: ${props =>
     props.selectedProperty
-      ? IRON
+      ? BLACK
       : props.comparisonProperty1
       ? STEEL_BLUE
       : props.comparisonProperty2
       ? SINBAD
       : '#FFFFFF'};
-  color: ${props => (props.comparisonProperty1 ? '#FFF' : 'Initial')};
+  color: ${props =>
+    props.comparisonProperty1 || props.selectedProperty ? '#FFF' : 'Initial'};
 `
 
 const Description = styled.div`
@@ -84,13 +85,14 @@ const IndicatorRow = styled.div`
   padding: 7px 10px;
   background: ${props =>
     props.selectedProperty
-      ? IRON
+      ? BLACK
       : props.comparisonProperty1
       ? STEEL_BLUE
       : props.comparisonProperty2
       ? SINBAD
       : '#FFFFFF'};
-  color: ${props => (props.comparisonProperty1 ? '#FFF' : 'Initial')};
+  color: ${props =>
+    props.comparisonProperty1 || props.selectedProperty ? '#FFF' : 'Initial'};
   font-weight: 500;
 `
 
