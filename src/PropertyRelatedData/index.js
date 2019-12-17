@@ -59,7 +59,7 @@ const MarketContainer = styled.div`
   margin-top: 25px;
   background: ${GALLERY};
   flex: 1;
-  padding: 25px 50px;
+  padding: 25px 0 25px 50px;
   display: flex;
 `
 
