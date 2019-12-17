@@ -33,6 +33,15 @@ const Title = styled.div`
   font-weight: bold;
 `
 
+const ChartTitle = styled.div`
+  font-weight: bold;
+  font-size: 150%;
+  margin-left: 35px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  border-bottom: 1px solid #000;
+`
+
 const AgeOfProperties = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
@@ -157,13 +166,14 @@ const AgeOfProperties = () => {
   return (
     <Container>
       <Info>
-        <Title>Age of Peroperties Across Markets</Title>
+        <Title>Age of Properties Across Markets</Title>
         <div>{stats.ageOfProperties}</div>
       </Info>
       <Info>
         <Title>Days on Market</Title>
         <div>{stats.daysOnMarket}</div>
       </Info>
+      <ChartTitle>Age of Properties Across Markets</ChartTitle>
       <div
         id={ageOfPropertiesConfig.id}
         style={{ width: '100%', height: ageOfPropertiesConfig.height }}
