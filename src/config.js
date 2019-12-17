@@ -386,14 +386,14 @@ export default {
         width: '40%'
       },
       strokeWidth: 0,
-      fill: IRON,
+      fill: '#AFB3B5',
       bullets: [
         {
           type: 'CircleBullet',
           circle: {
             radius: 8,
             strokeWidth: 0,
-            fill: IRON
+            fill: '#AFB3B5'
           }
         }
       ]
