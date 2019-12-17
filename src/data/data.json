@@ -1071,5 +1071,70 @@
       ],
       "ageOfPropertiesAvg": [{ "value": 185, "date": "1981" }]
     }
+  },
+  "demographicData": {
+    "summaryList": [
+      {
+        "title": "Neighborhood Summary",
+        "content": "The residents of Money & Brains seem to have it all: high incomes, advanced degrees, and sophisticated tastes to match their credentials. Many of these city dwellers are married couples with few children who live in fashionable homes on small, manicured lots."
+      },
+      {
+        "title": "Schools, Transit, & Crime",
+        "content": "What is the map telling us? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
+      },
+      {
+        "title": "Population of Age vs Income",
+        "content": "Some talk around the take aways from the income and age charts. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
+      },
+      {
+        "title": "Family Makeup",
+        "content": "What do the family makeup charts tell us? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
+      }
+    ],
+    "selectedProperty": {
+      "label": "20854",
+      "ratings": {
+        "schoolRating": [
+          { "label": "ES", "value": 7 },
+          { "label": "MS", "value": 8 },
+          { "label": "HS", "value": 6 }
+        ],
+        "transitRatings": [
+          { "label": "train", "value": 2 },
+          { "label": "car", "value": 2 },
+          { "label": "bike", "value": 1 }
+        ]
+      }
+    },
+    "comparisonProperty1": {
+      "label": "20855",
+      "ratings": {
+        "schoolRating": [
+          { "label": "ES", "value": 5 },
+          { "label": "MS", "value": 8 },
+          { "label": "HS", "value": 6 }
+        ],
+        "transitRatings": [
+          { "label": "train", "value": 9 },
+          { "label": "car", "value": 9 },
+          { "label": "bike", "value": 8 }
+        ]
+      }
+    },
+    "comparisonProperty2": {
+      "label": "20856",
+      "ratings": {
+        "schoolRating": [
+          { "label": "ES", "value": 10 },
+          { "label": "MS", "value": 9 },
+          { "label": "HS", "value": 10 }
+        ],
+        "transitRatings": [
+          { "label": "train", "value": 5 },
+          { "label": "car", "value": 4 },
+          { "label": "bike", "value": 6 }
+        ]
+      }
+    }
   }
 }

@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import moment from 'moment'
 import Profile from '../assets/profile.png'
 import { propertyData } from '../data/data.json'
-import { doc } from '../pdf'
 
 const { stats } = propertyData
 
@@ -46,28 +45,12 @@ const Name = styled.div`
   top: ${props => (props.first ? '15px' : '40px')};
 `
 
-const Button = styled.button`
-  border: none;
-  margin-bottom: 10px;
-  background-color: green;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-  display: inline-block;
-  color: white;
-
-  &:hover {
-    background: #ccc;
-  }
-`
-
-const Title = () => {
+const Title = ({ section }) => {
   return (
     <Container>
-      {/* <Button onClick={() => doc.save('test.pdf')}>EXPORT PDF</Button> */}
       <div>
         <Report>Market Report</Report>
-        <Section>Property Related Data</Section>
+        <Section>{section}</Section>
       </div>
       <div>
         <Date>{moment().format('MMMM DD, YYYY')}</Date>

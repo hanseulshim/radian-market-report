@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Title from './Title'
+import Title from '../common/Title'
 import InfoArea from './InfoArea'
 import MedianPrices from './MedianPrices'
 import AvgSaleToListRatio from './AvgSaleToListRatio'
@@ -65,7 +65,7 @@ const MarketContainer = styled.div`
 
 const PropertyRelatedData = () => (
   <>
-    <Title />
+    <Title section="Property Related Data" />
     <SubTitle>How Your Market Stacks Up Against the Rest</SubTitle>
     <ColumnContainer>
       <InfoArea />
