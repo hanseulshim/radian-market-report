@@ -16,6 +16,7 @@
     "selectedProperty": {
       "label": "20854",
       "address": "1234 Property Dr",
+      "ageOfProperty": 1977,
       "city": "Potomac",
       "state": "MD",
       "zip": "20854",

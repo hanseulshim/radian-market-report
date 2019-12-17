@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import { propertyData } from '../data/data.json'
+import Home from '../assets/home.svg'
 import config from '../config'
 
 const {
@@ -41,13 +42,18 @@ const AgeOfProperties = () => {
     )
 
     chart.id = ageOfPropertiesConfig.id
+    chart.maskBullets = false
 
-    const label = chart.createChild(am4core.Label)
-    label.text = ageOfPropertiesConfig.title
-    label.config = sectionOneChartConfig.label
+    const yLabel = chart.createChild(am4core.Label)
+    yLabel.text = 'Count'
+    yLabel.config = sectionOneChartConfig.label
+    yLabel.x = 50
+    yLabel.fontSize = 12
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.config = sectionOneChartConfig.dateAxis
+    dateAxis.title.text = 'Year Built'
+    dateAxis.title.fontWeight = 'bold'
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = sectionOneChartConfig.valueAxis
@@ -108,6 +114,41 @@ const AgeOfProperties = () => {
     soldPropertySeriesAvg.data =
       selectedProperty.soldProperty.ageOfPropertiesAvg
     soldPropertySeriesAvg.config = sectionThreeChartConfig.soldPropertySeriesAvg
+
+    const max = Math.max(
+      ...[
+        ...selectedProperty.ageOfProperties,
+        ...comparisonProperty1.ageOfProperties,
+        ...comparisonProperty2.ageOfProperties,
+        ...selectedProperty.soldProperty.ageOfProperties
+      ].map(v => v.value)
+    )
+
+    const ageOfPropertySeries = chart.series.push(new am4charts.ColumnSeries())
+    ageOfPropertySeries.data = [
+      { date: selectedProperty.ageOfProperty, value: max * 1.1 }
+    ]
+    ageOfPropertySeries.config = sectionThreeChartConfig.ageOfProperty
+    const bullet = ageOfPropertySeries.bullets.push(
+      new am4charts.CircleBullet()
+    )
+    bullet.circle.radius = 13
+    bullet.circle.stroke = am4core.color('#000')
+    bullet.circle.fill = am4core.color('#FFF')
+
+    const image = bullet.createChild(am4core.Image)
+    image.href = Home
+    image.width = 17
+    image.height = 17
+    image.horizontalCenter = 'middle'
+    image.verticalCenter = 'middle'
+
+    const labelBullet = ageOfPropertySeries.bullets.push(
+      new am4charts.LabelBullet()
+    )
+    labelBullet.label.text = '{date}'
+    labelBullet.label.truncate = false
+    labelBullet.dx = 30
 
     return () => {
       chart.dispose()

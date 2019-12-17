@@ -386,6 +386,18 @@ export default {
           }
         }
       ]
+    },
+    ageOfProperty: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      columns: {
+        width: '40%'
+      },
+      strokeWidth: 0,
+      fill: WHITE
     }
   },
   colors: {
