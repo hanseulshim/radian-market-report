@@ -47,9 +47,9 @@ const Inventory = () => {
     comparisonProperty2Series.data = comparisonProperty2.inventory
     comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
 
-    const soldProperties = chart.series.push(new am4charts.LineSeries())
-    soldProperties.data = selectedProperty.soldProperty.inventory
-    soldProperties.config = sectionOneChartConfig.soldProperties
+    const soldProperty = chart.series.push(new am4charts.LineSeries())
+    soldProperty.data = selectedProperty.soldProperty.inventory
+    soldProperty.config = sectionOneChartConfig.soldProperty
 
     const comparisonProperty1SoldSeries = chart.series.push(
       new am4charts.LineSeries()

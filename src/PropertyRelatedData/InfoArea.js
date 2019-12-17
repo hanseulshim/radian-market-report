@@ -227,7 +227,7 @@ const InfoArea = () => {
           <IndicatorStatsTitle>Property Attributes:</IndicatorStatsTitle>{' '}
           <div>
             {stats.similarProperties.type}, {stats.similarProperties.bedroom},{' '}
-            {stats.similarProperties.area}, {stats.soldProperties}
+            {stats.similarProperties.area}, {stats.soldProperty}
           </div>
         </IndicatorStats>
       </Indicator>

@@ -9,7 +9,7 @@
         "bedroom": "3BR",
         "area": "2500-3000 sqft"
       },
-      "soldProperties": "Properties sold last 1 month",
+      "soldProperty": "Properties sold last 1 month",
       "ageOfProperties": "How does your property’s age compare to averages across markets? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
       "daysOnMarket": "What can you expect over time as your property sits on the market? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
     },
@@ -183,88 +183,6 @@
           { "value": 50, "date": "2020-12-01T00:00:00" }
         ]
       },
-      "ageOfProperties": [
-        {
-          "value": 65,
-          "category": "1920"
-        },
-        {
-          "value": 75,
-          "category": "1925"
-        },
-        {
-          "value": 100,
-          "category": "1930"
-        },
-        {
-          "value": 140,
-          "category": "1935"
-        },
-        {
-          "value": 180,
-          "category": "1940"
-        },
-        {
-          "value": 205,
-          "category": "1945"
-        },
-        {
-          "value": 210,
-          "category": "1950"
-        },
-        {
-          "value": 220,
-          "category": "1955"
-        },
-        {
-          "value": 220,
-          "category": "1960"
-        },
-        {
-          "value": 215,
-          "category": "1965"
-        },
-        {
-          "value": 210,
-          "category": "1970"
-        },
-        {
-          "value": 180,
-          "category": "1975"
-        },
-        {
-          "value": 160,
-          "category": "1980"
-        },
-        {
-          "value": 130,
-          "category": "1985"
-        },
-        {
-          "value": 110,
-          "category": "1990"
-        },
-        {
-          "value": 85,
-          "category": "1995"
-        },
-        {
-          "value": 80,
-          "category": "2000"
-        },
-        {
-          "value": 75,
-          "category": "2005"
-        },
-        {
-          "value": 65,
-          "category": "2010"
-        },
-        {
-          "value": 60,
-          "category": "2015"
-        }
-      ],
       "soldProperty": {
         "medianListingPrices": [
           { "value": 531580, "date": "2020-01-01T00:00:00" },
@@ -295,88 +213,50 @@
           { "value": 145, "date": "2020-12-01T00:00:00" }
         ],
         "ageOfProperties": [
-          {
-            "value": 65,
-            "category": "1920"
-          },
-          {
-            "value": 75,
-            "category": "1925"
-          },
-          {
-            "value": 100,
-            "category": "1930"
-          },
-          {
-            "value": 140,
-            "category": "1935"
-          },
-          {
-            "value": 180,
-            "category": "1940"
-          },
-          {
-            "value": 205,
-            "category": "1945"
-          },
-          {
-            "value": 210,
-            "category": "1950"
-          },
-          {
-            "value": 220,
-            "category": "1955"
-          },
-          {
-            "value": 220,
-            "category": "1960"
-          },
-          {
-            "value": 215,
-            "category": "1965"
-          },
-          {
-            "value": 210,
-            "category": "1970"
-          },
-          {
-            "value": 180,
-            "category": "1975"
-          },
-          {
-            "value": 160,
-            "category": "1980"
-          },
-          {
-            "value": 130,
-            "category": "1985"
-          },
-          {
-            "value": 110,
-            "category": "1990"
-          },
-          {
-            "value": 85,
-            "category": "1995"
-          },
-          {
-            "value": 80,
-            "category": "2000"
-          },
-          {
-            "value": 75,
-            "category": "2005"
-          },
-          {
-            "value": 65,
-            "category": "2010"
-          },
-          {
-            "value": 60,
-            "category": "2015"
-          }
-        ]
-      }
+          { "date": "1920", "value": 65 },
+          { "date": "1925", "value": 75 },
+          { "date": "1930", "value": 100 },
+          { "date": "1935", "value": 140 },
+          { "date": "1940", "value": 180 },
+          { "date": "1945", "value": 205 },
+          { "date": "1950", "value": 210 },
+          { "date": "1955", "value": 220 },
+          { "date": "1960", "value": 220 },
+          { "date": "1965", "value": 215 },
+          { "date": "1970", "value": 210 },
+          { "date": "1975", "value": 180 },
+          { "date": "1980", "value": 160 },
+          { "date": "1985", "value": 130 },
+          { "date": "1990", "value": 110 },
+          { "date": "1995", "value": 85 },
+          { "date": "2000", "value": 80 },
+          { "date": "2005", "value": 75 },
+          { "date": "2010", "value": 65 }
+        ],
+        "ageOfPropertiesAvg": [{ "value": 220, "date": "1957" }]
+      },
+      "ageOfProperties": [
+        { "date": "1920", "value": 25 },
+        { "date": "1925", "value": 35 },
+        { "date": "1930", "value": 50 },
+        { "date": "1935", "value": 70 },
+        { "date": "1940", "value": 100 },
+        { "date": "1945", "value": 130 },
+        { "date": "1950", "value": 165 },
+        { "date": "1955", "value": 180 },
+        { "date": "1960", "value": 185 },
+        { "date": "1965", "value": 190 },
+        { "date": "1970", "value": 195 },
+        { "date": "1975", "value": 200 },
+        { "date": "1980", "value": 185 },
+        { "date": "1985", "value": 175 },
+        { "date": "1990", "value": 150 },
+        { "date": "1995", "value": 115 },
+        { "date": "2000", "value": 75 },
+        { "date": "2005", "value": 50 },
+        { "date": "2010", "value": 30 }
+      ],
+      "ageOfPropertiesAvg": [{ "value": 190, "date": "1967" }]
     },
     "comparisonProperty1": {
       "label": "20855",
@@ -456,7 +336,29 @@
           { "value": 50, "date": "2020-12-01T00:00:00" }
         ]
       },
-      "marketStrength": 45
+      "marketStrength": 45,
+      "ageOfProperties": [
+        { "date": "1920", "value": 23 },
+        { "date": "1925", "value": 26 },
+        { "date": "1930", "value": 45 },
+        { "date": "1935", "value": 60 },
+        { "date": "1940", "value": 80 },
+        { "date": "1945", "value": 125 },
+        { "date": "1950", "value": 165 },
+        { "date": "1955", "value": 190 },
+        { "date": "1960", "value": 210 },
+        { "date": "1965", "value": 220 },
+        { "date": "1970", "value": 200 },
+        { "date": "1975", "value": 180 },
+        { "date": "1980", "value": 180 },
+        { "date": "1985", "value": 160 },
+        { "date": "1990", "value": 115 },
+        { "date": "1995", "value": 75 },
+        { "date": "2000", "value": 50 },
+        { "date": "2005", "value": 40 },
+        { "date": "2010", "value": 30 }
+      ],
+      "ageOfPropertiesAvg": [{ "value": 210, "date": "1964" }]
     },
     "comparisonProperty2": {
       "label": 20856,
@@ -536,7 +438,29 @@
           { "value": 100, "date": "2020-12-01T00:00:00" }
         ]
       },
-      "marketStrength": 60
+      "marketStrength": 60,
+      "ageOfProperties": [
+        { "date": "1920", "value": 35 },
+        { "date": "1925", "value": 40 },
+        { "date": "1930", "value": 50 },
+        { "date": "1935", "value": 60 },
+        { "date": "1940", "value": 75 },
+        { "date": "1945", "value": 90 },
+        { "date": "1950", "value": 120 },
+        { "date": "1955", "value": 130 },
+        { "date": "1960", "value": 155 },
+        { "date": "1965", "value": 165 },
+        { "date": "1970", "value": 180 },
+        { "date": "1975", "value": 185 },
+        { "date": "1980", "value": 185 },
+        { "date": "1985", "value": 180 },
+        { "date": "1990", "value": 175 },
+        { "date": "1995", "value": 155 },
+        { "date": "2000", "value": 120 },
+        { "date": "2005", "value": 75 },
+        { "date": "2010", "value": 50 }
+      ],
+      "ageOfPropertiesAvg": [{ "value": 185, "date": "1981" }]
     }
   }
 }

@@ -149,7 +149,7 @@ export default {
       stroke: SINBAD,
       fill: SINBAD
     },
-    soldProperties: {
+    soldProperty: {
       name: 'Sold',
       dataFields: {
         dateX: 'date',
@@ -291,38 +291,6 @@ export default {
       paddingRight: 20,
       fontSize: 12
     },
-    categoryAxis: {
-      dataFields: {
-        category: 'category'
-      },
-      renderer: {
-        minGridDistance: 30,
-        grid: {
-          location: 0.5,
-          strokeOpacity: 0.1,
-          stroke: BLACK
-        }
-      },
-      startLocation: 0.5,
-      endLocation: 0.5
-    },
-    valueAxis: {
-      strokeWidth: 0,
-      renderer: {
-        minGridDistance: 20,
-        grid: {
-          disabled: true
-        },
-        axisFills: {
-          disabled: false,
-          fillOpacity: 1,
-          fill: WILD_SAND
-        }
-      },
-      numberFormatter: {
-        numberFormat: '#'
-      }
-    },
     label: {
       fontSize: 15,
       fontWeight: 'bold',
@@ -331,17 +299,73 @@ export default {
       x: 40,
       y: -30
     },
-    selectedProperty: {
+    selectedPropertySeriesAvg: {
       hiddenInLegend: true,
       dataFields: {
-        categoryX: 'category',
+        dateX: 'date',
         valueY: 'value'
       },
-      strokeWidth: 3,
-      strokeOpacity: 0.5,
-      stroke: BLACK,
-      fill: BLACK,
-      fillOpacity: 0.1
+      bullets: [
+        {
+          type: 'CircleBullet',
+          circle: {
+            radius: 8,
+            strokeWidth: 0,
+            fill: BLACK
+          }
+        }
+      ]
+    },
+    comparisonProperty1SeriesAvg: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      bullets: [
+        {
+          type: 'CircleBullet',
+          circle: {
+            radius: 8,
+            strokeWidth: 0,
+            fill: STEEL_BLUE
+          }
+        }
+      ]
+    },
+    comparisonProperty2SeriesAvg: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      bullets: [
+        {
+          type: 'CircleBullet',
+          circle: {
+            radius: 8,
+            strokeWidth: 0,
+            fill: SINBAD
+          }
+        }
+      ]
+    },
+    soldPropertySeriesAvg: {
+      hiddenInLegend: true,
+      dataFields: {
+        dateX: 'date',
+        valueY: 'value'
+      },
+      bullets: [
+        {
+          type: 'CircleBullet',
+          circle: {
+            radius: 8,
+            strokeWidth: 0,
+            fill: IRON
+          }
+        }
+      ]
     }
   },
   colors: {

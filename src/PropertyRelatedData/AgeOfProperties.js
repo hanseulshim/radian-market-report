@@ -5,14 +5,17 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 import { propertyData } from '../data/data.json'
 import config from '../config'
 
-const { ageOfPropertiesConfig, sectionThreeChartConfig } = config
+const {
+  ageOfPropertiesConfig,
+  sectionOneChartConfig,
+  sectionThreeChartConfig
+} = config
 
 const {
+  stats,
   selectedProperty,
   comparisonProperty1,
-  comparisonProperty2,
-  stats,
-  soldProperty
+  comparisonProperty2
 } = propertyData
 
 const Container = styled.div`
@@ -32,7 +35,7 @@ const Title = styled.div`
 const AgeOfProperties = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      sectionThreeChartConfig.chart,
+      sectionOneChartConfig.chart,
       ageOfPropertiesConfig.id,
       am4charts.XYChart
     )
@@ -41,34 +44,68 @@ const AgeOfProperties = () => {
 
     const label = chart.createChild(am4core.Label)
     label.text = ageOfPropertiesConfig.title
-    label.config = sectionThreeChartConfig.label
+    label.config = sectionOneChartConfig.label
 
-    const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-    categoryAxis.config = sectionThreeChartConfig.categoryAxis
+    const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
+    dateAxis.config = sectionOneChartConfig.dateAxis
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = sectionThreeChartConfig.valueAxis
+    valueAxis.config = sectionOneChartConfig.valueAxis
     valueAxis.min = 0
 
-    chart.data = selectedProperty.ageOfProperties
     const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
-    selectedPropertySeries.config = sectionThreeChartConfig.selectedProperty
+    selectedPropertySeries.data = selectedProperty.ageOfProperties
+    selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
     selectedPropertySeries.tensionX = 0.75
     selectedPropertySeries.tensionY = 0.75
 
-    // const comparisonProperty1Series = chart.series.push(
-    //   new am4charts.LineSeries()
-    // )
-    // comparisonProperty1Series.data = comparisonProperty1.inventory
-    // comparisonProperty1Series.config = sectionOneChartConfig.comparisonProperty1
-    // const comparisonProperty2Series = chart.series.push(
-    //   new am4charts.LineSeries()
-    // )
-    // comparisonProperty2Series.data = comparisonProperty2.inventory
-    // comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
-    // const soldProperties = chart.series.push(new am4charts.LineSeries())
-    // soldProperties.data = soldProperty.inventory
-    // soldProperties.config = sectionOneChartConfig.soldProperties
+    const selectedPropertySeriesAvg = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    selectedPropertySeriesAvg.data = selectedProperty.ageOfPropertiesAvg
+    selectedPropertySeriesAvg.config =
+      sectionThreeChartConfig.selectedPropertySeriesAvg
+
+    const comparisonProperty1Series = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty1Series.data = comparisonProperty1.ageOfProperties
+    comparisonProperty1Series.config = sectionOneChartConfig.comparisonProperty1
+    comparisonProperty1Series.tensionX = 0.75
+    comparisonProperty1Series.tensionY = 0.75
+
+    const comparisonProperty1SeriesAvg = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty1SeriesAvg.data = comparisonProperty1.ageOfPropertiesAvg
+    comparisonProperty1SeriesAvg.config =
+      sectionThreeChartConfig.comparisonProperty1SeriesAvg
+
+    const comparisonProperty2Series = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty2Series.data = comparisonProperty2.ageOfProperties
+    comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
+    comparisonProperty2Series.tensionX = 0.75
+    comparisonProperty2Series.tensionY = 0.75
+
+    const comparisonProperty2SeriesAvg = chart.series.push(
+      new am4charts.LineSeries()
+    )
+    comparisonProperty2SeriesAvg.data = comparisonProperty2.ageOfPropertiesAvg
+    comparisonProperty2SeriesAvg.config =
+      sectionThreeChartConfig.comparisonProperty2SeriesAvg
+
+    const soldPropertySeries = chart.series.push(new am4charts.LineSeries())
+    soldPropertySeries.data = selectedProperty.soldProperty.ageOfProperties
+    soldPropertySeries.config = sectionOneChartConfig.soldProperty
+    soldPropertySeries.tensionX = 0.75
+    soldPropertySeries.tensionY = 0.75
+
+    const soldPropertySeriesAvg = chart.series.push(new am4charts.LineSeries())
+    soldPropertySeriesAvg.data =
+      selectedProperty.soldProperty.ageOfPropertiesAvg
+    soldPropertySeriesAvg.config = sectionThreeChartConfig.soldPropertySeriesAvg
 
     return () => {
       chart.dispose()
