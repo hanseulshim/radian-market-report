@@ -10,11 +10,7 @@ const {
   comparisonProperty2
 } = propertyData
 
-const {
-  medianPricesConfig,
-  sectionOneChartConfig,
-  sectionThreeChartConfig
-} = config
+const { medianPricesConfig, sectionOneChartConfig } = config
 
 const MedianPrices = () => {
   useEffect(() => {
@@ -50,7 +46,7 @@ const MedianPrices = () => {
 
     const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
     selectedPropertySeries.data = selectedProperty.medianListingPrices
-    selectedPropertySeries.config = sectionThreeChartConfig.selectedProperty
+    selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
 
     const comparisonProperty1Series = chart.series.push(
       new am4charts.LineSeries()

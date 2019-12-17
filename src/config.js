@@ -305,6 +305,11 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
+      columns: {
+        width: '40%'
+      },
+      strokeWidth: 0,
+      fill: BLACK,
       bullets: [
         {
           type: 'CircleBullet',
@@ -322,6 +327,11 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
+      columns: {
+        width: '40%'
+      },
+      strokeWidth: 0,
+      fill: STEEL_BLUE,
       bullets: [
         {
           type: 'CircleBullet',
@@ -339,6 +349,11 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
+      columns: {
+        width: '40%'
+      },
+      strokeWidth: 0,
+      fill: SINBAD,
       bullets: [
         {
           type: 'CircleBullet',
@@ -356,6 +371,11 @@ export default {
         dateX: 'date',
         valueY: 'value'
       },
+      columns: {
+        width: '40%'
+      },
+      strokeWidth: 0,
+      fill: IRON,
       bullets: [
         {
           type: 'CircleBullet',
