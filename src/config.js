@@ -48,6 +48,16 @@ export default {
     height: '400px',
     title: 'Age of Properties Across Markets'
   },
+  domVsPriceConfig: {
+    id: 'domVsPriceDiv',
+    height: '300px',
+    title: 'DOM vs Price of Listings'
+  },
+  inventoryPerDomConfig: {
+    id: 'inventoryPerDomDiv',
+    height: '200px',
+    title: 'Inventory of Listings Per DOM'
+  },
   sectionOneChartConfig: {
     chart: {
       paddingTop: 20,
@@ -398,6 +408,250 @@ export default {
       },
       strokeWidth: 0,
       fill: WHITE
+    }
+  },
+  sectionFourChartConfig: {
+    chart: {
+      paddingTop: 40,
+      paddingBottom: -5,
+      paddingLeft: 0,
+      paddingRight: 20,
+      fontSize: 12
+    },
+    categoryAxis: {
+      dataFields: {
+        category: 'category'
+      },
+      renderer: {
+        minGridDistance: 10,
+        grid: {
+          location: 0,
+          strokeOpacity: 0.1,
+          stroke: BLACK
+        }
+      },
+      startLocation: 0,
+      endLocation: 0
+    },
+    valueAxis: {
+      strokeWidth: 0,
+      renderer: {
+        minGridDistance: 50,
+        grid: {},
+        axisFills: {
+          disabled: false,
+          fillOpacity: 1,
+          fill: WILD_SAND
+        }
+      },
+      numberFormatter: {
+        numberFormat: '#'
+      }
+    },
+    label: {
+      fontSize: 15,
+      fontWeight: 'bold',
+      align: 'center',
+      isMeasured: false,
+      x: 40,
+      y: -30
+    },
+    selectedProperty: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'high',
+        openValueY: 'low'
+      },
+      strokeWidth: 0,
+      strokeOpacity: 0.5,
+      stroke: BLACK,
+      fill: BLACK,
+      fillOpacity: 0.1
+    },
+    selectedPropertyLineSeries: {
+      noRisers: true,
+      startLocation: 0.1,
+      endLocation: 0.4,
+      dataFields: {
+        valueY: 'average',
+        categoryX: 'category'
+      },
+      stroke: BLACK,
+      strokeWidth: 3,
+      strokeOpacity: 0.5
+    },
+    comparisonProperty1: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'high',
+        openValueY: 'low'
+      },
+      strokeWidth: 0,
+      strokeOpacity: 0.5,
+      stroke: STEEL_BLUE,
+      fill: STEEL_BLUE,
+      fillOpacity: 0.5
+    },
+    comparisonProperty1LineSeries: {
+      noRisers: true,
+      startLocation: 0.35,
+      endLocation: 0.65,
+      dataFields: {
+        valueY: 'average',
+        categoryX: 'category'
+      },
+      stroke: STEEL_BLUE,
+      strokeWidth: 3,
+      strokeOpacity: 0.75
+    },
+    comparisonProperty2: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'high',
+        openValueY: 'low'
+      },
+      strokeWidth: 0,
+      strokeOpacity: 0.5,
+      stroke: SINBAD,
+      fill: SINBAD,
+      fillOpacity: 0.5
+    },
+    comparisonProperty2LineSeries: {
+      noRisers: true,
+      startLocation: 0.6,
+      endLocation: 0.95,
+      dataFields: {
+        valueY: 'average',
+        categoryX: 'category'
+      },
+      stroke: SINBAD,
+      strokeWidth: 3,
+      strokeOpacity: 1
+    }
+  },
+  sectionFiveChartConfig: {
+    chart: {
+      paddingTop: 40,
+      paddingBottom: -5,
+      paddingLeft: 0,
+      paddingRight: 20,
+      fontSize: 12
+    },
+    categoryAxis: {
+      dataFields: {
+        category: 'category'
+      },
+      renderer: {
+        minGridDistance: 10,
+        grid: {
+          location: 0,
+          strokeOpacity: 0.1,
+          stroke: BLACK
+        }
+      },
+      startLocation: 0,
+      endLocation: 0
+    },
+    valueAxis: {
+      strokeWidth: 0,
+      dataFields: {
+        value: 'value'
+      },
+      renderer: {
+        minGridDistance: 50,
+        grid: {},
+        axisFills: {
+          disabled: false,
+          fillOpacity: 1,
+          fill: WILD_SAND
+        }
+      },
+      numberFormatter: {
+        numberFormat: '#'
+      }
+    },
+    label: {
+      fontSize: 15,
+      fontWeight: 'bold',
+      align: 'center',
+      isMeasured: false,
+      x: 40,
+      y: -30
+    },
+    selectedProperty: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'value'
+      },
+      strokeWidth: 0,
+      strokeOpacity: 0.5,
+      stroke: BLACK,
+      fill: BLACK,
+      fillOpacity: 0.1
+    },
+    selectedPropertyLineSeries: {
+      noRisers: true,
+      startLocation: 0.1,
+      endLocation: 0.4,
+      dataFields: {
+        valueY: 'value',
+        categoryX: 'category'
+      },
+      stroke: BLACK,
+      strokeWidth: 3,
+      strokeOpacity: 0.5
+    },
+    comparisonProperty1: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'value'
+      },
+      strokeWidth: 0,
+      strokeOpacity: 0.5,
+      stroke: STEEL_BLUE,
+      fill: STEEL_BLUE,
+      fillOpacity: 0.5
+    },
+    comparisonProperty1LineSeries: {
+      noRisers: true,
+      startLocation: 0.35,
+      endLocation: 0.65,
+      dataFields: {
+        valueY: 'value',
+        categoryX: 'category'
+      },
+      stroke: STEEL_BLUE,
+      strokeWidth: 3,
+      strokeOpacity: 0.75
+    },
+    comparisonProperty2: {
+      hiddenInLegend: true,
+      dataFields: {
+        categoryX: 'category',
+        valueY: 'value'
+      },
+      strokeWidth: 0,
+      strokeOpacity: 0.5,
+      stroke: SINBAD,
+      fill: SINBAD,
+      fillOpacity: 0.5
+    },
+    comparisonProperty2LineSeries: {
+      noRisers: true,
+      startLocation: 0.6,
+      endLocation: 0.95,
+      dataFields: {
+        valueY: 'value',
+        categoryX: 'category'
+      },
+      stroke: SINBAD,
+      strokeWidth: 3,
+      strokeOpacity: 1
     }
   },
   colors: {
