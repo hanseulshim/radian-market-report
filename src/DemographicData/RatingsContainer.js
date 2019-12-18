@@ -19,6 +19,7 @@ const { WILD_SAND } = config.colors
 const Container = styled.div`
   display: flex;
   margin-right: 50px;
+  margin-bottom: 10px;
 `
 
 const Rating = styled.div`
