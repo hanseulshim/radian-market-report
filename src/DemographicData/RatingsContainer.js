@@ -140,30 +140,30 @@ const RatingsContainer = () => {
         <Title>School Ratings</Title>
         <Panel>
           <div>{selectedProperty.label}</div>
-          {createPanels(selectedProperty.ratings.schoolRating)}
+          {createPanels(selectedProperty.ratings.schoolRating.values)}
         </Panel>
         <Panel>
           <div>{comparisonProperty1.label}</div>
-          {createPanels(comparisonProperty1.ratings.schoolRating)}
+          {createPanels(comparisonProperty1.ratings.schoolRating.values)}
         </Panel>
         <Panel>
           <div>{comparisonProperty2.label}</div>
-          {createPanels(comparisonProperty2.ratings.schoolRating)}
+          {createPanels(comparisonProperty2.ratings.schoolRating.values)}
         </Panel>
       </Rating>
       <Rating>
         <Title>Transit Ratings</Title>
         <Panel>
           <div>{selectedProperty.label}</div>
-          {createPanels(selectedProperty.ratings.transitRatings)}
+          {createPanels(selectedProperty.ratings.transitRatings.values)}
         </Panel>
         <Panel>
           <div>{comparisonProperty1.label}</div>
-          {createPanels(comparisonProperty1.ratings.transitRatings)}
+          {createPanels(comparisonProperty1.ratings.transitRatings.values)}
         </Panel>
         <Panel>
           <div>{comparisonProperty2.label}</div>
-          {createPanels(comparisonProperty2.ratings.transitRatings)}
+          {createPanels(comparisonProperty2.ratings.transitRatings.values)}
         </Panel>
       </Rating>
     </Container>
