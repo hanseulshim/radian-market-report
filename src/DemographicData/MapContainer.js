@@ -41,6 +41,22 @@ const IconLabel = styled.div`
   justify-content: center;
 `
 
+const MapTitle = styled.div`
+  font-size: 150%;
+  font-weight: bold;
+  position: relative;
+  top: 10px;
+  left: 10px;
+`
+
+const MapInfo = styled.div`
+  font-weight: bold;
+  position: relative;
+  top: -15px;
+  left: 75%;
+  width: 200px;
+`
+
 const MapContainer = () => {
   const [map, setMap] = useState(null)
   const [viewport, setViewPort] = useState({
@@ -132,6 +148,8 @@ const MapContainer = () => {
         onViewportChange={_onViewportChange}
         ref={el => setMap(el)}
       >
+        <MapTitle>Market Averages</MapTitle>
+        <MapInfo>Comparison numbers are based on annual change</MapInfo>
         <Marker
           latitude={selectedProperty.locations.home.latitude}
           longitude={selectedProperty.locations.home.longitude}

@@ -1097,6 +1097,7 @@
         "schoolRating": {
           "average": 7,
           "trend": "up",
+          "trendDelta": 0.7,
           "values": [
             { "label": "ES", "value": 7 },
             { "label": "MS", "value": 8 },
@@ -1106,6 +1107,7 @@
         "transitRatings": {
           "average": 1.7,
           "trend": "up",
+          "trendDelta": 0.7,
           "values": [
             { "label": "train", "value": 2 },
             { "label": "car", "value": 2 },
@@ -1195,6 +1197,7 @@
         "schoolRating": {
           "average": 6.3,
           "trend": "up",
+          "trendDelta": 0.7,
           "values": [
             { "label": "ES", "value": 5 },
             { "label": "MS", "value": 8 },
@@ -1204,6 +1207,7 @@
         "transitRatings": {
           "average": 8.7,
           "trend": "up",
+          "trendDelta": 0.7,
           "values": [
             { "label": "train", "value": 9 },
             { "label": "car", "value": 9 },
@@ -1269,6 +1273,7 @@
         "schoolRating": {
           "average": 9.7,
           "trend": "up",
+          "trendDelta": 0.7,
           "values": [
             { "label": "ES", "value": 10 },
             { "label": "MS", "value": 9 },
@@ -1278,6 +1283,7 @@
         "transitRatings": {
           "average": 5,
           "trend": "up",
+          "trendDelta": 0.7,
           "values": [
             { "label": "train", "value": 5 },
             { "label": "car", "value": 4 },
