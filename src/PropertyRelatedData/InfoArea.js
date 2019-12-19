@@ -50,7 +50,7 @@ const TableContainer = styled(Table)`
 `
 
 const TableHeader = styled.div`
-  padding: 3px 2px;
+  padding: 3px 10px;
   background: ${props =>
     props.selectedProperty
       ? BLACK
@@ -70,7 +70,7 @@ const Description = styled.div`
 
 const Indicator = styled.div`
   margin-top: 25px;
-  padding: 10px 5px 10px 50px;
+  padding: 10px 10px 10px 50px;
   background: ${GALLERY};
 `
 

@@ -70,7 +70,7 @@ export default {
   },
   sectionOneChartConfig: {
     chart: {
-      paddingTop: 20,
+      paddingTop: 25,
       paddingLeft: -5,
       fontSize: 12
     },
@@ -128,7 +128,7 @@ export default {
       align: 'center',
       isMeasured: false,
       x: 75,
-      y: -20
+      y: -25
     },
     selectedProperty: {
       hiddenInLegend: true,
@@ -139,7 +139,7 @@ export default {
       strokeWidth: 3,
       stroke: BLACK,
       fill: BLACK,
-      fillOpacity: 0.1
+      fillOpacity: 0.05
     },
     comparisonProperty1: {
       hiddenInLegend: true,
@@ -293,7 +293,7 @@ export default {
   },
   sectionThreeChartConfig: {
     chart: {
-      paddingTop: 20,
+      paddingTop: 25,
       paddingLeft: -5,
       fontSize: 12
     },
@@ -397,7 +397,7 @@ export default {
           circle: {
             radius: 8,
             strokeWidth: 0,
-            fill: '#AFB3B5'
+            fill: '#999999'
           }
         }
       ]

@@ -17,9 +17,10 @@ body {
 
 .ant-table-thead > tr > th.stat-column,
 .ant-table-tbody > tr.stat-row > td {
-  padding: 5px 0 5px 5px;
+  padding: 5px 0 5px 2px;
   background: #fff;
   border-top: 1px solid #e8e8e8;
+  color: #000;
   border-bottom: none;
   font-size: 12px;
   font-weight: bold;
