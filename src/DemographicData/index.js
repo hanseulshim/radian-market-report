@@ -38,7 +38,7 @@ const DemographicData = () => (
         <Summary />
         <MapContainer />
       </SectionOneContainer>
-      <SectionTwoContainer>
+      {/* <SectionTwoContainer>
         <Column>
           <div>Population of Age VS Income</div>
           <div>20854 Population by Age</div>
@@ -47,7 +47,7 @@ const DemographicData = () => (
           <div>Family Makeup</div>
           <div>Population by Age</div>
         </Column>
-      </SectionTwoContainer>
+      </SectionTwoContainer> */}
     </ColumnContainer>
   </>
 )

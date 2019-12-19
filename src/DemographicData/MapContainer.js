@@ -10,9 +10,11 @@ import { faHome } from '@fortawesome/free-solid-svg-icons'
 import bbox from '@turf/bbox'
 import union from '@turf/union'
 import { polygon } from '@turf/helpers'
+import center from '@turf/center'
 import WebMercatorViewport from 'viewport-mercator-project'
+import MapStat from './MapStat'
 
-const { SINBAD, STEEL_BLUE } = config.colors
+const { SINBAD, STEEL_BLUE, BLACK } = config.colors
 
 const {
   selectedProperty,
@@ -59,6 +61,7 @@ const MapInfo = styled.div`
 
 const MapContainer = () => {
   const [map, setMap] = useState(null)
+  const [centerList, setCenterList] = useState([])
   const [viewport, setViewPort] = useState({
     width: '100%',
     height: 500
@@ -104,6 +107,47 @@ const MapContainer = () => {
             'line-width': 4
           }
         })
+        setCenterList([
+          {
+            label: selectedProperty.label,
+            ratings: selectedProperty.ratings,
+            longitude: center(selectedProperty.map.geoJson).geometry
+              .coordinates[0],
+            latitude: center(selectedProperty.map.geoJson).geometry
+              .coordinates[1],
+            selectedProperty: true,
+            background: BLACK,
+            color: '#FFF',
+            width: config.map.width,
+            height: config.map.height
+          },
+          {
+            label: comparisonProperty1.label,
+            ratings: comparisonProperty1.ratings,
+            longitude: center(comparisonProperty1.map.geoJson).geometry
+              .coordinates[0],
+            latitude: center(comparisonProperty1.map.geoJson).geometry
+              .coordinates[1],
+            selectedProperty: false,
+            background: STEEL_BLUE,
+            color: '#FFF',
+            width: config.map.width,
+            height: config.map.height
+          },
+          {
+            label: comparisonProperty2.label,
+            ratings: comparisonProperty2.ratings,
+            longitude: center(comparisonProperty2.map.geoJson).geometry
+              .coordinates[0],
+            latitude: center(comparisonProperty2.map.geoJson).geometry
+              .coordinates[1],
+            selectedProperty: false,
+            background: SINBAD,
+            color: BLACK,
+            width: config.map.width,
+            height: config.map.height
+          }
+        ])
         const unionPolygon = union(
           polygon(
             comparisonProperty1.map.geoJson.features[0].geometry.coordinates
@@ -171,6 +215,21 @@ const MapContainer = () => {
             <Icon>
               <IconLabel>{school.label}</IconLabel>
             </Icon>
+          </Marker>
+        ))}
+        {centerList.map((center, i) => (
+          <Marker
+            key={i}
+            latitude={center.latitude}
+            longitude={center.longitude}
+            offsetLeft={center.width * -0.5}
+            offsetTop={
+              center.selectedProperty
+                ? center.height * 0.5
+                : center.height * -0.5
+            }
+          >
+            <MapStat {...center} />
           </Marker>
         ))}
       </MapGL>

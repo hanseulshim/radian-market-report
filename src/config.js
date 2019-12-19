@@ -64,6 +64,10 @@ export default {
     height: '150px',
     title: 'Average DOM Over Time'
   },
+  map: {
+    width: 150,
+    height: 100
+  },
   sectionOneChartConfig: {
     chart: {
       paddingTop: 20,
