@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Title from '../common/Title'
+import Header from '../common/Header'
 import InfoArea from './InfoArea'
 import MedianPrices from './MedianPrices'
 import AvgSaleToListRatio from './AvgSaleToListRatio'
@@ -14,7 +14,17 @@ import DomVsPrice from './DomVsPrice'
 import InventoryPerDom from './InventoryPerDom'
 import AverageDomOverTime from './AverageDomOverTime'
 
-const { GALLERY } = config.colors
+import { GALLERY } from '../colors'
+
+const Container = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header header header header'
+    'main main . sidebar'
+    'footer footer footer footer';
+`
 
 const SubTitle = styled.div`
   font-size: 200%;
@@ -64,10 +74,10 @@ const MarketContainer = styled.div`
 `
 
 const PropertyRelatedData = () => (
-  <>
-    <Title section="Property Related Data" />
-    <SubTitle>How Your Market Stacks Up Against the Rest</SubTitle>
-    <ColumnContainer>
+  <Container>
+    <Header section="Property Related Data" />
+    {/* <SubTitle>How Your Market Stacks Up Against the Rest</SubTitle> */}
+    {/* <ColumnContainer>
       <InfoArea />
       <ColumnChartContainer>
         <MedianPrices />
@@ -93,8 +103,8 @@ const PropertyRelatedData = () => (
           <AverageDomOverTime />
         </ColumnChartContainer>
       </MarketContainer>
-    </ColumnContainer>
-  </>
+    </ColumnContainer> */}
+  </Container>
 )
 
 export default PropertyRelatedData

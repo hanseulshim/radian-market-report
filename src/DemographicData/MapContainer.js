@@ -14,7 +14,7 @@ import center from '@turf/center'
 import WebMercatorViewport from 'viewport-mercator-project'
 import MapStat from './MapStat'
 
-const { SINBAD, STEEL_BLUE, BLACK } = config.colors
+import { NEPTUNE, AZURE, BLACK } from '../colors'
 
 const {
   selectedProperty,
@@ -91,7 +91,7 @@ const MapContainer = () => {
             data: comparisonProperty1.map.geoJson
           },
           paint: {
-            'line-color': STEEL_BLUE,
+            'line-color': AZURE,
             'line-width': 4
           }
         })
@@ -103,7 +103,7 @@ const MapContainer = () => {
             data: comparisonProperty2.map.geoJson
           },
           paint: {
-            'line-color': SINBAD,
+            'line-color': NEPTUNE,
             'line-width': 4
           }
         })
@@ -129,7 +129,7 @@ const MapContainer = () => {
             latitude: center(comparisonProperty1.map.geoJson).geometry
               .coordinates[1],
             selectedProperty: false,
-            background: STEEL_BLUE,
+            background: AZURE,
             color: '#FFF',
             width: config.map.width,
             height: config.map.height
@@ -142,7 +142,7 @@ const MapContainer = () => {
             latitude: center(comparisonProperty2.map.geoJson).geometry
               .coordinates[1],
             selectedProperty: false,
-            background: SINBAD,
+            background: NEPTUNE,
             color: BLACK,
             width: config.map.width,
             height: config.map.height

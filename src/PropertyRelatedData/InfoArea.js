@@ -4,9 +4,7 @@ import moment from 'moment'
 import numeral from 'numeral'
 import { Table } from 'antd'
 import { propertyData } from '../data/data.json'
-import config from '../config'
-
-const { SINBAD, STEEL_BLUE, GALLERY, BLACK } = config.colors
+import { NEPTUNE, AZURE, GALLERY, BLACK } from '../colors'
 
 const {
   selectedProperty,
@@ -55,9 +53,9 @@ const TableHeader = styled.div`
     props.selectedProperty
       ? BLACK
       : props.comparisonProperty1
-      ? STEEL_BLUE
+      ? AZURE
       : props.comparisonProperty2
-      ? SINBAD
+      ? NEPTUNE
       : '#FFFFFF'};
   color: ${props =>
     props.comparisonProperty1 || props.selectedProperty ? '#FFF' : 'Initial'};
@@ -87,9 +85,9 @@ const IndicatorRow = styled.div`
     props.selectedProperty
       ? BLACK
       : props.comparisonProperty1
-      ? STEEL_BLUE
+      ? AZURE
       : props.comparisonProperty2
-      ? SINBAD
+      ? NEPTUNE
       : '#FFFFFF'};
   color: ${props =>
     props.comparisonProperty1 || props.selectedProperty ? '#FFF' : 'Initial'};

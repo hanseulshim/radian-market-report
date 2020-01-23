@@ -1,17 +1,4 @@
-const SINBAD = '#71BAAF'
-const SUPERNOVA = '#FFC907'
-const JORDY_BLUE = '#96D9F2'
-const DEEP_KOAMARU = '#0F2682'
-const STEEL_BLUE1 = '#4A73B9'
-const STEEL_BLUE = '#3A62A3'
-const SUNSET_ORANGE = '#D04A42'
-const WHITE = '#FFFFFF'
-const ALABASTER = '#F7F7F7'
-const BOTTICELLI = '#D9E3ED'
-const GALLERY = '#efefef'
-const BLACK = '#000000'
-const WILD_SAND = '#F4F4F4'
-const IRON = '#D0D3D5'
+import { NEPTUNE, SUPERNOVA, AZURE, VALENCIA, WHITE, BLACK } from './colors'
 
 export default {
   medianPricesConfig: {
@@ -148,8 +135,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: STEEL_BLUE,
-      fill: STEEL_BLUE
+      stroke: AZURE,
+      fill: AZURE
     },
     comparisonProperty2: {
       hiddenInLegend: true,
@@ -158,8 +145,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: SINBAD,
-      fill: SINBAD
+      stroke: NEPTUNE,
+      fill: NEPTUNE
     },
     soldProperty: {
       name: 'Sold',
@@ -180,8 +167,8 @@ export default {
       },
       strokeWidth: 2,
       strokeDasharray: '5, 5',
-      stroke: STEEL_BLUE,
-      fill: STEEL_BLUE
+      stroke: AZURE,
+      fill: AZURE
     },
     comparisonProperty2Sold: {
       hiddenInLegend: true,
@@ -191,8 +178,8 @@ export default {
       },
       strokeWidth: 2,
       strokeDasharray: '5, 5',
-      stroke: SINBAD,
-      fill: SINBAD
+      stroke: NEPTUNE,
+      fill: NEPTUNE
     }
   },
   sectionTwoChartConfig: {
@@ -264,7 +251,7 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: STEEL_BLUE1
+      stroke: AZURE
     },
     series2: {
       dataFields: {
@@ -280,7 +267,7 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 3,
-      stroke: SUNSET_ORANGE
+      stroke: VALENCIA
     },
     series4: {
       dataFields: {
@@ -346,14 +333,14 @@ export default {
         width: '40%'
       },
       strokeWidth: 0,
-      fill: STEEL_BLUE,
+      fill: AZURE,
       bullets: [
         {
           type: 'CircleBullet',
           circle: {
             radius: 8,
             strokeWidth: 0,
-            fill: STEEL_BLUE
+            fill: AZURE
           }
         }
       ]
@@ -368,14 +355,14 @@ export default {
         width: '40%'
       },
       strokeWidth: 0,
-      fill: SINBAD,
+      fill: NEPTUNE,
       bullets: [
         {
           type: 'CircleBullet',
           circle: {
             radius: 8,
             strokeWidth: 0,
-            fill: SINBAD
+            fill: NEPTUNE
           }
         }
       ]
@@ -473,7 +460,7 @@ export default {
         openValueY: 'low'
       },
       strokeWidth: 0,
-      fill: STEEL_BLUE
+      fill: AZURE
     },
     comparisonProperty1LineSeries: {
       noRisers: true,
@@ -483,7 +470,7 @@ export default {
         valueY: 'average',
         categoryX: 'category'
       },
-      stroke: STEEL_BLUE,
+      stroke: AZURE,
       strokeWidth: 3
     },
     comparisonProperty2: {
@@ -494,7 +481,7 @@ export default {
         openValueY: 'low'
       },
       strokeWidth: 0,
-      fill: SINBAD
+      fill: NEPTUNE
     },
     comparisonProperty2LineSeries: {
       noRisers: true,
@@ -504,7 +491,7 @@ export default {
         valueY: 'average',
         categoryX: 'category'
       },
-      stroke: SINBAD,
+      stroke: NEPTUNE,
       strokeWidth: 3
     }
   },
@@ -526,8 +513,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 0,
-      fill: STEEL_BLUE,
-      stroke: STEEL_BLUE
+      fill: AZURE,
+      stroke: AZURE
     },
     comparisonProperty2: {
       hiddenInLegend: true,
@@ -536,8 +523,8 @@ export default {
         valueY: 'value'
       },
       strokeWidth: 0,
-      fill: SINBAD,
-      stroke: SINBAD
+      fill: NEPTUNE,
+      stroke: NEPTUNE
     },
     soldProperty: {
       dataFields: {
@@ -563,20 +550,5 @@ export default {
       startLocation: 0.5,
       endLocation: 0.5
     }
-  },
-  colors: {
-    SINBAD,
-    SUPERNOVA,
-    JORDY_BLUE,
-    DEEP_KOAMARU,
-    STEEL_BLUE,
-    GALLERY,
-    SUNSET_ORANGE,
-    WHITE,
-    ALABASTER,
-    BOTTICELLI,
-    BLACK,
-    WILD_SAND,
-    IRON
   }
 }
