@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Header from '../common/Header'
+import Text from '../common/Text'
 import InfoArea from './InfoArea'
 import MedianPrices from './MedianPrices'
 import AvgSaleToListRatio from './AvgSaleToListRatio'
@@ -18,19 +19,20 @@ import { GALLERY } from '../colors'
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: auto;
   grid-template-areas:
-    'header header header header'
-    'main main . sidebar'
-    'footer footer footer footer';
+    'subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle'
+    'info info info info chart1 chart1 chart1 chart1 chart1 chart1 chart1 chart1'
+    'info info info info chart2 chart2 chart2 chart2 chart2 chart2 chart2 chart2'
+    'info info info info chart3 chart3 chart3 chart3 chart3 chart3 chart3 chart3'
+    'chart4 chart4 chart4 chart4 chart4 chart4 chart5 chart5 chart5 chart5 chart5 chart5';
+  padding: 10px 50px;
+  grid-row-gap: 25px;
 `
 
-const SubTitle = styled.div`
-  font-size: 200%;
-  font-weight: bold;
-  margin-left: 50px;
-  margin-bottom: 25px;
+const SubTitle = styled(Text)`
+  grid-area: subtitle;
 `
 
 const ColumnContainer = styled.div`
@@ -74,13 +76,14 @@ const MarketContainer = styled.div`
 `
 
 const PropertyRelatedData = () => (
-  <Container>
+  <>
     <Header section="Property Related Data" />
-    {/* <SubTitle>How Your Market Stacks Up Against the Rest</SubTitle> */}
-    {/* <ColumnContainer>
+    <Container>
+      <SubTitle subSection>How Your Market Stacks Up Against the Rest</SubTitle>
       <InfoArea />
+      <MedianPrices />
+      {/* <ColumnContainer>
       <ColumnChartContainer>
-        <MedianPrices />
         <AvgSaleToListRatio />
         <Inventory />
       </ColumnChartContainer>
@@ -104,7 +107,8 @@ const PropertyRelatedData = () => (
         </ColumnChartContainer>
       </MarketContainer>
     </ColumnContainer> */}
-  </Container>
+    </Container>
+  </>
 )
 
 export default PropertyRelatedData

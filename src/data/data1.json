@@ -1,7 +1,125 @@
 {
   "propertyInfo": {
-    "selectedProperty": 20854,
+    "selected": 20854,
     "comparable1": 20855,
     "comparable2": 20856
+  },
+  "stats": {
+    "date": "2019-11-01",
+    "address": "1234 Property Dr",
+    "city": "Potomac",
+    "state": "MD",
+    "zip": 20854,
+    "price": 531000,
+    "selected": {
+      "avgListedPrice": 538000,
+      "avgSoldPrice": 538000,
+      "activeInventory": 131,
+      "soldInventory": 128
+    },
+    "comparable1": {
+      "avgListedPrice": 555000,
+      "avgSoldPrice": 551000,
+      "activeInventory": 102,
+      "soldInventory": 120
+    },
+    "comparable2": {
+      "avgListedPrice": 531000,
+      "avgSoldPrice": 527000,
+      "activeInventory": 103,
+      "soldInventory": 125
+    },
+    "description": "A few sentences here talking about the selected property’s zip vs 2 other comperable zips. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
+  },
+  "marketStrength": {
+    "selected": 60,
+    "comparable1": 55,
+    "comparable2": 45
+  },
+  "medianPrices": {
+    "selected": [
+      { "value": 533540, "date": "2020-01-01T00:00:00" },
+      { "value": 545000, "date": "2020-02-01T00:00:00" },
+      { "value": 563284, "date": "2020-03-01T00:00:00" },
+      { "value": 564876, "date": "2020-04-01T00:00:00" },
+      { "value": 572284, "date": "2020-05-01T00:00:00" },
+      { "value": 568765, "date": "2020-06-01T00:00:00" },
+      { "value": 562165, "date": "2020-07-01T00:00:00" },
+      { "value": 550000, "date": "2020-08-01T00:00:00" },
+      { "value": 545698, "date": "2020-09-01T00:00:00" },
+      { "value": 540000, "date": "2020-10-01T00:00:00" },
+      { "value": 532568, "date": "2020-11-01T00:00:00" },
+      { "value": 532568, "date": "2020-12-01T00:00:00" }
+    ],
+    "selectedSold": [
+      { "value": 531580, "date": "2020-01-01T00:00:00" },
+      { "value": 543250, "date": "2020-02-01T00:00:00" },
+      { "value": 558850, "date": "2020-03-01T00:00:00" },
+      { "value": 565165, "date": "2020-04-01T00:00:00" },
+      { "value": 569521, "date": "2020-05-01T00:00:00" },
+      { "value": 567987, "date": "2020-06-01T00:00:00" },
+      { "value": 555876, "date": "2020-07-01T00:00:00" },
+      { "value": 550000, "date": "2020-08-01T00:00:00" },
+      { "value": 540687, "date": "2020-09-01T00:00:00" },
+      { "value": 533850, "date": "2020-10-01T00:00:00" },
+      { "value": 531978, "date": "2020-11-01T00:00:00" },
+      { "value": 531978, "date": "2020-12-01T00:00:00" }
+    ],
+    "comparable1": [
+      { "value": 528650, "date": "2020-01-01T00:00:00" },
+      { "value": 543250, "date": "2020-02-01T00:00:00" },
+      { "value": 557850, "date": "2020-03-01T00:00:00" },
+      { "value": 562165, "date": "2020-04-01T00:00:00" },
+      { "value": 568521, "date": "2020-05-01T00:00:00" },
+      { "value": 564987, "date": "2020-06-01T00:00:00" },
+      { "value": 549876, "date": "2020-07-01T00:00:00" },
+      { "value": 550000, "date": "2020-08-01T00:00:00" },
+      { "value": 535687, "date": "2020-09-01T00:00:00" },
+      { "value": 527850, "date": "2020-10-01T00:00:00" },
+      { "value": 526978, "date": "2020-11-01T00:00:00" },
+      { "value": 526978, "date": "2020-12-01T00:00:00" }
+    ],
+    "comparable1Sold": [
+      { "value": 536000, "date": "2020-01-01T00:00:00" },
+      { "value": 545000, "date": "2020-02-01T00:00:00" },
+      { "value": 555000, "date": "2020-03-01T00:00:00" },
+      { "value": 559000, "date": "2020-04-01T00:00:00" },
+      { "value": 561000, "date": "2020-05-01T00:00:00" },
+      { "value": 562000, "date": "2020-06-01T00:00:00" },
+      { "value": 550000, "date": "2020-07-01T00:00:00" },
+      { "value": 548000, "date": "2020-08-01T00:00:00" },
+      { "value": 540000, "date": "2020-09-01T00:00:00" },
+      { "value": 538000, "date": "2020-10-01T00:00:00" },
+      { "value": 528000, "date": "2020-11-01T00:00:00" },
+      { "value": 528000, "date": "2020-12-01T00:00:00" }
+    ],
+    "comparable2": [
+      { "value": 532540, "date": "2020-01-01T00:00:00" },
+      { "value": 550000, "date": "2020-02-01T00:00:00" },
+      { "value": 570000, "date": "2020-03-01T00:00:00" },
+      { "value": 581250, "date": "2020-04-01T00:00:00" },
+      { "value": 581500, "date": "2020-05-01T00:00:00" },
+      { "value": 575691, "date": "2020-06-01T00:00:00" },
+      { "value": 577562, "date": "2020-07-01T00:00:00" },
+      { "value": 559785, "date": "2020-08-01T00:00:00" },
+      { "value": 556972, "date": "2020-09-01T00:00:00" },
+      { "value": 554698, "date": "2020-10-01T00:00:00" },
+      { "value": 552314, "date": "2020-11-01T00:00:00" },
+      { "value": 552314, "date": "2020-12-01T00:00:00" }
+    ],
+    "comparable2Sold": [
+      { "value": 548000, "date": "2020-01-01T00:00:00" },
+      { "value": 555000, "date": "2020-02-01T00:00:00" },
+      { "value": 570000, "date": "2020-03-01T00:00:00" },
+      { "value": 575000, "date": "2020-04-01T00:00:00" },
+      { "value": 580000, "date": "2020-05-01T00:00:00" },
+      { "value": 582000, "date": "2020-06-01T00:00:00" },
+      { "value": 572000, "date": "2020-07-01T00:00:00" },
+      { "value": 565000, "date": "2020-08-01T00:00:00" },
+      { "value": 557000, "date": "2020-09-01T00:00:00" },
+      { "value": 555000, "date": "2020-10-01T00:00:00" },
+      { "value": 548000, "date": "2020-11-01T00:00:00" },
+      { "value": 550000, "date": "2020-12-01T00:00:00" }
+    ]
   }
 }

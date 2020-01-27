@@ -3,29 +3,25 @@ import styled from 'styled-components'
 import { propertyInfo } from '../data/data1.json'
 import { BLACK, DESERT_STORM, NEPTUNE, AZURE, WHITE } from '../colors'
 import LegendSold from '../assets/legendSold.svg'
+import Text from './Text'
 
 const Container = styled.div`
   padding: 25px 50px;
   background: ${DESERT_STORM};
-  grid-area: header;
   display: grid;
   grid-template-columns: 1fr 300px;
-  grid-template-rows: auto;
   grid-template-areas:
     'title chart'
-    'section chart'
-    '. chart';
+    'section chart';
 `
 
-const Title = styled.div`
+const Title = styled(Text)`
   grid-area: title;
-  font-size: 25px;
+  align-self: end;
 `
 
-const Section = styled.div`
+const Section = styled(Text)`
   grid-area: section;
-  font-size: 45px;
-  font-weight: bold;
 `
 
 const Chart = styled.div`
@@ -50,17 +46,18 @@ const Row = styled.div`
 
 const Legend = styled.img`
   width: 25px;
+  margin-right: 10px;
 `
 
 const Header = ({ section }) => {
   return (
     <Container>
-      <Title>Market Report</Title>
-      <Section>{section}</Section>
+      <Title h1>Market Report</Title>
+      <Section section>{section}</Section>
       <Chart>
         <Row selected>
           <span>Your Market</span>
-          <span>{propertyInfo.selectedProperty}</span>
+          <span>{propertyInfo.selected}</span>
         </Row>
         <Row comparable1>
           <span>Comparable 1</span>

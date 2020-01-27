@@ -3,132 +3,70 @@ import styled from 'styled-components'
 import moment from 'moment'
 import numeral from 'numeral'
 import { Table } from 'antd'
-import { propertyData } from '../data/data.json'
-import { NEPTUNE, AZURE, GALLERY, BLACK } from '../colors'
-
-const {
-  selectedProperty,
-  comparisonProperty1,
-  comparisonProperty2,
-  stats
-} = propertyData
+import { propertyInfo, stats } from '../data/data1.json'
+import Text from '../common/Text'
+import { NEPTUNE, AZURE, BLACK, WHITE } from '../colors'
+import MarketStrength from './MarketStrength'
 
 const Container = styled.div`
-  flex: 1.2;
-`
-
-const StatsArea = styled.div`
-  font-weight: bold;
-  font-size: 125%;
-  margin-left: 50px;
+  grid-area: info;
+  margin-right: 50px;
 `
 
 const AddressBox = styled.div`
-  margin-left: 50px;
-  margin-top: 5px;
+  margin-top: 15px;
   padding: 10px;
-  background: #000;
-  color: #fff;
+  background: ${BLACK};
+  color: ${WHITE};
   display: flex;
   justify-content: space-between;
   align-items: center;
 `
 
-const Address = styled.div`
-  font-weight: bold;
-`
-
-const Price = styled.div`
-  font-size: 180%;
-  font-weight: bold;
-`
-
-const TableContainer = styled(Table)`
-  margin-left: 50px;
-`
-
 const TableHeader = styled.div`
   padding: 3px 10px;
   background: ${props =>
-    props.selectedProperty
+    props.selected
       ? BLACK
-      : props.comparisonProperty1
+      : props.comparable1
       ? AZURE
-      : props.comparisonProperty2
+      : props.comparable2
       ? NEPTUNE
-      : '#FFFFFF'};
-  color: ${props =>
-    props.comparisonProperty1 || props.selectedProperty ? '#FFF' : 'Initial'};
+      : WHITE};
+  color: ${props => (props.comparable1 || props.selected ? WHITE : 'Initial')};
 `
 
 const Description = styled.div`
   margin-top: 25px;
-  margin-left: 50px;
-`
-
-const Indicator = styled.div`
-  margin-top: 25px;
-  padding: 10px 10px 10px 50px;
-  background: ${GALLERY};
-`
-
-const IndicatorTitle = styled.div`
-  font-weight: bold;
-`
-
-const IndicatorRow = styled.div`
-  margin-top: ${props => (props.selectedProperty ? '10px' : '3px')};
-  display: flex;
-  justify-content: space-between;
-  padding: 7px 10px;
-  background: ${props =>
-    props.selectedProperty
-      ? BLACK
-      : props.comparisonProperty1
-      ? AZURE
-      : props.comparisonProperty2
-      ? NEPTUNE
-      : '#FFFFFF'};
-  color: ${props =>
-    props.comparisonProperty1 || props.selectedProperty ? '#FFF' : 'Initial'};
-  font-weight: 500;
-`
-
-const IndicatorStats = styled.div`
-  margin-top: 15px;
-`
-
-const IndicatorStatsTitle = styled.span`
-  font-weight: bold;
 `
 
 const data = [
   {
     category: 'Avg. Listed Price',
-    selectedProperty: selectedProperty.avgListedPrice,
-    comparisonProperty1: comparisonProperty1.avgListedPrice,
-    comparisonProperty2: comparisonProperty2.avgListedPrice,
+    selected: stats.selected.avgListedPrice,
+    comparable1: stats.comparable1.avgListedPrice,
+    comparable2: stats.comparable2.avgListedPrice,
     key: 'Avg. Listed Price'
   },
   {
     category: 'Avg. Sold Price',
-    selectedProperty: selectedProperty.avgSoldPrice,
-    comparisonProperty1: comparisonProperty1.avgSoldPrice,
-    comparisonProperty2: comparisonProperty2.avgSoldPrice,
+    selected: stats.selected.avgSoldPrice,
+    comparable1: stats.comparable1.avgSoldPrice,
+    comparable2: stats.comparable2.avgSoldPrice,
     key: 'Avg. Sold Price'
   },
   {
     category: 'Active Inventory',
-    selectedProperty: selectedProperty.activeInventory,
-    comparisonProperty1: comparisonProperty1.activeInventory,
-    comparisonProperty2: comparisonProperty2.activeInventory,
+    selected: stats.selected.activeInventory,
+    comparable1: stats.comparable1.activeInventory,
+    comparable2: stats.comparable2.activeInventory,
     key: 'Active Inventory'
   },
   {
     category: 'Sold Inventory',
-    selectedProperty: selectedProperty.soldInventory,
-    comparisonProperty1: comparisonProperty1.soldInventory,
-    comparisonProperty2: comparisonProperty2.soldInventory,
+    selected: stats.selected.soldInventory,
+    comparable1: stats.comparable1.soldInventory,
+    comparable2: stats.comparable2.soldInventory,
     key: 'Sold Inventory'
   }
 ]
@@ -143,13 +81,11 @@ const columns = [
   },
   {
     // eslint-disable-next-line react/display-name
-    title: () => (
-      <TableHeader selectedProperty>{selectedProperty.label}</TableHeader>
-    ),
+    title: () => <TableHeader selected>{propertyInfo.selected}</TableHeader>,
     className: 'stat-column',
-    dataIndex: 'selectedProperty',
-    key: 'selectedProperty',
-    align: 'center',
+    dataIndex: 'selected',
+    key: 'selected',
+    align: 'right',
     render: (price, i) =>
       i.key.toLowerCase().includes('price')
         ? numeral(price).format('$0a')
@@ -158,12 +94,12 @@ const columns = [
   {
     // eslint-disable-next-line react/display-name
     title: () => (
-      <TableHeader comparisonProperty1>{comparisonProperty1.label}</TableHeader>
+      <TableHeader comparable1>{propertyInfo.comparable1}</TableHeader>
     ),
     className: 'stat-column',
-    dataIndex: 'comparisonProperty1',
-    key: 'comparisonProperty1',
-    align: 'center',
+    dataIndex: 'comparable1',
+    key: 'comparable1',
+    align: 'right',
     render: (price, i) =>
       i.key.toLowerCase().includes('price')
         ? numeral(price).format('$0a')
@@ -172,12 +108,12 @@ const columns = [
   {
     // eslint-disable-next-line react/display-name
     title: () => (
-      <TableHeader comparisonProperty2>{comparisonProperty2.label}</TableHeader>
+      <TableHeader comparable2>{propertyInfo.comparable2}</TableHeader>
     ),
     className: 'stat-column',
-    dataIndex: 'comparisonProperty2',
-    key: 'comparisonProperty2',
-    align: 'center',
+    dataIndex: 'comparable2',
+    key: 'comparable2',
+    align: 'right',
     render: (price, i) =>
       i.key.toLowerCase().includes('price')
         ? numeral(price).format('$0a')
@@ -186,51 +122,31 @@ const columns = [
 ]
 
 const InfoArea = () => {
+  const date = moment(stats.date)
   return (
     <Container>
-      <StatsArea>
-        {moment().format('MMMM')} {moment().format('YYYY')} Stats
-      </StatsArea>
+      <Text h1>
+        {date.format('MMMM')} {date.format('YYYY')} Stats
+      </Text>
       <AddressBox>
-        <Address>
-          <div>{selectedProperty.address}</div>
+        <div>
+          <div>{stats.address}</div>
           <div>
-            {selectedProperty.city}, {selectedProperty.state}{' '}
-            {selectedProperty.zip}
+            {stats.city}, {stats.state} {stats.zip}
           </div>
-        </Address>
-        <Price>{numeral(selectedProperty.price).format('$0a')}</Price>
+        </div>
+        <Text chartTitle>{numeral(stats.price).format('$0a')}</Text>
       </AddressBox>
-      <TableContainer
+      <Table
+        className="stat-table"
         rowClassName="stat-row"
         tableLayout="auto"
         columns={columns}
         dataSource={data}
         pagination={false}
       />
+      <MarketStrength />
       <Description>{stats.description}</Description>
-      <Indicator>
-        <IndicatorTitle>What do the colors mean?</IndicatorTitle>
-        <IndicatorRow selectedProperty>
-          <div>Selected Property</div>
-          <div>{selectedProperty.label}</div>
-        </IndicatorRow>
-        <IndicatorRow comparisonProperty1>
-          <div>Comparable 1</div>
-          <div>{comparisonProperty1.label}</div>
-        </IndicatorRow>
-        <IndicatorRow comparisonProperty2>
-          <div>Comparable 2</div>
-          <div>{comparisonProperty2.label}</div>
-        </IndicatorRow>
-        <IndicatorStats>
-          <IndicatorStatsTitle>Property Attributes:</IndicatorStatsTitle>{' '}
-          <div>
-            {stats.similarProperties.type}, {stats.similarProperties.bedroom},{' '}
-            {stats.similarProperties.area}, {stats.soldProperty}
-          </div>
-        </IndicatorStats>
-      </Indicator>
     </Container>
   )
 }
