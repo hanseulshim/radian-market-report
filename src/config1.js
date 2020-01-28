@@ -25,7 +25,15 @@ const dateAxis = {
     month: 'MMM'
   },
   startLocation: 0.5,
-  endLocation: 0.5
+  endLocation: 0.5,
+  renderer: {
+    minGridDistance: 50,
+    grid: {
+      location: 0.5,
+      strokeOpacity: 0.1,
+      stroke: BLACK
+    }
+  }
 }
 
 const valueAxis = {
@@ -33,8 +41,8 @@ const valueAxis = {
   renderer: {
     minGridDistance: 30,
     labels: {
-      width: 70,
-      maxWidth: 70,
+      width: 75,
+      maxWidth: 75,
       truncate: true,
       textAlign: 'end'
     }
@@ -54,6 +62,25 @@ const label = {
   y: -35
 }
 
+const bar = {
+  hiddenInLegend: true,
+  dataFields: {
+    categoryX: 'category',
+    valueY: 'high',
+    openValueY: 'low'
+  },
+  strokeWidth: 0
+}
+
+const barLine = {
+  noRisers: true,
+  dataFields: {
+    valueY: 'average',
+    categoryX: 'category'
+  },
+  strokeWidth: 3
+}
+
 export default {
   label,
   sectionOne: {
@@ -62,18 +89,10 @@ export default {
       fontSize
     },
     dateAxis: {
-      ...dateAxis,
-      renderer: {
-        minGridDistance: 50,
-        grid: {
-          location: 0.5,
-          strokeOpacity: 0.1,
-          stroke: BLACK
-        }
-      }
+      ...dateAxis
     },
     valueAxis: {
-      width: 70,
+      width: 75,
       ...valueAxis
     },
     selected: {
@@ -113,7 +132,7 @@ export default {
     },
     label: {
       ...label,
-      x: 45
+      x: 75
     },
     legendConfig: {
       contentAlign: 'right',
@@ -131,15 +150,18 @@ export default {
       renderer: {
         minGridDistance: 10,
         grid: {
-          disabled: true
+          location: 0.5,
+          strokeOpacity: 0.1,
+          stroke: BLACK
         }
       }
     },
     valueAxis: {
       ...valueAxis,
       renderer: {
-        grid: {
-          disabled: true
+        labels: {
+          truncate: true,
+          textAlign: 'end'
         }
       }
     },
@@ -158,6 +180,73 @@ export default {
     series4: {
       ...lineConfig,
       stroke: SUPERNOVA
+    }
+  },
+  sectionThree: {
+    chart: {
+      paddingTop: 50,
+      paddingLeft: -20,
+      fontSize
+    },
+    label: {
+      ...label,
+      fontSize: 14,
+      y: -25,
+      x: 75
+    },
+    categoryAxis: {
+      dataFields: {
+        category: 'category'
+      },
+      renderer: {
+        minGridDistance: 10,
+        cellStartLocation: 0.1,
+        cellEndLocation: 0.9,
+        grid: {
+          location: 0,
+          strokeOpacity: 0.1,
+          stroke: BLACK
+        }
+      }
+    },
+    selected: {
+      ...bar,
+      fill: BLACK
+    },
+    selectedLine: {
+      ...barLine,
+      startLocation: 0.1,
+      endLocation: 0.37,
+      stroke: BLACK,
+      fill: BLACK
+    },
+    selectedSold: {
+      ...barLine,
+      strokeWidth: 2,
+      strokeDasharray: '5, 5',
+      stroke: BLACK
+    },
+    comparable1: {
+      ...bar,
+      fill: AZURE
+    },
+    comparable1Line: {
+      ...barLine,
+      startLocation: 0.35,
+      endLocation: 0.65,
+      stroke: AZURE,
+      fill: AZURE
+    },
+    comparable2: {
+      ...bar,
+      fill: NEPTUNE
+    },
+    comparable2Line: {
+      ...barLine,
+      startLocation: 0.6,
+      endLocation: 0.95,
+      stroke: NEPTUNE,
+      fill: NEPTUNE
     }
   }
 }

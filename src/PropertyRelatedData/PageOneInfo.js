@@ -121,7 +121,7 @@ const columns = [
   }
 ]
 
-const InfoArea = () => {
+const PageOneInfo = () => {
   const date = moment(stats.date)
   return (
     <Container>
@@ -151,4 +151,4 @@ const InfoArea = () => {
   )
 }
 
-export default InfoArea
+export default PageOneInfo

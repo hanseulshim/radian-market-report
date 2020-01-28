@@ -7,9 +7,12 @@ import Text from './Text'
 
 const Container = styled.div`
   padding: 25px 50px;
+  margin: -10px -50px;
+  margin-bottom: 25px;
   background: ${DESERT_STORM};
   display: grid;
   grid-template-columns: 1fr 300px;
+  grid-area: header;
   grid-template-areas:
     'title chart'
     'section chart';

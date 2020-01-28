@@ -2,31 +2,14 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
-import { propertyData } from '../data/data.json'
+import config from '../config1'
+import Text from '../common/Text'
+import { WHITE } from '../colors'
+import { domVsPrice } from '../data/data1.json'
 import legendDom from '../assets/legendDom.svg'
-import config from '../config'
 import Home from '../assets/home.svg'
 
-const {
-  selectedProperty,
-  comparisonProperty1,
-  comparisonProperty2
-} = propertyData
-
-const {
-  domVsPriceConfig,
-  sectionOneChartConfig,
-  sectionFourChartConfig
-} = config
-
-const ChartTitle = styled.div`
-  font-weight: bold;
-  font-size: 150%;
-  margin-left: 65px;
-  margin-right: 15px
-  margin-bottom: 5px;
-  margin-top: 30px;
-  border-bottom: 1px solid #000;
+const ChartTitle = styled(Text)`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -35,105 +18,73 @@ const Legend = styled.img`
   height: 25px;
 `
 
-const ChartSubtitle = styled.div`
-  font-weight: bold;
-  font-size: 110%;
-  margin-left: 65px;
-  margin-bottom: 10px;
+const Container = styled.div`
+  grid-area: chart1;
 `
 
 const DomVsPrice = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      sectionFourChartConfig.chart,
-      domVsPriceConfig.id,
+      config.sectionThree.chart,
+      'domVsPriceChart',
       am4charts.XYChart
     )
-    chart.id = domVsPriceConfig.id
-    chart.data = selectedProperty.priceOfListings
+    chart.data = domVsPrice.selected
 
     const label = chart.createChild(am4core.Label)
-    label.text = domVsPriceConfig.title
-    label.config = sectionFourChartConfig.label
+    label.text = 'DOM vs Price of Listings'
+    label.config = config.sectionThree.label
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-    categoryAxis.config = sectionFourChartConfig.categoryAxis
-
-    categoryAxis.renderer.cellStartLocation = 0.1
-    categoryAxis.renderer.cellEndLocation = 0.9
-
-    // categoryAxis.renderer.labels.template.disabled = true
+    categoryAxis.config = config.sectionThree.categoryAxis
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = sectionOneChartConfig.valueAxis
+    valueAxis.config = config.sectionOne.valueAxis
     valueAxis.numberFormatter.numberFormat = '$#a'
 
-    // SELECTED PROPERTY
+    const selectedSeries = chart.series.push(new am4charts.ColumnSeries())
+    selectedSeries.data = domVsPrice.selected
+    selectedSeries.config = config.sectionThree.selected
 
-    const selectedPropertySeries = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-    selectedPropertySeries.data = selectedProperty.priceOfListings
-    selectedPropertySeries.config = sectionFourChartConfig.selectedProperty
+    const selectedLineSeries = chart.series.push(new am4charts.StepLineSeries())
+    selectedLineSeries.data = domVsPrice.selected
+    selectedLineSeries.config = config.sectionThree.selectedLine
 
-    const selectedPropertyLineSeries = chart.series.push(
+    const comparable1Series = chart.series.push(new am4charts.ColumnSeries())
+    comparable1Series.data = domVsPrice.comparable1
+    comparable1Series.config = config.sectionThree.comparable1
+
+    const comparable1LineSeries = chart.series.push(
       new am4charts.StepLineSeries()
     )
-    selectedPropertyLineSeries.data = selectedProperty.priceOfListings
-    selectedPropertyLineSeries.config =
-      sectionFourChartConfig.selectedPropertyLineSeries
+    comparable1LineSeries.data = domVsPrice.comparable1
+    comparable1LineSeries.config = config.sectionThree.comparable1Line
 
-    // COMPARISON PROPERTY 1
+    const comparable2Series = chart.series.push(new am4charts.ColumnSeries())
+    comparable2Series.data = domVsPrice.comparable2
+    comparable2Series.config = config.sectionThree.comparable2
 
-    const comparisonProperty1Series = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-
-    comparisonProperty1Series.data = comparisonProperty1.priceOfListings
-    comparisonProperty1Series.config =
-      sectionFourChartConfig.comparisonProperty1
-
-    const comparisonProperty1LineSeries = chart.series.push(
+    const comparable2LineSeries = chart.series.push(
       new am4charts.StepLineSeries()
     )
-    comparisonProperty1LineSeries.data = comparisonProperty1.priceOfListings
-    comparisonProperty1LineSeries.config =
-      sectionFourChartConfig.comparisonProperty1LineSeries
+    comparable2LineSeries.data = domVsPrice.comparable2
+    comparable2LineSeries.config = config.sectionThree.comparable2Line
 
-    // COMPARISON PROPERTY 2
-
-    const comparisonProperty2Series = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-
-    comparisonProperty2Series.data = comparisonProperty2.priceOfListings
-    comparisonProperty2Series.config =
-      sectionFourChartConfig.comparisonProperty2
-
-    const comparisonProperty2LineSeries = chart.series.push(
-      new am4charts.StepLineSeries()
-    )
-    comparisonProperty2LineSeries.data = comparisonProperty2.priceOfListings
-    comparisonProperty2LineSeries.config =
-      sectionFourChartConfig.comparisonProperty2LineSeries
-
-    const ageOfPropertySeries = chart.series.push(new am4charts.LineSeries())
-    ageOfPropertySeries.data = [selectedProperty.priceOfListingSingle]
-    ageOfPropertySeries.dataFields.categoryX = 'category'
-    ageOfPropertySeries.dataFields.valueY = 'value'
-    const bullet = ageOfPropertySeries.bullets.push(
-      new am4charts.CircleBullet()
-    )
-    bullet.dx = -12
-    bullet.circle.radius = 10
-    bullet.circle.fill = am4core.color('#FFF')
+    const propertySeries = chart.series.push(new am4charts.LineSeries())
+    propertySeries.data = domVsPrice.property
+    propertySeries.dataFields.categoryX = 'category'
+    propertySeries.dataFields.valueY = 'average'
+    const bullet = propertySeries.bullets.push(new am4charts.CircleBullet())
+    bullet.dx = -30
+    bullet.circle.radius = 12
+    bullet.circle.fill = am4core.color(WHITE)
     bullet.circle.strokeWidth = 0
     bullet.filters.push(new am4core.DropShadowFilter())
 
     const image = bullet.createChild(am4core.Image)
     image.href = Home
-    image.width = 12
-    image.height = 12
+    image.width = 15
+    image.height = 15
     image.horizontalCenter = 'middle'
     image.verticalCenter = 'middle'
 
@@ -143,17 +94,13 @@ const DomVsPrice = () => {
   }, [])
 
   return (
-    <>
-      <ChartTitle>
-        <span>Days on Market</span>
+    <Container>
+      <ChartTitle chartTitle>
+        <span>Cost Over Time on the Market</span>
         <Legend src={legendDom} />
       </ChartTitle>
-      <ChartSubtitle>Cost Over Time on the Market</ChartSubtitle>
-      <div
-        id={domVsPriceConfig.id}
-        style={{ width: '100%', height: domVsPriceConfig.height }}
-      ></div>
-    </>
+      <div id={'domVsPriceChart'} style={{ width: '100%', height: 300 }} />
+    </Container>
   )
 }
 

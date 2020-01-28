@@ -381,5 +381,447 @@
       { "value": 50, "date": "2020-11-01T00:00:00" },
       { "value": 50, "date": "2020-12-01T00:00:00" }
     ]
+  },
+  "daysOnMarket": {
+    "info": "What can you expect over time as your property sits on the market? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
+  },
+  "ageOfProperties": {
+    "info": "How does your property’s age compare to averages across markets? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
+  },
+  "domVsPrice": {
+    "property": [
+      {
+        "category": "0-30",
+        "average": 550000
+      }
+    ],
+    "selected": [
+      {
+        "category": "0-30",
+        "high": 555000,
+        "low": 431000,
+        "average": 520000
+      },
+      {
+        "category": "31-60",
+        "high": 535000,
+        "low": 411000,
+        "average": 460000
+      },
+      {
+        "category": "61-90",
+        "high": 559000,
+        "low": 467000,
+        "average": 500000
+      },
+      {
+        "category": "91-120",
+        "high": 585000,
+        "low": 531000,
+        "average": 539000
+      },
+      {
+        "category": "121-150",
+        "high": 555000,
+        "low": 471000,
+        "average": 520000
+      },
+      {
+        "category": "150+",
+        "high": 615000,
+        "low": 481000,
+        "average": 500000
+      }
+    ],
+    "comparable1": [
+      {
+        "category": "0-30",
+        "high": 495000,
+        "low": 411000,
+        "average": 460000
+      },
+      {
+        "category": "31-60",
+        "high": 585000,
+        "low": 421000,
+        "average": 500000
+      },
+      {
+        "category": "61-90",
+        "high": 615000,
+        "low": 531000,
+        "average": 550000
+      },
+      {
+        "category": "91-120",
+        "high": 595000,
+        "low": 461000,
+        "average": 510000
+      },
+      {
+        "category": "121-150",
+        "high": 555000,
+        "low": 431000,
+        "average": 500000
+      },
+      {
+        "category": "150+",
+        "high": 535000,
+        "low": 461000,
+        "average": 480000
+      }
+    ],
+    "comparable2": [
+      {
+        "category": "0-30",
+        "high": 555000,
+        "low": 431000,
+        "average": 500000
+      },
+      {
+        "category": "31-60",
+        "high": 555000,
+        "low": 431000,
+        "average": 500000
+      },
+      {
+        "category": "61-90",
+        "high": 555000,
+        "low": 431000,
+        "average": 500000
+      },
+      {
+        "category": "91-120",
+        "high": 555000,
+        "low": 431000,
+        "average": 500000
+      },
+      {
+        "category": "121-150",
+        "high": 555000,
+        "low": 431000,
+        "average": 500000
+      },
+      {
+        "category": "150+",
+        "high": 555000,
+        "low": 431000,
+        "average": 500000
+      }
+    ]
+  },
+  "inventoryPerDom": {
+    "selected": [
+      {
+        "category": "0-30",
+        "average": 50
+      },
+      {
+        "category": "31-60",
+        "average": 40
+      },
+      {
+        "category": "61-90",
+        "average": 60
+      },
+      {
+        "category": "91-120",
+        "average": 75
+      },
+      {
+        "category": "121-150",
+        "average": 40
+      },
+      {
+        "category": "150+",
+        "average": 35
+      }
+    ],
+    "comparable1": [
+      {
+        "category": "0-30",
+        "average": 40
+      },
+      {
+        "category": "31-60",
+        "average": 60
+      },
+      {
+        "category": "61-90",
+        "average": 72
+      },
+      {
+        "category": "91-120",
+        "average": 63
+      },
+      {
+        "category": "121-150",
+        "average": 45
+      },
+      {
+        "category": "150+",
+        "average": 65
+      }
+    ],
+    "comparable2": [
+      {
+        "category": "0-30",
+        "average": 40
+      },
+      {
+        "category": "31-60",
+        "average": 30
+      },
+      {
+        "category": "61-90",
+        "average": 65
+      },
+      {
+        "category": "91-120",
+        "average": 45
+      },
+      {
+        "category": "121-150",
+        "average": 56
+      },
+      {
+        "category": "150+",
+        "average": 29
+      }
+    ]
+  },
+  "averageDomOverTime": {
+    "selected": [
+      {
+        "category": "06",
+        "average": 38
+      },
+      {
+        "category": "07",
+        "average": 30
+      },
+      {
+        "category": "08",
+        "average": 40
+      },
+      {
+        "category": "09",
+        "average": 35
+      },
+      {
+        "category": "10",
+        "average": 40
+      },
+      {
+        "category": "11",
+        "average": 30
+      },
+      {
+        "category": "12",
+        "average": 39
+      },
+      {
+        "category": "13",
+        "average": 40
+      },
+      {
+        "category": "14",
+        "average": 38
+      },
+      {
+        "category": "15",
+        "average": 50
+      },
+      {
+        "category": "16",
+        "average": 45
+      },
+      {
+        "category": "17",
+        "average": 55
+      },
+      {
+        "category": "18",
+        "average": 50
+      },
+      {
+        "category": "19",
+        "average": 55
+      }
+    ],
+    "selectedSold": [
+      {
+        "category": "06",
+        "average": 55
+      },
+      {
+        "category": "07",
+        "average": 50
+      },
+      {
+        "category": "08",
+        "average": 55
+      },
+      {
+        "category": "09",
+        "average": 50
+      },
+      {
+        "category": "10",
+        "average": 50
+      },
+      {
+        "category": "11",
+        "average": 38
+      },
+      {
+        "category": "12",
+        "average": 40
+      },
+      {
+        "category": "13",
+        "average": 38
+      },
+      {
+        "category": "14",
+        "average": 30
+      },
+      {
+        "category": "15",
+        "average": 40
+      },
+      {
+        "category": "16",
+        "average": 35
+      },
+      {
+        "category": "17",
+        "average": 40
+      },
+      {
+        "category": "18",
+        "average": 30
+      },
+      {
+        "category": "19",
+        "average": 35
+      }
+    ],
+    "comparable1": [
+      {
+        "category": "06",
+        "average": 40
+      },
+      {
+        "category": "07",
+        "average": 35
+      },
+      {
+        "category": "08",
+        "average": 30
+      },
+      {
+        "category": "09",
+        "average": 25
+      },
+      {
+        "category": "10",
+        "average": 38
+      },
+      {
+        "category": "11",
+        "average": 38
+      },
+      {
+        "category": "12",
+        "average": 30
+      },
+      {
+        "category": "13",
+        "average": 38
+      },
+      {
+        "category": "14",
+        "average": 40
+      },
+      {
+        "category": "15",
+        "average": 40
+      },
+      {
+        "category": "16",
+        "average": 41
+      },
+      {
+        "category": "17",
+        "average": 42
+      },
+      {
+        "category": "18",
+        "average": 45
+      },
+      {
+        "category": "19",
+        "average": 45
+      }
+    ],
+    "comparable2": [
+      {
+        "category": "06",
+        "average": 21
+      },
+      {
+        "category": "07",
+        "average": 25
+      },
+      {
+        "category": "08",
+        "average": 21
+      },
+      {
+        "category": "09",
+        "average": 21
+      },
+      {
+        "category": "10",
+        "average": 21
+      },
+      {
+        "category": "11",
+        "average": 30
+      },
+      {
+        "category": "12",
+        "average": 25
+      },
+      {
+        "category": "13",
+        "average": 25
+      },
+      {
+        "category": "14",
+        "average": 30
+      },
+      {
+        "category": "15",
+        "average": 25
+      },
+      {
+        "category": "16",
+        "average": 30
+      },
+      {
+        "category": "17",
+        "average": 35
+      },
+      {
+        "category": "18",
+        "average": 35
+      },
+      {
+        "category": "19",
+        "average": 36
+      }
+    ]
   }
 }

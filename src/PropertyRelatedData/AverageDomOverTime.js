@@ -1,73 +1,52 @@
 import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
-import { propertyData } from '../data/data.json'
-import config from '../config'
+import styled from 'styled-components'
+import config from '../config1'
+import { averageDomOverTime } from '../data/data1.json'
 
-const {
-  selectedProperty,
-  comparisonProperty1,
-  comparisonProperty2
-} = propertyData
-
-const {
-  averageDomOverTimeConfig,
-  sectionOneChartConfig,
-  sectionFourChartConfig,
-  sectionFiveChartConfig
-} = config
+const Container = styled.div`
+  grid-area: chart3;
+`
 
 const AverageDomOverTime = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      sectionFourChartConfig.chart,
-      averageDomOverTimeConfig.id,
+      config.sectionThree.chart,
+      'averageDomOverTimeChart',
       am4charts.XYChart
     )
-    chart.id = averageDomOverTimeConfig.id
-    chart.data = selectedProperty.averageDomOverTime
+    chart.data = averageDomOverTime.selected
 
     const label = chart.createChild(am4core.Label)
-    label.text = averageDomOverTimeConfig.title
-    label.config = sectionFourChartConfig.label
+    label.text = 'Average DOM Over Time'
+    label.config = config.sectionThree.label
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-    categoryAxis.config = sectionFiveChartConfig.categoryAxis
-
-    categoryAxis.renderer.cellStartLocation = 0.1
-    categoryAxis.renderer.cellEndLocation = 0.9
+    categoryAxis.config = config.sectionThree.categoryAxis
+    categoryAxis.startLocation = 0.5
+    categoryAxis.endLocation = 0.5
+    categoryAxis.renderer.grid.template.location = 0.5
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = sectionOneChartConfig.valueAxis
+    valueAxis.config = config.sectionOne.valueAxis
     valueAxis.min = 0
 
-    // SELECTED PROPERTY
+    const selectedSeries = chart.series.push(new am4charts.LineSeries())
+    selectedSeries.data = averageDomOverTime.selected
+    selectedSeries.config = config.sectionThree.selectedLine
 
-    const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
-    selectedPropertySeries.data = selectedProperty.averageDomOverTime
-    selectedPropertySeries.config = sectionFiveChartConfig.selectedProperty
-    selectedPropertySeries.strokeWidth = 3
+    const comparable1Series = chart.series.push(new am4charts.LineSeries())
+    comparable1Series.data = averageDomOverTime.comparable1
+    comparable1Series.config = config.sectionThree.comparable1Line
 
-    const comparisonProperty1Series = chart.series.push(
-      new am4charts.LineSeries()
-    )
-    comparisonProperty1Series.data = comparisonProperty1.averageDomOverTime
-    comparisonProperty1Series.config =
-      sectionFiveChartConfig.comparisonProperty1
-    comparisonProperty1Series.strokeWidth = 3
+    const comparable2Series = chart.series.push(new am4charts.LineSeries())
+    comparable2Series.data = averageDomOverTime.comparable2
+    comparable2Series.config = config.sectionThree.comparable2Line
 
-    const comparisonProperty2Series = chart.series.push(
-      new am4charts.LineSeries()
-    )
-    comparisonProperty2Series.data = comparisonProperty2.averageDomOverTime
-    comparisonProperty2Series.config =
-      sectionFiveChartConfig.comparisonProperty2
-    comparisonProperty2Series.strokeWidth = 3
-
-    const soldPropertySeries = chart.series.push(new am4charts.LineSeries())
-    soldPropertySeries.data = selectedProperty.soldProperty.averageDomOverTime
-    soldPropertySeries.config = sectionFiveChartConfig.soldProperty
-    soldPropertySeries.strokeWidth = 3
+    const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
+    selectedSoldSeries.data = averageDomOverTime.selectedSold
+    selectedSoldSeries.config = config.sectionThree.selectedSold
 
     return () => {
       chart.dispose()
@@ -75,12 +54,10 @@ const AverageDomOverTime = () => {
   }, [])
 
   return (
-    <>
-      <div
-        id={averageDomOverTimeConfig.id}
-        style={{ width: '100%', height: averageDomOverTimeConfig.height }}
-      ></div>
-    </>
+    <Container
+      id={'averageDomOverTimeChart'}
+      style={{ width: '100%', height: 200 }}
+    />
   )
 }
 
