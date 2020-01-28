@@ -28,11 +28,12 @@ const Container = styled.div`
     'info info info info chart3 chart3 chart3 chart3 chart3 chart3 chart3 chart3'
     'chart4 chart4 chart4 chart4 chart4 chart4 chart5 chart5 chart5 chart5 chart5 chart5';
   padding: 10px 50px;
-  grid-row-gap: 25px;
+  grid-column-gap: 10px;
 `
 
 const SubTitle = styled(Text)`
   grid-area: subtitle;
+  margin-bottom: 30px;
 `
 
 const ColumnContainer = styled.div`
@@ -82,20 +83,20 @@ const PropertyRelatedData = () => (
       <SubTitle subSection>How Your Market Stacks Up Against the Rest</SubTitle>
       <InfoArea />
       <MedianPrices />
+      <AvgSaleToListRatio />
+      <Inventory />
+      <AvgHpiByBeds />
+      <AvgHpiBySqFt />
       {/* <ColumnContainer>
       <ColumnChartContainer>
-        <AvgSaleToListRatio />
-        <Inventory />
       </ColumnChartContainer>
       <RowChartContainer>
         <RowChartDialContainer>
           <MarketStrength />
         </RowChartDialContainer>
         <RowChartLineContainer>
-          <AvgHpiByBeds />
         </RowChartLineContainer>
         <RowChartLineContainer>
-          <AvgHpiBySqFt />
         </RowChartLineContainer>
       </RowChartContainer>
       <MarketContainer>

@@ -9,13 +9,6 @@ import { medianPrices } from '../data/data1.json'
 const Container = styled.div`
   grid-area: chart1;
 `
-
-const ChartTitle = styled(Text)`
-  margin-left: 60px;
-  margin-right: 15px;
-  border-bottom: 1px solid;
-`
-
 const MedianPrices = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
@@ -62,7 +55,7 @@ const MedianPrices = () => {
 
   return (
     <Container>
-      <ChartTitle chartTitle>Median Prices of Active Listings</ChartTitle>
+      <Text chartTitle>Median Prices of Active Listings</Text>
       <div id={'medianPricesChart'} style={{ width: '100%', height: 300 }} />
     </Container>
   )

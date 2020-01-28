@@ -1,58 +1,60 @@
 import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
-import { propertyData } from '../data/data.json'
-import config from '../config'
-const { selectedProperty } = propertyData
+import styled from 'styled-components'
+import config from '../config1'
+import { avgHpiBySqFt, propertyInfo } from '../data/data1.json'
+import { DESERT_STORM } from '../colors'
 
-const { avgHpiBySqFtConfig, sectionTwoChartConfig } = config
-
+const Container = styled.div`
+  grid-area: chart5;
+  background: ${DESERT_STORM};
+`
 const AvgHpiBySqFt = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      sectionTwoChartConfig.chart,
-      avgHpiBySqFtConfig.id,
+      config.sectionTwo.chart,
+      'avgHpiBySqFtChart',
       am4charts.XYChart
     )
-    chart.id = avgHpiBySqFtConfig.id
 
     chart.legend = new am4charts.Legend()
     chart.legend.parent = chart.tooltipContainer
-    chart.legend.config = sectionTwoChartConfig.legendConfig
+    chart.legend.config = config.sectionTwo.legendConfig
     chart.legend.labels.template.marginLeft = -50
     chart.legend.markers.template.dx = -7
     chart.legend.markers.template.width = 40
 
     const label = chart.createChild(am4core.Label)
-    label.config = sectionTwoChartConfig.label
-    label.text = `Avg ${selectedProperty.label} HPI by Sq Ft`
+    label.config = config.sectionTwo.label
+    label.text = `Avg ${propertyInfo.selected} HPI by Sq Ft`
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
-    dateAxis.config = sectionTwoChartConfig.dateAxis
+    dateAxis.config = config.sectionTwo.dateAxis
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = sectionTwoChartConfig.valueAxis
+    valueAxis.config = config.sectionTwo.valueAxis
     valueAxis.min = 0
 
     const series1 = chart.series.push(new am4charts.LineSeries())
     series1.name = '2.5-3k'
-    series1.data = selectedProperty.avgHpiBySqFt.sqFt1
-    series1.config = sectionTwoChartConfig.series1
+    series1.data = avgHpiBySqFt.sqFt1
+    series1.config = config.sectionTwo.series1
 
     const series2 = chart.series.push(new am4charts.LineSeries())
     series2.name = '3-3.5k'
-    series2.data = selectedProperty.avgHpiBySqFt.sqFt2
-    series2.config = sectionTwoChartConfig.series2
+    series2.data = avgHpiBySqFt.sqFt2
+    series2.config = config.sectionTwo.series2
 
     const series3 = chart.series.push(new am4charts.LineSeries())
     series3.name = '3.5-4k'
-    series3.data = selectedProperty.avgHpiBySqFt.sqFt3
-    series3.config = sectionTwoChartConfig.series3
+    series3.data = avgHpiBySqFt.sqFt3
+    series3.config = config.sectionTwo.series3
 
     const series4 = chart.series.push(new am4charts.LineSeries())
     series4.name = '4.5-5k'
-    series4.data = selectedProperty.avgHpiBySqFt.sqFt4
-    series4.config = sectionTwoChartConfig.series4
+    series4.data = avgHpiBySqFt.sqFt4
+    series4.config = config.sectionTwo.series4
 
     return () => {
       chart.dispose()
@@ -60,12 +62,10 @@ const AvgHpiBySqFt = () => {
   }, [])
 
   return (
-    <>
-      <div
-        id={avgHpiBySqFtConfig.id}
-        style={{ width: '100%', height: avgHpiBySqFtConfig.height }}
-      ></div>
-    </>
+    <Container
+      id={'avgHpiBySqFtChart'}
+      style={{ width: '100%', height: 300 }}
+    />
   )
 }
 

@@ -9,11 +9,16 @@ const Title = styled.div`
       ? '45px'
       : props.subSection
       ? '30px'
-      : props.chartTitle
+      : props.value || props.chartTitle
       ? '20px'
       : 'initial'};
   font-weight: ${props =>
-    props.section || props.subSection || props.chartTitle ? 'bold' : 'initial'};
+    props.section || props.subSection || props.value || props.chartTitle
+      ? 'bold'
+      : 'initial'};
+  margin-left: ${props => (props.chartTitle ? '50px' : 'initial')};
+  margin-right: ${props => (props.chartTitle ? '15px' : 'initial')};
+  border-bottom: ${props => (props.chartTitle ? '1px solid' : 'initial')};
 `
 
 const Text = ({ children, ...props }) => {

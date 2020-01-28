@@ -135,7 +135,7 @@ const InfoArea = () => {
             {stats.city}, {stats.state} {stats.zip}
           </div>
         </div>
-        <Text chartTitle>{numeral(stats.price).format('$0a')}</Text>
+        <Text value>{numeral(stats.price).format('$0a')}</Text>
       </AddressBox>
       <Table
         className="stat-table"
