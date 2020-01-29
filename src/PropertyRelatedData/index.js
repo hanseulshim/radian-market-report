@@ -62,19 +62,19 @@ const PropertyRelatedData = () => (
       <SubTitle subSection>How Your Market Stacks Up Against the Rest</SubTitle>
       <PageOneInfo />
       <MedianPrices />
-      <AvgSaleToListRatio />
+      {/* <AvgSaleToListRatio />
       <Inventory />
       <AvgHpiByBeds />
-      <AvgHpiBySqFt />
+      <AvgHpiBySqFt /> */}
     </PageOne>
-    <PageTwo>
+    {/* <PageTwo>
       <Header section="Property Related Data" />
       <SubTitle subSection>How Your Market Stacks Up Against the Rest</SubTitle>
       <PageTwoInfo />
       <DomVsPrice />
       <InventoryPerDom />
       <AverageDomOverTime />
-    </PageTwo>
+    </PageTwo> */}
     {/* <ColumnContainer>
       <ColumnChartContainer>
       </ColumnChartContainer>

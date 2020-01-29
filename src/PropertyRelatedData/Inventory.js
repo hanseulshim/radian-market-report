@@ -5,10 +5,21 @@ import styled from 'styled-components'
 import Text from '../common/Text'
 import config from '../config1'
 import { inventory } from '../data/data1.json'
+import LegendSold from '../assets/legendSold.svg'
 
 const Container = styled.div`
   grid-area: chart3;
 `
+const Legend = styled.img`
+  width: 25px;
+  margin-right: 5px;
+`
+
+const LegendText = styled.div`
+  font-size: 14px;
+  font-weight: normal;
+`
+
 const Inventory = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
@@ -55,7 +66,12 @@ const Inventory = () => {
 
   return (
     <Container>
-      <Text chartTitle>Inventory</Text>
+      <Text chartTitle>
+        <span>Inventory</span>
+        <LegendText>
+          <Legend src={LegendSold} /> Sold
+        </LegendText>
+      </Text>
       <div id={'inventoryChart'} style={{ width: '100%', height: 200 }} />
     </Container>
   )

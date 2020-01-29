@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { propertyInfo } from '../data/data1.json'
 import { BLACK, DESERT_STORM, NEPTUNE, AZURE, WHITE } from '../colors'
-import LegendSold from '../assets/legendSold.svg'
 import Text from './Text'
 
 const Container = styled.div`
@@ -47,11 +46,6 @@ const Row = styled.div`
   color: ${props => (props.selected || props.comparable1 ? WHITE : BLACK)};
 `
 
-const Legend = styled.img`
-  width: 25px;
-  margin-right: 10px;
-`
-
 const Header = ({ section }) => {
   return (
     <Container>
@@ -69,10 +63,6 @@ const Header = ({ section }) => {
         <Row comparable2>
           <span>Comparable 2</span>
           <span>{propertyInfo.comparable2}</span>
-        </Row>
-        <Row>
-          <Legend src={LegendSold} />
-          <span>Sold Properties: Properties sold last 1 month</span>
         </Row>
       </Chart>
     </Container>

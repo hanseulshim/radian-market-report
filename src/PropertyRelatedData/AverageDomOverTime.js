@@ -4,6 +4,12 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 import styled from 'styled-components'
 import config from '../config1'
 import { averageDomOverTime } from '../data/data1.json'
+import Text from '../common/Text'
+import legendDom from '../assets/legendDom.svg'
+
+const Legend = styled.img`
+  height: 25px;
+`
 
 const Container = styled.div`
   grid-area: chart3;
@@ -17,10 +23,6 @@ const AverageDomOverTime = () => {
       am4charts.XYChart
     )
     chart.data = averageDomOverTime.selected
-
-    const label = chart.createChild(am4core.Label)
-    label.text = 'Average DOM Over Time'
-    label.config = config.sectionThree.label
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.sectionThree.categoryAxis
@@ -54,10 +56,16 @@ const AverageDomOverTime = () => {
   }, [])
 
   return (
-    <Container
-      id={'averageDomOverTimeChart'}
-      style={{ width: '100%', height: 200 }}
-    />
+    <Container>
+      <Text subChartTitle>
+        <span>Average DOM Over Time</span>
+        <Legend src={legendDom} />
+      </Text>
+      <div
+        id={'averageDomOverTimeChart'}
+        style={{ width: '100%', height: 200 }}
+      />
+    </Container>
   )
 }
 

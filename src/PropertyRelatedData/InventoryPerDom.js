@@ -3,6 +3,7 @@ import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import styled from 'styled-components'
 import config from '../config1'
+import Text from '../common/Text'
 import { inventoryPerDom } from '../data/data1.json'
 
 const Container = styled.div`
@@ -17,10 +18,6 @@ const InventoryPerDom = () => {
       am4charts.XYChart
     )
     chart.data = inventoryPerDom.selected
-
-    const label = chart.createChild(am4core.Label)
-    label.text = 'Inventory of Listings per DOM'
-    label.config = config.sectionThree.label
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.sectionThree.categoryAxis
@@ -48,10 +45,13 @@ const InventoryPerDom = () => {
   }, [])
 
   return (
-    <Container
-      id={'inventoryPerDomChart'}
-      style={{ width: '100%', height: 200 }}
-    />
+    <Container>
+      <Text subChartTitle>Inventory of Listings per DOM</Text>
+      <div
+        id={'inventoryPerDomChart'}
+        style={{ width: '100%', height: 200 }}
+      ></div>
+    </Container>
   )
 }
 

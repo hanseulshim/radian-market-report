@@ -3,17 +3,12 @@ import styled from 'styled-components'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import config from '../config1'
-import Text from '../common/Text'
 import { WHITE } from '../colors'
 import { domVsPrice } from '../data/data1.json'
+import Text from '../common/Text'
 import legendDom from '../assets/legendDom.svg'
 import Home from '../assets/home.svg'
 
-const ChartTitle = styled(Text)`
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-`
 const Legend = styled.img`
   height: 25px;
 `
@@ -25,15 +20,11 @@ const Container = styled.div`
 const DomVsPrice = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      config.sectionThree.chart,
+      config.sectionOne.chart,
       'domVsPriceChart',
       am4charts.XYChart
     )
     chart.data = domVsPrice.selected
-
-    const label = chart.createChild(am4core.Label)
-    label.text = 'DOM vs Price of Listings'
-    label.config = config.sectionThree.label
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.sectionThree.categoryAxis
@@ -95,10 +86,11 @@ const DomVsPrice = () => {
 
   return (
     <Container>
-      <ChartTitle chartTitle>
-        <span>Cost Over Time on the Market</span>
+      <Text chartTitle>Cost Over Time on the Market</Text>
+      <Text subChartTitle>
+        <span>DOM vs Price of Listings</span>
         <Legend src={legendDom} />
-      </ChartTitle>
+      </Text>
       <div id={'domVsPriceChart'} style={{ width: '100%', height: 300 }} />
     </Container>
   )
