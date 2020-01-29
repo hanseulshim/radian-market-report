@@ -1,11 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
-import Title from '../common/Title'
+import Header from '../common/Header'
 import Summary from './Summary'
 import MapContainer from './MapContainer'
-import config from '../config'
-
-const { GALLERY } = config.colors
+import { GALLERY } from '../colors'
 
 const ColumnContainer = styled.div`
   display: flex;
@@ -32,7 +30,7 @@ const Column = styled.div`
 
 const DemographicData = () => (
   <>
-    <Title section="Demographic Data" />
+    <Header section="Demographic Data" />
     <ColumnContainer>
       <SectionOneContainer>
         <Summary />

@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import config from '../config'
 import { demographicData } from '../data/data.json'
 import { getAverage } from '../helper'
 import numeral from 'numeral'
@@ -8,13 +7,13 @@ import car from '../assets/car.svg'
 import train from '../assets/train.svg'
 import bike from '../assets/bike.svg'
 
+import { WILD_SAND } from '../colors'
+
 const {
   selectedProperty,
   comparisonProperty1,
   comparisonProperty2
 } = demographicData
-
-const { WILD_SAND } = config.colors
 
 const Container = styled.div`
   display: flex;

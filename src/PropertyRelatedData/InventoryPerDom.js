@@ -1,66 +1,41 @@
 import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
-import { propertyData } from '../data/data.json'
-import config from '../config'
+import styled from 'styled-components'
+import config from '../config1'
+import Text from '../common/Text'
+import { inventoryPerDom } from '../data/data1.json'
 
-const {
-  selectedProperty,
-  comparisonProperty1,
-  comparisonProperty2
-} = propertyData
-
-const {
-  inventoryPerDomConfig,
-  sectionOneChartConfig,
-  sectionFourChartConfig,
-  sectionFiveChartConfig
-} = config
+const Container = styled.div`
+  grid-area: chart2;
+`
 
 const InventoryPerDom = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      sectionFourChartConfig.chart,
-      inventoryPerDomConfig.id,
+      config.chart(),
+      'inventoryPerDomChart',
       am4charts.XYChart
     )
-    chart.id = inventoryPerDomConfig.id
-    chart.data = selectedProperty.inventoryListings
-
-    const label = chart.createChild(am4core.Label)
-    label.text = inventoryPerDomConfig.title
-    label.config = sectionFourChartConfig.label
+    chart.data = inventoryPerDom.selected
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-    categoryAxis.config = sectionFourChartConfig.categoryAxis
-
-    categoryAxis.renderer.cellStartLocation = 0.1
-    categoryAxis.renderer.cellEndLocation = 0.9
+    categoryAxis.config = config.categoryAxis()
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = sectionOneChartConfig.valueAxis
+    valueAxis.config = config.valueAxis('min')
 
-    // SELECTED PROPERTY
+    const selectedSeries = chart.series.push(new am4charts.ColumnSeries())
+    selectedSeries.data = inventoryPerDom.selected
+    selectedSeries.config = config.line('selected', 'column', 'category')
 
-    const selectedPropertySeries = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-    selectedPropertySeries.data = selectedProperty.inventoryListings
-    selectedPropertySeries.config = sectionFiveChartConfig.selectedProperty
+    const comparable1Series = chart.series.push(new am4charts.ColumnSeries())
+    comparable1Series.data = inventoryPerDom.comparable1
+    comparable1Series.config = config.line('comparable1', 'column', 'category')
 
-    const comparisonProperty1Series = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-    comparisonProperty1Series.data = comparisonProperty1.inventoryListings
-    comparisonProperty1Series.config =
-      sectionFiveChartConfig.comparisonProperty1
-
-    const comparisonProperty2Series = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-    comparisonProperty2Series.data = comparisonProperty2.inventoryListings
-    comparisonProperty2Series.config =
-      sectionFiveChartConfig.comparisonProperty2
+    const comparable2Series = chart.series.push(new am4charts.ColumnSeries())
+    comparable2Series.data = inventoryPerDom.comparable2
+    comparable2Series.config = config.line('comparable2', 'column', 'category')
 
     return () => {
       chart.dispose()
@@ -68,12 +43,13 @@ const InventoryPerDom = () => {
   }, [])
 
   return (
-    <>
+    <Container>
+      <Text subChartTitle>Inventory of Listings per DOM</Text>
       <div
-        id={inventoryPerDomConfig.id}
-        style={{ width: '100%', height: inventoryPerDomConfig.height }}
+        id={'inventoryPerDomChart'}
+        style={{ width: '100%', height: 200 }}
       ></div>
-    </>
+    </Container>
   )
 }
 
