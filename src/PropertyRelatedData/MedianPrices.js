@@ -33,32 +33,31 @@ const MedianPrices = () => {
     dateAxis.config = config.dateAxis()
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    console.log(config.valueAxis('price'))
     valueAxis.config = config.valueAxis('price')
 
     const selectedSeries = chart.series.push(new am4charts.LineSeries())
     selectedSeries.data = medianPrices.selected
-    selectedSeries.config = config.line()
+    selectedSeries.config = config.line('selected', 'filled')
 
-    // const comparable1Series = chart.series.push(new am4charts.LineSeries())
-    // comparable1Series.data = medianPrices.comparable1
-    // comparable1Series.config = config.comparable1()
+    const comparable1Series = chart.series.push(new am4charts.LineSeries())
+    comparable1Series.data = medianPrices.comparable1
+    comparable1Series.config = config.line('comparable1')
 
-    // const comparable2Series = chart.series.push(new am4charts.LineSeries())
-    // comparable2Series.data = medianPrices.comparable2
-    // comparable2Series.config = config.comparable2()
+    const comparable2Series = chart.series.push(new am4charts.LineSeries())
+    comparable2Series.data = medianPrices.comparable2
+    comparable2Series.config = config.line('comparable2')
 
-    // const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
-    // selectedSoldSeries.data = medianPrices.selectedSold
-    // selectedSoldSeries.config = config.selectedSold()
+    const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
+    selectedSoldSeries.data = medianPrices.selectedSold
+    selectedSoldSeries.config = config.line('selected', 'dash')
 
-    // const comparable1SoldSeries = chart.series.push(new am4charts.LineSeries())
-    // comparable1SoldSeries.data = medianPrices.comparable1Sold
-    // comparable1SoldSeries.config = config.comparable1Sold()
+    const comparable1SoldSeries = chart.series.push(new am4charts.LineSeries())
+    comparable1SoldSeries.data = medianPrices.comparable1Sold
+    comparable1SoldSeries.config = config.line('comparable1', 'dash')
 
-    // const comparable2SoldSeries = chart.series.push(new am4charts.LineSeries())
-    // comparable2SoldSeries.data = medianPrices.comparable2Sold
-    // comparable2SoldSeries.config = config.comparable2Sold()
+    const comparable2SoldSeries = chart.series.push(new am4charts.LineSeries())
+    comparable2SoldSeries.data = medianPrices.comparable2Sold
+    comparable2SoldSeries.config = config.line('comparable2', 'dash')
 
     return () => {
       chart.dispose()

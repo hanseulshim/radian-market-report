@@ -6,19 +6,15 @@ import PageOneInfo from './PageOneInfo'
 import MedianPrices from './MedianPrices'
 import AvgSaleToListRatio from './AvgSaleToListRatio'
 import Inventory from './Inventory'
-import MarketStrength from './MarketStrength'
 import AvgHpiByBeds from './AvgHpiByBeds'
 import AvgHpiBySqFt from './AvgHpiBySqFt'
 
 import PageTwoInfo from './PageTwoInfo'
 
-import AgeOfProperties from './AgeOfProperties'
-import config from '../config'
 import DomVsPrice from './DomVsPrice'
 import InventoryPerDom from './InventoryPerDom'
 import AverageDomOverTime from './AverageDomOverTime'
-
-import { GALLERY } from '../colors'
+// import AgeOfProperties from './AgeOfProperties'
 
 const PageOne = styled.div`
   display: grid;
@@ -62,19 +58,19 @@ const PropertyRelatedData = () => (
       <SubTitle subSection>How Your Market Stacks Up Against the Rest</SubTitle>
       <PageOneInfo />
       <MedianPrices />
-      {/* <AvgSaleToListRatio />
+      <AvgSaleToListRatio />
       <Inventory />
       <AvgHpiByBeds />
-      <AvgHpiBySqFt /> */}
+      <AvgHpiBySqFt />
     </PageOne>
-    {/* <PageTwo>
+    <PageTwo>
       <Header section="Property Related Data" />
       <SubTitle subSection>How Your Market Stacks Up Against the Rest</SubTitle>
       <PageTwoInfo />
       <DomVsPrice />
       <InventoryPerDom />
       <AverageDomOverTime />
-    </PageTwo> */}
+    </PageTwo>
     {/* <ColumnContainer>
       <ColumnChartContainer>
       </ColumnChartContainer>

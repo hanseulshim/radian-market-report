@@ -5,10 +5,10 @@ import styled from 'styled-components'
 import config from '../config1'
 import { averageDomOverTime } from '../data/data1.json'
 import Text from '../common/Text'
-import legendDom from '../assets/legendDom.svg'
+import AvgDOMOverTime from '../assets/AvgDOMOverTime.svg'
 
 const Legend = styled.img`
-  height: 25px;
+  height: 10px;
 `
 
 const Container = styled.div`
@@ -18,37 +18,33 @@ const Container = styled.div`
 const AverageDomOverTime = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      config.sectionThree.chart,
+      config.chart(),
       'averageDomOverTimeChart',
       am4charts.XYChart
     )
     chart.data = averageDomOverTime.selected
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-    categoryAxis.config = config.sectionThree.categoryAxis
-    categoryAxis.startLocation = 0.5
-    categoryAxis.endLocation = 0.5
-    categoryAxis.renderer.grid.template.location = 0.5
+    categoryAxis.config = config.categoryAxis('line')
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = config.sectionOne.valueAxis
-    valueAxis.min = 0
+    valueAxis.config = config.valueAxis('min')
 
     const selectedSeries = chart.series.push(new am4charts.LineSeries())
     selectedSeries.data = averageDomOverTime.selected
-    selectedSeries.config = config.sectionThree.selectedLine
+    selectedSeries.config = config.line('selected', null, 'category')
 
     const comparable1Series = chart.series.push(new am4charts.LineSeries())
     comparable1Series.data = averageDomOverTime.comparable1
-    comparable1Series.config = config.sectionThree.comparable1Line
+    comparable1Series.config = config.line('comparable1', null, 'category')
 
     const comparable2Series = chart.series.push(new am4charts.LineSeries())
     comparable2Series.data = averageDomOverTime.comparable2
-    comparable2Series.config = config.sectionThree.comparable2Line
+    comparable2Series.config = config.line('comparable2', null, 'category')
 
     const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
     selectedSoldSeries.data = averageDomOverTime.selectedSold
-    selectedSoldSeries.config = config.sectionThree.selectedSold
+    selectedSoldSeries.config = config.line('selectedSold', 'dash', 'category')
 
     return () => {
       chart.dispose()
@@ -59,7 +55,7 @@ const AverageDomOverTime = () => {
     <Container>
       <Text subChartTitle>
         <span>Average DOM Over Time</span>
-        <Legend src={legendDom} />
+        <Legend src={AvgDOMOverTime} />
       </Text>
       <div
         id={'averageDomOverTimeChart'}

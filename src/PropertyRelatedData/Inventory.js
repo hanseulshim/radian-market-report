@@ -23,41 +23,40 @@ const LegendText = styled.div`
 const Inventory = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      config.sectionOne.chart,
+      config.chart(),
       'inventoryChart',
       am4charts.XYChart
     )
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
-    dateAxis.config = config.sectionOne.dateAxis
+    dateAxis.config = config.dateAxis()
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = config.sectionOne.valueAxis
-    valueAxis.min = 0
+    valueAxis.config = config.valueAxis('min')
 
     const selectedSeries = chart.series.push(new am4charts.LineSeries())
     selectedSeries.data = inventory.selected
-    selectedSeries.config = config.sectionOne.selected
+    selectedSeries.config = config.line('selected', 'filled')
 
     const comparable1Series = chart.series.push(new am4charts.LineSeries())
     comparable1Series.data = inventory.comparable1
-    comparable1Series.config = config.sectionOne.comparable1
+    comparable1Series.config = config.line('comparable1')
 
     const comparable2Series = chart.series.push(new am4charts.LineSeries())
     comparable2Series.data = inventory.comparable2
-    comparable2Series.config = config.sectionOne.comparable2
+    comparable2Series.config = config.line('comparable2')
 
     const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
     selectedSoldSeries.data = inventory.selectedSold
-    selectedSoldSeries.config = config.sectionOne.selectedSold
+    selectedSoldSeries.config = config.line('selected', 'dash')
 
     const comparable1SoldSeries = chart.series.push(new am4charts.LineSeries())
     comparable1SoldSeries.data = inventory.comparable1Sold
-    comparable1SoldSeries.config = config.sectionOne.comparable1Sold
+    comparable1SoldSeries.config = config.line('comparable1', 'dash')
 
     const comparable2SoldSeries = chart.series.push(new am4charts.LineSeries())
     comparable2SoldSeries.data = inventory.comparable2Sold
-    comparable2SoldSeries.config = config.sectionOne.comparable2Sold
+    comparable2SoldSeries.config = config.line('comparable2', 'dash')
 
     return () => {
       chart.dispose()

@@ -12,16 +12,16 @@ const Container = styled.div`
 const AvgSaleToListRatio = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      config.sectionOne.chart,
+      config.chart(),
       'avgSaleToListRatioChart',
       am4charts.XYChart
     )
 
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
-    dateAxis.config = config.sectionOne.dateAxis
+    dateAxis.config = config.dateAxis()
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = config.sectionOne.valueAxis
+    valueAxis.config = config.valueAxis()
     valueAxis.numberFormatter.numberFormat = '#%'
     const range = valueAxis.axisRanges.create()
     range.value = 0
@@ -30,17 +30,15 @@ const AvgSaleToListRatio = () => {
 
     const selectedSeries = chart.series.push(new am4charts.ColumnSeries())
     selectedSeries.data = avgSaleToListRatio.selected
-    selectedSeries.config = config.sectionOne.selected
-    selectedSeries.strokeWidth = 0
-    selectedSeries.fillOpacity = 1
+    selectedSeries.config = config.line('selected', 'column')
 
     const comparable1Series = chart.series.push(new am4charts.LineSeries())
     comparable1Series.data = avgSaleToListRatio.comparable1
-    comparable1Series.config = config.sectionOne.comparable1
+    comparable1Series.config = config.line('comparable1')
 
     const comparable2Series = chart.series.push(new am4charts.LineSeries())
     comparable2Series.data = avgSaleToListRatio.comparable2
-    comparable2Series.config = config.sectionOne.comparable2
+    comparable2Series.config = config.line('comparable2')
 
     return () => {
       chart.dispose()

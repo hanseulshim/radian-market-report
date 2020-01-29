@@ -59,7 +59,7 @@ const MarketStrength = () => {
 
     const label = chart.createChild(am4core.Label)
     label.text = 'Market Strength'
-    label.config = config.label
+    label.config = config.label()
     label.horizontalCenter = 'middle'
     label.x = '50%'
     label.y = label.y - 5
