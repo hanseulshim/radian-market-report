@@ -65,7 +65,7 @@ const categoryAxis = (type) => ({
     category: 'category'
   },
   startLocation: type === 'line' ? 0.5 : 0,
-  endLocation: type === 'line' ? 0.5 : 0,
+  endLocation: type === 'line' ? 0.5 : 1,
   renderer: {
     minGridDistance: 10,
     cellStartLocation: 0.1,
