@@ -2,163 +2,99 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
-import { propertyData } from '../data/data.json'
+import config from '../config1'
+import { ageOfProperties } from '../data/data1.json'
+import Text from '../common/Text'
+import legendDom from '../assets/legendDom.svg'
 import Home from '../assets/home.svg'
-import legendAge from '../assets/legendAge.svg'
-import config from '../config'
+import { WHITE } from '../colors'
 
-const {
-  ageOfPropertiesConfig,
-  sectionOneChartConfig,
-  sectionThreeChartConfig
-} = config
-
-const {
-  stats,
-  selectedProperty,
-  comparisonProperty1,
-  comparisonProperty2
-} = propertyData
+const Legend = styled.img`
+  height: 30px;
+`
 
 const Container = styled.div`
-  flex: 3;
-  display: flex;
-  flex-direction: column;
-`
-
-const Info = styled.div`
-  margin-top: 25px;
-`
-
-const Title = styled.div`
-  font-weight: bold;
-`
-
-const ChartTitle = styled.div`
-  font-weight: bold;
-  font-size: 150%;
-  margin-left: 20px;
-  margin-right: 15px
-  margin-bottom: 10px;
-  margin-top: 30px;
-  border-bottom: 1px solid #000;
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-`
-const Legend = styled.img`
-  height: 40px;
-  margin-bottom: 5px;
+  grid-area: chart4;
 `
 
 const AgeOfProperties = () => {
   useEffect(() => {
     const chart = am4core.createFromConfig(
-      sectionThreeChartConfig.chart,
-      ageOfPropertiesConfig.id,
+      config.chart('age'),
+      'ageOfPropertiesChart',
       am4charts.XYChart
     )
 
-    chart.id = ageOfPropertiesConfig.id
-    chart.maskBullets = false
-
-    const yLabel = chart.createChild(am4core.Label)
-    yLabel.text = 'Count'
-    yLabel.config = sectionOneChartConfig.label
-    yLabel.x = 30
-    yLabel.fontSize = 12
-
-    const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
-    dateAxis.config = sectionOneChartConfig.dateAxis
-    dateAxis.title.text = 'Year Built'
-    dateAxis.title.fontWeight = 'bold'
-
-    const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = sectionThreeChartConfig.valueAxis
-    valueAxis.min = 0
-
-    const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
-    selectedPropertySeries.data = selectedProperty.ageOfProperties
-    selectedPropertySeries.config = sectionOneChartConfig.selectedProperty
-    selectedPropertySeries.tensionX = 0.75
-    selectedPropertySeries.tensionY = 0.75
-
-    const selectedPropertySeriesAvg = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-    selectedPropertySeriesAvg.data = selectedProperty.ageOfPropertiesAvg
-    selectedPropertySeriesAvg.config =
-      sectionThreeChartConfig.selectedPropertySeriesAvg
-
-    const comparisonProperty1Series = chart.series.push(
-      new am4charts.LineSeries()
-    )
-    comparisonProperty1Series.data = comparisonProperty1.ageOfProperties
-    comparisonProperty1Series.config = sectionOneChartConfig.comparisonProperty1
-    comparisonProperty1Series.tensionX = 0.75
-    comparisonProperty1Series.tensionY = 0.75
-
-    const comparisonProperty1SeriesAvg = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-    comparisonProperty1SeriesAvg.data = comparisonProperty1.ageOfPropertiesAvg
-    comparisonProperty1SeriesAvg.config =
-      sectionThreeChartConfig.comparisonProperty1SeriesAvg
-
-    const comparisonProperty2Series = chart.series.push(
-      new am4charts.LineSeries()
-    )
-    comparisonProperty2Series.data = comparisonProperty2.ageOfProperties
-    comparisonProperty2Series.config = sectionOneChartConfig.comparisonProperty2
-    comparisonProperty2Series.tensionX = 0.75
-    comparisonProperty2Series.tensionY = 0.75
-
-    const comparisonProperty2SeriesAvg = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-    comparisonProperty2SeriesAvg.data = comparisonProperty2.ageOfPropertiesAvg
-    comparisonProperty2SeriesAvg.config =
-      sectionThreeChartConfig.comparisonProperty2SeriesAvg
-
-    const soldPropertySeries = chart.series.push(new am4charts.LineSeries())
-    soldPropertySeries.data = selectedProperty.soldProperty.ageOfProperties
-    soldPropertySeries.config = sectionOneChartConfig.soldProperty
-    soldPropertySeries.tensionX = 0.75
-    soldPropertySeries.tensionY = 0.75
-
-    const soldPropertySeriesAvg = chart.series.push(
-      new am4charts.ColumnSeries()
-    )
-    soldPropertySeriesAvg.data =
-      selectedProperty.soldProperty.ageOfPropertiesAvg
-    soldPropertySeriesAvg.config = sectionThreeChartConfig.soldPropertySeriesAvg
-
     const max = Math.max(
       ...[
-        ...selectedProperty.ageOfProperties,
-        ...comparisonProperty1.ageOfProperties,
-        ...comparisonProperty2.ageOfProperties,
-        ...selectedProperty.soldProperty.ageOfProperties
+        ...ageOfProperties.selected,
+        ...ageOfProperties.comparable1,
+        ...ageOfProperties.comparable2,
+        ...ageOfProperties.selectedSold
       ].map(v => v.value)
     )
 
+    const yLabel = chart.createChild(am4core.Label)
+    yLabel.text = 'Count'
+    yLabel.config = config.label('age')
+
+    const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
+    dateAxis.config = config.dateAxis('age')
+    dateAxis.title.text = 'Year Built'
+
+    const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+    valueAxis.config = config.valueAxis('min')
+    valueAxis.max = max + 10
+
+    const selectedSeries = chart.series.push(new am4charts.LineSeries())
+    selectedSeries.data = ageOfProperties.selected
+    selectedSeries.config = config.line('selected', 'filled', 'curved')
+
+    const selectedAvgSeries = chart.series.push(new am4charts.ColumnSeries())
+    selectedAvgSeries.data = ageOfProperties.selectedAvg
+    selectedAvgSeries.config = config.line('selected', 'column', 'bullet')
+
+    const comparable1Series = chart.series.push(new am4charts.LineSeries())
+    comparable1Series.data = ageOfProperties.comparable1
+    comparable1Series.config = config.line('comparable1', null, 'curved')
+
+    const comparable1AvgSeries = chart.series.push(new am4charts.ColumnSeries())
+    comparable1AvgSeries.data = ageOfProperties.comparable1Avg
+    comparable1AvgSeries.config = config.line('comparable1', 'column', 'bullet')
+
+    const comparable2Series = chart.series.push(new am4charts.LineSeries())
+    comparable2Series.data = ageOfProperties.comparable2
+    comparable2Series.config = config.line('comparable2', null, 'curved')
+
+    const comparable2AvgSeries = chart.series.push(new am4charts.ColumnSeries())
+    comparable2AvgSeries.data = ageOfProperties.comparable2Avg
+    comparable2AvgSeries.config = config.line('comparable2', 'column', 'bullet')
+
+    const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
+    selectedSoldSeries.data = ageOfProperties.selectedSold
+    selectedSoldSeries.config = config.line('selected', 'dash', 'curved')
+
+    const selectedSoldAvgSeries = chart.series.push(new am4charts.ColumnSeries())
+    selectedSoldAvgSeries.data = ageOfProperties.selectedSoldAvg
+    selectedSoldAvgSeries.config = config.line('selectedSold', 'column', 'bullet')
+
     const ageOfPropertySeries = chart.series.push(new am4charts.ColumnSeries())
     ageOfPropertySeries.data = [
-      { date: selectedProperty.ageOfProperty, value: max * 1.1 }
+      { date: ageOfProperties.ageOfSelected, value: max + 10 }
     ]
-    ageOfPropertySeries.config = sectionThreeChartConfig.ageOfProperty
+    ageOfPropertySeries.config = config.line('age', 'column', 'bullet')
     const bullet = ageOfPropertySeries.bullets.push(
       new am4charts.CircleBullet()
     )
-    bullet.circle.radius = 11
+    bullet.circle.radius = 15
     bullet.circle.strokeWidth = 0
-    bullet.circle.fill = am4core.color('#FFF')
+    bullet.circle.fill = am4core.color(WHITE)
     bullet.filters.push(new am4core.DropShadowFilter())
 
     const image = bullet.createChild(am4core.Image)
     image.href = Home
-    image.width = 15
-    image.height = 15
+    image.width = 20
+    image.height = 20
     image.horizontalCenter = 'middle'
     image.verticalCenter = 'middle'
 
@@ -167,7 +103,7 @@ const AgeOfProperties = () => {
     )
     labelBullet.label.text = '{date}'
     labelBullet.label.truncate = false
-    labelBullet.dx = 30
+    labelBullet.dx = 35
 
     return () => {
       chart.dispose()
@@ -175,22 +111,11 @@ const AgeOfProperties = () => {
   }, [])
   return (
     <Container>
-      <Info>
-        <Title>Age of Properties Across Markets</Title>
-        <div>{stats.ageOfProperties}</div>
-      </Info>
-      <Info>
-        <Title>Days on Market</Title>
-        <div>{stats.daysOnMarket}</div>
-      </Info>
-      <ChartTitle>
+      <Text chartTitle>
         <span>Age of Properties Across Markets</span>
-        <Legend src={legendAge} />
-      </ChartTitle>
-      <div
-        id={ageOfPropertiesConfig.id}
-        style={{ width: '100%', height: ageOfPropertiesConfig.height }}
-      ></div>
+        <Legend src={legendDom} />
+      </Text>
+      <div id={'ageOfPropertiesChart'} style={{ width: '100%', height: 500 }} />
     </Container>
   )
 }

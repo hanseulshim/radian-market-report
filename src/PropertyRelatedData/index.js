@@ -14,7 +14,7 @@ import PageTwoInfo from './PageTwoInfo'
 import DomVsPrice from './DomVsPrice'
 import InventoryPerDom from './InventoryPerDom'
 import AverageDomOverTime from './AverageDomOverTime'
-// import AgeOfProperties from './AgeOfProperties'
+import AgeOfProperties from './AgeOfProperties'
 
 const PageOne = styled.div`
   display: grid;
@@ -41,7 +41,8 @@ const PageTwo = styled.div`
     'days chart1 chart1'
     'age chart1 chart1'
     'age chart2 chart2'
-    '. chart3 chart3';
+    '. chart3 chart3'
+    'chart4 chart4 chart4';
   padding: 10px 50px;
   grid-column-gap: 25px;
 `
@@ -70,25 +71,8 @@ const PropertyRelatedData = () => (
       <DomVsPrice />
       <InventoryPerDom />
       <AverageDomOverTime />
+      <AgeOfProperties />
     </PageTwo>
-    {/* <ColumnContainer>
-      <ColumnChartContainer>
-      </ColumnChartContainer>
-      <RowChartContainer>
-        <RowChartDialContainer>
-          <MarketStrength />
-        </RowChartDialContainer>
-        <RowChartLineContainer>
-        </RowChartLineContainer>
-        <RowChartLineContainer>
-        </RowChartLineContainer>
-      </RowChartContainer>
-      <MarketContainer>
-        <AgeOfProperties />
-        <ColumnChartContainer>
-        </ColumnChartContainer>
-      </MarketContainer>
-    </ColumnContainer> */}
   </>
 )
 

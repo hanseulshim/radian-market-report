@@ -47,7 +47,7 @@ const InventoryPerDom = () => {
       <Text subChartTitle>Inventory of Listings per DOM</Text>
       <div
         id={'inventoryPerDomChart'}
-        style={{ width: '100%', height: 200 }}
+        style={{ width: '100%', height: 150 }}
       ></div>
     </Container>
   )

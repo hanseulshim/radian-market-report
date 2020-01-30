@@ -1,4 +1,12 @@
-import { BLACK, AZURE, NEPTUNE, VALENCIA, SUPERNOVA } from './colors'
+import {
+  BLACK,
+  AZURE,
+  NEPTUNE,
+  VALENCIA,
+  SUPERNOVA,
+  DUSTY_GRAY,
+  WHITE
+} from './colors'
 
 const fontSize = 14
 
@@ -13,17 +21,21 @@ const getColor = category =>
           ? VALENCIA
           : category === 'series4'
             ? SUPERNOVA
-            : ''
+            : category === 'selectedSold'
+              ? DUSTY_GRAY
+              : category === 'age'
+                ? WHITE
+                : ''
 
-const chart = (type) => ({
+const chart = type => ({
   paddingLeft: -20,
-  paddingTop: type === 'section2' ? 50 : 10,
+  paddingTop: type === 'section2' || type === 'age' ? 50 : 10,
   paddingBottom: type === 'section2' ? -5 : 10,
   paddingRight: type === 'section2' ? 20 : 15,
   fontSize
 })
 
-const dateAxis = (type) => ({
+const dateAxis = type => ({
   dateFormats: {
     month: 'MMM'
   },
@@ -33,12 +45,16 @@ const dateAxis = (type) => ({
   startLocation: 0.5,
   endLocation: 0.5,
   renderer: {
-    minGridDistance: type === 'section2' ? 10 : 50,
+    minGridDistance: type === 'section2' ? 10 : type === 'age' ? 100 : 50,
     grid: {
-      location: 0.5,
+      location: type === 'age' ? 0 : 0.5,
       strokeOpacity: 0.1,
       stroke: BLACK
     }
+  },
+  title: {
+    fontWeight: 'bold',
+    fontSize
   }
 })
 
@@ -57,10 +73,11 @@ const valueAxis = type => ({
   numberFormatter: {
     numberFormat: type === 'price' ? '$#a' : '#'
   },
-  min: type === 'min' ? 0 : ''
+  min: type === 'min' ? 0 : '',
+  max: ''
 })
 
-const categoryAxis = (type) => ({
+const categoryAxis = type => ({
   dataFields: {
     category: 'category'
   },
@@ -79,13 +96,16 @@ const categoryAxis = (type) => ({
 })
 
 const line = (category, type, chart) => {
-  const dataFields = chart === 'category' ? {
-    valueY: 'value',
-    categoryX: 'category'
-  } : {
-    dateX: 'date',
-    valueY: 'value'
-  }
+  const dataFields =
+    chart === 'category'
+      ? {
+        valueY: 'value',
+        categoryX: 'category'
+      }
+      : {
+        dateX: 'date',
+        valueY: 'value'
+      }
   return {
     dataFields,
     noRisers: chart === 'category',
@@ -94,12 +114,47 @@ const line = (category, type, chart) => {
     strokeDasharray: type === 'dash' ? '5, 5' : 0,
     fill: getColor(category),
     fillOpacity: type === 'filled' ? 0.05 : type === 'column' ? 1 : 0,
-    startLocation: category === 'selected' ? 0.1 : category === 'comparable1' ? 0.35 : category === 'comparable2' ? 0.6 : 0,
-    endLocation: category === 'selected' ? 0.37 : category === 'comparable1' ? 0.65 : category === 'comparable2' ? 0.95 : 0
+    startLocation:
+      category === 'selected'
+        ? 0.1
+        : category === 'comparable1'
+          ? 0.35
+          : category === 'comparable2'
+            ? 0.6
+            : 0,
+    endLocation:
+      category === 'selected'
+        ? 0.37
+        : category === 'comparable1'
+          ? 0.65
+          : category === 'comparable2'
+            ? 0.95
+            : 0,
+    bullets:
+      chart === 'bullet'
+        ? [
+          {
+            type: 'CircleBullet',
+            circle: {
+              radius: 8,
+              strokeWidth: 0,
+              fill: getColor(category)
+            }
+          }
+        ]
+        : [],
+    columns:
+      chart === 'bullet'
+        ? {
+          width: '15%'
+        }
+        : {},
+    tensionX: chart === 'curved' ? 0.75 : 1,
+    tensionY: chart === 'curved' ? 0.75 : 1
   }
 }
 
-const bar = (category) => ({
+const bar = category => ({
   hiddenInLegend: true,
   dataFields: {
     categoryX: 'category',
@@ -124,14 +179,14 @@ const legend = () => {
   }
 }
 
-const label = (type) => {
+const label = type => {
   return {
-    fontSize: 18,
+    fontSize: type === 'age' ? fontSize : 18,
     fontWeight: 'bold',
     align: 'center',
     isMeasured: false,
     y: -35,
-    x: type === 'section2' ? 75 : 0
+    x: type === 'section2' ? 75 : type === 'age' ? 35 : 0
   }
 }
 

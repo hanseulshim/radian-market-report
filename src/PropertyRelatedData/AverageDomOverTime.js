@@ -44,7 +44,7 @@ const AverageDomOverTime = () => {
 
     const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
     selectedSoldSeries.data = averageDomOverTime.selectedSold
-    selectedSoldSeries.config = config.line('selectedSold', 'dash', 'category')
+    selectedSoldSeries.config = config.line('selected', 'dash', 'category')
 
     return () => {
       chart.dispose()
@@ -59,7 +59,7 @@ const AverageDomOverTime = () => {
       </Text>
       <div
         id={'averageDomOverTimeChart'}
-        style={{ width: '100%', height: 200 }}
+        style={{ width: '100%', height: 150 }}
       />
     </Container>
   )
