@@ -1,83 +1,68 @@
 import React from 'react'
 import styled from 'styled-components'
-import { demographicData } from '../data/data.json'
-import { getAverage } from '../helper'
 import numeral from 'numeral'
+import Text from '../common/Text'
+import { propertyInfo, schoolRatings, transitRatings } from '../data/data1.json'
+import { getAverage } from '../helper'
 import car from '../assets/car.svg'
 import train from '../assets/train.svg'
 import bike from '../assets/bike.svg'
 
-import { WILD_SAND } from '../colors'
+import { DESERT_STORM } from '../colors'
 
-const {
-  selectedProperty,
-  comparisonProperty1,
-  comparisonProperty2
-} = demographicData
-
-const Container = styled.div`
-  display: flex;
-  margin-right: 50px;
-  margin-bottom: 10px;
+const SchoolRating = styled.div`
+  display: grid;
+  grid-area: schoolRating;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 'selected comparable1 comparable2';
+  grid-column-gap: 5px;
+  margin-top: 25px;
 `
 
-const Rating = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  margin-right: 10px;
-`
-
-const Title = styled.div`
-  width: 100%;
-  font-weight: bold;
-  font-size: 110%;
+const TransitRating = styled.div`
+  display: grid;
+  grid-area: transitRating;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 'selected comparable1 comparable2';
+  grid-column-gap: 5px;
+  margin-top: 25px;
 `
 
 const Panel = styled.div`
-  background: ${WILD_SAND};
-  margin-right: 2px;
-  padding: 5px 15px;
+  background: ${DESERT_STORM};
+  padding: 10px;
 `
 
-const PanelContainer = styled.div`
-  display: flex;
-`
-
-const SubPanelContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+const Rating = styled.div`
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-areas:
+  'avg . .'
+  'avg . .'
+  'avg . .';
+  grid-gap: 3px;
 `
 
 const AveragePanel = styled.div`
+  grid-area: avg;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  width: 50px;
-  margin-right: 3px;
+  padding: 5px 0;
   background: ${props => getColor(props.value)};
 `
 
-const AverageValue = styled.div`
-  font-weight: bold;
-  margin-bottom: -10px;
-  font-size: 200%;
-`
-
-const MetricContainer = styled.div`
-  display: flex;
-  align-items: center;
-  margin-bottom: ${props => (props.last ? '0px' : '3px')};
-`
 const MetricValue = styled.div`
   background: ${props => getColor(props.value)};
-  width: 20px;
   text-align: center;
-  margin-right: 3px;
 `
 const Icon = styled.img`
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
+  align-self: center;
 `
 
 const getColor = value => {
@@ -107,65 +92,61 @@ const getColor = value => {
 const createPanels = rating => {
   const average = getAverage(rating.map(v => v.value))
   return (
-    <PanelContainer>
+    <Rating>
       <AveragePanel value={average}>
-        <AverageValue>{numeral(average).format('0.[0]')}</AverageValue>
-        <div>Avg</div>
+        <Text subSection>{numeral(average).format('0.[0]')}</Text>
+        <span>Avg</span>
       </AveragePanel>
-      <SubPanelContainer>
-        {rating.map((metric, i) => (
-          <MetricContainer key={i} last={i === rating.length - 1}>
-            <MetricValue value={metric.value}>{metric.value}</MetricValue>
-            {metric.label === 'car' ? (
-              <Icon src={car} />
-            ) : metric.label === 'train' ? (
-              <Icon src={train} />
-            ) : metric.label === 'bike' ? (
-              <Icon src={bike} />
-            ) : (
-              <div>{metric.label}</div>
-            )}
-          </MetricContainer>
-        ))}
-      </SubPanelContainer>
-    </PanelContainer>
+      {rating.map((metric, i) => (
+        <React.Fragment key={i}>
+          <MetricValue value={metric.value}>{metric.value}</MetricValue>
+          {metric.label === 'car' ? (
+            <Icon src={car} />
+          ) : metric.label === 'train' ? (
+            <Icon src={train} />
+          ) : metric.label === 'bike' ? (
+            <Icon src={bike} />
+          ) : (
+            <span>{metric.label}</span>
+          )}
+        </React.Fragment>
+      ))}
+    </Rating>
   )
 }
 
 const RatingsContainer = () => {
   return (
-    <Container>
-      <Rating>
-        <Title>School Ratings</Title>
+    <>
+      <SchoolRating>
         <Panel>
-          <div>{selectedProperty.label}</div>
-          {createPanels(selectedProperty.ratings.schoolRatings.values)}
+          <div>{propertyInfo.selected}</div>
+          {createPanels(schoolRatings.selected)}
         </Panel>
         <Panel>
-          <div>{comparisonProperty1.label}</div>
-          {createPanels(comparisonProperty1.ratings.schoolRatings.values)}
+          <div>{propertyInfo.comparable1}</div>
+          {createPanels(schoolRatings.comparable1)}
         </Panel>
         <Panel>
-          <div>{comparisonProperty2.label}</div>
-          {createPanels(comparisonProperty2.ratings.schoolRatings.values)}
+          <div>{propertyInfo.comparable2}</div>
+          {createPanels(schoolRatings.comparable2)}
         </Panel>
-      </Rating>
-      <Rating>
-        <Title>Transit Ratings</Title>
+      </SchoolRating>
+      <TransitRating>
         <Panel>
-          <div>{selectedProperty.label}</div>
-          {createPanels(selectedProperty.ratings.transitRatings.values)}
-        </Panel>
-        <Panel>
-          <div>{comparisonProperty1.label}</div>
-          {createPanels(comparisonProperty1.ratings.transitRatings.values)}
+          <div>{propertyInfo.selected}</div>
+          {createPanels(transitRatings.selected)}
         </Panel>
         <Panel>
-          <div>{comparisonProperty2.label}</div>
-          {createPanels(comparisonProperty2.ratings.transitRatings.values)}
+          <div>{propertyInfo.comparable1}</div>
+          {createPanels(transitRatings.comparable1)}
         </Panel>
-      </Rating>
-    </Container>
+        <Panel>
+          <div>{propertyInfo.comparable2}</div>
+          {createPanels(transitRatings.comparable2)}
+        </Panel>
+      </TransitRating>
+    </>
   )
 }
 
