@@ -1,26 +1,88 @@
 /* eslint react/prop-types: 0 */
 import React from 'react'
 import styled from 'styled-components'
+import numeral from 'numeral'
+import { WHITE, BLACK, AZURE, NEPTUNE } from '../colors'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
   faSchool,
   faCarSide,
   faUserNinja,
   faArrowUp,
-  faArrowDown,
-  faAngleLeft,
-  faAngleRight
+  faArrowDown
 } from '@fortawesome/free-solid-svg-icons'
+import { propertyInfo, schoolRatings, transitRatings, crimeRatings } from '../data/data1.json'
+import { getAverage } from '../helper'
 
-const Container = styled.div`
-  width: ${props => `${props.width}px`};
-  height: ${props => `${props.height}px`};
-  color: ${props => props.color};
+const MapInfo = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'title title info'
+    '. . .';
+  margin: 25px 50px;
+  grid-gap: 15px;
+`
+
+const MapTitle = styled.div`
+  grid-area: title;
+  font-size: 20px;
   font-weight: bold;
-  display: flex;
-  flex-wrap: wrap;
+`
+
+const Info = styled.div`
+  grid-area: info;
+  width: 200px;
+  justify-self: end;
+  font-size: 14px;
+  line-height: 15px;
+  font-weight: bold;
+`
+
+const Stat = styled.div`
+  color: ${props => (props.selected || props.comparable1 ? WHITE : BLACK)};
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    '. title .'
+    'icon1 icon2 icon3'
+    'avg1 avg2 avg3'
+    'trend1 trend2 trend3';
+  grid-gap: 0 15px;
+  border-radius: 10px;
+  padding: 10px 20px;
+  justify-items: center;
   position: relative;
   z-index: 1;
+`
+
+const Title = styled.div`
+  grid-area: title;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: bold;
+`
+
+const Icon = styled(FontAwesomeIcon)`
+  grid-area: ${props => `icon${props.location}`};
+`
+
+const Average = styled.div`
+  grid-area: ${props => `avg${props.location}`};
+  font-size: 35px;
+  font-weight: bold;
+`
+
+const Trend = styled.div`
+  grid-area: ${props => `trend${props.location}`};
+  font-size: 18px;
+  font-weight: bold;
+  padding: 5px 7px;
+  background: ${props => getBackground(props.type)};
+  width: 60px;
+  text-align: center;
 `
 
 const Background = styled.div`
@@ -30,84 +92,106 @@ const Background = styled.div`
   opacity: 0.7;
   border-radius: 10px;
   z-index: -1;
-  background: ${props => props.background};
+  background: ${props => getBackground(props.type)};
 `
 
-const Title = styled.div`
-  margin: 3px 0;
-  width: 100%;
-  text-align: center;
-`
+const getBackground = type =>
+  type === 'comparable1' ? AZURE : type === 'comparable2' ? NEPTUNE : BLACK
 
-const Column = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  align-items: center;
-`
+const getAverageValue = arr => {
+  const average = getAverage(arr.map(v => v.value))
+  return numeral(average).format('0.[0]')
+}
 
-const Average = styled.div`
-  font-size: 200%;
-`
+const getTrend = trend => {
+  return trend === 'up' ? (
+    <FontAwesomeIcon icon={faArrowUp} size="sm" />
+  ) : trend === 'down' ? (
+    <FontAwesomeIcon icon={faArrowDown} size="sm" />
+  ) : null
+}
 
-const TrendContainer = styled.div`
-  font-size: 110%;
-  background: ${props => props.background};
-  padding: 2px;
-  width: 80%;
-  text-align: center;
-`
-
-const MapStat = ({
-  label,
-  ratings,
-  selectedProperty,
-  width,
-  height,
-  background,
-  color
-}) => {
+const MapStat = () => {
   return (
-    <Container width={width} height={height} color={color}>
-      <Background background={background} />
-      <Title>{label}</Title>
-      <Column>
-        <FontAwesomeIcon icon={faSchool} color={color} size="sm" />
-        <Average>{ratings.schoolRatings.average}</Average>
-        <TrendContainer background={background}>
-          {ratings.schoolRatings.trend === 'up' ? (
-            <FontAwesomeIcon icon={faArrowUp} color={color} size="sm" />
-          ) : ratings.schoolRatings.trend === 'down' ? (
-            <FontAwesomeIcon icon={faArrowDown} color={color} size="sm" />
-          ) : null}{' '}
-          <span>{ratings.schoolRatings.trendDelta}</span>
-        </TrendContainer>
-      </Column>
-      <Column>
-        <FontAwesomeIcon icon={faCarSide} color={color} size="sm" />
-        <Average>{ratings.transitRatings.average}</Average>
-        <TrendContainer background={background}>
-          {ratings.transitRatings.trend === 'up' ? (
-            <FontAwesomeIcon icon={faArrowUp} color={color} size="sm" />
-          ) : ratings.transitRatings.trend === 'down' ? (
-            <FontAwesomeIcon icon={faArrowDown} color={color} size="sm" />
-          ) : null}{' '}
-          <span>{ratings.transitRatings.trendDelta}</span>
-        </TrendContainer>
-      </Column>
-      <Column>
-        <FontAwesomeIcon icon={faUserNinja} color={color} size="sm" />
-        <Average>{ratings.crimeRatings.average}</Average>
-        <TrendContainer background={background}>
-          {ratings.crimeRatings.trend === 'up' ? (
-            <FontAwesomeIcon icon={faAngleLeft} color={color} size="sm" />
-          ) : ratings.crimeRatings.trend === 'down' ? (
-            <FontAwesomeIcon icon={faAngleRight} color={color} size="sm" />
-          ) : null}{' '}
-          <span>{ratings.crimeRatings.trendDelta}</span>
-        </TrendContainer>
-      </Column>
-    </Container>
+    <MapInfo>
+      <MapTitle h1>Market Averages</MapTitle>
+      <Info h2>Comparison numbers are based on annual change</Info>
+      <Stat selected>
+        <Background type="selected" />
+        <Title h2>{propertyInfo.selected}</Title>
+        <Icon icon={faSchool} size="lg" location={1} />
+        <Icon icon={faCarSide} size="lg" location={2} />
+        <Icon icon={faUserNinja} size="lg" location={3} />
+        <Average location={1}>
+          {getAverageValue(schoolRatings.selected.values)}
+        </Average>
+        <Average location={2}>
+          {getAverageValue(transitRatings.selected.values)}
+        </Average>
+        <Average location={3}>
+          {crimeRatings.selected.value}
+        </Average>
+        <Trend type="selected" location={1}>
+          {getTrend(schoolRatings.selected.trend)} {schoolRatings.selected.trendDelta}
+        </Trend>
+        <Trend type="selected" location={2}>
+          {getTrend(transitRatings.selected.trend)} {transitRatings.selected.trendDelta}
+        </Trend>
+        <Trend type="selected" location={3}>
+          {getTrend(crimeRatings.selected.trend)} {crimeRatings.selected.trendDelta}
+        </Trend>
+      </Stat>
+      <Stat comparable1>
+        <Background type="comparable1" />
+        <Title h2>{propertyInfo.comparable1}</Title>
+        <Icon icon={faSchool} size="lg" location={1} />
+        <Icon icon={faCarSide} size="lg" location={2} />
+        <Icon icon={faUserNinja} size="lg" location={3} />
+        <Average location={1}>
+          {getAverageValue(schoolRatings.comparable1.values)}
+        </Average>
+        <Average location={2}>
+          {getAverageValue(transitRatings.comparable1.values)}
+        </Average>
+        <Average location={3}>
+          {crimeRatings.comparable1.value}
+        </Average>
+        <Trend type="comparable1" location={1}>
+          {getTrend(schoolRatings.comparable1.trend)} {schoolRatings.comparable1.trendDelta}
+        </Trend>
+        <Trend type="comparable1" location={2}>
+          {getTrend(transitRatings.comparable1.trend)} {transitRatings.comparable1.trendDelta}
+        </Trend>
+        <Trend type="comparable1" location={3}>
+          {getTrend(crimeRatings.comparable1.trend)} {crimeRatings.comparable1.trendDelta}
+        </Trend>
+      </Stat>
+      <Stat comparable2>
+        <Background type="comparable2" />
+        <Title h2>{propertyInfo.comparable2}</Title>
+        <Icon icon={faSchool} size="lg" location={1} />
+        <Icon icon={faCarSide} size="lg" location={2} />
+        <Icon icon={faUserNinja} size="lg" location={3} />
+        <Average location={1}>
+          {getAverageValue(schoolRatings.comparable2.values)}
+        </Average>
+        <Average location={2}>
+          {getAverageValue(transitRatings.comparable2.values)}
+        </Average>
+        <Average location={3}>
+          {crimeRatings.comparable2.value}
+        </Average>
+        <Trend type="comparable2" location={1}>
+          {getTrend(schoolRatings.comparable2.trend)} {schoolRatings.comparable2.trendDelta}
+        </Trend>
+        <Trend type="comparable2" location={2}>
+          {getTrend(transitRatings.comparable2.trend)} {transitRatings.comparable2.trendDelta}
+        </Trend>
+        <Trend type="comparable2" location={3}>
+          {getTrend(crimeRatings.comparable2.trend)} {crimeRatings.comparable2.trendDelta}
+        </Trend>
+      </Stat>
+    </MapInfo>
   )
 }
 

@@ -23,7 +23,7 @@ const Title = styled.div`
     props.value ||
     props.chartTitle ||
     props.subChartTitle ||
-    props.h1
+    props.h1 || props.h2
       ? 'bold'
       : 'initial'};
   margin-left: ${props =>

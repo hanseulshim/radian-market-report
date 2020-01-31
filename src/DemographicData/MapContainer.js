@@ -2,28 +2,21 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import MapGL, { Marker } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { demographicData } from '../data/data.json'
-import RatingsContainer from './RatingsContainer'
-import config from '../config'
+import { mapData } from '../data/data1.json'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome } from '@fortawesome/free-solid-svg-icons'
 import bbox from '@turf/bbox'
 import union from '@turf/union'
 import { polygon } from '@turf/helpers'
-import center from '@turf/center'
 import WebMercatorViewport from 'viewport-mercator-project'
 import MapStat from './MapStat'
 
 import { NEPTUNE, AZURE, BLACK } from '../colors'
 
-const {
-  selectedProperty,
-  comparisonProperty1,
-  comparisonProperty2
-} = demographicData
-
 const Container = styled.div`
-  flex: 3;
+  grid-area: map;
+  margin: -10px -50px;
+  margin-top: 25px;
 `
 
 const Icon = styled.div`
@@ -43,28 +36,11 @@ const IconLabel = styled.div`
   justify-content: center;
 `
 
-const MapTitle = styled.div`
-  font-size: 150%;
-  font-weight: bold;
-  position: relative;
-  top: 10px;
-  left: 10px;
-`
-
-const MapInfo = styled.div`
-  font-weight: bold;
-  position: relative;
-  top: -15px;
-  left: 75%;
-  width: 200px;
-`
-
 const MapContainer = () => {
   const [map, setMap] = useState(null)
-  const [centerList, setCenterList] = useState([])
   const [viewport, setViewPort] = useState({
     width: '100%',
-    height: 500
+    height: 650
   })
 
   useEffect(() => {
@@ -72,23 +48,23 @@ const MapContainer = () => {
       const mapRef = map.getMap()
       mapRef.on('load', () => {
         mapRef.addLayer({
-          id: 'selectedProperty',
+          id: 'selected',
           type: 'line',
           source: {
             type: 'geojson',
-            data: selectedProperty.map.geoJson
+            data: mapData.selected.geoJson
           },
           paint: {
-            'line-color': '#000',
+            'line-color': BLACK,
             'line-width': 4
           }
         })
         mapRef.addLayer({
-          id: 'comparisonProperty1',
+          id: 'comparable1',
           type: 'line',
           source: {
             type: 'geojson',
-            data: comparisonProperty1.map.geoJson
+            data: mapData.comparable1.geoJson
           },
           paint: {
             'line-color': AZURE,
@@ -96,67 +72,26 @@ const MapContainer = () => {
           }
         })
         mapRef.addLayer({
-          id: 'comparisonProperty2',
+          id: 'comparable2',
           type: 'line',
           source: {
             type: 'geojson',
-            data: comparisonProperty2.map.geoJson
+            data: mapData.comparable2.geoJson
           },
           paint: {
             'line-color': NEPTUNE,
             'line-width': 4
           }
         })
-        setCenterList([
-          {
-            label: selectedProperty.label,
-            ratings: selectedProperty.ratings,
-            longitude: center(selectedProperty.map.geoJson).geometry
-              .coordinates[0],
-            latitude: center(selectedProperty.map.geoJson).geometry
-              .coordinates[1],
-            selectedProperty: true,
-            background: BLACK,
-            color: '#FFF',
-            width: config.map.width,
-            height: config.map.height
-          },
-          {
-            label: comparisonProperty1.label,
-            ratings: comparisonProperty1.ratings,
-            longitude: center(comparisonProperty1.map.geoJson).geometry
-              .coordinates[0],
-            latitude: center(comparisonProperty1.map.geoJson).geometry
-              .coordinates[1],
-            selectedProperty: false,
-            background: AZURE,
-            color: '#FFF',
-            width: config.map.width,
-            height: config.map.height
-          },
-          {
-            label: comparisonProperty2.label,
-            ratings: comparisonProperty2.ratings,
-            longitude: center(comparisonProperty2.map.geoJson).geometry
-              .coordinates[0],
-            latitude: center(comparisonProperty2.map.geoJson).geometry
-              .coordinates[1],
-            selectedProperty: false,
-            background: NEPTUNE,
-            color: BLACK,
-            width: config.map.width,
-            height: config.map.height
-          }
-        ])
         const unionPolygon = union(
           polygon(
-            comparisonProperty1.map.geoJson.features[0].geometry.coordinates
+            mapData.comparable1.geoJson.features[0].geometry.coordinates
           ),
           polygon(
-            selectedProperty.map.geoJson.features[0].geometry.coordinates
+            mapData.selected.geoJson.features[0].geometry.coordinates
           ),
           polygon(
-            comparisonProperty2.map.geoJson.features[0].geometry.coordinates
+            mapData.comparable2.geoJson.features[0].geometry.coordinates
           )
         )
         const extent = bbox(unionPolygon)
@@ -167,7 +102,7 @@ const MapContainer = () => {
             [extent[0], extent[1]],
             [extent[2], extent[3]]
           ],
-          { padding: { top: 100, bottom: 100, left: 75, right: 350 } }
+          { padding: { top: 300, bottom: 50, left: 0, right: 0 } }
         )
         setViewPort({
           ...viewport,
@@ -182,7 +117,6 @@ const MapContainer = () => {
   const _onViewportChange = viewport => setViewPort({ ...viewport })
   return (
     <Container>
-      <RatingsContainer />
       <MapGL
         {...viewport}
         mapboxApiAccessToken={
@@ -192,11 +126,10 @@ const MapContainer = () => {
         onViewportChange={_onViewportChange}
         ref={el => setMap(el)}
       >
-        <MapTitle>Market Averages</MapTitle>
-        <MapInfo>Comparison numbers are based on annual change</MapInfo>
+        <MapStat />
         <Marker
-          latitude={selectedProperty.locations.home.latitude}
-          longitude={selectedProperty.locations.home.longitude}
+          latitude={mapData.properties.home.latitude}
+          longitude={mapData.properties.home.longitude}
           offsetLeft={-15}
           offsetTop={-25}
         >
@@ -204,7 +137,7 @@ const MapContainer = () => {
             <FontAwesomeIcon icon={faHome} color="white" size="lg" />
           </Icon>
         </Marker>
-        {selectedProperty.locations.schools.map((school, i) => (
+        {mapData.properties.schools.map((school, i) => (
           <Marker
             key={i}
             latitude={school.latitude}
@@ -215,21 +148,6 @@ const MapContainer = () => {
             <Icon>
               <IconLabel>{school.label}</IconLabel>
             </Icon>
-          </Marker>
-        ))}
-        {centerList.map((center, i) => (
-          <Marker
-            key={i}
-            latitude={center.latitude}
-            longitude={center.longitude}
-            offsetLeft={center.width * -0.5}
-            offsetTop={
-              center.selectedProperty
-                ? center.height * 0.5
-                : center.height * -0.5
-            }
-          >
-            <MapStat {...center} />
           </Marker>
         ))}
       </MapGL>

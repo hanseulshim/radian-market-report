@@ -15,7 +15,7 @@ const App = () => {
   return (
     <Container>
       <PropertyRelatedData />
-      {/* <DemographicData /> */}
+      <DemographicData />
     </Container>
   )
 }
