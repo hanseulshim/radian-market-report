@@ -14,8 +14,8 @@ const Container = styled.div`
 const App = () => {
   return (
     <Container>
-      <PropertyRelatedData />
-      {/* <DemographicData /> */}
+      {/* <PropertyRelatedData /> */}
+      <DemographicData />
     </Container>
   )
 }

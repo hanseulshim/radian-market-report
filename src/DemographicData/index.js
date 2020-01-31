@@ -4,6 +4,7 @@ import Header from '../common/Header'
 import Summary from './Summary'
 import MapContainer from './MapContainer'
 import { GALLERY } from '../colors'
+import FamilyMakeup from './FamilyMakeup'
 
 const ColumnContainer = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ const DemographicData = () => (
           <div>20854 Population by Age</div>
         </Column>
         <Column>
-          <div>Family Makeup</div>
+          <FamilyMakeup />
           <div>Population by Age</div>
         </Column>
       </SectionTwoContainer>
