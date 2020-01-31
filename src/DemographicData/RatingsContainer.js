@@ -121,29 +121,29 @@ const RatingsContainer = () => {
       <SchoolRating>
         <Panel>
           <div>{propertyInfo.selected}</div>
-          {createPanels(schoolRatings.selected)}
+          {createPanels(schoolRatings.selected.values)}
         </Panel>
         <Panel>
           <div>{propertyInfo.comparable1}</div>
-          {createPanels(schoolRatings.comparable1)}
+          {createPanels(schoolRatings.comparable1.values)}
         </Panel>
         <Panel>
           <div>{propertyInfo.comparable2}</div>
-          {createPanels(schoolRatings.comparable2)}
+          {createPanels(schoolRatings.comparable2.values)}
         </Panel>
       </SchoolRating>
       <TransitRating>
         <Panel>
           <div>{propertyInfo.selected}</div>
-          {createPanels(transitRatings.selected)}
+          {createPanels(transitRatings.selected.values)}
         </Panel>
         <Panel>
           <div>{propertyInfo.comparable1}</div>
-          {createPanels(transitRatings.comparable1)}
+          {createPanels(transitRatings.comparable1.values)}
         </Panel>
         <Panel>
           <div>{propertyInfo.comparable2}</div>
-          {createPanels(transitRatings.comparable2)}
+          {createPanels(transitRatings.comparable2.values)}
         </Panel>
       </TransitRating>
     </>

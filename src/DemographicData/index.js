@@ -4,7 +4,6 @@ import Header from '../common/Header'
 import PageThreeInfo from './PageThreeInfo'
 import RatingsContainer from './RatingsContainer'
 import MapContainer from './MapContainer'
-import { GALLERY } from '../colors'
 
 const PageThree = styled.div`
   display: grid;
@@ -14,7 +13,8 @@ const PageThree = styled.div`
     'header header'
     'neighborhood neighborhood'
     'school transit'
-    'schoolRating transitRating';
+    'schoolRating transitRating'
+    'map map';
   padding: 10px 50px;
   grid-column-gap: 10px;
 `
@@ -25,6 +25,7 @@ const DemographicData = () => (
       <Header section="Demographic Related Data" />
       <PageThreeInfo />
       <RatingsContainer />
+      <MapContainer />
     </PageThree>
   </>
 )
