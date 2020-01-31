@@ -910,5 +910,38 @@
       { "date": "2010", "value": 50 }
     ],
     "comparable2Avg": [{ "value": 185, "date": "1981" }]
+  },
+  "populationByIncome": {
+    "selected": [
+      { "category": "25k", "value": 0 },
+      { "category": "50k", "value": 5 },
+      { "category": "75k", "value": 15 },
+      { "category": "100k", "value": 35 },
+      { "category": "125k", "value": 25 },
+      { "category": "150k", "value": 15 },
+      { "category": "175k", "value": 4 },
+      { "category": "200k+", "value": 1 }
+    ],
+    "selectedFHArange": [{ "category": "75k", "value": 40 }],
+    "comparable1": [
+      { "category": "25k", "value": 0 },
+      { "category": "50k", "value": 5 },
+      { "category": "75k", "value": 35 },
+      { "category": "100k", "value": 25 },
+      { "category": "125k", "value": 15 },
+      { "category": "150k", "value": 15 },
+      { "category": "175k", "value": 4 },
+      { "category": "200k+", "value": 1 }
+    ],
+    "comparable2": [
+      { "category": "25k", "value": 0 },
+      { "category": "50k", "value": 5 },
+      { "category": "75k", "value": 10 },
+      { "category": "100k", "value": 15 },
+      { "category": "125k", "value": 15 },
+      { "category": "150k", "value": 25 },
+      { "category": "175k", "value": 35 },
+      { "category": "200k+", "value": 15 }
+    ]
   }
 }
