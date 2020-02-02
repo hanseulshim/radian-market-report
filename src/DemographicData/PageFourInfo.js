@@ -26,14 +26,6 @@ const PageFourInfo = () => {
         <Text h1> Age vs Income</Text>
         <div>{neighborhoodSummary}</div>
       </AgeVsIncome>
-      <SchoolRatings>
-        <Text h1>School Ratings</Text>
-        <div>{schoolRatings.info}</div>
-      </SchoolRatings>
-      <TransitRatings>
-        <Text h1>Transit Ratings</Text>
-        <div>{transitRatings.info}</div>
-      </TransitRatings>
     </>
   )
 }
