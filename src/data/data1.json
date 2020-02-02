@@ -911,39 +911,6 @@
     ],
     "comparable2Avg": [{ "value": 185, "date": "1981" }]
   },
-  "populationByIncome": {
-    "selected": [
-      { "category": "25k", "value": 0 },
-      { "category": "50k", "value": 5 },
-      { "category": "75k", "value": 15 },
-      { "category": "100k", "value": 35 },
-      { "category": "125k", "value": 25 },
-      { "category": "150k", "value": 15 },
-      { "category": "175k", "value": 4 },
-      { "category": "200k+", "value": 1 }
-    ],
-    "selectedFHArange": [{ "category": "75k", "value": 40 }],
-    "comparable1": [
-      { "category": "25k", "value": 0 },
-      { "category": "50k", "value": 5 },
-      { "category": "75k", "value": 35 },
-      { "category": "100k", "value": 25 },
-      { "category": "125k", "value": 15 },
-      { "category": "150k", "value": 15 },
-      { "category": "175k", "value": 4 },
-      { "category": "200k+", "value": 1 }
-    ],
-    "comparable2": [
-      { "category": "25k", "value": 0 },
-      { "category": "50k", "value": 5 },
-      { "category": "75k", "value": 10 },
-      { "category": "100k", "value": 15 },
-      { "category": "125k", "value": 15 },
-      { "category": "150k", "value": 25 },
-      { "category": "175k", "value": 35 },
-      { "category": "200k+", "value": 15 }
-    ]
-  },
   "neighborhoodSummary": "The residents of Money & Brains seem to have it all: high incomes, advanced degrees, and sophisticated tastes to match their credentials. Many of these city dwellers are married couples with few children who live in fashionable homes on small, manicured lots.",
   "schoolRatings": {
     "info": "What is the map telling us? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
@@ -1195,5 +1162,117 @@
         }
       ]
     }
+  },
+  "populationByIncome": {
+    "selected": [
+      { "category": "25k", "value": 0 },
+      { "category": "50k", "value": 5 },
+      { "category": "75k", "value": 15 },
+      { "category": "100k", "value": 35 },
+      { "category": "125k", "value": 25 },
+      { "category": "150k", "value": 15 },
+      { "category": "175k", "value": 4 },
+      { "category": "200k+", "value": 1 }
+    ],
+    "selectedFHArange": [{ "category": "75k", "value": 40 }],
+    "comparable1": [
+      { "category": "25k", "value": 0 },
+      { "category": "50k", "value": 5 },
+      { "category": "75k", "value": 35 },
+      { "category": "100k", "value": 25 },
+      { "category": "125k", "value": 15 },
+      { "category": "150k", "value": 15 },
+      { "category": "175k", "value": 4 },
+      { "category": "200k+", "value": 1 }
+    ],
+    "comparable2": [
+      { "category": "25k", "value": 0 },
+      { "category": "50k", "value": 5 },
+      { "category": "75k", "value": 10 },
+      { "category": "100k", "value": 15 },
+      { "category": "125k", "value": 15 },
+      { "category": "150k", "value": 25 },
+      { "category": "175k", "value": 35 },
+      { "category": "200k+", "value": 15 }
+    ]
+  },
+  "populationByAge": {
+    "categories": [
+      {
+        "category": "<5",
+        "value": 20,
+        "valueY": 50
+      },
+      {
+        "category": "5-9",
+        "value": 30,
+        "valueY": 50
+      },
+      {
+        "category": "10-14",
+        "value": 15,
+        "valueY": 50
+      },
+      {
+        "category": "15-19",
+        "value": 100,
+        "valueY": 50
+      },
+      {
+        "category": "20-24",
+        "value": 20,
+        "valueY": 50
+      },
+      {
+        "category": "25-34",
+        "value": 60,
+        "valueY": 50
+      },
+      {
+        "category": "34-44",
+        "value": 100,
+        "valueY": 50
+      },
+      {
+        "category": "45-54",
+        "value": 120,
+        "valueY": 50
+      },
+      {
+        "category": "55-64",
+        "value": 200,
+        "valueY": 50
+      },
+      {
+        "category": "65-74",
+        "value": 75,
+        "valueY": 50
+      },
+      {
+        "category": "75-84",
+        "value": 50,
+        "valueY": 50
+      }
+    ],
+    "comparable1": [
+      { "category": "25k", "value": 0 },
+      { "category": "50k", "value": 5 },
+      { "category": "75k", "value": 35 },
+      { "category": "100k", "value": 25 },
+      { "category": "125k", "value": 15 },
+      { "category": "150k", "value": 15 },
+      { "category": "175k", "value": 4 },
+      { "category": "200k+", "value": 1 }
+    ],
+    "comparable2": [
+      { "category": "25k", "value": 0 },
+      { "category": "50k", "value": 5 },
+      { "category": "75k", "value": 10 },
+      { "category": "100k", "value": 15 },
+      { "category": "125k", "value": 15 },
+      { "category": "150k", "value": 25 },
+      { "category": "175k", "value": 35 },
+      { "category": "200k+", "value": 15 }
+    ]
   }
 }

@@ -12,6 +12,7 @@ const Container = styled.div`
   flex: 3;
   display: flex;
   flex-direction: column;
+  grid-area: chart2;
 `
 
 const Info = styled.div`
