@@ -3,10 +3,7 @@ import styled from 'styled-components'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import { populationByIncome } from '../data/data1.json'
-// import Home from '../assets/home.svg'
-// import legendAge from '../assets/legendAge.svg'
 import config from '../config1'
-// import { range } from 'rxjs'
 
 const Container = styled.div`
   flex: 3;
@@ -49,17 +46,6 @@ const PopulationByIncome = () => {
     )
     chart.data = populationByIncome.selected
 
-    // const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-    // categoryAxis.config = populationByIncomeChartConfig.categoryAxis
-    // categoryAxis.title.text = 'Income'
-    // categoryAxis.title.fontWeight = 'bold'
-    // categoryAxis.renderer.cellStartLocation = 0.2
-    // categoryAxis.renderer.cellEndLocation = 0.8
-
-    // const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    // valueAxis.config = populationByIncomeChartConfig.valueAxis
-    // valueAxis.min = 0
-
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.categoryAxis('line')
 
@@ -67,41 +53,18 @@ const PopulationByIncome = () => {
     valueAxis.config = config.valueAxis('min')
     valueAxis.min = 0
 
-    // const selectedPropertySeries = chart.series.push(new am4charts.LineSeries())
-    // selectedPropertySeries.data = selectedProperty.populationByIncome
-    // selectedPropertySeries.config =
-    //   populationByIncomeChartConfig.selectedProperty
-    // selectedPropertySeries.tensionX = 0.75
-    // selectedPropertySeries.tensionY = 0.75
-
     const selectedSeries = chart.series.push(new am4charts.LineSeries())
     selectedSeries.data = populationByIncome.selected
     selectedSeries.config = config.line('selected', null, 'category')
     selectedSeries.tensionX = 0.75
     selectedSeries.tensionY = 0.75
 
-    // const comparisonProperty1Series = chart.series.push(
-    //   new am4charts.LineSeries()
-    // )
-    // comparisonProperty1Series.data = comparisonProperty1.populationByIncome
-    // comparisonProperty1Series.config =
-    //   populationByIncomeChartConfig.comparisonProperty1
-    // comparisonProperty1Series.tensionX = 0.75
-    // comparisonProperty1Series.tensionY = 0.75
     const comparable1Series = chart.series.push(new am4charts.LineSeries())
     comparable1Series.data = populationByIncome.comparable1
     comparable1Series.config = config.line('comparable1', null, 'category')
     comparable1Series.tensionX = 0.75
     comparable1Series.tensionY = 0.75
 
-    // const comparisonProperty2Series = chart.series.push(
-    //   new am4charts.LineSeries()
-    // )
-    // comparisonProperty2Series.data = comparisonProperty2.populationByIncome
-    // comparisonProperty2Series.config =
-    //   populationByIncomeChartConfig.comparisonProperty2
-    // comparisonProperty2Series.tensionX = 0.75
-    // comparisonProperty2Series.tensionY = 0.75
     const comparable2Series = chart.series.push(new am4charts.LineSeries())
     comparable2Series.data = populationByIncome.comparable2
     comparable2Series.config = config.line('comparable2', null, 'category')

@@ -8,12 +8,6 @@ const AgeVsIncome = styled.div`
   margin-bottom: 50px;
   max-width: 80%;
 `
-// const SchoolRatings = styled.div`
-//   grid-area: school;
-// `
-// const TransitRatings = styled.div`
-//   grid-area: transit;
-// `
 
 const PageFourInfo = () => {
   return (
