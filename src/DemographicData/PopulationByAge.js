@@ -15,10 +15,6 @@ const Container = styled.div`
 const ChartTitle = styled.div`
   font-weight: bold;
   font-size: 150%;
-  margin-left: 20px;
-  margin-right: 15px;
-  margin-bottom: 10px;
-  margin-top: 30px;
   border-bottom: 1px solid #000;
   display: flex;
   justify-content: space-between;
@@ -36,22 +32,12 @@ const PopulationByAge = () => {
     chart.data = populationByAge.categories
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
+    categoryAxis.config = config.categoryAxis('bullet')
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.dataFields.valueY = 'value'
-    categoryAxis.renderer.minGridDistance = 40
-    categoryAxis.dataFields.category = 'category'
-
-    categoryAxis.renderer.grid.template.disabled = true
-    valueAxis.renderer.grid.template.disabled = true
-    categoryAxis.renderer.axisFills.template.disabled = true
-    valueAxis.renderer.axisFills.template.disabled = true
-    valueAxis.renderer.ticks.template.disabled = true
-    categoryAxis.renderer.ticks.template.disabled = true
-    valueAxis.renderer.labels.template.disabled = true
+    valueAxis.config = config.valueAxis('bullet')
 
     var series = chart.series.push(new am4charts.ColumnSeries())
-
     series.dataFields.valueY = 'valueY'
     series.dataFields.value = 'value'
     series.dataFields.categoryX = 'category'

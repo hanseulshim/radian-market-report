@@ -1197,20 +1197,21 @@
     ]
   },
   "populationByAge": {
+    "description": "Some talk around the take aways from the income and age charts. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
     "categories": [
       {
         "category": "<5",
-        "value": 20,
-        "valueY": 50
-      },
-      {
-        "category": "5-9",
         "value": 30,
         "valueY": 50
       },
       {
+        "category": "5-9",
+        "value": 150,
+        "valueY": 50
+      },
+      {
         "category": "10-14",
-        "value": 15,
+        "value": 35,
         "valueY": 50
       },
       {
@@ -1220,7 +1221,7 @@
       },
       {
         "category": "20-24",
-        "value": 20,
+        "value": 40,
         "valueY": 50
       },
       {
@@ -1235,22 +1236,22 @@
       },
       {
         "category": "45-54",
-        "value": 120,
+        "value": 210,
         "valueY": 50
       },
       {
         "category": "55-64",
-        "value": 200,
+        "value": 350,
         "valueY": 50
       },
       {
         "category": "65-74",
-        "value": 75,
+        "value": 230,
         "valueY": 50
       },
       {
         "category": "75-84",
-        "value": 50,
+        "value": 150,
         "valueY": 50
       }
     ],
