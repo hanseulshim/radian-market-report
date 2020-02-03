@@ -1,53 +1,56 @@
 import React from 'react'
 import styled from 'styled-components'
 import Header from '../common/Header'
-import Summary from './Summary'
+import PageThreeInfo from './PageThreeInfo'
+import PageFourInfo from './PageFourInfo'
+import RatingsContainer from './RatingsContainer'
 import MapContainer from './MapContainer'
 import { GALLERY } from '../colors'
 import FamilyMakeup from './FamilyMakeup'
+import PopulationByIncome from './PopulationByIncome'
+import PopulationByAge from './PopulationByAge'
 
-const ColumnContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+const PageThree = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header header'
+    'neighborhood neighborhood'
+    'school transit'
+    'schoolRating transitRating'
+    'map map';
+  padding: 10px 50px;
+  grid-column-gap: 10px;
 `
 
-const SectionOneContainer = styled.div`
-  display: flex;
-  margin-left: 50px;
-`
-
-const SectionTwoContainer = styled.div`
-  background: ${GALLERY};
-  flex: 1;
-  padding: 25px 0 25px 50px;
-  display: flex;
-`
-
-const Column = styled.div`
-  display: flex;
-  flex: 1;
-  flex-direction: column;
+const PageFour = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas:
+    'header header header'
+    'info chart1 chart1'
+    'chart2 chart2 chart2'
+    'chart3 chart4 chart4';
+  padding: 10px 50px;
+  grid-column-gap: 10px;
 `
 
 const DemographicData = () => (
   <>
-    <Header section="Demographic Data" />
-    <ColumnContainer>
-      <SectionOneContainer>
-        <Summary />
-        <MapContainer />
-      </SectionOneContainer>
-      <SectionTwoContainer>
-        <Column>
-          <div>Population of Age VS Income</div>
-          <div>20854 Population by Age</div>
-        </Column>
-        <Column>
-          <FamilyMakeup />
-          <div>Population by Age</div>
-        </Column>
-      </SectionTwoContainer>
-    </ColumnContainer>
+    <PageThree>
+      <Header section="Demographic Related Data" />
+      <PageThreeInfo />
+      <RatingsContainer />
+      <MapContainer />
+    </PageThree>
+    <PageFour>
+      <Header section="Demographic Related Data" />
+      <PageFourInfo />
+      <PopulationByAge />
+      <PopulationByIncome />
+    </PageFour>
   </>
 )
 
