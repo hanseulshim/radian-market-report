@@ -6,7 +6,7 @@ import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDire
 import styled from 'styled-components'
 import config from '../config1'
 import Text from '../common/Text'
-import { familyMakeup } from '../data/data1.json'
+import { familyMakeup, propertyInfo } from '../data/data1.json'
 import { BLACK, DESERT_STORM, NEPTUNE, AZURE, WHITE } from '../colors'
 import { hex2rgba } from '../helper'
 
@@ -26,7 +26,12 @@ const Chart = styled.div`
       ? hex2rgba(NEPTUNE, 0.2)
       : ''};
   border-radius: 50%;
-  ::after ;
+  &:after {
+    content: ${props => props.info};
+    position: relative;
+    top: 95%;
+    z-index: 5;
+  }
 `
 
 const FamilyMakeup = () => {
@@ -102,9 +107,18 @@ const FamilyMakeup = () => {
 
   return (
     <Container>
-      <Chart id={'selectedFamilyMakeupChart'}></Chart>
-      <Chart id={'comparable1FamilyMakeupChart'}></Chart>
-      <Chart id={'comparable2FamilyMakeupChart'}></Chart>
+      <Chart
+        id={'selectedFamilyMakeupChart'}
+        info={propertyInfo.selected}
+      ></Chart>
+      <Chart
+        id={'comparable1FamilyMakeupChart'}
+        info={propertyInfo.comparable1}
+      ></Chart>
+      <Chart
+        id={'comparable2FamilyMakeupChart'}
+        info={propertyInfo.comparable2}
+      ></Chart>
     </Container>
   )
 }
