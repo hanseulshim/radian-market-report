@@ -7,11 +7,20 @@ import styled from 'styled-components'
 import config from '../config'
 import Text from '../common/Text'
 import { familyMakeup, propertyInfo } from '../data/data.json'
-import { BLACK, DESERT_STORM, NEPTUNE, AZURE, WHITE } from '../colors'
+import { BLACK, NEPTUNE, AZURE } from '../colors'
 import { hex2rgba } from '../helper'
 
 const Container = styled.div`
   grid-area: chart4;
+  display: flex;
+  flex-direction: column;
+`
+
+const Title = styled(Text)`
+  margin-bottom: 15px;
+`
+
+const ChartRow = styled.div`
   display: flex;
 `
 
@@ -113,24 +122,27 @@ const FamilyMakeup = () => {
 
   return (
     <Container>
-      <ChartContainer>
-        <Chart id={'selectedFamilyMakeupChart'} />
-        <Text subChartTitle style={{ marginLeft: '0' }}>
-          {propertyInfo.selected}
-        </Text>
-      </ChartContainer>
-      <ChartContainer>
-        <Chart id={'comparable1FamilyMakeupChart'} />
-        <Text subChartTitle style={{ marginLeft: '0' }}>
-          {propertyInfo.comparable1}
-        </Text>
-      </ChartContainer>
-      <ChartContainer>
-        <Chart id={'comparable2FamilyMakeupChart'} />
-        <Text subChartTitle style={{ marginLeft: '0' }}>
-          {propertyInfo.comparable2}
-        </Text>
-      </ChartContainer>
+      <Title value>Family Makeup</Title>
+      <ChartRow>
+        <ChartContainer>
+          <Chart id={'selectedFamilyMakeupChart'} />
+          <Text subChartTitle style={{ marginLeft: '0' }}>
+            {propertyInfo.selected}
+          </Text>
+        </ChartContainer>
+        <ChartContainer>
+          <Chart id={'comparable1FamilyMakeupChart'} />
+          <Text subChartTitle style={{ marginLeft: '0' }}>
+            {propertyInfo.comparable1}
+          </Text>
+        </ChartContainer>
+        <ChartContainer>
+          <Chart id={'comparable2FamilyMakeupChart'} />
+          <Text subChartTitle style={{ marginLeft: '0' }}>
+            {propertyInfo.comparable2}
+          </Text>
+        </ChartContainer>
+      </ChartRow>
     </Container>
   )
 }
