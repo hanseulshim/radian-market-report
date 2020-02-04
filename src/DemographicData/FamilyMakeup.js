@@ -4,9 +4,9 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 // eslint-disable-next-line camelcase
 import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected'
 import styled from 'styled-components'
-import config from '../config1'
+import config from '../config'
 import Text from '../common/Text'
-import { familyMakeup, propertyInfo } from '../data/data1.json'
+import { familyMakeup, propertyInfo } from '../data/data.json'
 import { BLACK, DESERT_STORM, NEPTUNE, AZURE, WHITE } from '../colors'
 import { hex2rgba } from '../helper'
 
@@ -14,9 +14,17 @@ const Container = styled.div`
   grid-area: chart4;
   display: flex;
 `
+
+const ChartContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
 const Chart = styled.div`
   width: 250px;
   height: 250px;
+  position:relative
   background-color: ${props =>
     props.id === 'selectedFamilyMakeupChart'
       ? hex2rgba(BLACK, 0.2)
@@ -26,11 +34,9 @@ const Chart = styled.div`
       ? hex2rgba(NEPTUNE, 0.2)
       : ''};
   border-radius: 50%;
-  &:after {
-    content: ${props => props.info};
-    position: relative;
-    top: 95%;
-    z-index: 5;
+  > span {
+    position:absolute;
+    bottom:0
   }
 `
 
@@ -107,18 +113,24 @@ const FamilyMakeup = () => {
 
   return (
     <Container>
-      <Chart
-        id={'selectedFamilyMakeupChart'}
-        info={propertyInfo.selected}
-      ></Chart>
-      <Chart
-        id={'comparable1FamilyMakeupChart'}
-        info={propertyInfo.comparable1}
-      ></Chart>
-      <Chart
-        id={'comparable2FamilyMakeupChart'}
-        info={propertyInfo.comparable2}
-      ></Chart>
+      <ChartContainer>
+        <Chart id={'selectedFamilyMakeupChart'} />
+        <Text subChartTitle style={{ marginLeft: '0' }}>
+          {propertyInfo.selected}
+        </Text>
+      </ChartContainer>
+      <ChartContainer>
+        <Chart id={'comparable1FamilyMakeupChart'} />
+        <Text subChartTitle style={{ marginLeft: '0' }}>
+          {propertyInfo.comparable1}
+        </Text>
+      </ChartContainer>
+      <ChartContainer>
+        <Chart id={'comparable2FamilyMakeupChart'} />
+        <Text subChartTitle style={{ marginLeft: '0' }}>
+          {propertyInfo.comparable2}
+        </Text>
+      </ChartContainer>
     </Container>
   )
 }

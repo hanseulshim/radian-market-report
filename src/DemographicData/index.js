@@ -7,7 +7,6 @@ import RatingsContainer from './RatingsContainer'
 import MapContainer from './MapContainer'
 import { GALLERY } from '../colors'
 import FamilyMakeup from './FamilyMakeup'
-import PopulationByIncome from './PopulationByIncome'
 import PopulationOfAgeVsIncome from './PopulationOfAgeVsIncome'
 import PopulationByAge from './PopulationByAge'
 
@@ -52,9 +51,8 @@ const DemographicData = () => (
       <Header section="Demographic Related Data" />
       <PageFourInfo />
       <PopulationByAge />
-      <PopulationByIncome />
-      <FamilyMakeup />
       <PopulationOfAgeVsIncome />
+      <FamilyMakeup />
     </PageFour>
   </>
 )
