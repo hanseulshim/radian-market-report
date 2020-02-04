@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Text from '../common/Text'
-import { neighborhoodSummary, schoolRatings, transitRatings } from '../data/data1.json'
+import { neighborhoodSummary, schoolRatings, transitRatings } from '../data/data.json'
 
 const NeighborhoodSummary = styled.div`
   grid-area: neighborhood;

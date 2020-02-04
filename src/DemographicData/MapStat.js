@@ -11,7 +11,7 @@ import {
   faArrowUp,
   faArrowDown
 } from '@fortawesome/free-solid-svg-icons'
-import { propertyInfo, schoolRatings, transitRatings, crimeRatings } from '../data/data1.json'
+import { propertyInfo, schoolRatings, transitRatings, crimeRatings } from '../data/data.json'
 import { getAverage } from '../helper'
 
 const MapInfo = styled.div`

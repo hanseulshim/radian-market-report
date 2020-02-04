@@ -1,12 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
-import { propertyInfo } from '../data/data1.json'
+import { propertyInfo } from '../data/data.json'
 import { BLACK, DESERT_STORM, NEPTUNE, AZURE, WHITE } from '../colors'
 import Text from './Text'
 
 const Container = styled.div`
   padding: 25px 50px;
-  margin: -10px -50px;
+  margin: 0 -50px;
   margin-bottom: 25px;
   background: ${DESERT_STORM};
   display: grid;

@@ -1,554 +1,212 @@
-import { NEPTUNE, SUPERNOVA, AZURE, VALENCIA, WHITE, BLACK } from './colors'
+import {
+  BLACK,
+  AZURE,
+  NEPTUNE,
+  VALENCIA,
+  SUPERNOVA,
+  DUSTY_GRAY,
+  WHITE
+} from './colors'
 
-export default {
-  medianPricesConfig: {
-    id: 'medianPricesDiv',
-    height: '300px',
-    title: 'Median Listing Prices'
+const fontSize = 14
+
+const getColor = category =>
+  category === 'selected' || category === 'series2'
+    ? BLACK
+    : category === 'comparable1' || category === 'series1'
+      ? AZURE
+      : category === 'comparable2'
+        ? NEPTUNE
+        : category === 'series3'
+          ? VALENCIA
+          : category === 'series4'
+            ? SUPERNOVA
+            : category === 'selectedSold'
+              ? DUSTY_GRAY
+              : category === 'age'
+                ? WHITE
+                : ''
+
+const chart = type => ({
+  paddingLeft: -25,
+  paddingTop: type === 'section2' || type === 'age' ? 50 : 10,
+  paddingBottom: type === 'section2' ? -5 : 10,
+  paddingRight: type === 'section2' ? 20 : 15,
+  fontSize
+})
+
+const dateAxis = type => ({
+  dateFormats: {
+    month: 'MMM'
   },
-  avgSaleToListRatioConfig: {
-    id: 'avgSaleToListRatioDiv',
-    height: '150px',
-    title: 'Avg Sale to List Ratio'
+  periodChangeDateFormats: {
+    month: 'MMM'
   },
-  inventoryConfig: {
-    id: 'inventoryDiv',
-    height: '150px',
-    title: 'Inventory'
-  },
-  marketStrengthConfig: {
-    id: 'marketStrengthDiv',
-    height: '150px',
-    title: 'Market Strength'
-  },
-  avgHpiByBedsConfig: {
-    id: 'avgHpiByBedsDiv',
-    height: '150px',
-    title: 'Avg {SELECTED_PROPERTY} by Beds'
-  },
-  avgHpiBySqFtConfig: {
-    id: 'avgHpiBySqFtDiv',
-    height: '150px',
-    title: 'Avg {SELECTED_PROPERTY} by Sq Ft'
-  },
-  ageOfPropertiesConfig: {
-    id: 'ageOfPropertiesDiv',
-    height: '400px',
-    title: 'Age of Properties Across Markets'
-  },
-  domVsPriceConfig: {
-    id: 'domVsPriceDiv',
-    height: '220px',
-    title: 'DOM vs Price of Listings'
-  },
-  inventoryPerDomConfig: {
-    id: 'inventoryPerDomDiv',
-    height: '150px',
-    title: 'Inventory of Listings Per DOM'
-  },
-  averageDomOverTimeConfig: {
-    id: 'averageDomOverTimeDiv',
-    height: '150px',
-    title: 'Average DOM Over Time'
-  },
-  map: {
-    width: 150,
-    height: 100
-  },
-  sectionOneChartConfig: {
-    chart: {
-      paddingTop: 25,
-      paddingLeft: -5,
-      fontSize: 12
-    },
-    legendConfig: {
-      position: 'top',
-      contentAlign: 'right',
-      useDefaultMarker: true,
-      fontSize: 14,
-      labels: {
-        marginLeft: 10
-      },
-      dy: -12,
-      markers: {
-        dx: -5,
-        dy: -5
-      }
-    },
-    dateAxis: {
-      renderer: {
-        minGridDistance: 50,
-        grid: {
-          location: 0.5,
-          strokeOpacity: 0.1,
-          stroke: BLACK
-        }
-      },
-      dateFormats: {
-        month: 'MMM'
-      },
-      periodChangeDateFormats: {
-        month: 'MMM'
-      },
-      startLocation: 0.5,
-      endLocation: 0.5
-    },
-    valueAxis: {
-      width: 70,
-      strokeWidth: 0,
-      renderer: {
-        minGridDistance: 25,
-        labels: {
-          width: 70,
-          maxWidth: 70,
-          truncate: true,
-          textAlign: 'end'
-        }
-      },
-      numberFormatter: {
-        numberFormat: '#'
-      }
-    },
-    label: {
-      fontSize: 15,
-      fontWeight: 'bold',
-      align: 'center',
-      isMeasured: false,
-      x: 75,
-      y: -25
-    },
-    selectedProperty: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 3,
-      stroke: BLACK,
-      fill: BLACK,
-      fillOpacity: 0.05
-    },
-    comparisonProperty1: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 3,
-      stroke: AZURE,
-      fill: AZURE
-    },
-    comparisonProperty2: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 3,
-      stroke: NEPTUNE,
-      fill: NEPTUNE
-    },
-    soldProperty: {
-      name: 'Sold',
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 2,
-      strokeDasharray: '5, 5',
-      stroke: BLACK,
-      fill: BLACK
-    },
-    comparisonProperty1Sold: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 2,
-      strokeDasharray: '5, 5',
-      stroke: AZURE,
-      fill: AZURE
-    },
-    comparisonProperty2Sold: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 2,
-      strokeDasharray: '5, 5',
-      stroke: NEPTUNE,
-      fill: NEPTUNE
-    }
-  },
-  sectionTwoChartConfig: {
-    chart: {
-      paddingTop: 40,
-      paddingBottom: -5,
-      paddingLeft: 0,
-      paddingRight: 20,
-      fontSize: 12
-    },
-    legendConfig: {
-      contentAlign: 'right',
-      fontSize: 14,
-      labels: {
-        marginLeft: -35
-      },
-      markers: {
-        dx: -10,
-        dy: 8
-      }
-    },
-    dateAxis: {
-      renderer: {
-        minGridDistance: 10,
-        grid: {
-          disabled: true
-        }
-      },
-      dateFormats: {
-        month: 'MMM'
-      },
-      periodChangeDateFormats: {
-        month: 'MMM'
-      },
-      startLocation: 0.5,
-      endLocation: 0.5
-    },
-    valueAxis: {
-      strokeWidth: 0,
-      renderer: {
-        minGridDistance: 20,
-        grid: {
-          disabled: true
-        }
-      },
-      numberFormatter: {
-        numberFormat: '#'
-      }
-    },
-    label: {
-      fontSize: 15,
-      fontWeight: 'bold',
-      align: 'center',
-      isMeasured: false,
-      x: 40,
-      y: -30
-    },
-    hand: {
-      pin: {
-        radius: 9
-      },
-      radius: '85%',
-      y: -5,
-      startWidth: 18
-    },
-    series1: {
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 3,
-      stroke: AZURE
-    },
-    series2: {
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 3,
+  startLocation: 0.5,
+  endLocation: 0.5,
+  renderer: {
+    minGridDistance: type === 'section2' ? 10 : type === 'age' ? 100 : 50,
+    grid: {
+      location: type === 'age' ? 0 : 0.5,
+      strokeOpacity: 0.1,
       stroke: BLACK
-    },
-    series3: {
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 3,
-      stroke: VALENCIA
-    },
-    series4: {
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      strokeWidth: 3,
-      stroke: SUPERNOVA
     }
   },
-  sectionThreeChartConfig: {
-    chart: {
-      paddingTop: 25,
-      paddingLeft: -5,
-      fontSize: 12
+  title: {
+    fontWeight: 'bold',
+    fontSize
+  }
+})
+
+const valueAxis = type => ({
+  width: 75,
+  strokeWidth: 0,
+  renderer: {
+    minGridDistance: 30,
+    labels: {
+      width: 75,
+      maxWidth: 75,
+      truncate: true,
+      textAlign: 'end'
     },
-    label: {
-      fontSize: 15,
-      fontWeight: 'bold',
-      align: 'center',
-      isMeasured: false,
-      x: 40,
-      y: -30
-    },
-    valueAxis: {
-      strokeWidth: 0,
-      renderer: {
-        minGridDistance: 20
-      },
-      numberFormatter: {
-        numberFormat: '#'
+    ticks: {
+      template: {
+        disabled: type === 'bullet'
       }
-    },
-    selectedPropertySeriesAvg: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      columns: {
-        width: '40%'
-      },
-      strokeWidth: 0,
-      fill: BLACK,
-      bullets: [
-        {
-          type: 'CircleBullet',
-          circle: {
-            radius: 8,
-            strokeWidth: 0,
-            fill: BLACK
-          }
-        }
-      ]
-    },
-    comparisonProperty1SeriesAvg: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      columns: {
-        width: '40%'
-      },
-      strokeWidth: 0,
-      fill: AZURE,
-      bullets: [
-        {
-          type: 'CircleBullet',
-          circle: {
-            radius: 8,
-            strokeWidth: 0,
-            fill: AZURE
-          }
-        }
-      ]
-    },
-    comparisonProperty2SeriesAvg: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      columns: {
-        width: '40%'
-      },
-      strokeWidth: 0,
-      fill: NEPTUNE,
-      bullets: [
-        {
-          type: 'CircleBullet',
-          circle: {
-            radius: 8,
-            strokeWidth: 0,
-            fill: NEPTUNE
-          }
-        }
-      ]
-    },
-    soldPropertySeriesAvg: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      columns: {
-        width: '40%'
-      },
-      strokeWidth: 0,
-      fill: '#AFB3B5',
-      bullets: [
-        {
-          type: 'CircleBullet',
-          circle: {
-            radius: 8,
-            strokeWidth: 0,
-            fill: '#999999'
-          }
-        }
-      ]
-    },
-    ageOfProperty: {
-      hiddenInLegend: true,
-      dataFields: {
-        dateX: 'date',
-        valueY: 'value'
-      },
-      columns: {
-        width: '40%'
-      },
-      strokeWidth: 0,
-      fill: WHITE
     }
   },
-  sectionFourChartConfig: {
-    chart: {
-      paddingTop: 20,
-      paddingLeft: -5,
-      paddingBottom: 0,
-      fontSize: 12
-    },
-    categoryAxis: {
-      dataFields: {
-        category: 'category'
-      },
-      renderer: {
-        minGridDistance: 10,
-        grid: {
-          location: 0,
-          strokeOpacity: 0.1,
-          stroke: BLACK
-        }
-      },
-      startLocation: 0,
-      endLocation: 0
-    },
-    label: {
-      fontSize: 12,
-      align: 'center',
-      isMeasured: false,
-      x: 70,
-      y: -20
-    },
-    selectedProperty: {
-      hiddenInLegend: true,
-      dataFields: {
-        categoryX: 'category',
-        valueY: 'high',
-        openValueY: 'low'
-      },
-      strokeWidth: 0,
-      fill: BLACK
-    },
-    selectedPropertyLineSeries: {
-      noRisers: true,
-      startLocation: 0.1,
-      endLocation: 0.37,
-      dataFields: {
-        valueY: 'average',
-        categoryX: 'category'
-      },
-      stroke: BLACK,
-      strokeWidth: 3
-    },
-    comparisonProperty1: {
-      hiddenInLegend: true,
-      dataFields: {
-        categoryX: 'category',
-        valueY: 'high',
-        openValueY: 'low'
-      },
-      strokeWidth: 0,
-      fill: AZURE
-    },
-    comparisonProperty1LineSeries: {
-      noRisers: true,
-      startLocation: 0.35,
-      endLocation: 0.65,
-      dataFields: {
-        valueY: 'average',
-        categoryX: 'category'
-      },
-      stroke: AZURE,
-      strokeWidth: 3
-    },
-    comparisonProperty2: {
-      hiddenInLegend: true,
-      dataFields: {
-        categoryX: 'category',
-        valueY: 'high',
-        openValueY: 'low'
-      },
-      strokeWidth: 0,
-      fill: NEPTUNE
-    },
-    comparisonProperty2LineSeries: {
-      noRisers: true,
-      startLocation: 0.6,
-      endLocation: 0.95,
-      dataFields: {
-        valueY: 'average',
-        categoryX: 'category'
-      },
-      stroke: NEPTUNE,
-      strokeWidth: 3
+  numberFormatter: {
+    numberFormat: type === 'price' ? '$#a' : type === 'percent' ? '#%' : '#'
+  },
+  min: type === 'min' ? 0 : '',
+  max: ''
+})
+
+const categoryAxis = type => ({
+  dataFields: {
+    category: 'category'
+  },
+  startLocation: type === 'line' ? 0.5 : 0,
+  endLocation: type === 'line' ? 0.5 : 1,
+  renderer: {
+    minGridDistance: 10,
+    cellStartLocation: 0.1,
+    cellEndLocation: 0.9,
+    grid: {
+      location: type === 'line' ? 0.5 : 0,
+      strokeOpacity: 0.1
     }
   },
-  sectionFiveChartConfig: {
-    selectedProperty: {
-      hiddenInLegend: true,
-      dataFields: {
-        categoryX: 'category',
+  title: {
+    fontWeight: 'bold',
+    fontSize
+  }
+})
+
+const line = (category, type, chart) => {
+  const dataFields =
+    chart === 'category' || chart === 'vertical' || chart === 'vertical1' || chart === 'curvedVert'
+      ? {
+        valueY: 'value',
+        categoryX: 'category'
+      }
+      : {
+        dateX: 'date',
         valueY: 'value'
-      },
-      strokeWidth: 0,
-      fill: BLACK,
-      stroke: BLACK
-    },
-    comparisonProperty1: {
-      hiddenInLegend: true,
-      dataFields: {
-        categoryX: 'category',
-        valueY: 'value'
-      },
-      strokeWidth: 0,
-      fill: AZURE,
-      stroke: AZURE
-    },
-    comparisonProperty2: {
-      hiddenInLegend: true,
-      dataFields: {
-        categoryX: 'category',
-        valueY: 'value'
-      },
-      strokeWidth: 0,
-      fill: NEPTUNE,
-      stroke: NEPTUNE
-    },
-    soldProperty: {
-      dataFields: {
-        categoryX: 'category',
-        valueY: 'value'
-      },
-      strokeWidth: 2,
-      strokeDasharray: '5, 5',
-      stroke: BLACK
-    },
-    categoryAxis: {
-      dataFields: {
-        category: 'category'
-      },
-      renderer: {
-        minGridDistance: 10,
-        grid: {
-          location: 0.5,
-          strokeOpacity: 0.1,
-          stroke: BLACK
+      }
+  return {
+    dataFields,
+    noRisers: chart === 'category',
+    strokeWidth: type === 'dash' ? 2 : type === 'column' ? 0 : 3,
+    stroke: getColor(category),
+    strokeDasharray: type === 'dash' ? '5, 5' : 0,
+    fill: getColor(category),
+    fillOpacity: type === 'filled' ? 0.05 : type === 'column' ? 1 : 0,
+    startLocation:
+      category === 'selected'
+        ? 0.1
+        : category === 'comparable1'
+          ? 0.35
+          : category === 'comparable2'
+            ? 0.6
+            : 0,
+    endLocation:
+      category === 'selected'
+        ? 0.37
+        : category === 'comparable1'
+          ? 0.65
+          : category === 'comparable2'
+            ? 0.95
+            : 0,
+    bullets:
+      chart === 'bullet'
+        ? [
+          {
+            type: 'CircleBullet',
+            circle: {
+              radius: 8,
+              strokeWidth: 0,
+              fill: getColor(category)
+            }
+          }
+        ]
+        : [],
+    columns:
+      chart === 'bullet' || chart === 'vertical'
+        ? {
+          width: '25%'
+        } : chart === 'vertical1' ? {
+          width: '7%'
         }
-      },
-      startLocation: 0.5,
-      endLocation: 0.5
+          : {},
+    tensionX: chart === 'curved' || chart === 'curvedVert' ? 0.75 : 1,
+    tensionY: chart === 'curved' || chart === 'curvedVert' ? 0.75 : 1
+  }
+}
+
+const bar = category => ({
+  hiddenInLegend: true,
+  dataFields: {
+    categoryX: 'category',
+    valueY: 'high',
+    openValueY: 'low'
+  },
+  strokeWidth: 0,
+  fill: getColor(category)
+})
+
+const legend = () => {
+  return {
+    contentAlign: 'right',
+    fontSize,
+    labels: {
+      marginLeft: -35
+    },
+    markers: {
+      dx: -10,
+      dy: 8
     }
   }
+}
+
+const label = type => {
+  return {
+    fontSize: type === 'age' ? fontSize : 18,
+    fontWeight: 'bold',
+    align: 'center',
+    isMeasured: false,
+    y: -35,
+    x: type === 'section2' ? 75 : type === 'age' ? 35 : 0
+  }
+}
+
+export default {
+  chart,
+  dateAxis,
+  valueAxis,
+  label,
+  line,
+  legend,
+  categoryAxis,
+  bar
 }

@@ -8,9 +8,11 @@ import MapContainer from './MapContainer'
 import { GALLERY } from '../colors'
 import FamilyMakeup from './FamilyMakeup'
 import PopulationByIncome from './PopulationByIncome'
+import PopulationOfAgeVsIncome from './PopulationOfAgeVsIncome'
 import PopulationByAge from './PopulationByAge'
 
 const PageThree = styled.div`
+  margin-top: 25px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
@@ -20,11 +22,12 @@ const PageThree = styled.div`
     'school transit'
     'schoolRating transitRating'
     'map map';
-  padding: 10px 50px;
+  padding: 0 50px;
   grid-column-gap: 10px;
 `
 
 const PageFour = styled.div`
+  margin-top: 25px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
@@ -32,9 +35,9 @@ const PageFour = styled.div`
     'header header header'
     'info chart1 chart1'
     'chart2 chart2 chart2'
-    'chart4 chart4 chart4';
-  padding: 10px 50px;
-  grid-column-gap: 10px;
+    'chart3 chart4 chart4';
+  padding: 0 50px;
+  grid-column-gap: 50px;
 `
 
 const DemographicData = () => (
@@ -51,6 +54,7 @@ const DemographicData = () => (
       <PopulationByAge />
       <PopulationByIncome />
       <FamilyMakeup />
+      <PopulationOfAgeVsIncome />
     </PageFour>
   </>
 )
