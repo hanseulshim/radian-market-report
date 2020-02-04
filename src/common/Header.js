@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { propertyInfo } from '../data/data1.json'
+import { propertyInfo } from '../data/data.json'
 import { BLACK, DESERT_STORM, NEPTUNE, AZURE, WHITE } from '../colors'
 import Text from './Text'
 

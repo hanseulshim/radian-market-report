@@ -3,9 +3,9 @@ import styled from 'styled-components'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import Text from '../common/Text'
-import { propertyInfo, populationByAge } from '../data/data1.json'
+import { propertyInfo, populationByAge } from '../data/data.json'
 import { BRANDY_PUNCH, BLACK, AZURE, NEPTUNE } from '../colors'
-import config from '../config1'
+import config from '../config'
 
 const Container = styled.div`
   flex: 3;

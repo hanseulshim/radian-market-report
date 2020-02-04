@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import Text from '../common/Text'
-import { daysOnMarketInfo, ageOfPropertiesInfo } from '../data/data1.json'
+import { daysOnMarketInfo, ageOfPropertiesInfo } from '../data/data.json'
 
 const DaysOnMarket = styled.div`
   grid-area: days;

@@ -3,8 +3,8 @@ import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import styled from 'styled-components'
 import Text from '../common/Text'
-import config from '../config1'
-import { medianPrices } from '../data/data1.json'
+import config from '../config'
+import { medianPrices } from '../data/data.json'
 import LegendSold from '../assets/legendSold.svg'
 
 const Container = styled.div`

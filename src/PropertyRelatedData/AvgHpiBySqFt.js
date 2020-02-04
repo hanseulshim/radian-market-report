@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import styled from 'styled-components'
-import config from '../config1'
-import { avgHpiBySqFt, propertyInfo } from '../data/data1.json'
+import config from '../config'
+import { avgHpiBySqFt, propertyInfo } from '../data/data.json'
 import { DESERT_STORM } from '../colors'
 
 const Container = styled.div`

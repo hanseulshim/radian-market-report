@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import styled from 'styled-components'
-import config from '../config1'
+import config from '../config'
 import Text from '../common/Text'
-import { inventoryPerDom } from '../data/data1.json'
+import { inventoryPerDom } from '../data/data.json'
 
 const Container = styled.div`
   grid-area: chart2;

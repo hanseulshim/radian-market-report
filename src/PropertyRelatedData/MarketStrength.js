@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
 import styled from 'styled-components'
-import { marketStrength } from '../data/data1.json'
+import { marketStrength } from '../data/data.json'
 import { DESERT_STORM, AZURE, NEPTUNE, BLACK } from '../colors'
-import config from '../config1'
+import config from '../config'
 
 const Chart = styled.div`
   background: ${DESERT_STORM};

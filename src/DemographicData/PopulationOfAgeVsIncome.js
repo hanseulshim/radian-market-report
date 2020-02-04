@@ -2,8 +2,8 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
-import config from '../config1'
-import { populationOfAgeVsIncome } from '../data/data1.json'
+import config from '../config'
+import { populationOfAgeVsIncome } from '../data/data.json'
 import Text from '../common/Text'
 import { BLACK } from '../colors'
 
@@ -35,6 +35,7 @@ const PopulationOfAgeVsIncome = () => {
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.categoryAxis('line')
+    categoryAxis.title.text = 'Income'
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = config.valueAxis('percent')
