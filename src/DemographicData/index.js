@@ -50,6 +50,7 @@ const DemographicData = () => (
       <PageFourInfo />
       <PopulationByAge />
       <PopulationByIncome />
+      <FamilyMakeup />
     </PageFour>
   </>
 )

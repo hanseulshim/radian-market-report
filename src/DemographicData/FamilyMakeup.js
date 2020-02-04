@@ -1,14 +1,23 @@
 import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 import * as am4charts from '@amcharts/amcharts4/charts'
+// eslint-disable-next-line camelcase
 import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected'
 import styled from 'styled-components'
 import config from '../config1'
 import Text from '../common/Text'
-import { inventoryPerDom } from '../data/data1.json'
+import { familyMakeup } from '../data/data1.json'
+import { BLACK, DESERT_STORM, NEPTUNE, AZURE, WHITE } from '../colors'
+import { hex2rgba } from '../helper'
 
 const Container = styled.div`
-  grid-area: chart2;
+  grid-area: chart4;
+`
+const Chart = styled.div`
+  width: 250px;
+  height: 250px;
+  background-color: ${props => hex2rgba(NEPTUNE, 0.3)};
+  border-radius: 50%;
 `
 
 const FamilyMakeup = () => {
@@ -22,77 +31,38 @@ const FamilyMakeup = () => {
     const series = chart.series.push(
       new am4plugins_forceDirected.ForceDirectedSeries()
     )
-    const workstation = 'M0 30l4-8h24l4 8zM4 2v18h24V2H4zm22 16H6V4h20v14z'
 
-    series.data = [
-      {
-        name: 'First',
-        value: 190,
-        path: workstation
-      },
-      {
-        name: 'Second',
-        value: 289,
-        path: workstation
-      },
-      {
-        name: 'Third',
-        value: 635,
-        path: workstation
-      },
-      {
-        name: 'Fourth',
-        value: 732,
-        path: workstation
-      },
-      {
-        name: 'Fifth',
-        value: 835,
-        path: workstation
-      }
-    ]
-
+    series.data = familyMakeup.selected
     series.dataFields.value = 'value'
     series.dataFields.name = 'name'
-    series.minRadius = 5
-    series.maxRadius = 60
+    series.minRadius = 20
+    series.maxRadius = 55
 
-    // series.nodes.template.label.text = '{name}'
-    // series.fontSize = 10
-    // series.minRadius = 15
-    // series.maxRadius = 40
+    const icon = series.nodes.template.createChild(am4core.Image)
 
-    const icon = series.nodes.template.createChild(am4core.Sprite)
-
-    icon.propertyFields.path = 'path'
     icon.horizontalCenter = 'middle'
     icon.verticalCenter = 'middle'
-    icon.width = am4core.percent(30)
-    icon.height = am4core.percent(30)
+    icon.adapter.add('pixelHeight', (pixelHeight, target) => {
+      if (target.dataItem && target.dataItem.value > 0.1) {
+        return target.dataItem.value * 100
+      } else return 20
+    })
+    icon.adapter.add('href', (href, target) => {
+      if (target.dataItem.dataContext && target.dataItem.dataContext.category) {
+        if (target.dataItem.dataContext.category === 'single') {
+          return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
+        }
+        if (target.dataItem.dataContext.category === 'couple') {
+          return 'https://cdn.onlinewebfonts.com/svg/img_572706.png'
+        }
+      }
+    })
 
     // Configure circles
-    series.nodes.template.circle.fill = am4core.color('#fff')
-    series.nodes.template.circle.fill = am4core.color('#fff')
-
-    // chart.data = inventoryPerDom.selected
-
-    // const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-    // categoryAxis.config = config.categoryAxis()
-
-    // const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    // valueAxis.config = config.valueAxis('min')
-
-    // const selectedSeries = chart.series.push(new am4charts.ColumnSeries())
-    // selectedSeries.data = inventoryPerDom.selected
-    // selectedSeries.config = config.line('selected', 'column', 'category')
-
-    // const comparable1Series = chart.series.push(new am4charts.ColumnSeries())
-    // comparable1Series.data = inventoryPerDom.comparable1
-    // comparable1Series.config = config.line('comparable1', 'column', 'category')
-
-    // const comparable2Series = chart.series.push(new am4charts.ColumnSeries())
-    // comparable2Series.data = inventoryPerDom.comparable2
-    // comparable2Series.config = config.line('comparable2', 'column', 'category')
+    series.nodes.template.circle.fill = am4core.color(hex2rgba(NEPTUNE))
+    series.nodes.template.propertyFields.fillOpacity = 'value'
+    series.nodes.template.outerCircle.disabled = true
+    series.nodes.template.circle.stroke = am4core.color(hex2rgba(NEPTUNE, 0.9))
 
     return () => {
       chart.dispose()
@@ -101,16 +71,8 @@ const FamilyMakeup = () => {
 
   return (
     <Container>
-      <Text subChartTitle>Inventory of Listings per DOM</Text>
-      <div
-        id={'familyMakeupChart'}
-        style={{
-          width: 250,
-          height: 250,
-          border: '1px solid black',
-          borderRadius: '50%'
-        }}
-      ></div>
+      <Chart id={'familyMakeupChart'}></Chart>
+      <Text subChartTitle>20854</Text>
     </Container>
   )
 }
