@@ -221,6 +221,13 @@ const label = type => {
   }
 }
 
+const getBubbleConfig = zip => {
+  return {
+    divId: zip + 'FamilyMakeupChart',
+    color: getColor(zip)
+  }
+}
+
 export default {
   chart,
   dateAxis,
@@ -229,5 +236,6 @@ export default {
   line,
   legend,
   categoryAxis,
-  bar
+  bar,
+  getBubbleConfig
 }

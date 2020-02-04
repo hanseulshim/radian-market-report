@@ -12,78 +12,99 @@ import { hex2rgba } from '../helper'
 
 const Container = styled.div`
   grid-area: chart4;
+  display: flex;
 `
 const Chart = styled.div`
   width: 250px;
   height: 250px;
-  background-color: ${props => hex2rgba(NEPTUNE, 0.3)};
+  background-color: ${props =>
+    props.id === 'selectedFamilyMakeupChart'
+      ? hex2rgba(BLACK, 0.2)
+      : props.id === 'comparable1FamilyMakeupChart'
+      ? hex2rgba(AZURE, 0.2)
+      : props.id === 'comparable2FamilyMakeupChart'
+      ? hex2rgba(NEPTUNE, 0.2)
+      : ''};
   border-radius: 50%;
+  ::after ;
 `
 
 const FamilyMakeup = () => {
   useEffect(() => {
-    const chart = am4core.createFromConfig(
-      config.chart(),
-      'familyMakeupChart',
-      am4plugins_forceDirected.ForceDirectedTree
-    )
+    Object.keys(familyMakeup).map(zip => {
+      const bubbleConfig = config.getBubbleConfig(zip)
 
-    const series = chart.series.push(
-      new am4plugins_forceDirected.ForceDirectedSeries()
-    )
+      const chart = am4core.createFromConfig(
+        config.chart(),
+        bubbleConfig.divId,
+        am4plugins_forceDirected.ForceDirectedTree
+      )
+      const series = chart.series.push(
+        new am4plugins_forceDirected.ForceDirectedSeries()
+      )
 
-    series.data = familyMakeup.selected
-    series.dataFields.value = 'value'
-    series.dataFields.name = 'name'
-    series.minRadius = 20
-    series.maxRadius = 55
+      series.data = familyMakeup[zip]
+      series.dataFields.value = 'value'
+      series.dataFields.name = 'name'
+      series.minRadius = 20
+      series.maxRadius = 55
 
-    const icon = series.nodes.template.createChild(am4core.Image)
-    icon.horizontalCenter = 'middle'
-    icon.verticalCenter = 'middle'
+      const icon = series.nodes.template.createChild(am4core.Image)
+      icon.horizontalCenter = 'middle'
+      icon.verticalCenter = 'middle'
 
-    // Add adapter functions for dynamic icon images and sizes
-    icon.adapter.add('pixelHeight', (pixelHeight, target) => {
-      if (target.dataItem && target.dataItem.value > 0.1) {
-        return target.dataItem.value * 120
-      } else return 20
-    })
-    icon.adapter.add('href', (href, target) => {
-      if (target.dataItem.dataContext && target.dataItem.dataContext.category) {
-        switch (target.dataItem.dataContext.category) {
-          case 'single':
-            return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
-          case 'couple':
-            return 'https://cdn.onlinewebfonts.com/svg/img_572706.png'
-          default:
-            return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
+      // Add adapter functions for dynamic icon images and sizes
+      icon.adapter.add('pixelHeight', (pixelHeight, target) => {
+        if (target.dataItem && target.dataItem.value > 0.1) {
+          return target.dataItem.value * 120
+        } else return 20
+      })
+      icon.adapter.add('href', (href, target) => {
+        if (
+          target.dataItem.dataContext &&
+          target.dataItem.dataContext.category
+        ) {
+          switch (target.dataItem.dataContext.category) {
+            case 'single':
+              return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
+            case 'couple':
+              return 'https://cdn.onlinewebfonts.com/svg/img_572706.png'
+            default:
+              return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
+          }
         }
+      })
+
+      // Configure circles. Fill Opacity is linked to value in data
+      series.nodes.template.circle.fill = am4core.color(
+        hex2rgba(bubbleConfig.color)
+      )
+      series.nodes.template.adapter.add(
+        'fillOpacity',
+        (fillOpacity, target) => {
+          if (target.dataItem.dataContext && target.dataItem.value > 0.1) {
+            return target.dataItem.value * 1.5
+          } else return 0.2
+        }
+      )
+      series.nodes.template.outerCircle.disabled = true
+      series.nodes.template.circle.stroke = am4core.color(
+        hex2rgba(bubbleConfig.color)
+      )
+      series.nodes.template.propertyFields.strokeOpacity = 'value'
+      series.nodes.template.outerCircle.stroke = false
+
+      return () => {
+        chart.dispose()
       }
     })
-
-    // Configure circles. Fill Opacity is linked to value in data
-    series.nodes.template.circle.fill = am4core.color(hex2rgba(NEPTUNE))
-    series.nodes.template.adapter.add('fillOpacity', (fillOpacity, target) => {
-      if (target.dataItem.dataContext && target.dataItem.value > 0.1) {
-        return target.dataItem.value * 1.5
-      } else return 0.2
-    })
-    series.nodes.template.outerCircle.disabled = true
-    series.nodes.template.circle.stroke = am4core.color(hex2rgba(NEPTUNE))
-    series.nodes.template.propertyFields.strokeOpacity = 'value'
-    series.nodes.template.outerCircle.stroke = false
-
-    return () => {
-      chart.dispose()
-    }
   }, [])
 
   return (
     <Container>
-      <Chart id={'familyMakeupChart'}></Chart>
-      <Chart id={'familyMakeupChart'}></Chart>
-      <Chart id={'familyMakeupChart'}></Chart>
-      <Text subChartTitle>20854</Text>
+      <Chart id={'selectedFamilyMakeupChart'}></Chart>
+      <Chart id={'comparable1FamilyMakeupChart'}></Chart>
+      <Chart id={'comparable2FamilyMakeupChart'}></Chart>
     </Container>
   )
 }

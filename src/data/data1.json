@@ -1331,11 +1331,11 @@
     ],
     "comparable2": [
       {
-        "value": 0.55,
+        "value": 0.025,
         "category": "single"
       },
       {
-        "value": 0.025,
+        "value": 0.55,
         "category": "couple"
       },
       {

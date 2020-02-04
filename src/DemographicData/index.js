@@ -32,7 +32,7 @@ const PageFour = styled.div`
     'header header header'
     'info chart1 chart1'
     'chart2 chart2 chart2'
-    'chart3 chart4 chart4';
+    'chart4 chart4 chart4';
   padding: 10px 50px;
   grid-column-gap: 10px;
 `
