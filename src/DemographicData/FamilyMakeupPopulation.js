@@ -62,10 +62,8 @@ const FamilyMakeupPopulation = () => {
       }
     })
     labelBullet.label.fill = am4core.color('#fff')
-    // labelBullet.locationY = 0.9
     labelBullet.dy = 10
     labelBullet.verticalCenter = 'bottom'
-    console.log(labelBullet)
 
     return () => {
       chart.dispose()

@@ -9,6 +9,9 @@ import Text from '../common/Text'
 import { familyMakeup, propertyInfo } from '../data/data.json'
 import { BLACK, NEPTUNE, AZURE } from '../colors'
 import { hex2rgba } from '../helper'
+import bike from '../assets/bike.svg'
+import car from '../assets/car.svg'
+import train from '../assets/train.svg'
 
 const Container = styled.div`
   grid-area: chart4;
@@ -43,10 +46,6 @@ const Chart = styled.div`
       ? hex2rgba(NEPTUNE, 0.2)
       : ''};
   border-radius: 50%;
-  > span {
-    position:absolute;
-    bottom:0
-  }
 `
 
 const FamilyMakeup = () => {
@@ -86,11 +85,11 @@ const FamilyMakeup = () => {
         ) {
           switch (target.dataItem.dataContext.category) {
             case 'single':
-              return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
+              return car
             case 'couple':
-              return 'https://cdn.onlinewebfonts.com/svg/img_572706.png'
+              return bike
             default:
-              return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
+              return train
           }
         }
       })
