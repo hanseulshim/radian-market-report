@@ -76,7 +76,7 @@ const valueAxis = type => ({
     }
   },
   numberFormatter: {
-    numberFormat: type === 'price' ? '$#a' : '#'
+    numberFormat: type === 'price' ? '$#a' : type === 'percent' ? '#%' : '#'
   },
   min: type === 'min' ? 0 : '',
   max: ''
@@ -101,7 +101,7 @@ const categoryAxis = type => ({
 
 const line = (category, type, chart) => {
   const dataFields =
-    chart === 'category' || chart === 'vertical'
+    chart === 'category' || chart === 'vertical' || chart === 'vertical1' || chart === 'curvedVert'
       ? {
         valueY: 'value',
         categoryX: 'category'
@@ -151,10 +151,12 @@ const line = (category, type, chart) => {
       chart === 'bullet' || chart === 'vertical'
         ? {
           width: '25%'
+        } : chart === 'vertical1' ? {
+          width: '7%'
         }
-        : {},
-    tensionX: chart === 'curved' ? 0.75 : 1,
-    tensionY: chart === 'curved' ? 0.75 : 1
+          : {},
+    tensionX: chart === 'curved' || chart === 'curvedVert' ? 0.75 : 1,
+    tensionY: chart === 'curved' || chart === 'curvedVert' ? 0.75 : 1
   }
 }
 

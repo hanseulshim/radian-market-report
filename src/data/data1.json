@@ -1163,39 +1163,6 @@
       ]
     }
   },
-  "populationByIncome": {
-    "selected": [
-      { "category": "25k", "value": 0 },
-      { "category": "50k", "value": 5 },
-      { "category": "75k", "value": 15 },
-      { "category": "100k", "value": 35 },
-      { "category": "125k", "value": 25 },
-      { "category": "150k", "value": 15 },
-      { "category": "175k", "value": 4 },
-      { "category": "200k+", "value": 1 }
-    ],
-    "selectedFHArange": [{ "category": "75k", "value": 40 }],
-    "comparable1": [
-      { "category": "25k", "value": 0 },
-      { "category": "50k", "value": 5 },
-      { "category": "75k", "value": 35 },
-      { "category": "100k", "value": 25 },
-      { "category": "125k", "value": 15 },
-      { "category": "150k", "value": 15 },
-      { "category": "175k", "value": 4 },
-      { "category": "200k+", "value": 1 }
-    ],
-    "comparable2": [
-      { "category": "25k", "value": 0 },
-      { "category": "50k", "value": 5 },
-      { "category": "75k", "value": 10 },
-      { "category": "100k", "value": 15 },
-      { "category": "125k", "value": 15 },
-      { "category": "150k", "value": 25 },
-      { "category": "175k", "value": 35 },
-      { "category": "200k+", "value": 15 }
-    ]
-  },
   "ageVsIncome": "Some talk around the take aways from the income and age charts. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
   "populationByAge": {
     "selected": [
@@ -1258,25 +1225,31 @@
     }
   },
   "populationOfAgeVsIncome": {
+    "selected": [
+      { "category": "25k", "value": 0.0 },
+      { "category": "50k", "value": 0.05 },
+      { "category": "75k", "value": 0.15 },
+      { "category": "100k", "value": 0.2 },
+      { "category": "125k", "value": 0.25 },
+      { "category": "150k", "value": 0.15 },
+      { "category": "175k", "value": 0.04 },
+      { "category": "200k+", "value": 0.01 }
+    ],
     "comparable1": [
-      { "category": "25k", "value": 0 },
-      { "category": "50k", "value": 5 },
-      { "category": "75k", "value": 35 },
-      { "category": "100k", "value": 25 },
-      { "category": "125k", "value": 15 },
-      { "category": "150k", "value": 15 },
-      { "category": "175k", "value": 4 },
-      { "category": "200k+", "value": 1 }
+      { "category": "25k", "value": 0.0 },
+      { "category": "50k", "value": 0.02 },
+      { "category": "75k", "value": 0.12 },
+      { "category": "100k", "value": 0.17 },
+      { "category": "125k", "value": 0.0 }
     ],
     "comparable2": [
-      { "category": "25k", "value": 0 },
-      { "category": "50k", "value": 5 },
-      { "category": "75k", "value": 10 },
-      { "category": "100k", "value": 15 },
-      { "category": "125k", "value": 15 },
-      { "category": "150k", "value": 25 },
-      { "category": "175k", "value": 35 },
-      { "category": "200k+", "value": 15 }
-    ]
+      { "category": "25k", "value": 0.0 },
+      { "category": "50k", "value": 0.15 },
+      { "category": "75k", "value": 0.25 },
+      { "category": "100k", "value": 0.0 }
+    ],
+    "fha": { "category": "75k" },
+    "conventional": { "category": "100k" },
+    "avgIncome": { "category": "125k" }
   }
 }

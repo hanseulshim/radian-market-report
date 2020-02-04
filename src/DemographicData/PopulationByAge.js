@@ -115,7 +115,7 @@ const PopulationByAge = () => {
   }, [])
   return (
     <Container>
-      <Text chartTitle>Population by Age</Text>
+      <Text chartTitle>{propertyInfo.selected} Population by Age</Text>
       <div
         id={'populationByAgeChart'}
         style={{ width: '100%', height: 200 }}

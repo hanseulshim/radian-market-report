@@ -5,7 +5,7 @@ import PageThreeInfo from './PageThreeInfo'
 import PageFourInfo from './PageFourInfo'
 import RatingsContainer from './RatingsContainer'
 import MapContainer from './MapContainer'
-import PopulationByIncome from './PopulationByIncome'
+import PopulationOfAgeVsIncome from './PopulationOfAgeVsIncome'
 import PopulationByAge from './PopulationByAge'
 
 const PageThree = styled.div`
@@ -49,7 +49,7 @@ const DemographicData = () => (
       <Header section="Demographic Related Data" />
       <PageFourInfo />
       <PopulationByAge />
-      <PopulationByIncome />
+      <PopulationOfAgeVsIncome />
     </PageFour>
   </>
 )
