@@ -39,30 +39,39 @@ const FamilyMakeup = () => {
     series.maxRadius = 55
 
     const icon = series.nodes.template.createChild(am4core.Image)
-
     icon.horizontalCenter = 'middle'
     icon.verticalCenter = 'middle'
+
+    // Add adapter functions for dynamic icon images and sizes
     icon.adapter.add('pixelHeight', (pixelHeight, target) => {
       if (target.dataItem && target.dataItem.value > 0.1) {
-        return target.dataItem.value * 100
+        return target.dataItem.value * 120
       } else return 20
     })
     icon.adapter.add('href', (href, target) => {
       if (target.dataItem.dataContext && target.dataItem.dataContext.category) {
-        if (target.dataItem.dataContext.category === 'single') {
-          return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
-        }
-        if (target.dataItem.dataContext.category === 'couple') {
-          return 'https://cdn.onlinewebfonts.com/svg/img_572706.png'
+        switch (target.dataItem.dataContext.category) {
+          case 'single':
+            return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
+          case 'couple':
+            return 'https://cdn.onlinewebfonts.com/svg/img_572706.png'
+          default:
+            return 'https://upload.wikimedia.org/wikipedia/commons/d/d8/Person_icon_BLACK-01.svg'
         }
       }
     })
 
-    // Configure circles
+    // Configure circles. Fill Opacity is linked to value in data
     series.nodes.template.circle.fill = am4core.color(hex2rgba(NEPTUNE))
-    series.nodes.template.propertyFields.fillOpacity = 'value'
+    series.nodes.template.adapter.add('fillOpacity', (fillOpacity, target) => {
+      if (target.dataItem.dataContext && target.dataItem.value > 0.1) {
+        return target.dataItem.value * 1.5
+      } else return 0.2
+    })
     series.nodes.template.outerCircle.disabled = true
-    series.nodes.template.circle.stroke = am4core.color(hex2rgba(NEPTUNE, 0.9))
+    series.nodes.template.circle.stroke = am4core.color(hex2rgba(NEPTUNE))
+    series.nodes.template.propertyFields.strokeOpacity = 'value'
+    series.nodes.template.outerCircle.stroke = false
 
     return () => {
       chart.dispose()
@@ -71,6 +80,8 @@ const FamilyMakeup = () => {
 
   return (
     <Container>
+      <Chart id={'familyMakeupChart'}></Chart>
+      <Chart id={'familyMakeupChart'}></Chart>
       <Chart id={'familyMakeupChart'}></Chart>
       <Text subChartTitle>20854</Text>
     </Container>
