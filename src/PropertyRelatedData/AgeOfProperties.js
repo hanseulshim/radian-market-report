@@ -7,7 +7,7 @@ import { ageOfProperties } from '../data/data1.json'
 import Text from '../common/Text'
 import legendDom from '../assets/legendDom.svg'
 import Home from '../assets/home.svg'
-import { WHITE } from '../colors'
+import { WHITE, DESERT_STORM } from '../colors'
 
 const Legend = styled.img`
   height: 30px;
@@ -15,6 +15,13 @@ const Legend = styled.img`
 
 const Container = styled.div`
   grid-area: chart4;
+  background: ${DESERT_STORM}
+  margin: 0 -50px;
+  padding: 10px 50px;
+`
+
+const ChartTitle = styled(Text)`
+  margin-left: 10px;
 `
 
 const AgeOfProperties = () => {
@@ -111,10 +118,10 @@ const AgeOfProperties = () => {
   }, [])
   return (
     <Container>
-      <Text chartTitle>
+      <ChartTitle chartTitle>
         <span>Age of Properties Across Markets</span>
         <Legend src={legendDom} />
-      </Text>
+      </ChartTitle>
       <div id={'ageOfPropertiesChart'} style={{ width: '100%', height: 500 }} />
     </Container>
   )

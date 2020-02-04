@@ -6,7 +6,7 @@ import Text from './Text'
 
 const Container = styled.div`
   padding: 25px 50px;
-  margin: -10px -50px;
+  margin: 0 -50px;
   margin-bottom: 25px;
   background: ${DESERT_STORM};
   display: grid;

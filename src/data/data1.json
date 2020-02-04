@@ -1196,65 +1196,68 @@
       { "category": "200k+", "value": 15 }
     ]
   },
+  "ageVsIncome": "Some talk around the take aways from the income and age charts. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
   "populationByAge": {
-    "description": "Some talk around the take aways from the income and age charts. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
-    "categories": [
+    "selected": [
       {
         "category": "<5",
-        "value": 30,
-        "valueY": 50
+        "value": 30
       },
       {
         "category": "5-9",
-        "value": 150,
-        "valueY": 50
+        "value": 150
       },
       {
         "category": "10-14",
-        "value": 35,
-        "valueY": 50
+        "value": 35
       },
       {
         "category": "15-19",
-        "value": 100,
-        "valueY": 50
+        "value": 100
       },
       {
         "category": "20-24",
-        "value": 40,
-        "valueY": 50
+        "value": 40
       },
       {
         "category": "25-34",
-        "value": 60,
-        "valueY": 50
+        "value": 60
       },
       {
         "category": "34-44",
-        "value": 100,
-        "valueY": 50
+        "value": 100
       },
       {
         "category": "45-54",
-        "value": 210,
-        "valueY": 50
+        "value": 210
       },
       {
         "category": "55-64",
-        "value": 350,
-        "valueY": 50
+        "value": 350
       },
       {
         "category": "65-74",
-        "value": 230,
-        "valueY": 50
+        "value": 230
       },
       {
         "category": "75-84",
-        "value": 150,
-        "valueY": 50
+        "value": 150
       }
     ],
+    "selectedAvg": {
+      "category": "55-64",
+      "average": 54
+    },
+    "comparable1Avg": {
+      "category": "25-34",
+      "average": 37
+    },
+    "comparable2Avg": {
+      "category": "45-54",
+      "average": 51
+    }
+  },
+  "populationOfAgeVsIncome": {
     "comparable1": [
       { "category": "25k", "value": 0 },
       { "category": "50k", "value": 5 },

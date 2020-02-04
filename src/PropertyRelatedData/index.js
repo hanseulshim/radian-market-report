@@ -27,11 +27,12 @@ const PageOne = styled.div`
     'info info info info chart2 chart2 chart2 chart2 chart2 chart2 chart2 chart2'
     'info info info info chart3 chart3 chart3 chart3 chart3 chart3 chart3 chart3'
     'chart4 chart4 chart4 chart4 chart4 chart4 chart5 chart5 chart5 chart5 chart5 chart5';
-  padding: 10px 50px;
+  padding: 0 50px;
   grid-column-gap: 10px;
 `
 
 const PageTwo = styled.div`
+  margin-top: 25px;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: auto;
@@ -43,7 +44,7 @@ const PageTwo = styled.div`
     'age chart2 chart2'
     '. chart3 chart3'
     'chart4 chart4 chart4';
-  padding: 10px 50px;
+  padding: 0 50px;
   grid-column-gap: 25px;
 `
 

@@ -14,21 +14,21 @@ const getColor = category =>
   category === 'selected' || category === 'series2'
     ? BLACK
     : category === 'comparable1' || category === 'series1'
-    ? AZURE
-    : category === 'comparable2'
-    ? NEPTUNE
-    : category === 'series3'
-    ? VALENCIA
-    : category === 'series4'
-    ? SUPERNOVA
-    : category === 'selectedSold'
-    ? DUSTY_GRAY
-    : category === 'age'
-    ? WHITE
-    : ''
+      ? AZURE
+      : category === 'comparable2'
+        ? NEPTUNE
+        : category === 'series3'
+          ? VALENCIA
+          : category === 'series4'
+            ? SUPERNOVA
+            : category === 'selectedSold'
+              ? DUSTY_GRAY
+              : category === 'age'
+                ? WHITE
+                : ''
 
 const chart = type => ({
-  paddingLeft: -20,
+  paddingLeft: -25,
   paddingTop: type === 'section2' || type === 'age' ? 50 : 10,
   paddingBottom: type === 'section2' ? -5 : 10,
   paddingRight: type === 'section2' ? 20 : 15,
@@ -67,20 +67,7 @@ const valueAxis = type => ({
       width: 75,
       maxWidth: 75,
       truncate: true,
-      textAlign: 'end',
-      template: {
-        disabled: type === 'bullet'
-      }
-    },
-    grid: {
-      template: {
-        disabled: type === 'bullet'
-      }
-    },
-    axisFills: {
-      template: {
-        disabled: type === 'bullet'
-      }
+      textAlign: 'end'
     },
     ticks: {
       template: {
@@ -105,38 +92,24 @@ const categoryAxis = type => ({
     minGridDistance: 10,
     cellStartLocation: 0.1,
     cellEndLocation: 0.9,
-    axisFills: {
-      template: {
-        disabled: type === 'bullet'
-      }
-    },
-    ticks: {
-      template: {
-        disabled: type === 'bullet'
-      }
-    },
     grid: {
       location: type === 'line' ? 0.5 : 0,
-      strokeOpacity: 0.1,
-      stroke: BLACK,
-      template: {
-        disabled: type === 'bullet'
-      }
+      strokeOpacity: 0.1
     }
   }
 })
 
 const line = (category, type, chart) => {
   const dataFields =
-    chart === 'category'
+    chart === 'category' || chart === 'vertical'
       ? {
-          valueY: 'value',
-          categoryX: 'category'
-        }
+        valueY: 'value',
+        categoryX: 'category'
+      }
       : {
-          dateX: 'date',
-          valueY: 'value'
-        }
+        dateX: 'date',
+        valueY: 'value'
+      }
   return {
     dataFields,
     noRisers: chart === 'category',
@@ -149,36 +122,36 @@ const line = (category, type, chart) => {
       category === 'selected'
         ? 0.1
         : category === 'comparable1'
-        ? 0.35
-        : category === 'comparable2'
-        ? 0.6
-        : 0,
+          ? 0.35
+          : category === 'comparable2'
+            ? 0.6
+            : 0,
     endLocation:
       category === 'selected'
         ? 0.37
         : category === 'comparable1'
-        ? 0.65
-        : category === 'comparable2'
-        ? 0.95
-        : 0,
+          ? 0.65
+          : category === 'comparable2'
+            ? 0.95
+            : 0,
     bullets:
       chart === 'bullet'
         ? [
-            {
-              type: 'CircleBullet',
-              circle: {
-                radius: 8,
-                strokeWidth: 0,
-                fill: getColor(category)
-              }
+          {
+            type: 'CircleBullet',
+            circle: {
+              radius: 8,
+              strokeWidth: 0,
+              fill: getColor(category)
             }
-          ]
+          }
+        ]
         : [],
     columns:
-      chart === 'bullet'
+      chart === 'bullet' || chart === 'vertical'
         ? {
-            width: '15%'
-          }
+          width: '25%'
+        }
         : {},
     tensionX: chart === 'curved' ? 0.75 : 1,
     tensionY: chart === 'curved' ? 0.75 : 1
