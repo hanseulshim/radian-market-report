@@ -1252,6 +1252,12 @@
     "conventional": { "category": "100k" },
     "avgIncome": { "category": "125k" }
   },
+  "familyMakeupInfo": "What do the family makeup charts tell us? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
+  "familyMakeupPopulation": [
+    { "category": "selected", "value": 60099 },
+    { "category": "comparable1", "value": 31234 },
+    { "category": "comparable2", "value": 70877 }
+  ],
   "familyMakeup": {
     "selected": [
       {

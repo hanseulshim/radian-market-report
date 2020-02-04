@@ -122,7 +122,7 @@ const FamilyMakeup = () => {
 
   return (
     <Container>
-      <Title value>Family Makeup</Title>
+      <Title subCharttitle>Family Makeup</Title>
       <ChartRow>
         <ChartContainer>
           <Chart id={'selectedFamilyMakeupChart'} />

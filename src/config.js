@@ -221,5 +221,6 @@ export default {
   legend,
   categoryAxis,
   bar,
-  getBubbleConfig
+  getBubbleConfig,
+  getColor
 }
