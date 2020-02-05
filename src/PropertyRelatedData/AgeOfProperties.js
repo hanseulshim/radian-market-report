@@ -5,7 +5,7 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 import config from '../config'
 import { ageOfProperties } from '../data/data.json'
 import Text from '../common/Text'
-import legendDom from '../assets/legendDom.svg'
+import AgePropertiesAcrossMarkets from '../assets/AgePropertiesAcrossMarkets.svg'
 import Home from '../assets/home.svg'
 import { WHITE, DESERT_STORM } from '../colors'
 
@@ -51,7 +51,7 @@ const AgeOfProperties = () => {
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = config.valueAxis('min')
-    valueAxis.max = max + 10
+    valueAxis.max = max + 30
 
     const selectedSeries = chart.series.push(new am4charts.LineSeries())
     selectedSeries.data = ageOfProperties.selected
@@ -87,7 +87,7 @@ const AgeOfProperties = () => {
 
     const ageOfPropertySeries = chart.series.push(new am4charts.ColumnSeries())
     ageOfPropertySeries.data = [
-      { date: ageOfProperties.ageOfSelected, value: max + 10 }
+      { date: ageOfProperties.ageOfSelected, value: max + 20 }
     ]
     ageOfPropertySeries.config = config.line('age', 'column', 'bullet')
     const bullet = ageOfPropertySeries.bullets.push(
@@ -120,7 +120,7 @@ const AgeOfProperties = () => {
     <Container>
       <ChartTitle chartTitle>
         <span>Age of Properties Across Markets</span>
-        <Legend src={legendDom} />
+        <Legend src={AgePropertiesAcrossMarkets} />
       </ChartTitle>
       <div id={'ageOfPropertiesChart'} style={{ width: '100%', height: 500 }} />
     </Container>

@@ -6,6 +6,11 @@ import config from '../config'
 import { populationOfAgeVsIncome } from '../data/data.json'
 import Text from '../common/Text'
 import { BLACK } from '../colors'
+import PopulationAgeVsIncome from '../assets/PopulationAgeVsIncome.svg'
+
+const Legend = styled.img`
+  height: 15px;
+`
 
 const Container = styled.div`
   grid-area: chart2;
@@ -73,10 +78,14 @@ const PopulationOfAgeVsIncome = () => {
     fhaLabel.dy = 5
 
     const conventionalSeries = chart.series.push(new am4charts.ColumnSeries())
-    conventionalSeries.data = [{ ...populationOfAgeVsIncome.conventional, value: max + 0.075 }]
+    conventionalSeries.data = [
+      { ...populationOfAgeVsIncome.conventional, value: max + 0.075 }
+    ]
     conventionalSeries.config = config.line('selected', 'column', 'vertical1')
 
-    const conventionalLabel = conventionalSeries.bullets.push(new am4charts.LabelBullet())
+    const conventionalLabel = conventionalSeries.bullets.push(
+      new am4charts.LabelBullet()
+    )
     conventionalLabel.fontSize = 13
     conventionalLabel.label.fill = BLACK
     conventionalLabel.label.fontWeight = 'bold'
@@ -88,10 +97,14 @@ const PopulationOfAgeVsIncome = () => {
     conventionalLabel.dy = 5
 
     const avgIncomeSeries = chart.series.push(new am4charts.ColumnSeries())
-    avgIncomeSeries.data = [{ ...populationOfAgeVsIncome.avgIncome, value: max + 0.05 }]
+    avgIncomeSeries.data = [
+      { ...populationOfAgeVsIncome.avgIncome, value: max + 0.05 }
+    ]
     avgIncomeSeries.config = config.line('selected', 'column', 'vertical1')
 
-    const avgIncomeLabel = avgIncomeSeries.bullets.push(new am4charts.LabelBullet())
+    const avgIncomeLabel = avgIncomeSeries.bullets.push(
+      new am4charts.LabelBullet()
+    )
     avgIncomeLabel.fontSize = 13
     avgIncomeLabel.label.fill = BLACK
     avgIncomeLabel.label.fontWeight = 'bold'
@@ -108,8 +121,14 @@ const PopulationOfAgeVsIncome = () => {
   }, [])
   return (
     <Container>
-      <ChartTitle chartTitle>Population of Age vs Income</ChartTitle>
-      <div id={'populationByIncomeChart'} style={{ width: '100%', height: 400 }} />
+      <ChartTitle chartTitle>
+        <span>Population of Age vs Income</span>
+        <Legend src={PopulationAgeVsIncome} />
+      </ChartTitle>
+      <div
+        id={'populationByIncomeChart'}
+        style={{ width: '100%', height: 400 }}
+      />
     </Container>
   )
 }

@@ -64,6 +64,7 @@ const Header = ({ section }) => {
           <span>Comparable 2</span>
           <span>{propertyInfo.comparable2}</span>
         </Row>
+        <Row>Comparables = 3BR, 2.5BT, 2600sqft, etc</Row>
       </Chart>
     </Container>
   )
