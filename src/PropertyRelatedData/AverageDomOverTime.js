@@ -8,7 +8,7 @@ import Text from '../common/Text'
 import AvgDOMOverTime from '../assets/AvgDOMOverTime.svg'
 
 const Legend = styled.img`
-  height: 10px;
+  height: 15px;
 `
 
 const Container = styled.div`

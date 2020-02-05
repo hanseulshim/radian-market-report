@@ -38,6 +38,7 @@ const TableHeader = styled.div`
 
 const Description = styled.div`
   margin-top: 25px;
+  font-weight: bold;
 `
 
 const data = [

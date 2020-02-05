@@ -5,14 +5,17 @@ import numeral from 'numeral'
 import { WHITE, BLACK, AZURE, NEPTUNE } from '../colors'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faSchool,
-  faCarSide,
-  faUserNinja,
   faArrowUp,
   faArrowDown
 } from '@fortawesome/free-solid-svg-icons'
 import { propertyInfo, schoolRatings, transitRatings, crimeRatings } from '../data/data.json'
 import { getAverage } from '../helper'
+import carBlack from '../assets/carBlack.svg'
+import carWhite from '../assets/carWhite.svg'
+import schoolBlack from '../assets/schoolBlack.svg'
+import schoolWhite from '../assets/schoolWhite.svg'
+import crimeBlack from '../assets/crimeBlack.svg'
+import crimeWhite from '../assets/crimeWhite.svg'
 
 const MapInfo = styled.div`
   display: grid;
@@ -65,7 +68,9 @@ const Title = styled.div`
   font-weight: bold;
 `
 
-const Icon = styled(FontAwesomeIcon)`
+const Icon = styled.img`
+  width: 25px;
+  align-self: center;
   grid-area: ${props => `icon${props.location}`};
 `
 
@@ -119,9 +124,9 @@ const MapStat = () => {
       <Stat selected>
         <Background type="selected" />
         <Title h2>{propertyInfo.selected}</Title>
-        <Icon icon={faSchool} size="lg" location={1} />
-        <Icon icon={faCarSide} size="lg" location={2} />
-        <Icon icon={faUserNinja} size="lg" location={3} />
+        <Icon src={carWhite} location={1} />
+        <Icon src={schoolWhite} location={2} />
+        <Icon src={crimeWhite} location={3} />
         <Average location={1}>
           {getAverageValue(schoolRatings.selected.values)}
         </Average>
@@ -144,9 +149,9 @@ const MapStat = () => {
       <Stat comparable1>
         <Background type="comparable1" />
         <Title h2>{propertyInfo.comparable1}</Title>
-        <Icon icon={faSchool} size="lg" location={1} />
-        <Icon icon={faCarSide} size="lg" location={2} />
-        <Icon icon={faUserNinja} size="lg" location={3} />
+        <Icon src={carWhite} location={1} />
+        <Icon src={schoolWhite} location={2} />
+        <Icon src={crimeWhite} location={3} />
         <Average location={1}>
           {getAverageValue(schoolRatings.comparable1.values)}
         </Average>
@@ -169,9 +174,9 @@ const MapStat = () => {
       <Stat comparable2>
         <Background type="comparable2" />
         <Title h2>{propertyInfo.comparable2}</Title>
-        <Icon icon={faSchool} size="lg" location={1} />
-        <Icon icon={faCarSide} size="lg" location={2} />
-        <Icon icon={faUserNinja} size="lg" location={3} />
+        <Icon src={carBlack} location={1} />
+        <Icon src={schoolBlack} location={2} />
+        <Icon src={crimeBlack} location={3} />
         <Average location={1}>
           {getAverageValue(schoolRatings.comparable2.values)}
         </Average>

@@ -5,19 +5,13 @@ import styled from 'styled-components'
 import Text from '../common/Text'
 import config from '../config'
 import { inventory } from '../data/data.json'
-import LegendSold from '../assets/legendSold.svg'
+import ActiveListingsSold from '../assets/ActiveListingsSold.svg'
 
 const Container = styled.div`
   grid-area: chart3;
 `
 const Legend = styled.img`
-  width: 25px;
-  margin-right: 5px;
-`
-
-const LegendText = styled.div`
-  font-size: 14px;
-  font-weight: normal;
+  height: 15px;
 `
 
 const Inventory = () => {
@@ -67,9 +61,7 @@ const Inventory = () => {
     <Container>
       <Text chartTitle>
         <span>Inventory</span>
-        <LegendText>
-          <Legend src={LegendSold} /> Sold
-        </LegendText>
+        <Legend src={ActiveListingsSold} />
       </Text>
       <div id={'inventoryChart'} style={{ width: '100%', height: 200 }} />
     </Container>

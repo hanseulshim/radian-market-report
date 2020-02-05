@@ -11,7 +11,7 @@ const Title = styled.div`
       : props.section
       ? '45px'
       : props.subSection
-      ? '30px'
+      ? '35px'
       : props.value || props.chartTitle
       ? '20px'
       : props.subChartTitle
@@ -27,7 +27,7 @@ const Title = styled.div`
       ? 'bold'
       : 'initial'};
   margin-left: ${props =>
-    props.chartTitle || props.subChartTitle ? '50px' : 'initial'};
+    props.chartTitle || props.subChartTitle ? '55px' : 'initial'};
   margin-right: ${props =>
     props.chartTitle || props.subChartTitle ? '15px' : 'initial'};
   margin-bottom: ${props => (props.h1 ? '5px' : 'initial')};

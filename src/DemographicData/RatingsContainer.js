@@ -4,11 +4,11 @@ import numeral from 'numeral'
 import Text from '../common/Text'
 import { propertyInfo, schoolRatings, transitRatings } from '../data/data.json'
 import { getAverage } from '../helper'
-import car from '../assets/car.svg'
+import car from '../assets/carBlack.svg'
 import train from '../assets/train.svg'
 import bike from '../assets/bike.svg'
 
-import { DESERT_STORM } from '../colors'
+import { DESERT_STORM, BLACK, WHITE } from '../colors'
 
 const SchoolRating = styled.div`
   display: grid;
@@ -40,9 +40,9 @@ const Rating = styled.div`
   grid-template-rows: auto;
   grid-template-columns: 2fr 1fr 1fr;
   grid-template-areas:
-  'avg . .'
-  'avg . .'
-  'avg . .';
+    'avg . .'
+    'avg . .'
+    'avg . .';
   grid-gap: 3px;
 `
 
@@ -52,12 +52,16 @@ const AveragePanel = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 5px 0;
-  background: ${props => getColor(props.value)};
+  background: ${props => getBackground(props.value)};
+  color: ${props => getColor(props.value)};
 `
 
 const MetricValue = styled.div`
-  background: ${props => getColor(props.value)};
+  background: ${props => getBackground(props.value)};
+  color: ${props => getColor(props.value)};
   text-align: center;
+  padding-top: 2px;
+  font-weight: bold;
 `
 const Icon = styled.img`
   width: 14px;
@@ -65,7 +69,9 @@ const Icon = styled.img`
   align-self: center;
 `
 
-const getColor = value => {
+const getColor = value => value <= 3 ? WHITE : BLACK
+
+const getBackground = value => {
   if (value <= 1) {
     return '#BA131A'
   } else if (value <= 2) {

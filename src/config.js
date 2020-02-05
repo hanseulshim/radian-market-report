@@ -28,7 +28,7 @@ const getColor = category =>
     : ''
 
 const chart = type => ({
-  paddingLeft: -25,
+  paddingLeft: -20,
   paddingTop: type === 'section2' || type === 'age' ? 50 : 10,
   paddingBottom: type === 'section2' ? -5 : 10,
   paddingRight: type === 'section2' ? 20 : 15,
