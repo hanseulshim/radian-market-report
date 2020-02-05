@@ -67,18 +67,24 @@ const FamilyMakeup = () => {
       series.data = familyMakeup[zip]
       series.dataFields.value = 'value'
       series.dataFields.name = 'name'
-      series.minRadius = 20
+      series.minRadius = 25
       series.maxRadius = 55
 
       const icon = series.nodes.template.createChild(am4core.Image)
       icon.horizontalCenter = 'middle'
       icon.verticalCenter = 'middle'
+      icon.maxHeight = 75
 
       // Add adapter functions for dynamic icon images and sizes
       icon.adapter.add('pixelHeight', (pixelHeight, target) => {
-        if (target.dataItem && target.dataItem.value > 0.1) {
-          return target.dataItem.value * 120
-        } else return 20
+        if (target.dataItem && target.dataItem.value) {
+          if (target.dataItem && target.dataItem.value < 0.1) {
+            return 20
+          }
+          if (target.dataItem && target.dataItem.value > 0.75) {
+            return 75
+          } else return target.dataItem.value * 120
+        }
       })
       icon.adapter.add('href', (href, target) => {
         if (
