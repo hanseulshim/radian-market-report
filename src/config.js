@@ -14,18 +14,18 @@ const getColor = category =>
   category === 'selected' || category === 'series2'
     ? BLACK
     : category === 'comparable1' || category === 'series1'
-      ? AZURE
-      : category === 'comparable2'
-        ? NEPTUNE
-        : category === 'series3'
-          ? VALENCIA
-          : category === 'series4'
-            ? SUPERNOVA
-            : category === 'selectedSold'
-              ? DUSTY_GRAY
-              : category === 'age'
-                ? WHITE
-                : ''
+    ? AZURE
+    : category === 'comparable2'
+    ? NEPTUNE
+    : category === 'series3'
+    ? VALENCIA
+    : category === 'series4'
+    ? SUPERNOVA
+    : category === 'selectedSold'
+    ? DUSTY_GRAY
+    : category === 'age'
+    ? WHITE
+    : ''
 
 const chart = type => ({
   paddingLeft: -20,
@@ -105,15 +105,18 @@ const categoryAxis = type => ({
 
 const line = (category, type, chart) => {
   const dataFields =
-    chart === 'category' || chart === 'vertical' || chart === 'vertical1' || chart === 'curvedVert'
+    chart === 'category' ||
+    chart === 'vertical' ||
+    chart === 'vertical1' ||
+    chart === 'curvedVert'
       ? {
-        valueY: 'value',
-        categoryX: 'category'
-      }
+          valueY: 'value',
+          categoryX: 'category'
+        }
       : {
-        dateX: 'date',
-        valueY: 'value'
-      }
+          dateX: 'date',
+          valueY: 'value'
+        }
   return {
     dataFields,
     noRisers: chart === 'category',
@@ -126,39 +129,41 @@ const line = (category, type, chart) => {
       category === 'selected'
         ? 0.1
         : category === 'comparable1'
-          ? 0.35
-          : category === 'comparable2'
-            ? 0.6
-            : 0,
+        ? 0.35
+        : category === 'comparable2'
+        ? 0.6
+        : 0,
     endLocation:
       category === 'selected'
         ? 0.37
         : category === 'comparable1'
-          ? 0.65
-          : category === 'comparable2'
-            ? 0.95
-            : 0,
+        ? 0.65
+        : category === 'comparable2'
+        ? 0.95
+        : 0,
     bullets:
       chart === 'bullet'
         ? [
-          {
-            type: 'CircleBullet',
-            circle: {
-              radius: 8,
-              strokeWidth: 0,
-              fill: getColor(category)
+            {
+              type: 'CircleBullet',
+              circle: {
+                radius: 8,
+                strokeWidth: 0,
+                fill: getColor(category)
+              }
             }
-          }
-        ]
+          ]
         : [],
     columns:
       chart === 'bullet' || chart === 'vertical'
         ? {
-          width: '25%'
-        } : chart === 'vertical1' ? {
-          width: '7%'
-        }
-          : {},
+            width: '25%'
+          }
+        : chart === 'vertical1'
+        ? {
+            width: '7%'
+          }
+        : {},
     tensionX: chart === 'curved' || chart === 'curvedVert' ? 0.75 : 1,
     tensionY: chart === 'curved' || chart === 'curvedVert' ? 0.75 : 1
   }
@@ -200,6 +205,13 @@ const label = type => {
   }
 }
 
+const getBubbleConfig = zip => {
+  return {
+    divId: zip + 'FamilyMakeupChart',
+    color: getColor(zip)
+  }
+}
+
 export default {
   chart,
   dateAxis,
@@ -208,5 +220,7 @@ export default {
   line,
   legend,
   categoryAxis,
-  bar
+  bar,
+  getBubbleConfig,
+  getColor
 }

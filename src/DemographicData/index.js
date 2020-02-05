@@ -5,8 +5,11 @@ import PageThreeInfo from './PageThreeInfo'
 import PageFourInfo from './PageFourInfo'
 import RatingsContainer from './RatingsContainer'
 import MapContainer from './MapContainer'
+import FamilyMakeup from './FamilyMakeup'
+import FamilyMakeupInfo from './FamilyMakeupInfo'
 import PopulationOfAgeVsIncome from './PopulationOfAgeVsIncome'
 import PopulationByAge from './PopulationByAge'
+import FamilyMakeupPopulation from './FamilyMakeupPopulation'
 
 const PageThree = styled.div`
   margin-top: 25px;
@@ -32,6 +35,7 @@ const PageFour = styled.div`
     'header header header'
     'info chart1 chart1'
     'chart2 chart2 chart2'
+    'sectionInfo sectionInfo sectionInfo'
     'chart3 chart4 chart4';
   padding: 0 50px;
   grid-column-gap: 50px;
@@ -50,6 +54,9 @@ const DemographicData = () => (
       <PageFourInfo />
       <PopulationByAge />
       <PopulationOfAgeVsIncome />
+      <FamilyMakeupInfo />
+      <FamilyMakeupPopulation />
+      <FamilyMakeup />
     </PageFour>
   </>
 )
