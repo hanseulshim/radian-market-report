@@ -4,10 +4,9 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 import styled from 'styled-components'
 import config from '../config'
 import Text from '../common/Text'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 // import selectedArrowDown from '../assets/icon_arrow_black_down.svg'
 // import selectedArrowUp from '../assets/icon_arrow_black_up.svg'
+import home from '../assets/home.svg'
 import { familyMakeupPopulation, propertyInfo } from '../data/data.json'
 
 const Container = styled.div`
@@ -26,7 +25,7 @@ const FamilyMakeupPopulation = () => {
       am4charts.XYChart
     )
     chart.data = familyMakeupPopulation
-    chart.chartContainer.paddingBottom = 40
+    chart.chartContainer.paddingBottom = 10
     chart.maskBullets = false
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
@@ -71,26 +70,40 @@ const FamilyMakeupPopulation = () => {
     labelBullet.dy = 10
     labelBullet.verticalCenter = 'bottom'
 
-    // const bullet = series.bullets.push(new am4charts.Bullet())
-    // bullet.locationY = 1
-    // bullet.zIndex = 2
-    // bullet.dy = 24
-    // // bullet.dx = -5
-    // bullet.layout = 'horizontal'
-    // bullet.align = 'center'
+    const bullet = series.bullets.push(new am4charts.Bullet())
+    bullet.locationY = 1
+    bullet.zIndex = 2
+    bullet.dy = 30
+    bullet.dx = -20
+    bullet.layout = 'horizontal'
 
-    // const icon = bullet.createChild(am4core.Image)
-    // icon.nonScaling = true
-    // icon.adapter.add('href', (href, target) => {
-    // if (target.dataItem.dataContext && target.dataItem.dataContext.category) {
-    //   if (target.dataItem.category === 'selected') {
-    //     return target.dataItem.delta < 0 ? selectedArrowDown : selectedArrowUp
-    //   }
-    // }
-    // })
+    const icon = bullet.createChild(am4core.Image)
+    icon.nonScaling = true
+    // icon.href = home
+    icon.height = 20
+    icon.width = 20
+    icon.dy = -2
+    icon.dx = -6
+    icon.adapter.add('href', (href, target) => {
+      if (target.dataItem.dataContext && target.dataItem.dataContext.category) {
+        // if (target.dataItem.category === 'selected') {
+        //   return target.dataItem.delta < 0 ? selectedArrowDown : selectedArrowUp
+        // }
+        // if (target.dataItem.category === 'comparable1') {
+        //   return target.dataItem.delta < 0 ? comp1ArrowDown : comp1ArrowUp
+        // }
+        // if (target.dataItem.category === 'comparable1') {
+        //   return target.dataItem.delta < 0 ? comp2ArrowDown : comp2ArrowUp
+        // }
+        return home
+      }
+    })
 
-    // var label = bullet.createChild(am4core.Label)
-    // label.text = '{category}'
+    var label = bullet.createChild(am4core.Label)
+    label.text = '{delta} %'
+    label.fontsize = 10
+    label.stroke = am4core.color('#000')
+    label.strokeWidth = 0.25
 
     return () => {
       chart.dispose()
