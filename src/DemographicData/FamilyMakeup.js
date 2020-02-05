@@ -9,9 +9,11 @@ import Text from '../common/Text'
 import { familyMakeup, propertyInfo } from '../data/data.json'
 import { BLACK, NEPTUNE, AZURE } from '../colors'
 import { hex2rgba } from '../helper'
-import bike from '../assets/bike.svg'
-import car from '../assets/car.svg'
-import train from '../assets/train.svg'
+import single from '../assets/icon_fam_1.svg'
+import singleParent from '../assets/icon_fam_1-1.svg'
+import couple from '../assets/icon_fam_2.svg'
+import singleChild from '../assets/icon_fam_2-1.svg'
+import twoChild from '../assets/icon_fam_2-2.svg'
 
 const Container = styled.div`
   grid-area: chart4;
@@ -85,11 +87,15 @@ const FamilyMakeup = () => {
         ) {
           switch (target.dataItem.dataContext.category) {
             case 'single':
-              return car
+              return single
+            case 'single-parent':
+              return singleParent
             case 'couple':
-              return bike
-            default:
-              return train
+              return couple
+            case '1-child':
+              return singleChild
+            case '2-child':
+              return twoChild
           }
         }
       })

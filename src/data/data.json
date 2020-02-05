@@ -1266,23 +1266,19 @@
       },
       {
         "value": 0.05,
-        "category": "couple"
-      },
-      {
-        "value": 0.15,
         "category": "single-parent"
       },
       {
+        "value": 0.15,
+        "category": "couple"
+      },
+      {
         "value": 0.25,
-        "category": "1-child-family"
+        "category": "1-child"
       },
       {
         "value": 0.45,
-        "category": "2-child-family"
-      },
-      {
-        "value": 0.05,
-        "category": "3-child-family"
+        "category": "2-child"
       }
     ],
     "comparable1": [
@@ -1292,49 +1288,41 @@
       },
       {
         "value": 0.05,
-        "category": "couple"
-      },
-      {
-        "value": 0.15,
         "category": "single-parent"
       },
       {
+        "value": 0.15,
+        "category": "couple"
+      },
+      {
         "value": 0.25,
-        "category": "1-child-family"
+        "category": "1-child"
       },
       {
         "value": 0.45,
-        "category": "2-child-family"
-      },
-      {
-        "value": 0.05,
-        "category": "3-child-family"
+        "category": "2-child"
       }
     ],
     "comparable2": [
       {
-        "value": 0.025,
+        "value": 0.05,
         "category": "single"
       },
       {
-        "value": 0.55,
+        "value": 0.05,
+        "category": "single-parent"
+      },
+      {
+        "value": 0.15,
         "category": "couple"
       },
       {
         "value": 0.25,
-        "category": "single-parent"
+        "category": "1-child"
       },
       {
-        "value": 0.025,
-        "category": "1-child-family"
-      },
-      {
-        "value": 0.05,
-        "category": "2-child-family"
-      },
-      {
-        "value": 0.1,
-        "category": "3-child-family"
+        "value": 0.45,
+        "category": "2-child"
       }
     ]
   }
