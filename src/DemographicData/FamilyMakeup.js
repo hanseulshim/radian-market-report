@@ -77,9 +77,13 @@ const FamilyMakeup = () => {
 
       // Add adapter functions for dynamic icon images and sizes
       icon.adapter.add('pixelHeight', (pixelHeight, target) => {
-        if (target.dataItem && target.dataItem.value > 0.1) {
-          return target.dataItem.value * 120
-        } else return 20
+        if (target.dataItem && target.dataItem.value < 0.1) {
+          return 20
+        }
+        if (target.dataItem && target.dataItem.value > 0.7) {
+          return 70
+        }
+        return target.dataItem && target.dataItem.value * 120
       })
       icon.adapter.add('href', (href, target) => {
         if (
