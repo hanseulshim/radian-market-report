@@ -89,7 +89,6 @@ const FamilyMakeupPopulation = () => {
     icon.dx = -6
     icon.adapter.add('href', (href, target) => {
       if (target.dataItem.dataContext && target.dataItem.dataContext.category) {
-        console.log(target.dataItem)
         if (target.dataItem.dataContext.category === 'selected') {
           return target.dataItem.dataContext.delta < 0
             ? selectedArrowDown
