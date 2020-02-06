@@ -4,8 +4,12 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 import styled from 'styled-components'
 import config from '../config'
 import Text from '../common/Text'
-// import selectedArrowDown from '../assets/icon_arrow_black_down.svg'
-// import selectedArrowUp from '../assets/icon_arrow_black_up.svg'
+import selectedArrowDown from '../assets/icon_arrow_black_down.svg'
+import selectedArrowUp from '../assets/icon_arrow_black_up.svg'
+import comp1ArrowDown from '../assets/icon_arrow_blue_down.svg'
+import comp1ArrowUp from '../assets/icon_arrow_blue_up.svg'
+import comp2ArrowDown from '../assets/icon_arrow_seafoam_down.svg'
+import comp2ArrowUp from '../assets/icon_arrow_seafoam_up.svg'
 import home from '../assets/home.svg'
 import { familyMakeupPopulation, propertyInfo } from '../data/data.json'
 
@@ -79,23 +83,28 @@ const FamilyMakeupPopulation = () => {
 
     const icon = bullet.createChild(am4core.Image)
     icon.nonScaling = true
-    // icon.href = home
     icon.height = 20
     icon.width = 20
     icon.dy = -2
     icon.dx = -6
     icon.adapter.add('href', (href, target) => {
       if (target.dataItem.dataContext && target.dataItem.dataContext.category) {
-        // if (target.dataItem.category === 'selected') {
-        //   return target.dataItem.delta < 0 ? selectedArrowDown : selectedArrowUp
-        // }
-        // if (target.dataItem.category === 'comparable1') {
-        //   return target.dataItem.delta < 0 ? comp1ArrowDown : comp1ArrowUp
-        // }
-        // if (target.dataItem.category === 'comparable1') {
-        //   return target.dataItem.delta < 0 ? comp2ArrowDown : comp2ArrowUp
-        // }
-        return home
+        console.log(target.dataItem)
+        if (target.dataItem.dataContext.category === 'selected') {
+          return target.dataItem.dataContext.delta < 0
+            ? selectedArrowDown
+            : selectedArrowUp
+        }
+        if (target.dataItem.dataContext.category === 'comparable1') {
+          return target.dataItem.dataContext.delta < 0
+            ? comp1ArrowDown
+            : comp1ArrowUp
+        }
+        if (target.dataItem.dataContext.category === 'comparable2') {
+          return target.dataItem.dataContext.delta < 0
+            ? comp2ArrowDown
+            : comp2ArrowUp
+        }
       }
     })
 
