@@ -17,6 +17,8 @@ const AvgSaleToListRatio = () => {
       am4charts.XYChart
     )
 
+    chart.id = 'avgSaleToListRatioChart'
+
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.config = config.dateAxis()
 

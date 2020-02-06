@@ -1,10 +1,3 @@
-export const DEEP_KOAMARU = '#0F2682'
-export const ALABASTER = '#F7F7F7'
-export const BOTTICELLI = '#D9E3ED'
-export const GALLERY = '#efefef'
-export const WILD_SAND = '#F4F4F4'
-export const IRON = '#D0D3D5'
-
 // NEW COLORS. EVENTUALLY DELETE ^^^
 export const AZURE = '#3A62A3'
 export const NEPTUNE = '#71BAAF'

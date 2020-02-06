@@ -22,6 +22,8 @@ const Inventory = () => {
       am4charts.XYChart
     )
 
+    chart.id = 'inventoryChart'
+
     const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
     dateAxis.config = config.dateAxis()
 
