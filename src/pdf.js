@@ -309,6 +309,36 @@ export const buildPDF = async () => {
     60
   )
 
+  /// /////////// Page 2 /////////////////
+
+  doc.addPage('p', 'mm', 'a4')
+
+  // Document Header
+  doc.setFillColor(greyBG)
+  doc.rect(0, 0, width, headerht, 'F')
+  doc.setFontSize(h3)
+  doc.text('Market Report', margin, 15)
+  doc.setFontSize(h1)
+  doc.text('Property Related Data', margin, 25)
+
+  // Header Legend
+  doc.setFontSize(p)
+  doc.setTextColor(colors.WHITE)
+  doc.setFillColor(selectedColor)
+  doc.rect(width * 0.7, 10, quarter, 5, 'F')
+  doc.text('Your Market', width * 0.7 + 2, 13)
+  doc.text(selected, width - margin * 2, 13)
+  doc.setFillColor(comp1Color)
+  doc.rect(width * 0.7, 16, quarter, 5, 'F')
+  doc.text('Comparable 1', width * 0.7 + 2, 19.5)
+  doc.text(comp1, width - margin * 2, 19.5)
+  doc.setFillColor(comp2Color)
+  doc.rect(width * 0.7, 22, quarter, 5, 'F')
+  doc.setTextColor(colors.BLACK)
+  doc.text('Comparable 2', width * 0.7 + 2, 25.5)
+  doc.text(comp2, width - margin * 2, 25.5)
+  doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
+
   // // Page 1 Title
   // doc.setFontSize(24)
   // doc.setFontStyle('bold')
