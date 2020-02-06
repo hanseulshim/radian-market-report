@@ -1254,9 +1254,9 @@
   },
   "familyMakeupInfo": "What do the family makeup charts tell us? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
   "familyMakeupPopulation": [
-    { "category": "selected", "value": 60099 },
-    { "category": "comparable1", "value": 31234 },
-    { "category": "comparable2", "value": 70877 }
+    { "category": "selected", "value": 60099, "delta": 25 },
+    { "category": "comparable1", "value": 31234, "delta": -8 },
+    { "category": "comparable2", "value": 70877, "delta": 16 }
   ],
   "familyMakeup": {
     "selected": [
@@ -1291,7 +1291,7 @@
         "category": "single-parent"
       },
       {
-        "value": 0.15,
+        "value": 0.45,
         "category": "couple"
       },
       {
@@ -1299,17 +1299,17 @@
         "category": "1-child"
       },
       {
-        "value": 0.45,
+        "value": 0.15,
         "category": "2-child"
       }
     ],
     "comparable2": [
       {
-        "value": 0.05,
+        "value": 0.76,
         "category": "single"
       },
       {
-        "value": 0.05,
+        "value": 0.025,
         "category": "single-parent"
       },
       {
@@ -1317,11 +1317,11 @@
         "category": "couple"
       },
       {
-        "value": 0.25,
+        "value": 0.05,
         "category": "1-child"
       },
       {
-        "value": 0.45,
+        "value": 0.025,
         "category": "2-child"
       }
     ]

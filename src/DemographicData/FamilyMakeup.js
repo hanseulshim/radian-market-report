@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
-import * as am4charts from '@amcharts/amcharts4/charts'
+
 // eslint-disable-next-line camelcase
 import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDirected'
 import styled from 'styled-components'
@@ -67,18 +67,23 @@ const FamilyMakeup = () => {
       series.data = familyMakeup[zip]
       series.dataFields.value = 'value'
       series.dataFields.name = 'name'
-      series.minRadius = 20
+      series.minRadius = 25
       series.maxRadius = 55
 
       const icon = series.nodes.template.createChild(am4core.Image)
       icon.horizontalCenter = 'middle'
       icon.verticalCenter = 'middle'
+      icon.maxHeight = 75
 
       // Add adapter functions for dynamic icon images and sizes
       icon.adapter.add('pixelHeight', (pixelHeight, target) => {
-        if (target.dataItem && target.dataItem.value > 0.1) {
-          return target.dataItem.value * 120
-        } else return 20
+        if (target.dataItem && target.dataItem.value < 0.1) {
+          return 20
+        }
+        if (target.dataItem && target.dataItem.value > 0.7) {
+          return 70
+        }
+        return target.dataItem && target.dataItem.value * 120
       })
       icon.adapter.add('href', (href, target) => {
         if (
