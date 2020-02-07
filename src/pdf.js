@@ -3,7 +3,18 @@ import moment from 'moment'
 import numeral from 'numeral'
 import html2canvas from 'html2canvas'
 import * as am4core from '@amcharts/amcharts4/core'
-import { propertyInfo, stats } from './data/data.json'
+
+import {
+  propertyInfo,
+  stats,
+  daysOnMarketInfo,
+  ageOfPropertiesInfo,
+  neighborhoodSummary,
+  schoolRatings,
+  transitRatings,
+  ageVsIncome,
+  familyMakeupInfo
+} from './data/data.json'
 import * as colors from './colors'
 import ActiveListingsSold from './assets/ActiveListingsSold.svg'
 // import { Roboto, RobotoBold } from './fonts'
@@ -20,7 +31,7 @@ export const buildPDF = async () => {
   // // Helpers
   const width = doc.internal.pageSize.width
   const headerht = 35
-  const greyBG = (240, 240, 240)
+  const greyBG = colors.DESERT_STORM
   const margin = 10
   const quarter = width / 4
   const third = width / 3
@@ -77,7 +88,7 @@ export const buildPDF = async () => {
   // Sub Title
   doc.setFontSize(h2)
   doc.setFontStyle('bold')
-  doc.text('How Your Market Stacks Up Against the Rest', margin, 50)
+  doc.text('How Your Market Stacks Up Against the Rest', margin, 47.5)
 
   // Table Header
   doc.setFontSize(h3)
@@ -312,6 +323,9 @@ export const buildPDF = async () => {
   /// /////////// Page 2 /////////////////
 
   doc.addPage('p', 'mm', 'a4')
+  const page2ChartColumnLeft = margin + third + margin
+  const page2ChartColumnTop = 50
+  const page2GreySectionStart = 200
 
   // Document Header
   doc.setFillColor(greyBG)
@@ -339,154 +353,334 @@ export const buildPDF = async () => {
   doc.text(comp2, width - margin * 2, 25.5)
   doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
 
-  // // Page 1 Title
-  // doc.setFontSize(24)
-  // doc.setFontStyle('bold')
-  // doc.text('Property Related Data', 10, headerht - 5)
+  // Page 2 Title & Info Column
+  doc.setFontSize(h2)
+  doc.setFontStyle('bold')
+  doc.text('How Your Market Stacks Up Against the Rest', margin, 50, {
+    maxWidth: third
+  })
+  doc.setFontSize(h3)
+  doc.text('Days on Market', margin, 80)
+  doc.setFontSize(p)
+  doc.setFontStyle('normal')
+  doc.text(daysOnMarketInfo, margin, 85, { maxWidth: third })
 
-  // // Page 1 Heading
-  // doc.setFontSize(14)
-  // doc.setFontStyle('bold')
-  // doc.text('How Your Market Stacks Up Against the Rest', margin, 45)
+  doc.setFontSize(h3)
+  doc.setFontStyle('bold')
+  doc.text('Age of Properties Across Markets', margin, 105, { maxWidth: third })
+  doc.setFontSize(p)
+  doc.setFontStyle('normal')
+  doc.text(ageOfPropertiesInfo, margin, 115, { maxWidth: third })
 
-  // // Page 1 Stats Table
-  // doc.setFontStyle('normal')
-  // doc.setFontSize(12)
-  // doc.text(shortenedDate + ' Stats', margin, 55)
-  // doc.setFillColor('0.00')
-  // doc.rect(margin, 57.5, column1, 15, 'F')
-  // doc.setTextColor('1.00')
-  // doc.setFontSize(9)
-  // doc.text(selectedProperty.address, margin + 2.5, 64)
-  // doc.text(
-  //   `${selectedProperty.city}, ${selectedProperty.state} ${selectedProperty.zip}`,
-  //   margin + 2.5,
-  //   67
-  // )
-  // doc.setFontStyle('bold')
-  // doc.setFontSize(16)
-  // doc.text(
-  //   `$${numeral(selectedProperty.total).format('0a')}`,
-  //   margin + 37.5,
-  //   66
-  // )
+  // Cost Over Time on the Market Section
+  doc.setFontSize(chartTitle)
+  doc.setFontStyle('bold')
+  doc.text(
+    'Cost Over Time on the Market',
+    page2ChartColumnLeft,
+    page2ChartColumnTop
+  )
+  doc.line(
+    page2ChartColumnLeft,
+    page2ChartColumnTop + 2,
+    width - margin,
+    page2ChartColumnTop + 2
+  )
 
-  // // Median Prices Chart
-  // doc.addImage(medianPricesChart, 70, 52.5, column2, 60)
+  // Dom vs Price of Listings Chart
+  doc.setFontSize(p)
+  doc.text(
+    'DOM vs Price of Listings',
+    page2ChartColumnLeft + margin,
+    page2ChartColumnTop + 8.5
+  )
+  const domVsPriceOfListingsChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'domVsPriceOfListingsChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    domVsPriceOfListingsChart,
+    page2ChartColumnLeft,
+    page2ChartColumnTop + 10,
+    twoColumns - margin,
+    50
+  )
+
+  // Inventory of Listings per DOM Chart
+  doc.text(
+    'Inventory of Listings per DOM',
+    page2ChartColumnLeft + margin,
+    page2ChartColumnTop + 66
+  )
+  const inventoryOfListingsPerDOMChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'inventoryOfListingsPerDOMChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    inventoryOfListingsPerDOMChart,
+    page2ChartColumnLeft,
+    page2ChartColumnTop + 67.5,
+    twoColumns - margin,
+    30
+  )
+
+  // Average DOM Over Time Chart
+  doc.text(
+    'Average DOM Over Time',
+    page2ChartColumnLeft + margin,
+    page2ChartColumnTop + 103.5
+  )
+  const averageDomOverTimeChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'averageDomOverTimeChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    averageDomOverTimeChart,
+    page2ChartColumnLeft,
+    page2ChartColumnTop + 105,
+    twoColumns - margin,
+    30
+  )
+
+  // Grey Chart section Page 2
+
+  doc.setFillColor(greyBG)
+  doc.rect(0, page2GreySectionStart, width, 150, 'F')
+  doc.setFontSize(chartTitle)
+  doc.setFontStyle('bold')
+  doc.text(
+    'Age of Properties Across Market',
+    margin,
+    page2GreySectionStart + 10
+  )
+  doc.line(
+    margin,
+    page2GreySectionStart + 12,
+    width - margin,
+    page2GreySectionStart + 12
+  )
+  const ageOfPropertiesChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'ageOfPropertiesChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    ageOfPropertiesChart,
+    margin,
+    page2GreySectionStart + 15,
+    width - margin * 2,
+    75
+  )
+
+  /// /////////// Page 3 /////////////////
+
+  doc.addPage('p', 'mm', 'a4')
+
+  doc.setFillColor(greyBG)
+  doc.rect(0, 0, width, headerht, 'F')
+  doc.setFontSize(h3)
+  doc.setFontStyle('normal')
+  doc.text('Market Report', margin, 15)
+  doc.setFontSize(h1)
+  doc.text('Demographic Related Data', margin, 25)
+
+  // Header Legend
+  doc.setFontSize(p)
+  doc.setTextColor(colors.WHITE)
+  doc.setFillColor(selectedColor)
+  doc.rect(width * 0.7, 10, quarter, 5, 'F')
+  doc.text('Your Market', width * 0.7 + 2, 13)
+  doc.text(selected, width - margin * 2, 13)
+  doc.setFillColor(comp1Color)
+  doc.rect(width * 0.7, 16, quarter, 5, 'F')
+  doc.text('Comparable 1', width * 0.7 + 2, 19.5)
+  doc.text(comp1, width - margin * 2, 19.5)
+  doc.setFillColor(comp2Color)
+  doc.rect(width * 0.7, 22, quarter, 5, 'F')
+  doc.setTextColor(colors.BLACK)
+  doc.text('Comparable 2', width * 0.7 + 2, 25.5)
+  doc.text(comp2, width - margin * 2, 25.5)
+  doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
+
+  // Page 3 Title / Neighborhood Summary
+  doc.setFontSize(h3)
+  doc.setFontStyle('bold')
+  doc.text('Neighborhood Summary', margin, 45)
+  doc.setFontStyle('normal')
+  doc.setFontSize(p)
+  doc.text(neighborhoodSummary, margin, 50, { maxWidth: half + margin })
+
+  // School Ratings
+  doc.setFontSize(h3)
+  doc.setFontStyle('bold')
+  doc.text('School Ratings', margin, 70)
+  doc.setFontStyle('normal')
+  doc.setFontSize(p)
+  doc.text(schoolRatings.info, margin, 75, { maxWidth: half - margin * 2 })
+
+  // Transit Ratings
+  doc.setFontSize(h3)
+  doc.setFontStyle('bold')
+  doc.text('Transit Ratings', half, 70)
+  doc.setFontStyle('normal')
+  doc.setFontSize(p)
+  doc.text(transitRatings.info, half, 75, { maxWidth: half - margin })
+
+  const schoolRatingsContainer = document.getElementById('school-ratings')
+  const schoolRatingsImg = await html2canvas(schoolRatingsContainer, {
+    scale: 2
+  }).then(canvas => canvas.toDataURL('image/png'))
+  doc.addImage(schoolRatingsImg, margin, 85, half - margin * 2, 20)
+
+  const transitRatingsContainer = document.getElementById('transit-ratings')
+  const transitRatingsImd = await html2canvas(transitRatingsContainer, {
+    scale: 1
+  }).then(canvas => canvas.toDataURL('image/png'))
+  doc.addImage(transitRatingsImd, half, 85, half - margin, 20)
+
+  // const map = MAP.getCanvas(document.querySelector('.mapboxgl-canvas'))
+
+  // const mapImgData = await map[0].toDataURL('image/png')
+  // doc.addImage('mapImgData', 0, 90, width, 150)
+
+  /// /////////// Page 4 /////////////////
+
+  doc.addPage('p', 'mm', 'a4')
+  const page4Column2Left = third + margin
+  const page4Column2Top = 45
+  const familyMakeupStart = 200
+
+  doc.setFillColor(greyBG)
+  doc.rect(0, 0, width, headerht, 'F')
+  doc.setFontSize(h3)
+  doc.setFontStyle('normal')
+  doc.text('Market Report', margin, 15)
+  doc.setFontSize(h1)
+  doc.text('Demographic Related Data', margin, 25)
+
+  // Header Legend
+  doc.setFontSize(p)
+  doc.setTextColor(colors.WHITE)
+  doc.setFillColor(selectedColor)
+  doc.rect(width * 0.7, 10, quarter, 5, 'F')
+  doc.text('Your Market', width * 0.7 + 2, 13)
+  doc.text(selected, width - margin * 2, 13)
+  doc.setFillColor(comp1Color)
+  doc.rect(width * 0.7, 16, quarter, 5, 'F')
+  doc.text('Comparable 1', width * 0.7 + 2, 19.5)
+  doc.text(comp1, width - margin * 2, 19.5)
+  doc.setFillColor(comp2Color)
+  doc.rect(width * 0.7, 22, quarter, 5, 'F')
+  doc.setTextColor(colors.BLACK)
+  doc.text('Comparable 2', width * 0.7 + 2, 25.5)
+  doc.text(comp2, width - margin * 2, 25.5)
+  doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
+
+  // Page 4 Title / Neighborhood Summary
+  doc.setFontSize(h3)
+  doc.setFontStyle('bold')
+  doc.text('Age Vs Income', margin, 45)
+  doc.setFontStyle('normal')
+  doc.setFontSize(p)
+  doc.text(ageVsIncome, margin, 52.5, { maxWidth: third - margin })
+
+  // Population By Age Chart
+  doc.setFontSize(chartTitle)
+  doc.setFontStyle('bold')
+  doc.text(`${selected} Population By Age`, page4Column2Left, page4Column2Top)
+  doc.line(
+    page4Column2Left,
+    page4Column2Top + 2,
+    width - margin,
+    page4Column2Top + 2
+  )
+  const populationByAgeChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'populationByAgeChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    populationByAgeChart,
+    page4Column2Left - margin,
+    page4Column2Top + 5,
+    half + margin,
+    35
+  )
+
+  // Population of Age vs Income
+  doc.setFontSize(chartTitle)
+  doc.setFontStyle('bold')
+  doc.text('Population of Age vs Income', margin, page4Column2Top + 47.5)
+  doc.line(margin, page4Column2Top + 50, width - margin, page4Column2Top + 50)
+  const ageVsIncomeChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'ageVsIncomeChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    ageVsIncomeChart,
+    margin - 5,
+    page4Column2Top + 51,
+    width - margin,
+    90
+  )
+
+  // Family Makeup Section
+
+  doc.text('Family Makeup', margin, familyMakeupStart)
+  doc.line(margin, familyMakeupStart + 2, width - margin, familyMakeupStart + 2)
+  doc.setFontStyle('normal')
+  doc.setFontSize(p)
+  doc.text(familyMakeupInfo, margin, familyMakeupStart + 7, {
+    maxWidth: width - margin * 2
+  })
+
+  // Population Across Markets Chart
+
+  doc.text('Population Across Markets', margin, familyMakeupStart + 20)
+  const familyMakeupPopulationChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'familyMakeupPopulationChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    familyMakeupPopulationChart,
+    margin,
+    familyMakeupStart + 25,
+    quarter,
+    50
+  )
+
+  // Family Makeup Bubble Charts
+  doc.text('Family Makeup', page4Column2Left, familyMakeupStart + 20)
+  const selectedFamilyMakeupChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'selectedFamilyMakeupChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    selectedFamilyMakeupChart,
+    page4Column2Left,
+    familyMakeupStart + 25,
+    40,
+    40
+  )
+
+  const comparable1FamilyMakeupChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'comparable1FamilyMakeupChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    comparable1FamilyMakeupChart,
+    page4Column2Left + 45,
+    familyMakeupStart + 25,
+    40,
+    40
+  )
+
+  const comparable2FamilyMakeupChart = await am4core.registry.baseSprites
+    .find(c => c.id === 'comparable2FamilyMakeupChart')
+    .exporting.getImage('png')
+  doc.addImage(
+    comparable2FamilyMakeupChart,
+    page4Column2Left + 90,
+    familyMakeupStart + 25,
+    40,
+    40
+  )
 
   // // Stats Table
   // const table = document.getElementById('stat-table')
   // const tableImg = await html2canvas(table).then(canvas =>
   //   canvas.toDataURL('image/png')
   // )
-  // doc.addImage(tableImg, margin, 74, column1, 40)
 
-  // // Page 1 Description
-  // doc.setTextColor('0.00')
-  // doc.setFontSize(8)
-  // doc.setFontStyle('normal')
-  // doc.text(description, margin, 122, {
-  //   maxWidth: column1
-  // })
-
-  // // avgSaleToListChart
-  // doc.addImage(avgSaleToListChart, 70, 112.5, column2, 40)
-
-  // // Color legend
-  // doc.setFillColor(greyBG)
-  // doc.rect(0, 140, column1 + margin, 40, 'F')
-  // doc.setFontStyle('bold')
-  // doc.text('What do the colors mean?', margin, 145)
-  // doc.setFontStyle('normal')
-  // doc.setFillColor(SELECTEDGREY)
-  // doc.rect(margin, 147.5, column1 - 2.5, 7.5, 'F')
-  // doc.text('Selected Property', margin + 2.5, 152)
-  // doc.text(selectedProperty.zip, column1 - 5, 152)
-  // doc.setFillColor(DODGER_BLUE)
-  // doc.rect(margin, 157.5, column1 - 2.5, 7.5, 'F')
-  // doc.text('Comparable 1', margin + 2.5, 162.5)
-  // doc.text(comparisonProperty1.label, column1 - 5, 162.5)
-  // doc.setFillColor(RIPTIDE)
-  // doc.rect(margin, 167.5, column1 - 2.5, 7.5, 'F')
-  // doc.text('Comparable 2', margin + 2.5, 172.5)
-  // doc.text(comparisonProperty2.label, column1 - 5, 172.5)
-
-  // Inventory Chart
-  // doc.addImage(inventoryChart, 70, 150, column2, 40)
-
-  // // Market Strength Chart
-  // doc.addImage(marketStrengthChart, margin, 185, column1, 30)
-
-  // // Average HPI by Beds Chart
-  // doc.addImage(avgHpiByBedsChart, 74, 185, column2 / 2 - 5, 30)
-
-  // // Average HPI by Sq Ft Chart
-  // doc.addImage(avgHpiBySqFtChart, 140, 185, column2 / 2 - 5, 30)
-
-  // Page 1 Info Text: Legend
-  // doc.setFillColor(220, 220, 220)
-  // doc.rect(10, 95, 55, 40, 'F')
-  // doc.setFontSize(10)
-  // doc.text('What do the colors mean?', 12, 100, {
-  //   maxWidth: '55'
-  // })
-  // doc.setFontSize(8)
-  // doc.setFillColor(colors[0])
-  // doc.rect(12, 102.5, 10, 2.5, 'F')
-  // doc.text(keys[0], 24, 105, {
-  //   maxWidth: '55'
-  // })
-  // doc.setFillColor(colors[1])
-  // doc.rect(12, 107.5, 10, 2.5, 'F')
-  // doc.text(keys[1], 24, 110, {
-  //   maxWidth: '45'
-  // })
-  // doc.setFillColor(colors[2])
-  // doc.rect(12, 115, 10, 2.5, 'F')
-  // doc.text(keys[2], 24, 117.5, {
-  //   maxWidth: '45'
-  // })
-  // doc.setFontStyle('bold')
-  // doc.text('Similar Properties', 12, 122.5)
-  // doc.setFontStyle('')
-  // doc.text('similar propers', 12, 126, {
-  //   maxWidth: '45'
-  // })
-  // doc.setFontStyle('bold')
-  // doc.text('Sold Properties', 12, 130)
-  // doc.setFontStyle('')
-  // doc.text(soldProperties, 12, 133, {
-  //   maxWidth: '45'
-  // })
-  // doc.setFillColor('1.00')
-
-  // Page 1 Info Text: Table
-  // doc.setFontSize(10)
-  // doc.text(shortenedDate, 10, 145)
-  // doc.setFillColor(0, 0, 0)
-  // doc.rect(10, 147.5, 55, 15, 'F')
-  // doc.setFillColor(220, 220, 220)
-  // doc.rect(10, 165, 55, 25, 'F')
-
-  // //Chart 3
-  // doc.rect(67.5, 150, 130, 40)
-
-  // //Chart 5
-  // doc.rect(10, 192.5, 55, 25, 'F')
-
-  // //Chart 6
-  // doc.rect(70, 192.5, 65, 25, 'F')
-
-  // //Chart 7
-  // doc.rect(140, 192.5, 65, 25, 'F')
-
-  // Page 1 Green Section
-  // doc.setFillColor(173, 240, 224)
-  // doc.rect(0, 225, 240, 240, 'F')
-
-  // doc.setFillColor(0, 0, 0)
-  // doc.rect(12, 230, 55, 55, 'F')
-  // doc.text('Age of Properties Across Markets', 12, 232.5)
   // Save
   doc.save('report.pdf')
 }

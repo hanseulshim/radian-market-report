@@ -18,6 +18,7 @@ const InventoryPerDom = () => {
       am4charts.XYChart
     )
     chart.data = inventoryPerDom.selected
+    chart.id = 'inventoryOfListingsPerDOMChart'
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.categoryAxis()

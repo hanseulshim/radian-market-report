@@ -23,6 +23,7 @@ const AverageDomOverTime = () => {
       am4charts.XYChart
     )
     chart.data = averageDomOverTime.selected
+    chart.id = 'averageDomOverTimeChart'
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.categoryAxis('line')

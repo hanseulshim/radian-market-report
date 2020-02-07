@@ -10,7 +10,6 @@ import union from '@turf/union'
 import { polygon } from '@turf/helpers'
 import WebMercatorViewport from 'viewport-mercator-project'
 import MapStat from './MapStat'
-
 import { NEPTUNE, AZURE, BLACK } from '../colors'
 
 const Container = styled.div`
@@ -47,6 +46,7 @@ const MapContainer = () => {
     if (map) {
       const mapRef = map.getMap()
       mapRef.on('load', () => {
+        // console.log(mapRef.getCanvas().toDataUrl())
         mapRef.addLayer({
           id: 'selected',
           type: 'line',
@@ -84,15 +84,9 @@ const MapContainer = () => {
           }
         })
         const unionPolygon = union(
-          polygon(
-            mapData.comparable1.geoJson.features[0].geometry.coordinates
-          ),
-          polygon(
-            mapData.selected.geoJson.features[0].geometry.coordinates
-          ),
-          polygon(
-            mapData.comparable2.geoJson.features[0].geometry.coordinates
-          )
+          polygon(mapData.comparable1.geoJson.features[0].geometry.coordinates),
+          polygon(mapData.selected.geoJson.features[0].geometry.coordinates),
+          polygon(mapData.comparable2.geoJson.features[0].geometry.coordinates)
         )
         const extent = bbox(unionPolygon)
         const { longitude, latitude, zoom } = new WebMercatorViewport(
@@ -125,6 +119,7 @@ const MapContainer = () => {
         mapStyle="mapbox://styles/mapbox/light-v10"
         onViewportChange={_onViewportChange}
         ref={el => setMap(el)}
+        preserveDrawingBuffer
       >
         <MapStat />
         <Marker

@@ -25,6 +25,7 @@ const DomVsPrice = () => {
       am4charts.XYChart
     )
     chart.data = domVsPrice.selected
+    chart.id = 'domVsPriceOfListingsChart'
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.categoryAxis()

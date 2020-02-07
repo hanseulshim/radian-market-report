@@ -27,6 +27,7 @@ const PopulationOfAgeVsIncome = () => {
       'populationByIncomeChart',
       am4charts.XYChart
     )
+    chart.id = 'ageVsIncomeChart'
 
     const max = Math.max(
       ...[

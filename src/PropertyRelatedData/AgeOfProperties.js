@@ -32,6 +32,8 @@ const AgeOfProperties = () => {
       am4charts.XYChart
     )
 
+    chart.id = 'ageOfPropertiesChart'
+
     const max = Math.max(
       ...[
         ...ageOfProperties.selected,
@@ -81,9 +83,15 @@ const AgeOfProperties = () => {
     selectedSoldSeries.data = ageOfProperties.selectedSold
     selectedSoldSeries.config = config.line('selected', 'dash', 'curved')
 
-    const selectedSoldAvgSeries = chart.series.push(new am4charts.ColumnSeries())
+    const selectedSoldAvgSeries = chart.series.push(
+      new am4charts.ColumnSeries()
+    )
     selectedSoldAvgSeries.data = ageOfProperties.selectedSoldAvg
-    selectedSoldAvgSeries.config = config.line('selectedSold', 'column', 'bullet')
+    selectedSoldAvgSeries.config = config.line(
+      'selectedSold',
+      'column',
+      'bullet'
+    )
 
     const ageOfPropertySeries = chart.series.push(new am4charts.ColumnSeries())
     ageOfPropertySeries.data = [

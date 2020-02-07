@@ -69,7 +69,7 @@ const Icon = styled.img`
   align-self: center;
 `
 
-const getColor = value => value <= 3 ? WHITE : BLACK
+const getColor = value => (value <= 3 ? WHITE : BLACK)
 
 const getBackground = value => {
   if (value <= 1) {
@@ -124,7 +124,7 @@ const createPanels = rating => {
 const RatingsContainer = () => {
   return (
     <>
-      <SchoolRating>
+      <SchoolRating id="school-ratings">
         <Panel>
           <div>{propertyInfo.selected}</div>
           {createPanels(schoolRatings.selected.values)}
@@ -138,7 +138,7 @@ const RatingsContainer = () => {
           {createPanels(schoolRatings.comparable2.values)}
         </Panel>
       </SchoolRating>
-      <TransitRating>
+      <TransitRating id="transit-ratings">
         <Panel>
           <div>{propertyInfo.selected}</div>
           {createPanels(transitRatings.selected.values)}

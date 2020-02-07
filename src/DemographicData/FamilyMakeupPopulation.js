@@ -10,7 +10,6 @@ import comp1ArrowDown from '../assets/icon_arrow_blue_down.svg'
 import comp1ArrowUp from '../assets/icon_arrow_blue_up.svg'
 import comp2ArrowDown from '../assets/icon_arrow_seafoam_down.svg'
 import comp2ArrowUp from '../assets/icon_arrow_seafoam_up.svg'
-import home from '../assets/home.svg'
 import { familyMakeupPopulation, propertyInfo } from '../data/data.json'
 
 const Container = styled.div`
@@ -31,6 +30,7 @@ const FamilyMakeupPopulation = () => {
     chart.data = familyMakeupPopulation
     chart.chartContainer.paddingBottom = 10
     chart.maskBullets = false
+    chart.id = 'familyMakeupPopulationChart'
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.categoryAxis()
