@@ -33,6 +33,10 @@ const TransitRating = styled.div`
 const Panel = styled.div`
   background: ${DESERT_STORM};
   padding: 10px;
+
+  > div {
+    font-variant: normal;
+  }
 `
 
 const Rating = styled.div`
@@ -54,6 +58,10 @@ const AveragePanel = styled.div`
   padding: 5px 0;
   background: ${props => getBackground(props.value)};
   color: ${props => getColor(props.value)};
+
+  > span {
+    font-variant: normal;
+  }
 `
 
 const MetricValue = styled.div`
@@ -100,7 +108,14 @@ const createPanels = rating => {
   return (
     <Rating>
       <AveragePanel value={average}>
-        <Text subSection>{numeral(average).format('0.[0]')}</Text>
+        <span
+          style={{
+            textAlign: 'center',
+            fontSize: '24px'
+          }}
+        >
+          {numeral(average).format('0.[0]')}
+        </span>
         <span>Avg</span>
       </AveragePanel>
       {rating.map((metric, i) => (

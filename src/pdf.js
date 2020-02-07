@@ -566,7 +566,8 @@ export const buildPDF = async () => {
 
   const schoolRatingsContainer = document.getElementById('school-ratings')
   const schoolRatingsImg = await html2canvas(schoolRatingsContainer, {
-    scale: 2
+    scale: 8,
+    letterRendering: true
   }).then(canvas => canvas.toDataURL('image/png'))
   doc.addImage(schoolRatingsImg, margin, 100, half - margin * 2, 25)
 
