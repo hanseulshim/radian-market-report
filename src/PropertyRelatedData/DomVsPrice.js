@@ -89,7 +89,7 @@ const DomVsPrice = () => {
       <Text chartTitle>Cost Over Time on the Market</Text>
       <Text subChartTitle>
         <span>DOM vs Price of Listings</span>
-        <Legend src={DOMvsPriceOfListings} />
+        <Legend src={DOMvsPriceOfListings} id="domVsPriceLegend" />
       </Text>
       <div id={'domVsPriceChart'} style={{ width: '100%', height: 300 }} />
     </Container>

@@ -3,7 +3,6 @@ import moment from 'moment'
 import numeral from 'numeral'
 import html2canvas from 'html2canvas'
 import * as am4core from '@amcharts/amcharts4/core'
-
 import {
   propertyInfo,
   stats,
@@ -16,9 +15,7 @@ import {
   familyMakeupInfo
 } from './data/data.json'
 import * as colors from './colors'
-import ActiveListingsSold from './assets/ActiveListingsSold.svg'
 // import { Roboto, RobotoBold } from './fonts'
-import config from './config'
 
 export const buildPDF = async () => {
   const doc = new JSPDF('p', 'mm', 'a4')
@@ -28,7 +25,7 @@ export const buildPDF = async () => {
   // doc.addFont('Roboto-Bold.ttf', 'Roboto', 'bold')
   // doc.setFont('Roboto')
 
-  // // Helpers
+  // Globals
   const width = doc.internal.pageSize.width
   const headerht = 35
   const greyBG = colors.DESERT_STORM
@@ -39,19 +36,42 @@ export const buildPDF = async () => {
   const h1 = 20
   const h2 = 18
   const h3 = 14
-  const p = 8
+  const p = 10
+  const smaller = 8
   const chartTitle = 12
   const selectedColor = colors.BLACK
   const comp1Color = colors.AZURE
   const comp2Color = colors.NEPTUNE
 
   // // Dynamic Fields
-  const date = moment().format('MMMM DD, YYYY')
   const shortenedDate = date => moment(date).format('MMMM YYYY')
-
   const selected = propertyInfo.selected.toString()
   const comp1 = propertyInfo.comparable1.toString()
   const comp2 = propertyInfo.comparable2.toString()
+
+  // Legend Images
+  const page1Legend = document.getElementById('activeListingsSoldSvg')
+  const page1LegendImg = await html2canvas(page1Legend, {
+    scale: 1
+  }).then(canvas => canvas.toDataURL('image/png'))
+  const domVsPriceLegend = document.getElementById('domVsPriceLegend')
+  const domVsPriceLegendImg = await html2canvas(domVsPriceLegend, {
+    scale: 1
+  }).then(canvas => canvas.toDataURL('image/png'))
+  const averageDomOverTimeLegend = document.getElementById(
+    'averageDomOverTimeLegend'
+  )
+  const averageDomOverTimeLegendImg = await html2canvas(
+    averageDomOverTimeLegend,
+    {
+      scale: 1
+    }
+  ).then(canvas => canvas.toDataURL('image/png'))
+  const ageOfPropertiesLegend = document.getElementById('ageOfPropertiesLegend')
+  const ageOfPropertiesLegendImg = await html2canvas(ageOfPropertiesLegend, {
+    scale: 0.6,
+    dpi: 144
+  }).then(canvas => canvas.toDataURL('image/png'))
 
   /// /////////// Page 1 /////////////////
 
@@ -83,7 +103,10 @@ export const buildPDF = async () => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
-  doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
+  doc.setFontSize(smaller)
+  doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30, {
+    maxWidth: quarter
+  })
 
   // Sub Title
   doc.setFontSize(h2)
@@ -116,6 +139,7 @@ export const buildPDF = async () => {
   )
   // Grey area of Table
   doc.setFillColor(greyBG)
+  doc.setFontSize(smaller)
   doc.rect(margin, statsTableStart + 12, third - margin, 80, 'F')
   // Stats Table column headers
   const column1 = margin + 21.5
@@ -124,7 +148,7 @@ export const buildPDF = async () => {
   doc.setFillColor(colors.BLACK)
   doc.setFontStyle('normal')
   doc.rect(margin + 20, statsTableStart + 16, 12.5, 5, 'F')
-  doc.setFontSize(p)
+  doc.setFontSize(smaller)
   doc.text(selected, column1, statsTableStart + 19)
   doc.setFillColor(colors.AZURE)
   doc.rect(margin + 33.5, statsTableStart + 16, 12.5, 5, 'F')
@@ -136,7 +160,7 @@ export const buildPDF = async () => {
   doc.line(margin + 1, statsTableStart + 22, third, statsTableStart + 22)
   // Stats Table Rows : Row 1
   doc.text('Avg. Listed Price', margin + 2, statsTableStart + 26, {
-    maxWidth: margin + 5
+    maxWidth: margin + 10
   })
   doc.text(
     `$${numeral(stats.selected.avgListedPrice).format('0a')}`,
@@ -157,7 +181,7 @@ export const buildPDF = async () => {
 
   // Stats Table Rows : Row 2
   doc.text('Avg. Sold Price', margin + 2, statsTableStart + 34, {
-    maxWidth: margin + 5
+    maxWidth: margin + 7
   })
   doc.text(
     `$${numeral(stats.selected.avgSoldPrice).format('0a')}`,
@@ -178,7 +202,7 @@ export const buildPDF = async () => {
 
   // Stats Table Rows : Row 3
   doc.text('Active Inventory', margin + 2, statsTableStart + 42, {
-    maxWidth: margin + 5
+    maxWidth: margin + 7
   })
   doc.text(
     stats.selected.activeInventory.toString(),
@@ -243,6 +267,7 @@ export const buildPDF = async () => {
     .exporting.getImage('png')
   doc.setFontSize(chartTitle)
   doc.text('Median Prices', third + margin, chartColumnStart)
+  doc.addImage(page1LegendImg, width - 50, chartColumnStart - 2)
   doc.setDrawColor(colors.BLACK)
   doc.line(
     third + margin,
@@ -282,6 +307,7 @@ export const buildPDF = async () => {
     .find(c => c.id === 'inventoryChart')
     .exporting.getImage('png')
   doc.text('Inventory', third + margin, chartColumnStart + 105)
+  doc.addImage(page1LegendImg, width - 50, chartColumnStart + 103)
   doc.line(
     third + margin,
     chartColumnStart + 107.5,
@@ -351,6 +377,7 @@ export const buildPDF = async () => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
+  doc.setFontSize(smaller)
   doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
 
   // Page 2 Title & Info Column
@@ -363,14 +390,14 @@ export const buildPDF = async () => {
   doc.text('Days on Market', margin, 80)
   doc.setFontSize(p)
   doc.setFontStyle('normal')
-  doc.text(daysOnMarketInfo, margin, 85, { maxWidth: third })
+  doc.text(daysOnMarketInfo, margin, 87.5, { maxWidth: third })
 
   doc.setFontSize(h3)
   doc.setFontStyle('bold')
-  doc.text('Age of Properties Across Markets', margin, 105, { maxWidth: third })
+  doc.text('Age of Properties Across Markets', margin, 115, { maxWidth: third })
   doc.setFontSize(p)
   doc.setFontStyle('normal')
-  doc.text(ageOfPropertiesInfo, margin, 115, { maxWidth: third })
+  doc.text(ageOfPropertiesInfo, margin, 127.5, { maxWidth: third })
 
   // Cost Over Time on the Market Section
   doc.setFontSize(chartTitle)
@@ -394,6 +421,7 @@ export const buildPDF = async () => {
     page2ChartColumnLeft + margin,
     page2ChartColumnTop + 8.5
   )
+  doc.addImage(domVsPriceLegendImg, width - 35, page2ChartColumnTop + 6)
   const domVsPriceOfListingsChart = await am4core.registry.baseSprites
     .find(c => c.id === 'domVsPriceOfListingsChart')
     .exporting.getImage('png')
@@ -428,6 +456,13 @@ export const buildPDF = async () => {
     page2ChartColumnLeft + margin,
     page2ChartColumnTop + 103.5
   )
+  doc.addImage(
+    averageDomOverTimeLegendImg,
+    width - 60,
+    page2ChartColumnTop + 100,
+    50,
+    3
+  )
   const averageDomOverTimeChart = await am4core.registry.baseSprites
     .find(c => c.id === 'averageDomOverTimeChart')
     .exporting.getImage('png')
@@ -449,6 +484,13 @@ export const buildPDF = async () => {
     'Age of Properties Across Market',
     margin,
     page2GreySectionStart + 10
+  )
+  doc.addImage(
+    ageOfPropertiesLegendImg,
+    width - 120,
+    page2GreySectionStart + 5,
+    110,
+    6
   )
   doc.line(
     margin,
@@ -495,6 +537,7 @@ export const buildPDF = async () => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
+  doc.setFontSize(smaller)
   doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
 
   // Page 3 Title / Neighborhood Summary
@@ -503,41 +546,48 @@ export const buildPDF = async () => {
   doc.text('Neighborhood Summary', margin, 45)
   doc.setFontStyle('normal')
   doc.setFontSize(p)
-  doc.text(neighborhoodSummary, margin, 50, { maxWidth: half + margin })
+  doc.text(neighborhoodSummary, margin, 52.5, { maxWidth: half + margin })
 
   // School Ratings
   doc.setFontSize(h3)
   doc.setFontStyle('bold')
-  doc.text('School Ratings', margin, 70)
+  doc.text('School Ratings', margin, 75)
   doc.setFontStyle('normal')
   doc.setFontSize(p)
-  doc.text(schoolRatings.info, margin, 75, { maxWidth: half - margin * 2 })
+  doc.text(schoolRatings.info, margin, 82.5, { maxWidth: half - margin * 2 })
 
   // Transit Ratings
   doc.setFontSize(h3)
   doc.setFontStyle('bold')
-  doc.text('Transit Ratings', half, 70)
+  doc.text('Transit Ratings', half, 75)
   doc.setFontStyle('normal')
   doc.setFontSize(p)
-  doc.text(transitRatings.info, half, 75, { maxWidth: half - margin })
+  doc.text(transitRatings.info, half, 82.5, { maxWidth: half - margin })
 
   const schoolRatingsContainer = document.getElementById('school-ratings')
   const schoolRatingsImg = await html2canvas(schoolRatingsContainer, {
     scale: 2
   }).then(canvas => canvas.toDataURL('image/png'))
-  doc.addImage(schoolRatingsImg, margin, 85, half - margin * 2, 20)
+  doc.addImage(schoolRatingsImg, margin, 100, half - margin * 2, 25)
 
   const transitRatingsContainer = document.getElementById('transit-ratings')
   const transitRatingsImd = await html2canvas(transitRatingsContainer, {
     scale: 1
   }).then(canvas => canvas.toDataURL('image/png'))
-  doc.addImage(transitRatingsImd, half, 85, half - margin, 20)
+  doc.addImage(transitRatingsImd, half, 100, half - margin, 25)
 
-  // const map = MAP.getCanvas(document.querySelector('.mapboxgl-canvas'))
+  const map = document.querySelector('.mapboxgl-canvas')
+  // const mapData = map.toDataURL('image/png')
+  const canvas = await html2canvas(map).then(canvas =>
+    canvas.toDataURL('image/png')
+  )
+  doc.addImage(canvas, 0, 150, width, 150)
 
-  // const mapImgData = await map[0].toDataURL('image/png')
-  // doc.addImage('mapImgData', 0, 90, width, 150)
-
+  const mapStats = document.getElementById('map-stats')
+  const mapStatsImg = await html2canvas(mapStats).then(canvas =>
+    canvas.toDataURL('image/png')
+  )
+  doc.addImage(mapStatsImg, margin, 170, width - margin * 2, 40)
   /// /////////// Page 4 /////////////////
 
   doc.addPage('p', 'mm', 'a4')
@@ -569,6 +619,7 @@ export const buildPDF = async () => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
+  doc.setFontSize(smaller)
   doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
 
   // Page 4 Title / Neighborhood Summary
@@ -652,6 +703,8 @@ export const buildPDF = async () => {
     40,
     40
   )
+  doc.setFontStyle('bold')
+  doc.text(selected, page4Column2Left + 12.5, familyMakeupStart + 70)
 
   const comparable1FamilyMakeupChart = await am4core.registry.baseSprites
     .find(c => c.id === 'comparable1FamilyMakeupChart')
@@ -663,6 +716,7 @@ export const buildPDF = async () => {
     40,
     40
   )
+  doc.text(comp1, page4Column2Left + 45 + 12.5, familyMakeupStart + 70)
 
   const comparable2FamilyMakeupChart = await am4core.registry.baseSprites
     .find(c => c.id === 'comparable2FamilyMakeupChart')
@@ -674,12 +728,7 @@ export const buildPDF = async () => {
     40,
     40
   )
-
-  // // Stats Table
-  // const table = document.getElementById('stat-table')
-  // const tableImg = await html2canvas(table).then(canvas =>
-  //   canvas.toDataURL('image/png')
-  // )
+  doc.text(comp2, page4Column2Left + 90 + 12.5, familyMakeupStart + 70)
 
   // Save
   doc.save('report.pdf')

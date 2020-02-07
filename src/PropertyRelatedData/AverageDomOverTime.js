@@ -56,7 +56,7 @@ const AverageDomOverTime = () => {
     <Container>
       <Text subChartTitle>
         <span>Average DOM Over Time</span>
-        <Legend src={AvgDOMOverTime} />
+        <Legend src={AvgDOMOverTime} id="averageDomOverTimeLegend" />
       </Text>
       <div
         id={'averageDomOverTimeChart'}

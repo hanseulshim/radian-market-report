@@ -128,7 +128,7 @@ const AgeOfProperties = () => {
     <Container>
       <ChartTitle chartTitle>
         <span>Age of Properties Across Markets</span>
-        <Legend src={AgePropertiesAcrossMarkets} />
+        <Legend src={AgePropertiesAcrossMarkets} id="ageOfPropertiesLegend" />
       </ChartTitle>
       <div id={'ageOfPropertiesChart'} style={{ width: '100%', height: 500 }} />
     </Container>
