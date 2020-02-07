@@ -130,7 +130,7 @@ const FamilyMakeup = () => {
 
   return (
     <Container>
-      <Title subCharttitle>Family Makeup</Title>
+      <Title subChartTitle>Family Makeup</Title>
       <ChartRow>
         <ChartContainer>
           <Chart id={'selectedFamilyMakeupChart'} />

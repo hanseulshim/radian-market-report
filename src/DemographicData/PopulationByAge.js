@@ -31,6 +31,7 @@ const PopulationByAge = () => {
     categoryAxis.config = config.categoryAxis('bullet')
     categoryAxis.renderer.grid.template.disabled = true
     categoryAxis.renderer.line.strokeOpacity = 0.1
+    categoryAxis.renderer.labels.template.location = 0.1
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = config.valueAxis('bullet')

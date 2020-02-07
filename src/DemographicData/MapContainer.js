@@ -46,7 +46,6 @@ const MapContainer = () => {
     if (map) {
       const mapRef = map.getMap()
       mapRef.on('load', () => {
-        console.log(mapRef.getCanvas().toDataURL('image/png'))
         mapRef.addLayer({
           id: 'selected',
           type: 'line',

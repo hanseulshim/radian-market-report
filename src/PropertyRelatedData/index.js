@@ -8,13 +8,14 @@ import AvgSaleToListRatio from './AvgSaleToListRatio'
 import Inventory from './Inventory'
 import AvgHpiByBeds from './AvgHpiByBeds'
 import AvgHpiBySqFt from './AvgHpiBySqFt'
-
 import PageTwoInfo from './PageTwoInfo'
-
 import DomVsPrice from './DomVsPrice'
 import InventoryPerDom from './InventoryPerDom'
 import AverageDomOverTime from './AverageDomOverTime'
 import AgeOfProperties from './AgeOfProperties'
+import { buildPDF } from '../pdf'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSave } from '@fortawesome/free-solid-svg-icons'
 
 const PageOne = styled.div`
   display: grid;
@@ -22,7 +23,7 @@ const PageOne = styled.div`
   grid-template-rows: auto;
   grid-template-areas:
     'header header header header header header header header header header header header'
-    'subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle'
+    'subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle subtitle export'
     'info info info info chart1 chart1 chart1 chart1 chart1 chart1 chart1 chart1'
     'info info info info chart2 chart2 chart2 chart2 chart2 chart2 chart2 chart2'
     'info info info info chart3 chart3 chart3 chart3 chart3 chart3 chart3 chart3'
@@ -51,6 +52,18 @@ const PageTwo = styled.div`
 const SubTitle = styled(Text)`
   grid-area: subtitle;
   margin-bottom: 30px;
+  line-height: 35px;
+`
+
+const Export = styled.div`
+  grid-area: export;
+`
+const Button = styled.button`
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `
 
 const PropertyRelatedData = () => (
@@ -58,6 +71,16 @@ const PropertyRelatedData = () => (
     <PageOne>
       <Header section="Property Related Data" />
       <SubTitle subSection>How Your Market Stacks Up Against the Rest</SubTitle>
+      <Export onClick={buildPDF}>
+        <Button>
+          <FontAwesomeIcon
+            icon={faSave}
+            size="sm"
+            style={{ marginRight: '3px' }}
+          />
+          <Text>Export to PDF</Text>
+        </Button>
+      </Export>
       <PageOneInfo />
       <MedianPrices />
       <AvgSaleToListRatio />

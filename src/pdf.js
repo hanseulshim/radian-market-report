@@ -15,6 +15,7 @@ import {
   familyMakeupInfo
 } from './data/data.json'
 import * as colors from './colors'
+import { hex2rgba } from './helper.js'
 
 export const buildPDF = async () => {
   const doc = new JSPDF('p', 'mm', 'a4')

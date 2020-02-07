@@ -111,7 +111,8 @@ const createPanels = rating => {
         <span
           style={{
             textAlign: 'center',
-            fontSize: '24px'
+            fontSize: '28px',
+            fontWeight: 'bold'
           }}
         >
           {numeral(average).format('0.[0]')}

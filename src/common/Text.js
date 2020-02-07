@@ -7,11 +7,11 @@ const Title = styled.div`
   align-items: center;
   font-size: ${props =>
     props.h1
-      ? '25px'
+      ? '22px'
       : props.section
       ? '45px'
       : props.subSection
-      ? '35px'
+      ? '30px'
       : props.value || props.chartTitle
       ? '20px'
       : props.subChartTitle
@@ -23,7 +23,8 @@ const Title = styled.div`
     props.value ||
     props.chartTitle ||
     props.subChartTitle ||
-    props.h1 || props.h2
+    props.h1 ||
+    props.h2
       ? 'bold'
       : 'initial'};
   margin-left: ${props =>

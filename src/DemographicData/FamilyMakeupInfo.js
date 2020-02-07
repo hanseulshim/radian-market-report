@@ -5,7 +5,6 @@ import { familyMakeupInfo } from '../data/data.json'
 
 const Container = styled.div`
   grid-area: sectionInfo;
-  margin-bottom: 15px;
 `
 
 const FamilyMakeupInfo = () => {

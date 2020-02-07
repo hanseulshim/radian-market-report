@@ -93,8 +93,7 @@ const Trend = styled.div`
   width: 70px;
   text-align: center;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   letter-spacing: 1px;
 `
@@ -107,6 +106,7 @@ const Background = styled.div`
   border-radius: 10px;
   z-index: -1;
   background: ${props => getBackground(props.type)};
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.35);
 `
 
 const getBackground = type =>
@@ -119,9 +119,19 @@ const getAverageValue = arr => {
 
 const getTrend = trend => {
   return trend === 'up' ? (
-    <FontAwesomeIcon icon={faArrowUp} size="sm" color={WHITE} />
+    <FontAwesomeIcon
+      icon={faArrowUp}
+      size="sm"
+      color={WHITE}
+      style={{ marginRight: '3px' }}
+    />
   ) : trend === 'down' ? (
-    <FontAwesomeIcon icon={faArrowDown} size="sm" color={WHITE} />
+    <FontAwesomeIcon
+      icon={faArrowDown}
+      size="sm"
+      color={WHITE}
+      style={{ marginRight: '3px' }}
+    />
   ) : null
 }
 
