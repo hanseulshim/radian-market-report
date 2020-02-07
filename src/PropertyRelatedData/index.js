@@ -15,7 +15,7 @@ import AverageDomOverTime from './AverageDomOverTime'
 import AgeOfProperties from './AgeOfProperties'
 import { buildPDF } from '../pdf'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave } from '@fortawesome/free-solid-svg-icons'
+import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 
 const PageOne = styled.div`
   display: grid;
@@ -62,8 +62,10 @@ const Button = styled.button`
   cursor: pointer;
   white-space: nowrap;
   display: flex;
+  padding: 5px 10px;
   align-items: center;
   justify-content: space-around;
+  border-radius: 2px;
 `
 
 const PropertyRelatedData = () => (
@@ -74,9 +76,9 @@ const PropertyRelatedData = () => (
       <Export onClick={buildPDF}>
         <Button>
           <FontAwesomeIcon
-            icon={faSave}
-            size="sm"
-            style={{ marginRight: '3px' }}
+            icon={faFilePdf}
+            // size="md"
+            style={{ marginRight: '3px', fontSize: '16px' }}
           />
           <Text>Export to PDF</Text>
         </Button>
