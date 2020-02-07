@@ -28,6 +28,7 @@ const MapInfo = styled.div`
     '. . .';
   margin: 25px 50px;
   grid-gap: 15px;
+  font-variant: normal;
 `
 
 const MapTitle = styled.div`
@@ -61,6 +62,7 @@ const Stat = styled.div`
   justify-items: center;
   position: relative;
   z-index: 1;
+  font-variant: normal;
 `
 
 const Title = styled.div`
@@ -86,10 +88,15 @@ const Trend = styled.div`
   grid-area: ${props => `trend${props.location}`};
   font-size: 18px;
   font-weight: bold;
-  padding: 5px 7px;
+  padding: 5px 0;
   background: ${props => getBackground(props.type)};
-  width: 60px;
+  width: 70px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  letter-spacing: 1px;
 `
 
 const Background = styled.div`
@@ -112,9 +119,9 @@ const getAverageValue = arr => {
 
 const getTrend = trend => {
   return trend === 'up' ? (
-    <FontAwesomeIcon icon={faArrowUp} size="sm" />
+    <FontAwesomeIcon icon={faArrowUp} size="sm" color={WHITE} />
   ) : trend === 'down' ? (
-    <FontAwesomeIcon icon={faArrowDown} size="sm" />
+    <FontAwesomeIcon icon={faArrowDown} size="sm" color={WHITE} />
   ) : null
 }
 

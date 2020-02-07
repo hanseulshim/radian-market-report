@@ -15,15 +15,9 @@ import {
   familyMakeupInfo
 } from './data/data.json'
 import * as colors from './colors'
-// import { Roboto, RobotoBold } from './fonts'
 
 export const buildPDF = async () => {
   const doc = new JSPDF('p', 'mm', 'a4')
-  // doc.addFileToVFS('Roboto-Regular.ttf', Roboto)
-  // doc.addFileToVFS('Roboto-Bold.ttf', RobotoBold)
-  // doc.addFont('Roboto-Regular.ttf', 'Roboto', 'normal')
-  // doc.addFont('Roboto-Bold.ttf', 'Roboto', 'bold')
-  // doc.setFont('Roboto')
 
   // Globals
   const width = doc.internal.pageSize.width
@@ -38,7 +32,7 @@ export const buildPDF = async () => {
   const h3 = 14
   const p = 10
   const smaller = 8
-  const chartTitle = 12
+  const chartTitle = 11
   const selectedColor = colors.BLACK
   const comp1Color = colors.AZURE
   const comp2Color = colors.NEPTUNE
@@ -70,7 +64,9 @@ export const buildPDF = async () => {
   const ageOfPropertiesLegend = document.getElementById('ageOfPropertiesLegend')
   const ageOfPropertiesLegendImg = await html2canvas(ageOfPropertiesLegend, {
     scale: 0.6,
-    dpi: 144
+    dpi: 144,
+    backgroundColor: 'rgba(0,0,0,0)',
+    removeContainer: true
   }).then(canvas => canvas.toDataURL('image/png'))
 
   /// /////////// Page 1 /////////////////
@@ -88,7 +84,7 @@ export const buildPDF = async () => {
   doc.text('Property Related Data', margin, 25)
 
   // Header Legend
-  doc.setFontSize(p)
+  doc.setFontSize(smaller)
   doc.setTextColor(colors.WHITE)
   doc.setFillColor(selectedColor)
   doc.rect(width * 0.7, 10, quarter, 5, 'F')
@@ -103,7 +99,6 @@ export const buildPDF = async () => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
-  doc.setFontSize(smaller)
   doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30, {
     maxWidth: quarter
   })
@@ -140,7 +135,7 @@ export const buildPDF = async () => {
   // Grey area of Table
   doc.setFillColor(greyBG)
   doc.setFontSize(smaller)
-  doc.rect(margin, statsTableStart + 12, third - margin, 80, 'F')
+  doc.rect(margin, statsTableStart + 12, third - margin, 70, 'F')
   // Stats Table column headers
   const column1 = margin + 21.5
   const column2 = margin + 35
@@ -248,15 +243,15 @@ export const buildPDF = async () => {
   doc.addImage(
     marketStrengthChart,
     margin,
-    statsTableStart + 57,
+    statsTableStart + 60,
     third - margin,
-    40
+    32.5
   )
 
   // Page 1 Column Description / Info
   doc.setFontSize(p)
-  doc.setFontStyle('bold')
-  doc.text(stats.description, margin, statsTableStart + 105, {
+  doc.setFontStyle('normal')
+  doc.text(stats.description, margin, statsTableStart + 100, {
     maxWidth: third - margin
   })
 
@@ -287,17 +282,17 @@ export const buildPDF = async () => {
   const avgSaleToListRatioChart = await am4core.registry.baseSprites
     .find(c => c.id === 'avgSaleToListRatioChart')
     .exporting.getImage('png')
-  doc.text('Avg Sale To List Ratio', third + margin, chartColumnStart + 68)
+  doc.text('Avg Sale To List Ratio', third + margin, chartColumnStart + 73)
   doc.line(
     third + margin,
-    chartColumnStart + 70.5,
+    chartColumnStart + 75.5,
     third + margin + twoColumns,
-    chartColumnStart + 70.5
+    chartColumnStart + 75.5
   )
   doc.addImage(
     avgSaleToListRatioChart,
     third + margin,
-    chartColumnStart + 72,
+    chartColumnStart + 77,
     twoColumns,
     30
   )
@@ -306,18 +301,18 @@ export const buildPDF = async () => {
   const inventoryChart = await am4core.registry.baseSprites
     .find(c => c.id === 'inventoryChart')
     .exporting.getImage('png')
-  doc.text('Inventory', third + margin, chartColumnStart + 105)
-  doc.addImage(page1LegendImg, width - 50, chartColumnStart + 103)
+  doc.text('Inventory', third + margin, chartColumnStart + 115)
+  doc.addImage(page1LegendImg, width - 50, chartColumnStart + 113)
   doc.line(
     third + margin,
-    chartColumnStart + 107.5,
+    chartColumnStart + 117.5,
     third + margin + twoColumns,
-    chartColumnStart + 107.5
+    chartColumnStart + 117.5
   )
   doc.addImage(
     inventoryChart,
     third + margin,
-    chartColumnStart + 110,
+    chartColumnStart + 120,
     twoColumns,
     30
   )
@@ -329,7 +324,7 @@ export const buildPDF = async () => {
   doc.addImage(
     avgHpiByBedsChart,
     margin,
-    chartColumnStart + 150,
+    chartColumnStart + 160,
     half - margin,
     60
   )
@@ -341,7 +336,7 @@ export const buildPDF = async () => {
   doc.addImage(
     avgHpiBySqFtChart,
     half + 2.5,
-    chartColumnStart + 150,
+    chartColumnStart + 160,
     half - margin,
     60
   )
@@ -351,7 +346,7 @@ export const buildPDF = async () => {
   doc.addPage('p', 'mm', 'a4')
   const page2ChartColumnLeft = margin + third + margin
   const page2ChartColumnTop = 50
-  const page2GreySectionStart = 200
+  const page2GreySectionStart = 185
 
   // Document Header
   doc.setFillColor(greyBG)
@@ -362,7 +357,7 @@ export const buildPDF = async () => {
   doc.text('Property Related Data', margin, 25)
 
   // Header Legend
-  doc.setFontSize(p)
+  doc.setFontSize(smaller)
   doc.setTextColor(colors.WHITE)
   doc.setFillColor(selectedColor)
   doc.rect(width * 0.7, 10, quarter, 5, 'F')
@@ -377,7 +372,6 @@ export const buildPDF = async () => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
-  doc.setFontSize(smaller)
   doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
 
   // Page 2 Title & Info Column
@@ -401,7 +395,7 @@ export const buildPDF = async () => {
 
   // Cost Over Time on the Market Section
   doc.setFontSize(chartTitle)
-  doc.setFontStyle('bold')
+
   doc.text(
     'Cost Over Time on the Market',
     page2ChartColumnLeft,
@@ -488,9 +482,9 @@ export const buildPDF = async () => {
   doc.addImage(
     ageOfPropertiesLegendImg,
     width - 120,
-    page2GreySectionStart + 5,
-    110,
-    6
+    page2GreySectionStart + 7,
+    105,
+    5
   )
   doc.line(
     margin,
@@ -504,9 +498,9 @@ export const buildPDF = async () => {
   doc.addImage(
     ageOfPropertiesChart,
     margin,
-    page2GreySectionStart + 15,
+    page2GreySectionStart + 12.5,
     width - margin * 2,
-    75
+    95
   )
 
   /// /////////// Page 3 /////////////////
@@ -522,7 +516,7 @@ export const buildPDF = async () => {
   doc.text('Demographic Related Data', margin, 25)
 
   // Header Legend
-  doc.setFontSize(p)
+  doc.setFontSize(smaller)
   doc.setTextColor(colors.WHITE)
   doc.setFillColor(selectedColor)
   doc.rect(width * 0.7, 10, quarter, 5, 'F')
@@ -537,7 +531,6 @@ export const buildPDF = async () => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
-  doc.setFontSize(smaller)
   doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
 
   // Page 3 Title / Neighborhood Summary
@@ -569,26 +562,23 @@ export const buildPDF = async () => {
     scale: 8,
     letterRendering: true
   }).then(canvas => canvas.toDataURL('image/png'))
-  doc.addImage(schoolRatingsImg, margin, 100, half - margin * 2, 25)
+  doc.addImage(schoolRatingsImg, margin, 105, half - margin * 2, 20)
 
   const transitRatingsContainer = document.getElementById('transit-ratings')
-  const transitRatingsImd = await html2canvas(transitRatingsContainer, {
+  const transitRatingsImg = await html2canvas(transitRatingsContainer, {
     scale: 1
   }).then(canvas => canvas.toDataURL('image/png'))
-  doc.addImage(transitRatingsImd, half, 100, half - margin, 25)
+  doc.addImage(transitRatingsImg, half, 105, half - margin, 20)
 
-  const map = document.querySelector('.mapboxgl-canvas')
-  // const mapData = map.toDataURL('image/png')
-  const canvas = await html2canvas(map).then(canvas =>
-    canvas.toDataURL('image/png')
-  )
-  doc.addImage(canvas, 0, 150, width, 150)
+  const map = document.querySelector('.mapboxgl-canvas').toDataURL('image/png')
+  doc.addImage(map, 0, 135, width, 160)
 
   const mapStats = document.getElementById('map-stats')
-  const mapStatsImg = await html2canvas(mapStats).then(canvas =>
-    canvas.toDataURL('image/png')
-  )
-  doc.addImage(mapStatsImg, margin, 170, width - margin * 2, 40)
+  const mapStatsImg = await html2canvas(mapStats, {
+    backgroundColor: 'rgba(0,0,0,0)',
+    removeContainer: true
+  }).then(canvas => canvas.toDataURL('image/png'))
+  doc.addImage(mapStatsImg, margin, 150, width - margin * 2, 40)
   /// /////////// Page 4 /////////////////
 
   doc.addPage('p', 'mm', 'a4')
@@ -605,7 +595,7 @@ export const buildPDF = async () => {
   doc.text('Demographic Related Data', margin, 25)
 
   // Header Legend
-  doc.setFontSize(p)
+  doc.setFontSize(smaller)
   doc.setTextColor(colors.WHITE)
   doc.setFillColor(selectedColor)
   doc.rect(width * 0.7, 10, quarter, 5, 'F')
@@ -620,7 +610,6 @@ export const buildPDF = async () => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
-  doc.setFontSize(smaller)
   doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
 
   // Page 4 Title / Neighborhood Summary
@@ -648,7 +637,7 @@ export const buildPDF = async () => {
     populationByAgeChart,
     page4Column2Left - margin,
     page4Column2Top + 5,
-    half + margin,
+    width - third - margin,
     35
   )
 
