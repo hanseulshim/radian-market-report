@@ -5,7 +5,7 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 import config from '../config'
 import { ageOfProperties } from '../data/data.json'
 import Text from '../common/Text'
-import AgePropertiesAcrossMarkets from '../assets/AgePropertiesAcrossMarkets.svg'
+import AgePropertiesAcrossMarkets from '../assets/AgePropertiesAcrossMarkets.png'
 import Home from '../assets/home.svg'
 import { WHITE, DESERT_STORM } from '../colors'
 

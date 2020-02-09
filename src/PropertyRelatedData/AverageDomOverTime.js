@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import config from '../config'
 import { averageDomOverTime } from '../data/data.json'
 import Text from '../common/Text'
-import AvgDOMOverTime from '../assets/AvgDOMOverTime.svg'
+import AvgDOMOverTime from '../assets/AvgDOMOverTime.png'
 
 const Legend = styled.img`
   height: 15px;

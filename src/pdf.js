@@ -15,10 +15,9 @@ import {
   familyMakeupInfo
 } from './data/data.json'
 import * as colors from './colors'
-import { hex2rgba } from './helper.js'
 
 export const buildPDF = async () => {
-  const doc = new JSPDF('p', 'mm', 'a4')
+  const doc = new JSPDF('p', 'mm', 'letter')
 
   // Globals
   const width = doc.internal.pageSize.width
@@ -53,22 +52,15 @@ export const buildPDF = async () => {
   const domVsPriceLegendImg = await html2canvas(domVsPriceLegend, {
     scale: 1
   }).then(canvas => canvas.toDataURL('image/png'))
-  const averageDomOverTimeLegend = document.getElementById(
-    'averageDomOverTimeLegend'
-  )
-  const averageDomOverTimeLegendImg = await html2canvas(
-    averageDomOverTimeLegend,
-    {
-      scale: 1
-    }
-  ).then(canvas => canvas.toDataURL('image/png'))
   const ageOfPropertiesLegend = document.getElementById('ageOfPropertiesLegend')
   const ageOfPropertiesLegendImg = await html2canvas(ageOfPropertiesLegend, {
-    scale: 0.6,
-    dpi: 144,
     backgroundColor: 'rgba(0,0,0,0)',
     removeContainer: true
   }).then(canvas => canvas.toDataURL('image/png'))
+  const ageVsIncomeLegend = document.getElementById('ageVsIncomeLegend')
+  const ageVsIncomeLegendImg = await html2canvas(
+    ageVsIncomeLegend
+  ).then(canvas => canvas.toDataURL('image/png'))
 
   /// /////////// Page 1 /////////////////
 
@@ -263,7 +255,7 @@ export const buildPDF = async () => {
     .exporting.getImage('png')
   doc.setFontSize(chartTitle)
   doc.text('Median Prices', third + margin, chartColumnStart)
-  doc.addImage(page1LegendImg, width - 50, chartColumnStart - 2)
+  doc.addImage(page1LegendImg, width - 65, chartColumnStart - 2, 55, 3)
   doc.setDrawColor(colors.BLACK)
   doc.line(
     third + margin,
@@ -276,24 +268,24 @@ export const buildPDF = async () => {
     third + margin,
     chartColumnStart + 5,
     twoColumns,
-    60
+    50
   )
 
   // Average Sale to List Ratio Chart
   const avgSaleToListRatioChart = await am4core.registry.baseSprites
     .find(c => c.id === 'avgSaleToListRatioChart')
     .exporting.getImage('png')
-  doc.text('Avg Sale To List Ratio', third + margin, chartColumnStart + 73)
+  doc.text('Avg Sale To List Ratio', third + margin, chartColumnStart + 63)
   doc.line(
     third + margin,
-    chartColumnStart + 75.5,
+    chartColumnStart + 65.5,
     third + margin + twoColumns,
-    chartColumnStart + 75.5
+    chartColumnStart + 65.5
   )
   doc.addImage(
     avgSaleToListRatioChart,
     third + margin,
-    chartColumnStart + 77,
+    chartColumnStart + 67,
     twoColumns,
     30
   )
@@ -302,18 +294,18 @@ export const buildPDF = async () => {
   const inventoryChart = await am4core.registry.baseSprites
     .find(c => c.id === 'inventoryChart')
     .exporting.getImage('png')
-  doc.text('Inventory', third + margin, chartColumnStart + 115)
-  doc.addImage(page1LegendImg, width - 50, chartColumnStart + 113)
+  doc.text('Inventory', third + margin, chartColumnStart + 105)
+  doc.addImage(page1LegendImg, width - 65, chartColumnStart + 103, 55, 3)
   doc.line(
     third + margin,
-    chartColumnStart + 117.5,
+    chartColumnStart + 107.5,
     third + margin + twoColumns,
-    chartColumnStart + 117.5
+    chartColumnStart + 107.5
   )
   doc.addImage(
     inventoryChart,
     third + margin,
-    chartColumnStart + 120,
+    chartColumnStart + 110,
     twoColumns,
     30
   )
@@ -325,7 +317,7 @@ export const buildPDF = async () => {
   doc.addImage(
     avgHpiByBedsChart,
     margin,
-    chartColumnStart + 160,
+    chartColumnStart + 150,
     half - margin,
     60
   )
@@ -337,17 +329,17 @@ export const buildPDF = async () => {
   doc.addImage(
     avgHpiBySqFtChart,
     half + 2.5,
-    chartColumnStart + 160,
+    chartColumnStart + 150,
     half - margin,
     60
   )
 
   /// /////////// Page 2 /////////////////
 
-  doc.addPage('p', 'mm', 'a4')
+  doc.addPage('p', 'mm', 'letter')
   const page2ChartColumnLeft = margin + third + margin
   const page2ChartColumnTop = 50
-  const page2GreySectionStart = 185
+  const page2GreySectionStart = 175
 
   // Document Header
   doc.setFillColor(greyBG)
@@ -416,7 +408,7 @@ export const buildPDF = async () => {
     page2ChartColumnLeft + margin,
     page2ChartColumnTop + 8.5
   )
-  doc.addImage(domVsPriceLegendImg, width - 35, page2ChartColumnTop + 6)
+  doc.addImage(domVsPriceLegendImg, width - 45, page2ChartColumnTop + 6, 25, 5)
   const domVsPriceOfListingsChart = await am4core.registry.baseSprites
     .find(c => c.id === 'domVsPriceOfListingsChart')
     .exporting.getImage('png')
@@ -425,14 +417,14 @@ export const buildPDF = async () => {
     page2ChartColumnLeft,
     page2ChartColumnTop + 10,
     twoColumns - margin,
-    50
+    40
   )
 
   // Inventory of Listings per DOM Chart
   doc.text(
     'Inventory of Listings per DOM',
     page2ChartColumnLeft + margin,
-    page2ChartColumnTop + 66
+    page2ChartColumnTop + 56
   )
   const inventoryOfListingsPerDOMChart = await am4core.registry.baseSprites
     .find(c => c.id === 'inventoryOfListingsPerDOMChart')
@@ -440,31 +432,25 @@ export const buildPDF = async () => {
   doc.addImage(
     inventoryOfListingsPerDOMChart,
     page2ChartColumnLeft,
-    page2ChartColumnTop + 67.5,
+    page2ChartColumnTop + 57.5,
     twoColumns - margin,
-    30
+    25
   )
 
   // Average DOM Over Time Chart
   doc.text(
     'Average DOM Over Time',
     page2ChartColumnLeft + margin,
-    page2ChartColumnTop + 103.5
+    page2ChartColumnTop + 88.5
   )
-  doc.addImage(
-    averageDomOverTimeLegendImg,
-    width - 60,
-    page2ChartColumnTop + 100,
-    50,
-    3
-  )
+  doc.addImage(page1LegendImg, width - 65, page2ChartColumnTop + 87, 50, 3)
   const averageDomOverTimeChart = await am4core.registry.baseSprites
     .find(c => c.id === 'averageDomOverTimeChart')
     .exporting.getImage('png')
   doc.addImage(
     averageDomOverTimeChart,
     page2ChartColumnLeft,
-    page2ChartColumnTop + 105,
+    page2ChartColumnTop + 90,
     twoColumns - margin,
     30
   )
@@ -478,20 +464,20 @@ export const buildPDF = async () => {
   doc.text(
     'Age of Properties Across Market',
     margin,
-    page2GreySectionStart + 10
+    page2GreySectionStart + 7.5
   )
   doc.addImage(
     ageOfPropertiesLegendImg,
     width - 120,
-    page2GreySectionStart + 7,
+    page2GreySectionStart + 4.5,
     105,
-    5
+    6
   )
   doc.line(
     margin,
-    page2GreySectionStart + 12,
+    page2GreySectionStart + 9.5,
     width - margin,
-    page2GreySectionStart + 12
+    page2GreySectionStart + 9.5
   )
   const ageOfPropertiesChart = await am4core.registry.baseSprites
     .find(c => c.id === 'ageOfPropertiesChart')
@@ -499,14 +485,14 @@ export const buildPDF = async () => {
   doc.addImage(
     ageOfPropertiesChart,
     margin,
-    page2GreySectionStart + 12.5,
+    page2GreySectionStart + 10,
     width - margin * 2,
-    95
+    90
   )
 
   /// /////////// Page 3 /////////////////
 
-  doc.addPage('p', 'mm', 'a4')
+  doc.addPage('p', 'mm', 'letter')
 
   doc.setFillColor(greyBG)
   doc.rect(0, 0, width, headerht, 'F')
@@ -572,17 +558,17 @@ export const buildPDF = async () => {
   doc.addImage(transitRatingsImg, half, 105, half - margin, 20)
 
   const map = document.querySelector('.mapboxgl-canvas').toDataURL('image/png')
-  doc.addImage(map, 0, 135, width, 160)
+  doc.addImage(map, 0, 130, width, 155)
 
   const mapStats = document.getElementById('map-stats')
   const mapStatsImg = await html2canvas(mapStats, {
     backgroundColor: 'rgba(0,0,0,0)',
     removeContainer: true
   }).then(canvas => canvas.toDataURL('image/png'))
-  doc.addImage(mapStatsImg, margin, 150, width - margin * 2, 40)
+  doc.addImage(mapStatsImg, margin, 145, width - margin * 2, 40)
   /// /////////// Page 4 /////////////////
 
-  doc.addPage('p', 'mm', 'a4')
+  doc.addPage('p', 'mm', 'letter')
   const page4Column2Left = third + margin
   const page4Column2Top = 45
   const familyMakeupStart = 200
@@ -646,6 +632,7 @@ export const buildPDF = async () => {
   doc.setFontSize(chartTitle)
   doc.setFontStyle('bold')
   doc.text('Population of Age vs Income', margin, page4Column2Top + 47.5)
+  doc.addImage(ageVsIncomeLegendImg, width - 40, page4Column2Top + 45.5, 20, 3)
   doc.line(margin, page4Column2Top + 50, width - margin, page4Column2Top + 50)
   const ageVsIncomeChart = await am4core.registry.baseSprites
     .find(c => c.id === 'ageVsIncomeChart')

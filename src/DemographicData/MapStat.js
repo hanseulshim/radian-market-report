@@ -3,8 +3,6 @@ import React from 'react'
 import styled from 'styled-components'
 import numeral from 'numeral'
 import { WHITE, BLACK, AZURE, NEPTUNE } from '../colors'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons'
 import {
   propertyInfo,
   schoolRatings,
@@ -12,12 +10,16 @@ import {
   crimeRatings
 } from '../data/data.json'
 import { getAverage } from '../helper'
-import carBlack from '../assets/carBlack.svg'
-import carWhite from '../assets/carWhite.svg'
-import schoolBlack from '../assets/schoolBlack.svg'
-import schoolWhite from '../assets/schoolWhite.svg'
-import crimeBlack from '../assets/crimeBlack.svg'
-import crimeWhite from '../assets/crimeWhite.svg'
+import carBlack from '../assets/carBlack.png'
+import carWhite from '../assets/carWhite.png'
+import schoolBlack from '../assets/schoolBlack.png'
+import schoolWhite from '../assets/schoolWhite.png'
+import crimeBlack from '../assets/crimeBlack.png'
+import crimeWhite from '../assets/crimeWhite.png'
+import arrowUpWhite from '../assets/arrowUpWhite.png'
+import arrowDownWhite from '../assets/arrowDownWhite.png'
+import arrowUpBlack from '../assets/arrowUpBlack.png'
+import arrowDownBlack from '../assets/arrowDownBlack.png'
 
 const MapInfo = styled.div`
   display: grid;
@@ -78,6 +80,10 @@ const Icon = styled.img`
   grid-area: ${props => `icon${props.location}`};
 `
 
+const Arrow = styled.img`
+  margin-right: 3px;
+`
+
 const Average = styled.div`
   grid-area: ${props => `avg${props.location}`};
   font-size: 35px;
@@ -117,21 +123,19 @@ const getAverageValue = arr => {
   return numeral(average).format('0.[0]')
 }
 
-const getTrend = trend => {
+const getTrend = (trend, iconColor = 'white') => {
   return trend === 'up' ? (
-    <FontAwesomeIcon
-      icon={faArrowUp}
-      size="sm"
-      color={WHITE}
-      style={{ marginRight: '3px' }}
-    />
+    iconColor === 'white' ? (
+      <Arrow src={arrowUpWhite} />
+    ) : (
+      <Arrow src={arrowUpBlack} />
+    )
   ) : trend === 'down' ? (
-    <FontAwesomeIcon
-      icon={faArrowDown}
-      size="sm"
-      color={WHITE}
-      style={{ marginRight: '3px' }}
-    />
+    iconColor === 'white' ? (
+      <Arrow src={arrowDownWhite} />
+    ) : (
+      <Arrow src={arrowDownBlack} />
+    )
   ) : null
 }
 
@@ -206,15 +210,15 @@ const MapStat = () => {
         </Average>
         <Average location={3}>{crimeRatings.comparable2.value}</Average>
         <Trend type="comparable2" location={1}>
-          {getTrend(schoolRatings.comparable2.trend)}{' '}
+          {getTrend(schoolRatings.comparable2.trend, 'black')}{' '}
           {schoolRatings.comparable2.trendDelta}
         </Trend>
         <Trend type="comparable2" location={2}>
-          {getTrend(transitRatings.comparable2.trend)}{' '}
+          {getTrend(transitRatings.comparable2.trend, 'black')}{' '}
           {transitRatings.comparable2.trendDelta}
         </Trend>
         <Trend type="comparable2" location={3}>
-          {getTrend(crimeRatings.comparable2.trend)}{' '}
+          {getTrend(crimeRatings.comparable2.trend, 'black')}{' '}
           {crimeRatings.comparable2.trendDelta}
         </Trend>
       </Stat>

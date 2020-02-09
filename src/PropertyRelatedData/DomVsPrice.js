@@ -6,7 +6,7 @@ import config from '../config'
 import { WHITE } from '../colors'
 import { domVsPrice } from '../data/data.json'
 import Text from '../common/Text'
-import DOMvsPriceOfListings from '../assets/DOMvsPriceOfListings.svg'
+import DOMvsPriceOfListings from '../assets/DOMvsPriceOfListings.png'
 import Home from '../assets/home.svg'
 
 const Legend = styled.img`

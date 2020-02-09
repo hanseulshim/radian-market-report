@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import Text from '../common/Text'
 import config from '../config'
 import { inventory } from '../data/data.json'
-import ActiveListingsSold from '../assets/ActiveListingsSold.svg'
+import ActiveListingsSold from '../assets/ActiveListingsSold.png'
 
 const Container = styled.div`
   grid-area: chart3;
