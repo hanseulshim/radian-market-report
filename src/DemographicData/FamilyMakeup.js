@@ -19,6 +19,7 @@ const Container = styled.div`
   grid-area: chart4;
   display: flex;
   flex-direction: column;
+  padding-bottom: 2em;
 `
 
 const Title = styled(Text)`
@@ -134,19 +135,19 @@ const FamilyMakeup = () => {
       <ChartRow>
         <ChartContainer>
           <Chart id={'selectedFamilyMakeupChart'} />
-          <Text subChartTitle style={{ marginLeft: '0' }}>
+          <Text subChartTitle style={{ marginLeft: '0', marginTop: '2px' }}>
             {propertyInfo.selected}
           </Text>
         </ChartContainer>
         <ChartContainer>
           <Chart id={'comparable1FamilyMakeupChart'} />
-          <Text subChartTitle style={{ marginLeft: '0' }}>
+          <Text subChartTitle style={{ marginLeft: '0', marginTop: '2px' }}>
             {propertyInfo.comparable1}
           </Text>
         </ChartContainer>
         <ChartContainer>
           <Chart id={'comparable2FamilyMakeupChart'} />
-          <Text subChartTitle style={{ marginLeft: '0' }}>
+          <Text subChartTitle style={{ marginLeft: '0', marginTop: '2px' }}>
             {propertyInfo.comparable2}
           </Text>
         </ChartContainer>
