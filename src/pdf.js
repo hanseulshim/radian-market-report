@@ -30,7 +30,7 @@ export const buildPDF = async () => {
   const h1 = 20
   const h2 = 18
   const h3 = 14
-  const p = 10
+  const p = 8
   const smaller = 8
   const chartTitle = 11
   const selectedColor = colors.BLACK
@@ -128,7 +128,7 @@ export const buildPDF = async () => {
   // Grey area of Table
   doc.setFillColor(greyBG)
   doc.setFontSize(smaller)
-  doc.rect(margin, statsTableStart + 12, third - margin, 70, 'F')
+  doc.rect(margin, statsTableStart + 12, third - margin, 80, 'F')
   // Stats Table column headers
   const column1 = margin + 21.5
   const column2 = margin + 35
@@ -235,16 +235,16 @@ export const buildPDF = async () => {
     .exporting.getImage('png')
   doc.addImage(
     marketStrengthChart,
-    margin,
-    statsTableStart + 60,
-    third - margin,
+    margin + 2.5,
+    statsTableStart + 58.5,
+    third - margin - 5,
     32.5
   )
 
   // Page 1 Column Description / Info
   doc.setFontSize(p)
   doc.setFontStyle('normal')
-  doc.text(stats.description, margin, statsTableStart + 100, {
+  doc.text(stats.description, margin, statsTableStart + 97.5, {
     maxWidth: third - margin
   })
 
@@ -374,17 +374,17 @@ export const buildPDF = async () => {
     maxWidth: third
   })
   doc.setFontSize(h3)
-  doc.text('Days on Market', margin, 80)
+  doc.text('Days on Market', margin, 75)
   doc.setFontSize(p)
   doc.setFontStyle('normal')
-  doc.text(daysOnMarketInfo, margin, 87.5, { maxWidth: third })
+  doc.text(daysOnMarketInfo, margin, 80, { maxWidth: third })
 
   doc.setFontSize(h3)
   doc.setFontStyle('bold')
-  doc.text('Age of Properties Across Markets', margin, 115, { maxWidth: third })
+  doc.text('Age of Properties Across Markets', margin, 100, { maxWidth: third })
   doc.setFontSize(p)
   doc.setFontStyle('normal')
-  doc.text(ageOfPropertiesInfo, margin, 127.5, { maxWidth: third })
+  doc.text(ageOfPropertiesInfo, margin, 111, { maxWidth: third })
 
   // Cost Over Time on the Market Section
   doc.setFontSize(chartTitle)
@@ -452,7 +452,7 @@ export const buildPDF = async () => {
     page2ChartColumnLeft,
     page2ChartColumnTop + 90,
     twoColumns - margin,
-    30
+    25
   )
 
   // Grey Chart section Page 2
@@ -468,10 +468,10 @@ export const buildPDF = async () => {
   )
   doc.addImage(
     ageOfPropertiesLegendImg,
-    width - 120,
+    width - 90,
     page2GreySectionStart + 4.5,
-    105,
-    6
+    80,
+    5
   )
   doc.line(
     margin,
@@ -558,7 +558,7 @@ export const buildPDF = async () => {
   doc.addImage(transitRatingsImg, half, 105, half - margin, 20)
 
   const map = document.querySelector('.mapboxgl-canvas').toDataURL('image/png')
-  doc.addImage(map, 0, 130, width, 155)
+  doc.addImage(map, 0, 130, width, 150)
 
   const mapStats = document.getElementById('map-stats')
   const mapStatsImg = await html2canvas(mapStats, {
