@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import * as am4core from '@amcharts/amcharts4/core'
 
 // eslint-disable-next-line camelcase
@@ -6,7 +6,7 @@ import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDire
 import styled from 'styled-components'
 import config from '../config'
 import Text from '../common/Text'
-import { familyMakeup, propertyInfo } from '../data/data.json'
+// import { familyMakeup, propertyInfo } from '../data/data.json'
 import { BLACK, NEPTUNE, AZURE } from '../colors'
 import { hex2rgba } from '../helper'
 import single from '../assets/icon_fam_1.svg'
@@ -52,81 +52,90 @@ const Chart = styled.div`
 `
 
 const FamilyMakeup = () => {
+  const [propertyInfo, setPropertyInfo] = useState({})
   useEffect(() => {
-    Object.keys(familyMakeup).map(zip => {
-      const bubbleConfig = config.getBubbleConfig(zip)
+    const fetchData = async () => {
+      const res = await fetch('/data.json')
+      const data = await res.json()
+      const familyMakeup = data.familyMakeup
+      setPropertyInfo(data.propertyInfo)
 
-      const chart = am4core.createFromConfig(
-        config.chart(),
-        bubbleConfig.divId,
-        am4plugins_forceDirected.ForceDirectedTree
-      )
-      const series = chart.series.push(
-        new am4plugins_forceDirected.ForceDirectedSeries()
-      )
+      Object.keys(familyMakeup).map(zip => {
+        const bubbleConfig = config.getBubbleConfig(zip)
 
-      chart.id = bubbleConfig.divId
+        const chart = am4core.createFromConfig(
+          config.chart(),
+          bubbleConfig.divId,
+          am4plugins_forceDirected.ForceDirectedTree
+        )
+        const series = chart.series.push(
+          new am4plugins_forceDirected.ForceDirectedSeries()
+        )
 
-      series.data = familyMakeup[zip]
-      series.dataFields.value = 'value'
-      series.dataFields.name = 'name'
-      series.minRadius = 25
-      series.maxRadius = 55
+        chart.id = bubbleConfig.divId
 
-      const icon = series.nodes.template.createChild(am4core.Image)
-      icon.horizontalCenter = 'middle'
-      icon.verticalCenter = 'middle'
-      icon.maxHeight = 75
+        series.data = familyMakeup[zip]
+        series.dataFields.value = 'value'
+        series.dataFields.name = 'name'
+        series.minRadius = 25
+        series.maxRadius = 55
 
-      // Add adapter functions for dynamic icon images and sizes
-      icon.adapter.add('pixelHeight', (pixelHeight, target) => {
-        if (target.dataItem && target.dataItem.value > 0.1) {
-          return target.dataItem.value * 100
-        } else return 20
-      })
-      icon.adapter.add('href', (href, target) => {
-        if (
-          target.dataItem.dataContext &&
-          target.dataItem.dataContext.category
-        ) {
-          switch (target.dataItem.dataContext.category) {
-            case 'single':
-              return single
-            case 'single-parent':
-              return singleParent
-            case 'couple':
-              return couple
-            case '1-child':
-              return singleChild
-            case '2-child':
-              return twoChild
+        const icon = series.nodes.template.createChild(am4core.Image)
+        icon.horizontalCenter = 'middle'
+        icon.verticalCenter = 'middle'
+        icon.maxHeight = 75
+
+        // Add adapter functions for dynamic icon images and sizes
+        icon.adapter.add('pixelHeight', (pixelHeight, target) => {
+          if (target.dataItem && target.dataItem.value > 0.1) {
+            return target.dataItem.value * 100
+          } else return 20
+        })
+        icon.adapter.add('href', (href, target) => {
+          if (
+            target.dataItem.dataContext &&
+            target.dataItem.dataContext.category
+          ) {
+            switch (target.dataItem.dataContext.category) {
+              case 'single':
+                return single
+              case 'single-parent':
+                return singleParent
+              case 'couple':
+                return couple
+              case '1-child':
+                return singleChild
+              case '2-child':
+                return twoChild
+            }
           }
+        })
+
+        // Configure circles. Fill Opacity is linked to value in data
+        series.nodes.template.circle.fill = am4core.color(
+          hex2rgba(bubbleConfig.color)
+        )
+        series.nodes.template.adapter.add(
+          'fillOpacity',
+          (fillOpacity, target) => {
+            if (target.dataItem.dataContext && target.dataItem.value > 0.1) {
+              return target.dataItem.value * 1.5
+            } else return 0.2
+          }
+        )
+        series.nodes.template.outerCircle.disabled = true
+        series.nodes.template.circle.stroke = am4core.color(
+          hex2rgba(bubbleConfig.color)
+        )
+        series.nodes.template.propertyFields.strokeOpacity = 'value'
+        series.nodes.template.outerCircle.stroke = false
+
+        return () => {
+          chart.dispose()
         }
       })
-
-      // Configure circles. Fill Opacity is linked to value in data
-      series.nodes.template.circle.fill = am4core.color(
-        hex2rgba(bubbleConfig.color)
-      )
-      series.nodes.template.adapter.add(
-        'fillOpacity',
-        (fillOpacity, target) => {
-          if (target.dataItem.dataContext && target.dataItem.value > 0.1) {
-            return target.dataItem.value * 1.5
-          } else return 0.2
-        }
-      )
-      series.nodes.template.outerCircle.disabled = true
-      series.nodes.template.circle.stroke = am4core.color(
-        hex2rgba(bubbleConfig.color)
-      )
-      series.nodes.template.propertyFields.strokeOpacity = 'value'
-      series.nodes.template.outerCircle.stroke = false
-
-      return () => {
-        chart.dispose()
-      }
-    })
+    }
+    fetchData()
   }, [])
 
   return (
