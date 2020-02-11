@@ -6,7 +6,7 @@ import config from '../config'
 import { populationOfAgeVsIncome } from '../data/data.json'
 import Text from '../common/Text'
 import { BLACK } from '../colors'
-import PopulationAgeVsIncome from '../assets/PopulationAgeVsIncome.svg'
+import PopulationAgeVsIncome from '../assets/PopulationAgeVsIncome.png'
 
 const Legend = styled.img`
   height: 15px;
@@ -27,6 +27,7 @@ const PopulationOfAgeVsIncome = () => {
       'populationByIncomeChart',
       am4charts.XYChart
     )
+    chart.id = 'ageVsIncomeChart'
 
     const max = Math.max(
       ...[
@@ -123,7 +124,7 @@ const PopulationOfAgeVsIncome = () => {
     <Container>
       <ChartTitle chartTitle>
         <span>Population of Age vs Income</span>
-        <Legend src={PopulationAgeVsIncome} />
+        <Legend src={PopulationAgeVsIncome} id="ageVsIncomeLegend" />
       </ChartTitle>
       <div
         id={'populationByIncomeChart'}

@@ -19,6 +19,7 @@ const Container = styled.div`
   grid-area: chart4;
   display: flex;
   flex-direction: column;
+  padding-bottom: 2em;
 `
 
 const Title = styled(Text)`
@@ -64,6 +65,8 @@ const FamilyMakeup = () => {
         new am4plugins_forceDirected.ForceDirectedSeries()
       )
 
+      chart.id = bubbleConfig.divId
+
       series.data = familyMakeup[zip]
       series.dataFields.value = 'value'
       series.dataFields.name = 'name'
@@ -77,13 +80,9 @@ const FamilyMakeup = () => {
 
       // Add adapter functions for dynamic icon images and sizes
       icon.adapter.add('pixelHeight', (pixelHeight, target) => {
-        if (target.dataItem && target.dataItem.value < 0.1) {
-          return 20
-        }
-        if (target.dataItem && target.dataItem.value > 0.7) {
-          return 70
-        }
-        return target.dataItem && target.dataItem.value * 120
+        if (target.dataItem && target.dataItem.value > 0.1) {
+          return target.dataItem.value * 100
+        } else return 20
       })
       icon.adapter.add('href', (href, target) => {
         if (
@@ -132,23 +131,23 @@ const FamilyMakeup = () => {
 
   return (
     <Container>
-      <Title subCharttitle>Family Makeup</Title>
+      <Title subChartTitle>Family Makeup</Title>
       <ChartRow>
         <ChartContainer>
           <Chart id={'selectedFamilyMakeupChart'} />
-          <Text subChartTitle style={{ marginLeft: '0' }}>
+          <Text subChartTitle style={{ marginLeft: '0', marginTop: '2px' }}>
             {propertyInfo.selected}
           </Text>
         </ChartContainer>
         <ChartContainer>
           <Chart id={'comparable1FamilyMakeupChart'} />
-          <Text subChartTitle style={{ marginLeft: '0' }}>
+          <Text subChartTitle style={{ marginLeft: '0', marginTop: '2px' }}>
             {propertyInfo.comparable1}
           </Text>
         </ChartContainer>
         <ChartContainer>
           <Chart id={'comparable2FamilyMakeupChart'} />
-          <Text subChartTitle style={{ marginLeft: '0' }}>
+          <Text subChartTitle style={{ marginLeft: '0', marginTop: '2px' }}>
             {propertyInfo.comparable2}
           </Text>
         </ChartContainer>

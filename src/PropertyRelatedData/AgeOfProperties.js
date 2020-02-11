@@ -5,7 +5,7 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 import config from '../config'
 import { ageOfProperties } from '../data/data.json'
 import Text from '../common/Text'
-import AgePropertiesAcrossMarkets from '../assets/AgePropertiesAcrossMarkets.svg'
+import AgePropertiesAcrossMarkets from '../assets/AgePropertiesAcrossMarkets.png'
 import Home from '../assets/home.svg'
 import { WHITE, DESERT_STORM } from '../colors'
 
@@ -31,6 +31,8 @@ const AgeOfProperties = () => {
       'ageOfPropertiesChart',
       am4charts.XYChart
     )
+
+    chart.id = 'ageOfPropertiesChart'
 
     const max = Math.max(
       ...[
@@ -81,9 +83,15 @@ const AgeOfProperties = () => {
     selectedSoldSeries.data = ageOfProperties.selectedSold
     selectedSoldSeries.config = config.line('selected', 'dash', 'curved')
 
-    const selectedSoldAvgSeries = chart.series.push(new am4charts.ColumnSeries())
+    const selectedSoldAvgSeries = chart.series.push(
+      new am4charts.ColumnSeries()
+    )
     selectedSoldAvgSeries.data = ageOfProperties.selectedSoldAvg
-    selectedSoldAvgSeries.config = config.line('selectedSold', 'column', 'bullet')
+    selectedSoldAvgSeries.config = config.line(
+      'selectedSold',
+      'column',
+      'bullet'
+    )
 
     const ageOfPropertySeries = chart.series.push(new am4charts.ColumnSeries())
     ageOfPropertySeries.data = [
@@ -120,7 +128,7 @@ const AgeOfProperties = () => {
     <Container>
       <ChartTitle chartTitle>
         <span>Age of Properties Across Markets</span>
-        <Legend src={AgePropertiesAcrossMarkets} />
+        <Legend src={AgePropertiesAcrossMarkets} id="ageOfPropertiesLegend" />
       </ChartTitle>
       <div id={'ageOfPropertiesChart'} style={{ width: '100%', height: 500 }} />
     </Container>

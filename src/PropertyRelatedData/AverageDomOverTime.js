@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import config from '../config'
 import { averageDomOverTime } from '../data/data.json'
 import Text from '../common/Text'
-import AvgDOMOverTime from '../assets/AvgDOMOverTime.svg'
+import AvgDOMOverTime from '../assets/AvgDOMOverTime.png'
 
 const Legend = styled.img`
   height: 15px;
@@ -23,6 +23,7 @@ const AverageDomOverTime = () => {
       am4charts.XYChart
     )
     chart.data = averageDomOverTime.selected
+    chart.id = 'averageDomOverTimeChart'
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.categoryAxis('line')
@@ -55,7 +56,7 @@ const AverageDomOverTime = () => {
     <Container>
       <Text subChartTitle>
         <span>Average DOM Over Time</span>
-        <Legend src={AvgDOMOverTime} />
+        <Legend src={AvgDOMOverTime} id="averageDomOverTimeLegend" />
       </Text>
       <div
         id={'averageDomOverTimeChart'}

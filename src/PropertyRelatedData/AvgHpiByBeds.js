@@ -21,6 +21,7 @@ const AvgHpiByBeds = () => {
     chart.legend = new am4charts.Legend()
     chart.legend.parent = chart.tooltipContainer
     chart.legend.config = config.legend()
+    chart.id = 'avgHpiByBedsChart'
 
     const label = chart.createChild(am4core.Label)
     label.config = config.label('section2')

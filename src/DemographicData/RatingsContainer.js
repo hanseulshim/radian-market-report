@@ -33,6 +33,10 @@ const TransitRating = styled.div`
 const Panel = styled.div`
   background: ${DESERT_STORM};
   padding: 10px;
+
+  > div {
+    font-variant: normal;
+  }
 `
 
 const Rating = styled.div`
@@ -54,6 +58,10 @@ const AveragePanel = styled.div`
   padding: 5px 0;
   background: ${props => getBackground(props.value)};
   color: ${props => getColor(props.value)};
+
+  > span {
+    font-variant: normal;
+  }
 `
 
 const MetricValue = styled.div`
@@ -69,7 +77,7 @@ const Icon = styled.img`
   align-self: center;
 `
 
-const getColor = value => value <= 3 ? WHITE : BLACK
+const getColor = value => (value <= 3 ? WHITE : BLACK)
 
 const getBackground = value => {
   if (value <= 1) {
@@ -100,7 +108,15 @@ const createPanels = rating => {
   return (
     <Rating>
       <AveragePanel value={average}>
-        <Text subSection>{numeral(average).format('0.[0]')}</Text>
+        <span
+          style={{
+            textAlign: 'center',
+            fontSize: '28px',
+            fontWeight: 'bold'
+          }}
+        >
+          {numeral(average).format('0.[0]')}
+        </span>
         <span>Avg</span>
       </AveragePanel>
       {rating.map((metric, i) => (
@@ -124,7 +140,7 @@ const createPanels = rating => {
 const RatingsContainer = () => {
   return (
     <>
-      <SchoolRating>
+      <SchoolRating id="school-ratings">
         <Panel>
           <div>{propertyInfo.selected}</div>
           {createPanels(schoolRatings.selected.values)}
@@ -138,7 +154,7 @@ const RatingsContainer = () => {
           {createPanels(schoolRatings.comparable2.values)}
         </Panel>
       </SchoolRating>
-      <TransitRating>
+      <TransitRating id="transit-ratings">
         <Panel>
           <div>{propertyInfo.selected}</div>
           {createPanels(transitRatings.selected.values)}

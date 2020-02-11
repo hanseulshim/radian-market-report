@@ -1,17 +1,10 @@
-export const DEEP_KOAMARU = '#0F2682'
-export const ALABASTER = '#F7F7F7'
-export const BOTTICELLI = '#D9E3ED'
-export const GALLERY = '#efefef'
-export const WILD_SAND = '#F4F4F4'
-export const IRON = '#D0D3D5'
-
 // NEW COLORS. EVENTUALLY DELETE ^^^
 export const AZURE = '#3A62A3'
 export const NEPTUNE = '#71BAAF'
 export const STEEL_BLUE = '#4A73B9'
 export const VALENCIA = '#D04A42'
 export const SUPERNOVA = '#FFC907'
-export const BRANDY_PUNCH = '#D27C30'
+export const BRANDY_PUNCH = '#F79226'
 export const DESERT_STORM = '#F6F6F5'
 export const DUSTY_GRAY = '#999999'
 export const BLACK = '#000000'

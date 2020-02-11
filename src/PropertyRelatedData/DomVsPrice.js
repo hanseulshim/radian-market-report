@@ -6,7 +6,7 @@ import config from '../config'
 import { WHITE } from '../colors'
 import { domVsPrice } from '../data/data.json'
 import Text from '../common/Text'
-import DOMvsPriceOfListings from '../assets/DOMvsPriceOfListings.svg'
+import DOMvsPriceOfListings from '../assets/DOMvsPriceOfListings.png'
 import Home from '../assets/home.svg'
 
 const Legend = styled.img`
@@ -25,6 +25,7 @@ const DomVsPrice = () => {
       am4charts.XYChart
     )
     chart.data = domVsPrice.selected
+    chart.id = 'domVsPriceOfListingsChart'
 
     const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
     categoryAxis.config = config.categoryAxis()
@@ -88,7 +89,7 @@ const DomVsPrice = () => {
       <Text chartTitle>Cost Over Time on the Market</Text>
       <Text subChartTitle>
         <span>DOM vs Price of Listings</span>
-        <Legend src={DOMvsPriceOfListings} />
+        <Legend src={DOMvsPriceOfListings} id="domVsPriceLegend" />
       </Text>
       <div id={'domVsPriceChart'} style={{ width: '100%', height: 300 }} />
     </Container>

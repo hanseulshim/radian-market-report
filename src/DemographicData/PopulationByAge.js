@@ -23,6 +23,7 @@ const PopulationByAge = () => {
     )
 
     chart.paddingBottom = 0
+    chart.id = 'populationByAgeChart'
 
     chart.data = populationByAge.selected.map(v => ({ ...v, valueY: 70 }))
 
@@ -30,6 +31,7 @@ const PopulationByAge = () => {
     categoryAxis.config = config.categoryAxis('bullet')
     categoryAxis.renderer.grid.template.disabled = true
     categoryAxis.renderer.line.strokeOpacity = 0.1
+    categoryAxis.renderer.labels.template.location = 0.1
 
     const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
     valueAxis.config = config.valueAxis('bullet')
@@ -51,7 +53,9 @@ const PopulationByAge = () => {
     selectedAvgSeries.data = [{ ...populationByAge.selectedAvg, value: 89 }]
     selectedAvgSeries.config = config.line('selected', 'column', 'vertical')
 
-    const selectedLabel = selectedAvgSeries.bullets.push(new am4charts.LabelBullet())
+    const selectedLabel = selectedAvgSeries.bullets.push(
+      new am4charts.LabelBullet()
+    )
     selectedLabel.fontSize = 13
     selectedLabel.label.fill = BLACK
     selectedLabel.label.fontWeight = 'bold'
@@ -63,10 +67,18 @@ const PopulationByAge = () => {
     selectedLabel.dy = 5
 
     const comparable1AvgSeries = chart.series.push(new am4charts.ColumnSeries())
-    comparable1AvgSeries.data = [{ ...populationByAge.comparable1Avg, value: 99 }]
-    comparable1AvgSeries.config = config.line('comparable1', 'column', 'vertical')
+    comparable1AvgSeries.data = [
+      { ...populationByAge.comparable1Avg, value: 99 }
+    ]
+    comparable1AvgSeries.config = config.line(
+      'comparable1',
+      'column',
+      'vertical'
+    )
 
-    const comparable1Label = comparable1AvgSeries.bullets.push(new am4charts.LabelBullet())
+    const comparable1Label = comparable1AvgSeries.bullets.push(
+      new am4charts.LabelBullet()
+    )
     comparable1Label.fontSize = 13
     comparable1Label.label.fill = AZURE
     comparable1Label.label.fontWeight = 'bold'
@@ -78,10 +90,18 @@ const PopulationByAge = () => {
     comparable1Label.dy = 5
 
     const comparable2AvgSeries = chart.series.push(new am4charts.ColumnSeries())
-    comparable2AvgSeries.data = [{ ...populationByAge.comparable2Avg, value: 94 }]
-    comparable2AvgSeries.config = config.line('comparable2', 'column', 'vertical')
+    comparable2AvgSeries.data = [
+      { ...populationByAge.comparable2Avg, value: 94 }
+    ]
+    comparable2AvgSeries.config = config.line(
+      'comparable2',
+      'column',
+      'vertical'
+    )
 
-    const comparable2Label = comparable2AvgSeries.bullets.push(new am4charts.LabelBullet())
+    const comparable2Label = comparable2AvgSeries.bullets.push(
+      new am4charts.LabelBullet()
+    )
     comparable2Label.fontSize = 13
     comparable2Label.label.fill = NEPTUNE
     comparable2Label.label.fontWeight = 'bold'

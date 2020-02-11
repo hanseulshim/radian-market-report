@@ -24,6 +24,7 @@ const AvgHpiBySqFt = () => {
     chart.legend.labels.template.marginLeft = -50
     chart.legend.markers.template.dx = -7
     chart.legend.markers.template.width = 40
+    chart.id = 'avgHpiBySqFtChart'
 
     const label = chart.createChild(am4core.Label)
     label.config = config.label('section2')

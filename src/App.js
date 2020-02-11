@@ -9,6 +9,7 @@ const Container = styled.div`
   max-width: 1200px;
   margin: auto;
   background: #fff;
+  position: relative;
 `
 
 const App = () => {

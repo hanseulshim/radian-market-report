@@ -3,15 +3,13 @@ import styled from 'styled-components'
 import MapGL, { Marker } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
 import { mapData } from '../data/data.json'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHome } from '@fortawesome/free-solid-svg-icons'
 import bbox from '@turf/bbox'
 import union from '@turf/union'
 import { polygon } from '@turf/helpers'
 import WebMercatorViewport from 'viewport-mercator-project'
 import MapStat from './MapStat'
-
 import { NEPTUNE, AZURE, BLACK } from '../colors'
+import home from '../assets/home.png'
 
 const Container = styled.div`
   grid-area: map;
@@ -22,7 +20,7 @@ const Container = styled.div`
 const Icon = styled.div`
   background: #000;
   border-radius: 50%;
-  padding: 3px;
+  padding: 5px;
   border: 2px solid #fff;
 `
 
@@ -47,6 +45,37 @@ const MapContainer = () => {
     if (map) {
       const mapRef = map.getMap()
       mapRef.on('load', () => {
+        mapRef.loadImage(home, function(error, image) {
+          if (error) throw error
+          mapRef.addImage('home', image)
+          mapRef.addSource('point', {
+            type: 'geojson',
+            data: {
+              type: 'FeatureCollection',
+              features: [
+                {
+                  type: 'Feature',
+                  geometry: {
+                    type: 'Point',
+                    coordinates: [
+                      mapData.properties.home.longitude,
+                      mapData.properties.home.latitude
+                    ]
+                  }
+                }
+              ]
+            }
+          })
+          mapRef.addLayer({
+            id: 'points',
+            type: 'symbol',
+            source: 'point',
+            layout: {
+              'icon-image': 'home',
+              'icon-size': 0.5
+            }
+          })
+        })
         mapRef.addLayer({
           id: 'selected',
           type: 'line',
@@ -84,15 +113,9 @@ const MapContainer = () => {
           }
         })
         const unionPolygon = union(
-          polygon(
-            mapData.comparable1.geoJson.features[0].geometry.coordinates
-          ),
-          polygon(
-            mapData.selected.geoJson.features[0].geometry.coordinates
-          ),
-          polygon(
-            mapData.comparable2.geoJson.features[0].geometry.coordinates
-          )
+          polygon(mapData.comparable1.geoJson.features[0].geometry.coordinates),
+          polygon(mapData.selected.geoJson.features[0].geometry.coordinates),
+          polygon(mapData.comparable2.geoJson.features[0].geometry.coordinates)
         )
         const extent = bbox(unionPolygon)
         const { longitude, latitude, zoom } = new WebMercatorViewport(
@@ -125,18 +148,9 @@ const MapContainer = () => {
         mapStyle="mapbox://styles/mapbox/light-v10"
         onViewportChange={_onViewportChange}
         ref={el => setMap(el)}
+        preserveDrawingBuffer={true}
       >
         <MapStat />
-        <Marker
-          latitude={mapData.properties.home.latitude}
-          longitude={mapData.properties.home.longitude}
-          offsetLeft={-15}
-          offsetTop={-25}
-        >
-          <Icon>
-            <FontAwesomeIcon icon={faHome} color="white" size="lg" />
-          </Icon>
-        </Marker>
         {mapData.properties.schools.map((school, i) => (
           <Marker
             key={i}

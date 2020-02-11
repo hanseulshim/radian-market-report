@@ -3,19 +3,23 @@ import React from 'react'
 import styled from 'styled-components'
 import numeral from 'numeral'
 import { WHITE, BLACK, AZURE, NEPTUNE } from '../colors'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {
-  faArrowUp,
-  faArrowDown
-} from '@fortawesome/free-solid-svg-icons'
-import { propertyInfo, schoolRatings, transitRatings, crimeRatings } from '../data/data.json'
+  propertyInfo,
+  schoolRatings,
+  transitRatings,
+  crimeRatings
+} from '../data/data.json'
 import { getAverage } from '../helper'
-import carBlack from '../assets/carBlack.svg'
-import carWhite from '../assets/carWhite.svg'
-import schoolBlack from '../assets/schoolBlack.svg'
-import schoolWhite from '../assets/schoolWhite.svg'
-import crimeBlack from '../assets/crimeBlack.svg'
-import crimeWhite from '../assets/crimeWhite.svg'
+import carBlack from '../assets/carBlack.png'
+import carWhite from '../assets/carWhite.png'
+import schoolBlack from '../assets/schoolBlack.png'
+import schoolWhite from '../assets/schoolWhite.png'
+import crimeBlack from '../assets/crimeBlack.png'
+import crimeWhite from '../assets/crimeWhite.png'
+import arrowUpWhite from '../assets/arrowUpWhite.png'
+import arrowDownWhite from '../assets/arrowDownWhite.png'
+import arrowUpBlack from '../assets/arrowUpBlack.png'
+import arrowDownBlack from '../assets/arrowDownBlack.png'
 
 const MapInfo = styled.div`
   display: grid;
@@ -26,6 +30,7 @@ const MapInfo = styled.div`
     '. . .';
   margin: 25px 50px;
   grid-gap: 15px;
+  font-variant: normal;
 `
 
 const MapTitle = styled.div`
@@ -59,6 +64,7 @@ const Stat = styled.div`
   justify-items: center;
   position: relative;
   z-index: 1;
+  font-variant: normal;
 `
 
 const Title = styled.div`
@@ -74,6 +80,10 @@ const Icon = styled.img`
   grid-area: ${props => `icon${props.location}`};
 `
 
+const Arrow = styled.img`
+  margin-right: 3px;
+`
+
 const Average = styled.div`
   grid-area: ${props => `avg${props.location}`};
   font-size: 35px;
@@ -84,10 +94,14 @@ const Trend = styled.div`
   grid-area: ${props => `trend${props.location}`};
   font-size: 18px;
   font-weight: bold;
-  padding: 5px 7px;
+  padding: 5px 0;
   background: ${props => getBackground(props.type)};
-  width: 60px;
+  width: 70px;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 1px;
 `
 
 const Background = styled.div`
@@ -98,6 +112,7 @@ const Background = styled.div`
   border-radius: 10px;
   z-index: -1;
   background: ${props => getBackground(props.type)};
+  box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.35);
 `
 
 const getBackground = type =>
@@ -108,17 +123,25 @@ const getAverageValue = arr => {
   return numeral(average).format('0.[0]')
 }
 
-const getTrend = trend => {
+const getTrend = (trend, iconColor = 'white') => {
   return trend === 'up' ? (
-    <FontAwesomeIcon icon={faArrowUp} size="sm" />
+    iconColor === 'white' ? (
+      <Arrow src={arrowUpWhite} />
+    ) : (
+      <Arrow src={arrowUpBlack} />
+    )
   ) : trend === 'down' ? (
-    <FontAwesomeIcon icon={faArrowDown} size="sm" />
+    iconColor === 'white' ? (
+      <Arrow src={arrowDownWhite} />
+    ) : (
+      <Arrow src={arrowDownBlack} />
+    )
   ) : null
 }
 
 const MapStat = () => {
   return (
-    <MapInfo>
+    <MapInfo id="map-stats">
       <MapTitle h1>Market Averages</MapTitle>
       <Info h2>Comparison numbers are based on annual change</Info>
       <Stat selected>
@@ -133,17 +156,18 @@ const MapStat = () => {
         <Average location={2}>
           {getAverageValue(transitRatings.selected.values)}
         </Average>
-        <Average location={3}>
-          {crimeRatings.selected.value}
-        </Average>
+        <Average location={3}>{crimeRatings.selected.value}</Average>
         <Trend type="selected" location={1}>
-          {getTrend(schoolRatings.selected.trend)} {schoolRatings.selected.trendDelta}
+          {getTrend(schoolRatings.selected.trend)}{' '}
+          {schoolRatings.selected.trendDelta}
         </Trend>
         <Trend type="selected" location={2}>
-          {getTrend(transitRatings.selected.trend)} {transitRatings.selected.trendDelta}
+          {getTrend(transitRatings.selected.trend)}{' '}
+          {transitRatings.selected.trendDelta}
         </Trend>
         <Trend type="selected" location={3}>
-          {getTrend(crimeRatings.selected.trend)} {crimeRatings.selected.trendDelta}
+          {getTrend(crimeRatings.selected.trend)}{' '}
+          {crimeRatings.selected.trendDelta}
         </Trend>
       </Stat>
       <Stat comparable1>
@@ -158,17 +182,18 @@ const MapStat = () => {
         <Average location={2}>
           {getAverageValue(transitRatings.comparable1.values)}
         </Average>
-        <Average location={3}>
-          {crimeRatings.comparable1.value}
-        </Average>
+        <Average location={3}>{crimeRatings.comparable1.value}</Average>
         <Trend type="comparable1" location={1}>
-          {getTrend(schoolRatings.comparable1.trend)} {schoolRatings.comparable1.trendDelta}
+          {getTrend(schoolRatings.comparable1.trend)}{' '}
+          {schoolRatings.comparable1.trendDelta}
         </Trend>
         <Trend type="comparable1" location={2}>
-          {getTrend(transitRatings.comparable1.trend)} {transitRatings.comparable1.trendDelta}
+          {getTrend(transitRatings.comparable1.trend)}{' '}
+          {transitRatings.comparable1.trendDelta}
         </Trend>
         <Trend type="comparable1" location={3}>
-          {getTrend(crimeRatings.comparable1.trend)} {crimeRatings.comparable1.trendDelta}
+          {getTrend(crimeRatings.comparable1.trend)}{' '}
+          {crimeRatings.comparable1.trendDelta}
         </Trend>
       </Stat>
       <Stat comparable2>
@@ -183,17 +208,18 @@ const MapStat = () => {
         <Average location={2}>
           {getAverageValue(transitRatings.comparable2.values)}
         </Average>
-        <Average location={3}>
-          {crimeRatings.comparable2.value}
-        </Average>
+        <Average location={3}>{crimeRatings.comparable2.value}</Average>
         <Trend type="comparable2" location={1}>
-          {getTrend(schoolRatings.comparable2.trend)} {schoolRatings.comparable2.trendDelta}
+          {getTrend(schoolRatings.comparable2.trend, 'black')}{' '}
+          {schoolRatings.comparable2.trendDelta}
         </Trend>
         <Trend type="comparable2" location={2}>
-          {getTrend(transitRatings.comparable2.trend)} {transitRatings.comparable2.trendDelta}
+          {getTrend(transitRatings.comparable2.trend, 'black')}{' '}
+          {transitRatings.comparable2.trendDelta}
         </Trend>
         <Trend type="comparable2" location={3}>
-          {getTrend(crimeRatings.comparable2.trend)} {crimeRatings.comparable2.trendDelta}
+          {getTrend(crimeRatings.comparable2.trend, 'black')}{' '}
+          {crimeRatings.comparable2.trendDelta}
         </Trend>
       </Stat>
     </MapInfo>
