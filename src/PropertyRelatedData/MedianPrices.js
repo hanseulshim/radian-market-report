@@ -17,7 +17,7 @@ const Legend = styled.img`
 const MedianPrices = () => {
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       const { medianPrices } = data
 

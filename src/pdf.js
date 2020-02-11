@@ -6,7 +6,7 @@ import * as am4core from '@amcharts/amcharts4/core'
 import * as colors from './colors'
 
 export const savePDF = async () => {
-  const res = await fetch('/data.json')
+  const res = await fetch('./data.json')
   const data = await res.json()
   buildPDF(data)
 }

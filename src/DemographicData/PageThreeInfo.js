@@ -21,7 +21,7 @@ const PageThreeInfo = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       setNeighborhoodSummary(data.neighborhoodSummary)
       setSchoolRatings(data.schoolRatings)

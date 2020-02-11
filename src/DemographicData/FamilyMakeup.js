@@ -54,7 +54,7 @@ const FamilyMakeup = () => {
   const [propertyInfo, setPropertyInfo] = useState({})
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       const familyMakeup = data.familyMakeup
       setPropertyInfo(data.propertyInfo)

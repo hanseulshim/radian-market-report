@@ -17,7 +17,7 @@ const PopulationByAge = () => {
   const [propertyInfo, setPropertyInfo] = useState({})
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       const populationByAge = data.populationByAge
       setPropertyInfo(data.propertyInfo)

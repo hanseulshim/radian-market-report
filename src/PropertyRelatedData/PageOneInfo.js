@@ -45,7 +45,7 @@ const PageOneInfo = () => {
   const [tableData, setTableData] = useState([])
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       const { propertyInfo, stats } = data
       const tableData = [

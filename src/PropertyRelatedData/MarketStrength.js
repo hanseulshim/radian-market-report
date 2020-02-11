@@ -21,7 +21,7 @@ const hand = {
 const MarketStrength = () => {
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       const { marketStrength } = data
 
