@@ -3,12 +3,6 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import numeral from 'numeral'
 import { WHITE, BLACK, AZURE, NEPTUNE } from '../colors'
-// import {
-//   propertyInfo,
-//   schoolRatings,
-//   transitRatings,
-//   crimeRatings
-// } from '../data/data.json'
 import { getAverage } from '../helper'
 import carBlack from '../assets/carBlack.png'
 import carWhite from '../assets/carWhite.png'
