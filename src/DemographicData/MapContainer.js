@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import MapGL, { Marker } from 'react-map-gl'
 import 'mapbox-gl/dist/mapbox-gl.css'
-import { mapData } from '../data/data.json'
 import bbox from '@turf/bbox'
 import union from '@turf/union'
 import { polygon } from '@turf/helpers'
@@ -36,6 +35,7 @@ const IconLabel = styled.div`
 
 const MapContainer = () => {
   const [map, setMap] = useState(null)
+  const [mapData, setMapData] = useState({})
   const [viewport, setViewPort] = useState({
     width: '100%',
     height: 650
@@ -45,6 +45,7 @@ const MapContainer = () => {
     const fetchData = async () => {
       const res = await fetch('/data.json')
       const data = await res.json()
+      setMapData(data.mapData)
       const mapData = data.mapData
 
       if (map) {
@@ -162,19 +163,20 @@ const MapContainer = () => {
         preserveDrawingBuffer={true}
       >
         <MapStat />
-        {mapData.properties.schools.map((school, i) => (
-          <Marker
-            key={i}
-            latitude={school.latitude}
-            longitude={school.longitude}
-            offsetLeft={-15}
-            offsetTop={-15}
-          >
-            <Icon>
-              <IconLabel>{school.label}</IconLabel>
-            </Icon>
-          </Marker>
-        ))}
+        {mapData.properties &&
+          mapData.properties.schools.map((school, i) => (
+            <Marker
+              key={i}
+              latitude={school.latitude}
+              longitude={school.longitude}
+              offsetLeft={-15}
+              offsetTop={-15}
+            >
+              <Icon>
+                <IconLabel>{school.label}</IconLabel>
+              </Icon>
+            </Marker>
+          ))}
       </MapGL>
     </Container>
   )
