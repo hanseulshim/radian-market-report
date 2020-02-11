@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Text from '../common/Text'
-import { neighborhoodSummary, schoolRatings, transitRatings } from '../data/data.json'
 
 const NeighborhoodSummary = styled.div`
   grid-area: neighborhood;
@@ -16,6 +15,20 @@ const TransitRatings = styled.div`
 `
 
 const PageThreeInfo = () => {
+  const [neighborhoodSummary, setNeighborhoodSummary] = useState('')
+  const [schoolRatings, setSchoolRatings] = useState({})
+  const [transitRatings, setTransitRatings] = useState({})
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('/data.json')
+      const data = await res.json()
+      setNeighborhoodSummary(data.neighborhoodSummary)
+      setSchoolRatings(data.schoolRatings)
+      setTransitRatings(data.transitRatings)
+    }
+    fetchData()
+  }, [])
   return (
     <>
       <NeighborhoodSummary>
