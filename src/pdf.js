@@ -3,21 +3,28 @@ import moment from 'moment'
 import numeral from 'numeral'
 import html2canvas from 'html2canvas'
 import * as am4core from '@amcharts/amcharts4/core'
-import {
-  propertyInfo,
-  stats,
-  daysOnMarketInfo,
-  ageOfPropertiesInfo,
-  neighborhoodSummary,
-  schoolRatings,
-  transitRatings,
-  ageVsIncome,
-  familyMakeupInfo
-} from './data/data.json'
 import * as colors from './colors'
 
-export const buildPDF = async () => {
+export const savePDF = async () => {
+  const res = await fetch('/data.json')
+  const data = await res.json()
+  buildPDF(data)
+}
+
+const buildPDF = async data => {
   const doc = new JSPDF('p', 'mm', 'letter')
+
+  const {
+    propertyInfo,
+    stats,
+    daysOnMarketInfo,
+    ageOfPropertiesInfo,
+    neighborhoodSummary,
+    schoolRatings,
+    transitRatings,
+    ageVsIncome,
+    familyMakeupInfo
+  } = data
 
   // Globals
   const width = doc.internal.pageSize.width

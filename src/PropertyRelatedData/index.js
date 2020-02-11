@@ -13,7 +13,7 @@ import DomVsPrice from './DomVsPrice'
 import InventoryPerDom from './InventoryPerDom'
 import AverageDomOverTime from './AverageDomOverTime'
 import AgeOfProperties from './AgeOfProperties'
-import { buildPDF } from '../pdf'
+import { savePDF } from '../pdf'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 
@@ -73,7 +73,7 @@ const PropertyRelatedData = () => (
     <PageOne>
       <Header section="Property Related Data" />
       <SubTitle subSection>How Your Market Stacks Up Against the Rest</SubTitle>
-      <Export onClick={buildPDF}>
+      <Export onClick={savePDF}>
         <Button>
           <FontAwesomeIcon
             icon={faFilePdf}
