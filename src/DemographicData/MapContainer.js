@@ -42,99 +42,110 @@ const MapContainer = () => {
   })
 
   useEffect(() => {
-    if (map) {
-      const mapRef = map.getMap()
-      mapRef.on('load', () => {
-        mapRef.loadImage(home, function(error, image) {
-          if (error) throw error
-          mapRef.addImage('home', image)
-          mapRef.addSource('point', {
-            type: 'geojson',
-            data: {
-              type: 'FeatureCollection',
-              features: [
-                {
-                  type: 'Feature',
-                  geometry: {
-                    type: 'Point',
-                    coordinates: [
-                      mapData.properties.home.longitude,
-                      mapData.properties.home.latitude
-                    ]
+    const fetchData = async () => {
+      const res = await fetch('/data.json')
+      const data = await res.json()
+      const mapData = data.mapData
+
+      if (map) {
+        const mapRef = map.getMap()
+        mapRef.on('load', () => {
+          mapRef.loadImage(home, function(error, image) {
+            if (error) throw error
+            mapRef.addImage('home', image)
+            mapRef.addSource('point', {
+              type: 'geojson',
+              data: {
+                type: 'FeatureCollection',
+                features: [
+                  {
+                    type: 'Feature',
+                    geometry: {
+                      type: 'Point',
+                      coordinates: [
+                        mapData.properties.home.longitude,
+                        mapData.properties.home.latitude
+                      ]
+                    }
                   }
-                }
-              ]
+                ]
+              }
+            })
+            mapRef.addLayer({
+              id: 'points',
+              type: 'symbol',
+              source: 'point',
+              layout: {
+                'icon-image': 'home',
+                'icon-size': 0.5
+              }
+            })
+          })
+          mapRef.addLayer({
+            id: 'selected',
+            type: 'line',
+            source: {
+              type: 'geojson',
+              data: mapData.selected.geoJson
+            },
+            paint: {
+              'line-color': BLACK,
+              'line-width': 4
             }
           })
           mapRef.addLayer({
-            id: 'points',
-            type: 'symbol',
-            source: 'point',
-            layout: {
-              'icon-image': 'home',
-              'icon-size': 0.5
+            id: 'comparable1',
+            type: 'line',
+            source: {
+              type: 'geojson',
+              data: mapData.comparable1.geoJson
+            },
+            paint: {
+              'line-color': AZURE,
+              'line-width': 4
             }
           })
+          mapRef.addLayer({
+            id: 'comparable2',
+            type: 'line',
+            source: {
+              type: 'geojson',
+              data: mapData.comparable2.geoJson
+            },
+            paint: {
+              'line-color': NEPTUNE,
+              'line-width': 4
+            }
+          })
+          const unionPolygon = union(
+            polygon(
+              mapData.comparable1.geoJson.features[0].geometry.coordinates
+            ),
+            polygon(mapData.selected.geoJson.features[0].geometry.coordinates),
+            polygon(
+              mapData.comparable2.geoJson.features[0].geometry.coordinates
+            )
+          )
+          const extent = bbox(unionPolygon)
+          const { longitude, latitude, zoom } = new WebMercatorViewport(
+            viewport
+          ).fitBounds(
+            [
+              [extent[0], extent[1]],
+              [extent[2], extent[3]]
+            ],
+            { padding: { top: 300, bottom: 50, left: 0, right: 0 } }
+          )
+          setViewPort({
+            ...viewport,
+            longitude,
+            latitude,
+            zoom
+          })
         })
-        mapRef.addLayer({
-          id: 'selected',
-          type: 'line',
-          source: {
-            type: 'geojson',
-            data: mapData.selected.geoJson
-          },
-          paint: {
-            'line-color': BLACK,
-            'line-width': 4
-          }
-        })
-        mapRef.addLayer({
-          id: 'comparable1',
-          type: 'line',
-          source: {
-            type: 'geojson',
-            data: mapData.comparable1.geoJson
-          },
-          paint: {
-            'line-color': AZURE,
-            'line-width': 4
-          }
-        })
-        mapRef.addLayer({
-          id: 'comparable2',
-          type: 'line',
-          source: {
-            type: 'geojson',
-            data: mapData.comparable2.geoJson
-          },
-          paint: {
-            'line-color': NEPTUNE,
-            'line-width': 4
-          }
-        })
-        const unionPolygon = union(
-          polygon(mapData.comparable1.geoJson.features[0].geometry.coordinates),
-          polygon(mapData.selected.geoJson.features[0].geometry.coordinates),
-          polygon(mapData.comparable2.geoJson.features[0].geometry.coordinates)
-        )
-        const extent = bbox(unionPolygon)
-        const { longitude, latitude, zoom } = new WebMercatorViewport(
-          viewport
-        ).fitBounds(
-          [
-            [extent[0], extent[1]],
-            [extent[2], extent[3]]
-          ],
-          { padding: { top: 300, bottom: 50, left: 0, right: 0 } }
-        )
-        setViewPort({
-          ...viewport,
-          longitude,
-          latitude,
-          zoom
-        })
-      })
+      }
     }
+    fetchData()
   }, [map])
 
   const _onViewportChange = viewport => setViewPort({ ...viewport })
