@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { propertyInfo } from '../data/data.json'
 import { BLACK, DESERT_STORM, NEPTUNE, AZURE, WHITE } from '../colors'
 import Text from './Text'
 
@@ -47,6 +46,15 @@ const Row = styled.div`
 `
 
 const Header = ({ section }) => {
+  const [propertyInfo, setPropertyInfo] = useState({})
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('/data.json')
+      const data = await res.json()
+      setPropertyInfo(data.propertyInfo)
+    }
+    fetchData()
+  }, [])
   return (
     <Container>
       <Title h1>Market Report</Title>
