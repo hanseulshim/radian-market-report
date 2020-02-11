@@ -1,14 +1,14 @@
 /* eslint react/prop-types: 0 */
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import numeral from 'numeral'
 import { WHITE, BLACK, AZURE, NEPTUNE } from '../colors'
-import {
-  propertyInfo,
-  schoolRatings,
-  transitRatings,
-  crimeRatings
-} from '../data/data.json'
+// import {
+//   propertyInfo,
+//   schoolRatings,
+//   transitRatings,
+//   crimeRatings
+// } from '../data/data.json'
 import { getAverage } from '../helper'
 import carBlack from '../assets/carBlack.png'
 import carWhite from '../assets/carWhite.png'
@@ -140,7 +140,27 @@ const getTrend = (trend, iconColor = 'white') => {
 }
 
 const MapStat = () => {
-  return (
+  const [propertyInfo, setPropertyInfo] = useState({})
+  const [schoolRatings, setSchoolRatings] = useState({})
+  const [transitRatings, setTransitRatings] = useState({})
+  const [crimeRatings, setCrimeRatings] = useState({})
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('/data.json')
+      const data = await res.json()
+      setPropertyInfo(data.propertyInfo)
+      setSchoolRatings(data.schoolRatings)
+      setTransitRatings(data.transitRatings)
+      setCrimeRatings(data.crimeRatings)
+    }
+    fetchData()
+  }, [])
+
+  return propertyInfo &&
+    schoolRatings.selected &&
+    transitRatings.selected &&
+    crimeRatings.selected ? (
     <MapInfo id="map-stats">
       <MapTitle h1>Market Averages</MapTitle>
       <Info h2>Comparison numbers are based on annual change</Info>
@@ -223,6 +243,8 @@ const MapStat = () => {
         </Trend>
       </Stat>
     </MapInfo>
+  ) : (
+    <span>...Loading</span>
   )
 }
 
