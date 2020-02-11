@@ -4,7 +4,6 @@ import * as am4charts from '@amcharts/amcharts4/charts'
 import styled from 'styled-components'
 import Text from '../common/Text'
 import config from '../config'
-import { inventory } from '../data/data.json'
 import ActiveListingsSold from '../assets/ActiveListingsSold.png'
 
 const Container = styled.div`
@@ -16,47 +15,54 @@ const Legend = styled.img`
 
 const Inventory = () => {
   useEffect(() => {
-    const chart = am4core.createFromConfig(
-      config.chart(),
-      'inventoryChart',
-      am4charts.XYChart
-    )
+    const fetchData = async () => {
+      const res = await fetch('/data.json')
+      const data = await res.json()
+      const { inventory } = data
 
-    chart.id = 'inventoryChart'
+      const chart = am4core.createFromConfig(
+        config.chart(),
+        'inventoryChart',
+        am4charts.XYChart
+      )
 
-    const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
-    dateAxis.config = config.dateAxis()
+      chart.id = 'inventoryChart'
 
-    const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-    valueAxis.config = config.valueAxis('min')
+      const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
+      dateAxis.config = config.dateAxis()
 
-    const selectedSeries = chart.series.push(new am4charts.LineSeries())
-    selectedSeries.data = inventory.selected
-    selectedSeries.config = config.line('selected', 'filled')
+      const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+      valueAxis.config = config.valueAxis('min')
 
-    const comparable1Series = chart.series.push(new am4charts.LineSeries())
-    comparable1Series.data = inventory.comparable1
-    comparable1Series.config = config.line('comparable1')
+      const selectedSeries = chart.series.push(new am4charts.LineSeries())
+      selectedSeries.data = inventory.selected
+      selectedSeries.config = config.line('selected', 'filled')
 
-    const comparable2Series = chart.series.push(new am4charts.LineSeries())
-    comparable2Series.data = inventory.comparable2
-    comparable2Series.config = config.line('comparable2')
+      const comparable1Series = chart.series.push(new am4charts.LineSeries())
+      comparable1Series.data = inventory.comparable1
+      comparable1Series.config = config.line('comparable1')
 
-    const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
-    selectedSoldSeries.data = inventory.selectedSold
-    selectedSoldSeries.config = config.line('selected', 'dash')
+      const comparable2Series = chart.series.push(new am4charts.LineSeries())
+      comparable2Series.data = inventory.comparable2
+      comparable2Series.config = config.line('comparable2')
 
-    const comparable1SoldSeries = chart.series.push(new am4charts.LineSeries())
-    comparable1SoldSeries.data = inventory.comparable1Sold
-    comparable1SoldSeries.config = config.line('comparable1', 'dash')
+      const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
+      selectedSoldSeries.data = inventory.selectedSold
+      selectedSoldSeries.config = config.line('selected', 'dash')
 
-    const comparable2SoldSeries = chart.series.push(new am4charts.LineSeries())
-    comparable2SoldSeries.data = inventory.comparable2Sold
-    comparable2SoldSeries.config = config.line('comparable2', 'dash')
+      const comparable1SoldSeries = chart.series.push(new am4charts.LineSeries())
+      comparable1SoldSeries.data = inventory.comparable1Sold
+      comparable1SoldSeries.config = config.line('comparable1', 'dash')
 
-    return () => {
-      chart.dispose()
+      const comparable2SoldSeries = chart.series.push(new am4charts.LineSeries())
+      comparable2SoldSeries.data = inventory.comparable2Sold
+      comparable2SoldSeries.config = config.line('comparable2', 'dash')
+
+      return () => {
+        chart.dispose()
+      }
     }
+    fetchData()
   }, [])
 
   return (

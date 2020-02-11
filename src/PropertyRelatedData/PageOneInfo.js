@@ -1,9 +1,8 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import moment from 'moment'
 import numeral from 'numeral'
 import { Table } from 'antd'
-import { propertyInfo, stats } from '../data/data.json'
 import Text from '../common/Text'
 import { NEPTUNE, AZURE, BLACK, WHITE } from '../colors'
 import MarketStrength from './MarketStrength'
@@ -40,89 +39,102 @@ const Description = styled.div`
   margin-top: 25px;
 `
 
-const data = [
-  {
-    category: 'Avg. Listed Price',
-    selected: stats.selected.avgListedPrice,
-    comparable1: stats.comparable1.avgListedPrice,
-    comparable2: stats.comparable2.avgListedPrice,
-    key: 'Avg. Listed Price'
-  },
-  {
-    category: 'Avg. Sold Price',
-    selected: stats.selected.avgSoldPrice,
-    comparable1: stats.comparable1.avgSoldPrice,
-    comparable2: stats.comparable2.avgSoldPrice,
-    key: 'Avg. Sold Price'
-  },
-  {
-    category: 'Active Inventory',
-    selected: stats.selected.activeInventory,
-    comparable1: stats.comparable1.activeInventory,
-    comparable2: stats.comparable2.activeInventory,
-    key: 'Active Inventory'
-  },
-  {
-    category: 'Sold Inventory',
-    selected: stats.selected.soldInventory,
-    comparable1: stats.comparable1.soldInventory,
-    comparable2: stats.comparable2.soldInventory,
-    key: 'Sold Inventory'
-  }
-]
-
-const columns = [
-  {
-    title: '',
-    className: 'stat-column',
-    dataIndex: 'category',
-    key: 'category',
-    width: 125
-  },
-  {
-    // eslint-disable-next-line react/display-name
-    title: () => <TableHeader selected>{propertyInfo.selected}</TableHeader>,
-    className: 'stat-column',
-    dataIndex: 'selected',
-    key: 'selected',
-    align: 'right',
-    render: (price, i) =>
-      i.key.toLowerCase().includes('price')
-        ? numeral(price).format('$0a')
-        : price
-  },
-  {
-    // eslint-disable-next-line react/display-name
-    title: () => (
-      <TableHeader comparable1>{propertyInfo.comparable1}</TableHeader>
-    ),
-    className: 'stat-column',
-    dataIndex: 'comparable1',
-    key: 'comparable1',
-    align: 'right',
-    render: (price, i) =>
-      i.key.toLowerCase().includes('price')
-        ? numeral(price).format('$0a')
-        : price
-  },
-  {
-    // eslint-disable-next-line react/display-name
-    title: () => (
-      <TableHeader comparable2>{propertyInfo.comparable2}</TableHeader>
-    ),
-    className: 'stat-column',
-    dataIndex: 'comparable2',
-    key: 'comparable2',
-    align: 'right',
-    render: (price, i) =>
-      i.key.toLowerCase().includes('price')
-        ? numeral(price).format('$0a')
-        : price
-  }
-]
-
 const PageOneInfo = () => {
+  const [stats, setStats] = useState({})
+  const [propertyInfo, setPropertyInfo] = useState({})
+  const [tableData, setTableData] = useState([])
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('/data.json')
+      const data = await res.json()
+      const { propertyInfo, stats } = data
+      const tableData = [
+        {
+          category: 'Avg. Listed Price',
+          selected: stats.selected.avgListedPrice,
+          comparable1: stats.comparable1.avgListedPrice,
+          comparable2: stats.comparable2.avgListedPrice,
+          key: 'Avg. Listed Price'
+        },
+        {
+          category: 'Avg. Sold Price',
+          selected: stats.selected.avgSoldPrice,
+          comparable1: stats.comparable1.avgSoldPrice,
+          comparable2: stats.comparable2.avgSoldPrice,
+          key: 'Avg. Sold Price'
+        },
+        {
+          category: 'Active Inventory',
+          selected: stats.selected.activeInventory,
+          comparable1: stats.comparable1.activeInventory,
+          comparable2: stats.comparable2.activeInventory,
+          key: 'Active Inventory'
+        },
+        {
+          category: 'Sold Inventory',
+          selected: stats.selected.soldInventory,
+          comparable1: stats.comparable1.soldInventory,
+          comparable2: stats.comparable2.soldInventory,
+          key: 'Sold Inventory'
+        }
+      ]
+      setStats(stats)
+      setPropertyInfo(propertyInfo)
+      setTableData(tableData)
+    }
+    fetchData()
+  }, [])
   const date = moment(stats.date)
+
+  const columns = [
+    {
+      title: '',
+      className: 'stat-column',
+      dataIndex: 'category',
+      key: 'category',
+      width: 125
+    },
+    {
+      // eslint-disable-next-line react/display-name
+      title: () => <TableHeader selected>{propertyInfo.selected}</TableHeader>,
+      className: 'stat-column',
+      dataIndex: 'selected',
+      key: 'selected',
+      align: 'right',
+      render: (price, i) =>
+        i.key.toLowerCase().includes('price')
+          ? numeral(price).format('$0a')
+          : price
+    },
+    {
+      // eslint-disable-next-line react/display-name
+      title: () => (
+        <TableHeader comparable1>{propertyInfo.comparable1}</TableHeader>
+      ),
+      className: 'stat-column',
+      dataIndex: 'comparable1',
+      key: 'comparable1',
+      align: 'right',
+      render: (price, i) =>
+        i.key.toLowerCase().includes('price')
+          ? numeral(price).format('$0a')
+          : price
+    },
+    {
+      // eslint-disable-next-line react/display-name
+      title: () => (
+        <TableHeader comparable2>{propertyInfo.comparable2}</TableHeader>
+      ),
+      className: 'stat-column',
+      dataIndex: 'comparable2',
+      key: 'comparable2',
+      align: 'right',
+      render: (price, i) =>
+        i.key.toLowerCase().includes('price')
+          ? numeral(price).format('$0a')
+          : price
+    }
+  ]
   return (
     <Container>
       <Text h1>
@@ -142,7 +154,7 @@ const PageOneInfo = () => {
         rowClassName="stat-row"
         tableLayout="auto"
         columns={columns}
-        dataSource={data}
+        dataSource={tableData}
         pagination={false}
       />
       <MarketStrength />
