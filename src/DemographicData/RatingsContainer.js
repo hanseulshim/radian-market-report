@@ -1,8 +1,6 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import numeral from 'numeral'
-import Text from '../common/Text'
-import { propertyInfo, schoolRatings, transitRatings } from '../data/data.json'
 import { getAverage } from '../helper'
 import car from '../assets/carBlack.svg'
 import train from '../assets/train.svg'
@@ -138,38 +136,58 @@ const createPanels = rating => {
 }
 
 const RatingsContainer = () => {
-  return (
-    <>
-      <SchoolRating id="school-ratings">
-        <Panel>
-          <div>{propertyInfo.selected}</div>
-          {createPanels(schoolRatings.selected.values)}
-        </Panel>
-        <Panel>
-          <div>{propertyInfo.comparable1}</div>
-          {createPanels(schoolRatings.comparable1.values)}
-        </Panel>
-        <Panel>
-          <div>{propertyInfo.comparable2}</div>
-          {createPanels(schoolRatings.comparable2.values)}
-        </Panel>
-      </SchoolRating>
-      <TransitRating id="transit-ratings">
-        <Panel>
-          <div>{propertyInfo.selected}</div>
-          {createPanels(transitRatings.selected.values)}
-        </Panel>
-        <Panel>
-          <div>{propertyInfo.comparable1}</div>
-          {createPanels(transitRatings.comparable1.values)}
-        </Panel>
-        <Panel>
-          <div>{propertyInfo.comparable2}</div>
-          {createPanels(transitRatings.comparable2.values)}
-        </Panel>
-      </TransitRating>
-    </>
-  )
+  const [propertyInfo, setPropertyInfo] = useState({})
+  const [schoolRatings, setSchoolRatings] = useState({})
+  const [transitRatings, setTransitRatings] = useState({})
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('/data.json')
+      const data = await res.json()
+      setPropertyInfo(data.propertyInfo)
+      setSchoolRatings(data.schoolRatings)
+      setTransitRatings(data.transitRatings)
+    }
+    fetchData()
+  }, [])
+  if (
+    propertyInfo.selected &&
+    schoolRatings.selected &&
+    transitRatings.selected
+  ) {
+    return (
+      <>
+        <SchoolRating id="school-ratings">
+          <Panel>
+            <div>{propertyInfo.selected}</div>
+            {createPanels(schoolRatings.selected.values)}
+          </Panel>
+          <Panel>
+            <div>{propertyInfo.comparable1}</div>
+            {createPanels(schoolRatings.comparable1.values)}
+          </Panel>
+          <Panel>
+            <div>{propertyInfo.comparable2}</div>
+            {createPanels(schoolRatings.comparable2.values)}
+          </Panel>
+        </SchoolRating>
+        <TransitRating id="transit-ratings">
+          <Panel>
+            <div>{propertyInfo.selected}</div>
+            {createPanels(transitRatings.selected.values)}
+          </Panel>
+          <Panel>
+            <div>{propertyInfo.comparable1}</div>
+            {createPanels(transitRatings.comparable1.values)}
+          </Panel>
+          <Panel>
+            <div>{propertyInfo.comparable2}</div>
+            {createPanels(transitRatings.comparable2.values)}
+          </Panel>
+        </TransitRating>
+      </>
+    )
+  } else return <span>...Loading</span>
 }
 
 export default RatingsContainer
