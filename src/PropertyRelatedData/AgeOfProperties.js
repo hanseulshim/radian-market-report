@@ -28,7 +28,7 @@ const AgeOfProperties = () => {
     const fetchData = async () => {
       const res = await fetch('/data.json')
       const data = await res.json()
-      const ageOfProperties = data.ageOfProperties
+      const { ageOfProperties } = data
 
       const chart = am4core.createFromConfig(
         config.chart('age'),

@@ -1,7 +1,6 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Text from '../common/Text'
-import { daysOnMarketInfo, ageOfPropertiesInfo } from '../data/data.json'
 
 const DaysOnMarket = styled.div`
   grid-area: days;
@@ -11,6 +10,18 @@ const AgeOfProperties = styled.div`
 `
 
 const PageTwoInfo = () => {
+  const [daysOnMarketInfo, setDaysOnMarketInfo] = useState(null)
+  const [ageOfPropertiesInfo, setAgeOfPropertiesInfo] = useState(null)
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('/data.json')
+      const data = await res.json()
+      const { ageOfPropertiesInfo, daysOnMarketInfo } = data
+      setDaysOnMarketInfo(daysOnMarketInfo)
+      setAgeOfPropertiesInfo(ageOfPropertiesInfo)
+    }
+    fetchData()
+  }, [])
   return (
     <>
       <DaysOnMarket>
