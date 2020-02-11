@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import Text from '../common/Text'
-// import { familyMakeupInfo } from '../data/data.json'
 
 const Container = styled.div`
   grid-area: sectionInfo;

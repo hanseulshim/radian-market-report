@@ -6,7 +6,6 @@ import * as am4plugins_forceDirected from '@amcharts/amcharts4/plugins/forceDire
 import styled from 'styled-components'
 import config from '../config'
 import Text from '../common/Text'
-// import { familyMakeup, propertyInfo } from '../data/data.json'
 import { BLACK, NEPTUNE, AZURE } from '../colors'
 import { hex2rgba } from '../helper'
 import single from '../assets/icon_fam_1.svg'

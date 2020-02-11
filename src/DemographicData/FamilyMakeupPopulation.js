@@ -10,7 +10,6 @@ import comp1ArrowDown from '../assets/icon_arrow_blue_down.svg'
 import comp1ArrowUp from '../assets/icon_arrow_blue_up.svg'
 import comp2ArrowDown from '../assets/icon_arrow_seafoam_down.svg'
 import comp2ArrowUp from '../assets/icon_arrow_seafoam_up.svg'
-import { familyMakeupPopulation, propertyInfo } from '../data/data.json'
 
 const Container = styled.div`
   grid-area: chart3;
