@@ -9,7 +9,7 @@ const Container = styled.div`
   margin-bottom: 25px;
   background: ${DESERT_STORM};
   display: grid;
-  grid-template-columns: 1fr 310px;
+  grid-template-columns: 1fr 320px;
   grid-area: header;
   grid-template-areas:
     'title chart'
