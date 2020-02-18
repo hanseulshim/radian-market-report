@@ -73,7 +73,7 @@ const Header = ({ section }) => {
           <span>{propertyInfo.comparable2}</span>
         </Row>
         <Row>
-          Property Attributes: {propertyInfo.bedrooms},{' '}
+          Property Attributes: {propertyInfo.bedrooms} beds,{' '}
           {propertyInfo.squareFeet} sq ft
         </Row>
       </Chart>
