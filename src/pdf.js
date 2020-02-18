@@ -100,7 +100,7 @@ const buildPDF = async data => {
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
   doc.text(
-    `Property Attributes: ${propertyInfo.bedrooms},{' '}
+    `Property Attributes: ${propertyInfo.bedrooms} beds,{' '}
           ${propertyInfo.squareFeet} sq ft`,
     width * 0.7,
     30,
@@ -390,7 +390,7 @@ const buildPDF = async data => {
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
   doc.text(
-    `Property Attributes: ${propertyInfo.bedrooms},{' '}
+    `Property Attributes: ${propertyInfo.bedrooms} beds,{' '}
           ${propertyInfo.squareFeet} sq ft`,
     width * 0.7,
     30
@@ -548,7 +548,7 @@ const buildPDF = async data => {
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
   doc.text(
-    `Property Attributes: ${propertyInfo.bedrooms},{' '}
+    `Property Attributes: ${propertyInfo.bedrooms} beds,{' '}
           ${propertyInfo.squareFeet} sq ft`,
     width * 0.7,
     30
@@ -632,7 +632,7 @@ const buildPDF = async data => {
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
   doc.text(
-    `Property Attributes: ${propertyInfo.bedrooms},{' '}
+    `Property Attributes: ${propertyInfo.bedrooms} beds,{' '}
           ${propertyInfo.squareFeet} sq ft`,
     width * 0.7,
     30
