@@ -22,7 +22,7 @@ const ChartTitle = styled(Text)`
 const PopulationOfAgeVsIncome = () => {
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       const { populationOfAgeVsIncome } = data
 

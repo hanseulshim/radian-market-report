@@ -43,7 +43,7 @@ const MapContainer = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       setMapData(data.mapData)
       const mapData = data.mapData
@@ -51,7 +51,7 @@ const MapContainer = () => {
       if (map) {
         const mapRef = map.getMap()
         mapRef.on('load', () => {
-          mapRef.loadImage(home, function(error, image) {
+          mapRef.loadImage(home, function (error, image) {
             if (error) throw error
             mapRef.addImage('home', image)
             mapRef.addSource('point', {

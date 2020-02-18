@@ -22,7 +22,7 @@ const Title = styled(Text)`
 const FamilyMakeupPopulation = () => {
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       const familyMakeupPopulation = data.familyMakeupPopulation
       const propertyInfo = data.propertyInfo

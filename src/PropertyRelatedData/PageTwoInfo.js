@@ -14,7 +14,7 @@ const PageTwoInfo = () => {
   const [ageOfPropertiesInfo, setAgeOfPropertiesInfo] = useState(null)
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       const { ageOfPropertiesInfo, daysOnMarketInfo } = data
       setDaysOnMarketInfo(daysOnMarketInfo)

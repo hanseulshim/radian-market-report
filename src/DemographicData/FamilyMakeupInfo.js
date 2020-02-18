@@ -11,7 +11,7 @@ const FamilyMakeupInfo = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('/data.json')
+      const res = await fetch('./data.json')
       const data = await res.json()
       setFamilyMakeupInfo(data.familyMakeupInfo)
     }
