@@ -13,8 +13,11 @@ import FamilyMakeupPopulation from './FamilyMakeupPopulation'
 
 const PageThree = styled.div`
   margin-top: 25px;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 10px 1fr;
   grid-template-columns: 1fr 1fr;
+  -ms-grid-rows: auto;
   grid-template-rows: auto;
   grid-template-areas:
     'header header'
@@ -28,8 +31,11 @@ const PageThree = styled.div`
 
 const PageFour = styled.div`
   margin-top: 25px;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 50px 1fr 50px 1fr;
   grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto;
   grid-template-rows: auto;
   grid-template-areas:
     'header header header'
