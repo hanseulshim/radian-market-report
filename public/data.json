@@ -914,7 +914,7 @@
   },
   "neighborhoodSummary": "How does Your Market compare to the others you have selected?  Our Neighborhood Summary summarizes the overall School, Transit and Crime ratings for each.  Schools and Transit are measured on a 1-10 scale with 1=worst ranking.  Crime is A-F with A being the best.  We offer the most recent ratings, as well as where they stood a year ago.  Better schools, easier to get around, less crime?  We hope so.",
   "schoolRatings": {
-    "info": "We know that quality schools help support quality neighborhoods.  Our School Ratings provide market ratings for the Elementary (ES), Middle (MS) and High Schools (HS) in your selected areas, along with an overall average score.  Does Your Market pass the test",
+    "info": "We know that quality schools help support quality neighborhoods.  Our School Ratings provide market ratings for the Elementary (ES), Middle (MS) and High Schools (HS) in your selected areas, along with an overall average score.  Does Your Market pass the test?",
     "selected": {
       "trend": "down",
       "trendDelta": 0.7,
@@ -944,7 +944,7 @@
     }
   },
   "transitRatings": {
-    "info": "A peaceful commute means peace of mind.   The options available and their quality can make a big difference in the value of a neighborhood.  Our Transit Ratings provide current scores for Public, Auto and Bike modes of transportation in your area along with an overall rating",
+    "info": "A peaceful commute means peace of mind.   The options available and their quality can make a big difference in the value of a neighborhood.  Our Transit Ratings provide current scores for Public, Auto and Bike modes of transportation in your area along with an overall rating.",
     "selected": {
       "trend": "up",
       "trendDelta": 4,
@@ -1164,7 +1164,7 @@
       ]
     }
   },
-  "ageVsIncome": "Who lives here? Our Population by Age chart uses bubbles sized by population across age buckets. The bigger the bubble, the greater the count of residents in Your Market. Our Population by Income chart shows the percentage of households by income level in Your Market as well as your Comparables",
+  "ageVsIncome": "Who lives here? Our Population by Age chart uses bubbles sized by population across age buckets. The bigger the bubble, the greater the count of residents in Your Market. Our Population by Income chart shows the percentage of households by income level in Your Market as well as your Comparables.",
   "populationByAge": {
     "selected": [
       {

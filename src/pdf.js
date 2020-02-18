@@ -100,13 +100,9 @@ const buildPDF = async data => {
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
   doc.text(
-    `Property Attributes: ${propertyInfo.bedrooms} beds,{' '}
-          ${propertyInfo.squareFeet} sq ft`,
+    `Property Attributes: ${propertyInfo.bedrooms} beds, ${propertyInfo.squareFeet} sq ft`,
     width * 0.7,
-    30,
-    {
-      maxWidth: quarter
-    }
+    30
   )
 
   // Sub Title
@@ -258,13 +254,7 @@ const buildPDF = async data => {
   doc.setFontSize(p)
   doc.setFontStyle('normal')
   doc.text(
-    `Let’s Compare. You have selected ${propertyInfo.selected} as Your Market,
-    and ${propertyInfo.comparable1} and ${propertyInfo.comparable2} as your
-    markets to compare against. To make this most valuable, we limit our
-    market results to properties with characteristics matching your selected
-    “Property Attributes”. In this report you have chosen to include{' '}
-    ${propertyInfo.bedrooms} bedroom homes with ${propertyInfo.squareFeet}
-    square feet.`,
+    `Let’s Compare. You have selected ${propertyInfo.selected} as Your Market, and ${propertyInfo.comparable1} and ${propertyInfo.comparable2} as your markets to compare against. To make this most valuable, we limit our market results to properties with characteristics matching your selected Property Attributes. In this report you have chosen to include ${propertyInfo.bedrooms} bedroom homes with ${propertyInfo.squareFeet} square feet.`,
     margin,
     statsTableStart + 97.5,
     {
@@ -390,8 +380,7 @@ const buildPDF = async data => {
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
   doc.text(
-    `Property Attributes: ${propertyInfo.bedrooms} beds,{' '}
-          ${propertyInfo.squareFeet} sq ft`,
+    `Property Attributes: ${propertyInfo.bedrooms} beds, ${propertyInfo.squareFeet} sq ft`,
     width * 0.7,
     30
   )
@@ -410,10 +399,10 @@ const buildPDF = async data => {
 
   doc.setFontSize(h3)
   doc.setFontStyle('bold')
-  doc.text('Age of Properties Across Markets', margin, 100, { maxWidth: third })
+  doc.text('Age of Properties Across Markets', margin, 110, { maxWidth: third })
   doc.setFontSize(p)
   doc.setFontStyle('normal')
-  doc.text(ageOfPropertiesInfo, margin, 111, { maxWidth: third })
+  doc.text(ageOfPropertiesInfo, margin, 121, { maxWidth: third })
 
   // Cost Over Time on the Market Section
   doc.setFontSize(chartTitle)
@@ -548,8 +537,7 @@ const buildPDF = async data => {
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
   doc.text(
-    `Property Attributes: ${propertyInfo.bedrooms} beds,{' '}
-          ${propertyInfo.squareFeet} sq ft`,
+    `Property Attributes: ${propertyInfo.bedrooms} beds, ${propertyInfo.squareFeet} sq ft`,
     width * 0.7,
     30
   )
@@ -632,8 +620,7 @@ const buildPDF = async data => {
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
   doc.text(
-    `Property Attributes: ${propertyInfo.bedrooms} beds,{' '}
-          ${propertyInfo.squareFeet} sq ft`,
+    `Property Attributes: ${propertyInfo.bedrooms} beds, ${propertyInfo.squareFeet} sq ft`,
     width * 0.7,
     30
   )
