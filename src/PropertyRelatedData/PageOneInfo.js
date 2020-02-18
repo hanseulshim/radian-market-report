@@ -164,7 +164,7 @@ const PageOneInfo = () => {
         markets to compare against. To make this most valuable, we limit our
         market results to properties with characteristics matching your selected
         “Property Attributes”. In this report you have chosen to include{' '}
-        {propertyInfo.bedrooms} bedroom homes with {propertyInfo.squareFeet}
+        {propertyInfo.bedrooms} bedroom homes with {propertyInfo.squareFeet}{' '}
         square feet.
       </Description>
     </Container>
