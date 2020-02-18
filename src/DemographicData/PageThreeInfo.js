@@ -4,7 +4,6 @@ import Text from '../common/Text'
 
 const NeighborhoodSummary = styled.div`
   grid-area: neighborhood;
-  max-width: 60%;
   margin-bottom: 50px;
 `
 const SchoolRatings = styled.div`

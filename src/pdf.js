@@ -548,7 +548,7 @@ const buildPDF = async data => {
   doc.text('Neighborhood Summary', margin, 45)
   doc.setFontStyle('normal')
   doc.setFontSize(p)
-  doc.text(neighborhoodSummary, margin, 52.5, { maxWidth: half + margin })
+  doc.text(neighborhoodSummary, margin, 52.5, { maxWidth: width - margin * 2 })
 
   // School Ratings
   doc.setFontSize(h3)
