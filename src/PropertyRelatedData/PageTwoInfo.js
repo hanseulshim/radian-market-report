@@ -25,7 +25,7 @@ const PageTwoInfo = () => {
   return (
     <>
       <DaysOnMarket>
-        <Text h1>Days on Market</Text>
+        <Text h1>Days on Market (DOM)</Text>
         <div>{daysOnMarketInfo}</div>
       </DaysOnMarket>
       <AgeOfProperties>

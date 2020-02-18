@@ -392,7 +392,7 @@ const buildPDF = async data => {
     maxWidth: third
   })
   doc.setFontSize(h3)
-  doc.text('Days on Market', margin, 75)
+  doc.text('Days on Market (DOM)', margin, 75)
   doc.setFontSize(p)
   doc.setFontStyle('normal')
   doc.text(daysOnMarketInfo, margin, 80, { maxWidth: third })
