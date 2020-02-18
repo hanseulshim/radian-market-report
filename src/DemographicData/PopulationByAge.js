@@ -20,6 +20,7 @@ const PopulationByAge = () => {
       const res = await fetch('/data.json')
       const data = await res.json()
       const populationByAge = data.populationByAge
+      const propertyInfoScoped = data.propertyInfo
       setPropertyInfo(data.propertyInfo)
 
       const chart = am4core.createFromConfig(
@@ -65,7 +66,7 @@ const PopulationByAge = () => {
       selectedLabel.fontSize = 13
       selectedLabel.label.fill = BLACK
       selectedLabel.label.fontWeight = 'bold'
-      selectedLabel.label.text = `${propertyInfo.selected} Avg. ${populationByAge.selectedAvg.average} yrs`
+      selectedLabel.label.text = `${propertyInfoScoped.selected} Avg. ${populationByAge.selectedAvg.average} yrs`
       selectedLabel.label.truncate = false
       selectedLabel.label.hideOversized = false
       selectedLabel.label.horizontalCenter = 'left'
@@ -90,7 +91,7 @@ const PopulationByAge = () => {
       comparable1Label.fontSize = 13
       comparable1Label.label.fill = AZURE
       comparable1Label.label.fontWeight = 'bold'
-      comparable1Label.label.text = `${propertyInfo.comparable1} Avg. ${populationByAge.comparable1Avg.average} yrs`
+      comparable1Label.label.text = `${propertyInfoScoped.comparable1} Avg. ${populationByAge.comparable1Avg.average} yrs`
       comparable1Label.label.truncate = false
       comparable1Label.label.hideOversized = false
       comparable1Label.label.horizontalCenter = 'left'
@@ -115,7 +116,7 @@ const PopulationByAge = () => {
       comparable2Label.fontSize = 13
       comparable2Label.label.fill = NEPTUNE
       comparable2Label.label.fontWeight = 'bold'
-      comparable2Label.label.text = `${propertyInfo.comparable2} Avg. ${populationByAge.comparable2Avg.average} yrs`
+      comparable2Label.label.text = `${propertyInfoScoped.comparable2} Avg. ${populationByAge.comparable2Avg.average} yrs`
       comparable2Label.label.truncate = false
       comparable2Label.label.hideOversized = false
       comparable2Label.label.horizontalCenter = 'left'

@@ -912,7 +912,7 @@
     ],
     "comparable2Avg": [{ "value": 185, "date": "1981" }]
   },
-  "neighborhoodSummary": "THow does Your Market compare to the others you have selected?  Our Neighborhood Summary summarizes the overall School, Transit and Crime ratings for each.  Schools and Transit are measured on a 1-10 scale with 1=worst ranking.  Crime is A-F with A being the best.  We offer the most recent ratings, as well as where they stood a year ago.  Better schools, easier to get around, less crime?  We hope so.",
+  "neighborhoodSummary": "How does Your Market compare to the others you have selected?  Our Neighborhood Summary summarizes the overall School, Transit and Crime ratings for each.  Schools and Transit are measured on a 1-10 scale with 1=worst ranking.  Crime is A-F with A being the best.  We offer the most recent ratings, as well as where they stood a year ago.  Better schools, easier to get around, less crime?  We hope so.",
   "schoolRatings": {
     "info": "We know that quality schools help support quality neighborhoods.  Our School Ratings provide market ratings for the Elementary (ES), Middle (MS) and High Schools (HS) in your selected areas, along with an overall average score.  Does Your Market pass the test",
     "selected": {
