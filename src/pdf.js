@@ -99,9 +99,15 @@ const buildPDF = async data => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
-  doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30, {
-    maxWidth: quarter
-  })
+  doc.text(
+    `Property Attributes: ${propertyInfo.bedrooms},{' '}
+          ${propertyInfo.squareFeet} sq ft`,
+    width * 0.7,
+    30,
+    {
+      maxWidth: quarter
+    }
+  )
 
   // Sub Title
   doc.setFontSize(h2)
@@ -251,9 +257,20 @@ const buildPDF = async data => {
   // Page 1 Column Description / Info
   doc.setFontSize(p)
   doc.setFontStyle('normal')
-  doc.text(stats.description, margin, statsTableStart + 97.5, {
-    maxWidth: third - margin
-  })
+  doc.text(
+    `Let’s Compare. You have selected ${propertyInfo.selected} as Your Market,
+    and ${propertyInfo.comparable1} and ${propertyInfo.comparable2} as your
+    markets to compare against. To make this most valuable, we limit our
+    market results to properties with characteristics matching your selected
+    “Property Attributes”. In this report you have chosen to include{' '}
+    ${propertyInfo.bedrooms} bedroom homes with ${propertyInfo.squareFeet}
+    square feet.`,
+    margin,
+    statsTableStart + 97.5,
+    {
+      maxWidth: third - margin
+    }
+  )
 
   // Median Prices Chart
   doc.setFontStyle('normal')
@@ -372,7 +389,12 @@ const buildPDF = async data => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
-  doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
+  doc.text(
+    `Property Attributes: ${propertyInfo.bedrooms},{' '}
+          ${propertyInfo.squareFeet} sq ft`,
+    width * 0.7,
+    30
+  )
 
   // Page 2 Title & Info Column
   doc.setFontSize(h2)
@@ -525,7 +547,12 @@ const buildPDF = async data => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
-  doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
+  doc.text(
+    `Property Attributes: ${propertyInfo.bedrooms},{' '}
+          ${propertyInfo.squareFeet} sq ft`,
+    width * 0.7,
+    30
+  )
 
   // Page 3 Title / Neighborhood Summary
   doc.setFontSize(h3)
@@ -604,7 +631,12 @@ const buildPDF = async data => {
   doc.setTextColor(colors.BLACK)
   doc.text('Comparable 2', width * 0.7 + 2, 25.5)
   doc.text(comp2, width - margin * 2, 25.5)
-  doc.text('Comparables = 3BR, 2.5BT, 2600sqft, etc', width * 0.7, 30)
+  doc.text(
+    `Property Attributes: ${propertyInfo.bedrooms},{' '}
+          ${propertyInfo.squareFeet} sq ft`,
+    width * 0.7,
+    30
+  )
 
   // Page 4 Title / Neighborhood Summary
   doc.setFontSize(h3)

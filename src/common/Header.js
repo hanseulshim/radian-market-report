@@ -9,7 +9,7 @@ const Container = styled.div`
   margin-bottom: 25px;
   background: ${DESERT_STORM};
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr 310px;
   grid-area: header;
   grid-template-areas:
     'title chart'
@@ -72,7 +72,10 @@ const Header = ({ section }) => {
           <span>Comparable 2</span>
           <span>{propertyInfo.comparable2}</span>
         </Row>
-        <Row>Comparables = 3BR, 2.5BT, 2600sqft, etc</Row>
+        <Row>
+          Property Attributes: {propertyInfo.bedrooms},{' '}
+          {propertyInfo.squareFeet} sq ft
+        </Row>
       </Chart>
     </Container>
   )
