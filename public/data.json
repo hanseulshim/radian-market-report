@@ -2,7 +2,9 @@
   "propertyInfo": {
     "selected": 20854,
     "comparable1": 20855,
-    "comparable2": 20856
+    "comparable2": 20856,
+    "bedrooms": "3-5",
+    "squareFeet": "2500-3500"
   },
   "stats": {
     "date": "2019-11-01",
@@ -28,8 +30,7 @@
       "avgSoldPrice": 527000,
       "activeInventory": 103,
       "soldInventory": 125
-    },
-    "description": "A few sentences here talking about the selected property’s zip vs 2 other comperable zips. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor."
+    }
   },
   "marketStrength": {
     "selected": 60,
@@ -382,8 +383,8 @@
       { "value": 50, "date": "2020-12-01T00:00:00" }
     ]
   },
-  "daysOnMarketInfo": "What can you expect over time as your property sits on the market? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
-  "ageOfPropertiesInfo": "How does your property’s age compare to averages across markets? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
+  "daysOnMarketInfo": "Are properties moving quickly?  Are there similar properties in the same price tier? In our DOM vs Price chart we use the height of the individual bars to show the min and max range of listed prices in Your Market and the Comparables.  We split the chart into multiple DOM buckets to illustrate the impact of time-on-market to both pricing power and inventory volume (Inventory by DOM).",
+  "ageOfPropertiesInfo": "Two homes are rarely the same and the age of a property can be indicative of its condition. In our Age of Properties chart we plot the range of year built for homes listed, or sold recently in Your Market, as well as the year built range for those listed in your Comparable markets. To make the comparison more helpful we include the average years built.",
   "domVsPrice": {
     "property": [
       {
@@ -911,9 +912,9 @@
     ],
     "comparable2Avg": [{ "value": 185, "date": "1981" }]
   },
-  "neighborhoodSummary": "The residents of Money & Brains seem to have it all: high incomes, advanced degrees, and sophisticated tastes to match their credentials. Many of these city dwellers are married couples with few children who live in fashionable homes on small, manicured lots.",
+  "neighborhoodSummary": "How does Your Market compare to the others you have selected?  Our Neighborhood Summary summarizes the overall School, Transit and Crime ratings for each.  Schools and Transit are measured on a 1-10 scale with 1=worst ranking.  Crime is A-F with A being the best.  We offer the most recent ratings, as well as where they stood a year ago.  Better schools, easier to get around, less crime?  We hope so.",
   "schoolRatings": {
-    "info": "What is the map telling us? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
+    "info": "We know that quality schools help support quality neighborhoods.  Our School Ratings provide market ratings for the Elementary (ES), Middle (MS) and High Schools (HS) in your selected areas, along with an overall average score.  Does Your Market pass the test?",
     "selected": {
       "trend": "down",
       "trendDelta": 0.7,
@@ -943,7 +944,7 @@
     }
   },
   "transitRatings": {
-    "info": "What is the map telling us? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
+    "info": "A peaceful commute means peace of mind.   The options available and their quality can make a big difference in the value of a neighborhood.  Our Transit Ratings provide current scores for Public, Auto and Bike modes of transportation in your area along with an overall rating.",
     "selected": {
       "trend": "up",
       "trendDelta": 4,
@@ -1163,7 +1164,7 @@
       ]
     }
   },
-  "ageVsIncome": "Some talk around the take aways from the income and age charts. Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
+  "ageVsIncome": "Who lives here? Our Population by Age chart uses bubbles sized by population across age buckets. The bigger the bubble, the greater the count of residents in Your Market. Our Population by Income chart shows the percentage of households by income level in Your Market as well as your Comparables.",
   "populationByAge": {
     "selected": [
       {
@@ -1252,7 +1253,7 @@
     "conventional": { "category": "100k" },
     "avgIncome": { "category": "125k" }
   },
-  "familyMakeupInfo": "What do the family makeup charts tell us? Fusce ac tincidunt nunc, quis rhoncus dui. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor. Phasellus ut commodo est. Donec gravida ut turpis ac porttitor.",
+  "familyMakeupInfo": "Looking for neighborhoods with lots of kids, ones with plenty of quiet, or those bustling with singles?  Family demographics play an important role in your perfect home and our Family Makeup bubbles are sized to show the greatest makeup of families in Your Market and the selected Comparables.",
   "familyMakeupPopulation": [
     { "category": "selected", "value": 60099, "delta": 25 },
     { "category": "comparable1", "value": 31234, "delta": -8 },

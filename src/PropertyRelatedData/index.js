@@ -18,8 +18,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons'
 
 const PageOne = styled.div`
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr
+    10px 1fr 10px 1fr 10px 1fr 10px 1fr 10px 1fr;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: auto;
   grid-template-rows: auto;
   grid-template-areas:
     'header header header header header header header header header header header header'
@@ -34,8 +38,11 @@ const PageOne = styled.div`
 
 const PageTwo = styled.div`
   margin-top: 25px;
+  display: -ms-grid;
   display: grid;
+  -ms-grid-columns: 1fr 25px 1fr 25px 1fr;
   grid-template-columns: 1fr 1fr 1fr;
+  -ms-grid-rows: auto;
   grid-template-rows: auto;
   grid-template-areas:
     'header header header'

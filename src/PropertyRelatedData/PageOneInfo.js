@@ -158,7 +158,15 @@ const PageOneInfo = () => {
         pagination={false}
       />
       <MarketStrength />
-      <Description>{stats.description}</Description>
+      <Description>
+        Let’s Compare. You have selected {propertyInfo.selected} as Your Market,
+        and {propertyInfo.comparable1} and {propertyInfo.comparable2} as your
+        markets to compare against. To make this most valuable, we limit our
+        market results to properties with characteristics matching your selected
+        “Property Attributes”. In this report you have chosen to include{' '}
+        {propertyInfo.bedrooms} bedroom homes with {propertyInfo.squareFeet}{' '}
+        square feet.
+      </Description>
     </Container>
   )
 }
