@@ -590,239 +590,207 @@
   "averageDomOverTime": {
     "selected": [
       {
-        "category": "06",
+        "category": "Jan",
         "value": 38
       },
       {
-        "category": "07",
+        "category": "Feb",
         "value": 30
       },
       {
-        "category": "08",
+        "category": "Mar",
         "value": 40
       },
       {
-        "category": "09",
+        "category": "Apr",
         "value": 35
       },
       {
-        "category": "10",
+        "category": "May",
         "value": 40
       },
       {
-        "category": "11",
+        "category": "June",
         "value": 30
       },
       {
-        "category": "12",
+        "category": "July",
         "value": 39
       },
       {
-        "category": "13",
+        "category": "Aug",
         "value": 40
       },
       {
-        "category": "14",
+        "category": "Sept",
         "value": 38
       },
       {
-        "category": "15",
+        "category": "Oct",
         "value": 50
       },
       {
-        "category": "16",
+        "category": "Nov",
         "value": 45
       },
       {
-        "category": "17",
-        "value": 55
-      },
-      {
-        "category": "18",
-        "value": 50
-      },
-      {
-        "category": "19",
+        "category": "Dec",
         "value": 55
       }
     ],
     "selectedSold": [
       {
-        "category": "06",
+        "category": "Jan",
         "value": 55
       },
       {
-        "category": "07",
+        "category": "Feb",
         "value": 50
       },
       {
-        "category": "08",
+        "category": "Mar",
         "value": 55
       },
       {
-        "category": "09",
+        "category": "Apr",
         "value": 50
       },
       {
-        "category": "10",
+        "category": "May",
         "value": 50
       },
       {
-        "category": "11",
+        "category": "June",
         "value": 38
       },
       {
-        "category": "12",
+        "category": "July",
         "value": 40
       },
       {
-        "category": "13",
+        "category": "Aug",
         "value": 38
       },
       {
-        "category": "14",
+        "category": "Sept",
         "value": 30
       },
       {
-        "category": "15",
+        "category": "Oct",
         "value": 40
       },
       {
-        "category": "16",
+        "category": "Nov",
         "value": 35
       },
       {
-        "category": "17",
+        "category": "Dec",
         "value": 40
-      },
-      {
-        "category": "18",
-        "value": 30
-      },
-      {
-        "category": "19",
-        "value": 35
       }
     ],
     "comparable1": [
       {
-        "category": "06",
+        "category": "Jan",
         "value": 40
       },
       {
-        "category": "07",
+        "category": "Feb",
         "value": 35
       },
       {
-        "category": "08",
+        "category": "Mar",
         "value": 30
       },
       {
-        "category": "09",
+        "category": "Apr",
         "value": 25
       },
       {
-        "category": "10",
+        "category": "May",
         "value": 38
       },
       {
-        "category": "11",
+        "category": "June",
         "value": 38
       },
       {
-        "category": "12",
+        "category": "July",
         "value": 30
       },
       {
-        "category": "13",
+        "category": "Aug",
         "value": 38
       },
       {
-        "category": "14",
+        "category": "Sept",
         "value": 40
       },
       {
-        "category": "15",
+        "category": "Oct",
         "value": 40
       },
       {
-        "category": "16",
+        "category": "Nov",
         "value": 41
       },
       {
-        "category": "17",
+        "category": "Dec",
         "value": 42
-      },
-      {
-        "category": "18",
-        "value": 45
-      },
-      {
-        "category": "19",
-        "value": 45
       }
     ],
     "comparable2": [
       {
-        "category": "06",
+        "category": "Jan",
         "value": 21
       },
       {
-        "category": "07",
+        "category": "Feb",
         "value": 25
       },
       {
-        "category": "08",
+        "category": "Mar",
         "value": 21
       },
       {
-        "category": "09",
+        "category": "Apr",
         "value": 21
       },
       {
-        "category": "10",
+        "category": "May",
         "value": 21
       },
       {
-        "category": "11",
+        "category": "June",
         "value": 30
       },
       {
-        "category": "12",
+        "category": "July",
         "value": 25
       },
       {
-        "category": "13",
+        "category": "Aug",
         "value": 25
       },
       {
-        "category": "14",
+        "category": "Sept",
         "value": 30
       },
       {
-        "category": "15",
+        "category": "Oct",
         "value": 25
       },
       {
-        "category": "16",
+        "category": "Nov",
         "value": 30
       },
       {
-        "category": "17",
+        "category": "Dec",
         "value": 35
-      },
-      {
-        "category": "18",
-        "value": 35
-      },
-      {
-        "category": "19",
-        "value": 36
       }
     ]
   },
   "ageOfProperties": {
-    "ageOfSelected": 1977,
+    "ageOfSelected": "1977",
     "selected": [
       { "date": "1920", "value": 25 },
       { "date": "1925", "value": 35 },

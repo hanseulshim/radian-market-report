@@ -657,7 +657,7 @@ const buildPDF = async data => {
   // Population of Age vs Income
   doc.setFontSize(chartTitle)
   doc.setFontStyle('bold')
-  doc.text('Population of Age vs Income', margin, page4Column2Top + 47.5)
+  doc.text('Population vs Income', margin, page4Column2Top + 47.5)
   doc.addImage(ageVsIncomeLegendImg, width - 40, page4Column2Top + 45.5, 20, 3)
   doc.line(margin, page4Column2Top + 50, width - margin, page4Column2Top + 50)
   const ageVsIncomeChart = await am4core.registry.baseSprites

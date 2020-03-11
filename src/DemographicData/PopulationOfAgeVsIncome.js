@@ -129,7 +129,7 @@ const PopulationOfAgeVsIncome = () => {
   return (
     <Container>
       <ChartTitle chartTitle>
-        <span>Population of Age vs Income</span>
+        <span>Population vs Income</span>
         <Legend src={PopulationAgeVsIncome} id="ageVsIncomeLegend" />
       </ChartTitle>
       <div
