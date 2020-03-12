@@ -157,7 +157,7 @@ const line = (category, type, chart) => {
     columns:
       chart === 'bullet' || chart === 'vertical'
         ? {
-            width: '25%'
+            width: '35%'
           }
         : chart === 'vertical1'
         ? {
