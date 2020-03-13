@@ -161,7 +161,7 @@ const line = (category, type, chart) => {
           }
         : chart === 'vertical1'
         ? {
-            width: '7%'
+            width: '35%'
           }
         : {},
     tensionX: chart === 'curved' || chart === 'curvedVert' ? 0.75 : 1,

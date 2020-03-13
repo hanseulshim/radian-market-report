@@ -46,6 +46,8 @@ const PopulationOfAgeVsIncome = () => {
       const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
       categoryAxis.config = config.categoryAxis('line')
       categoryAxis.title.text = 'Income'
+      categoryAxis.renderer.cellStartLocation = 0.45
+      categoryAxis.renderer.cellEndLocation = 0.55
 
       const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
       valueAxis.config = config.valueAxis('percent')
@@ -70,6 +72,7 @@ const PopulationOfAgeVsIncome = () => {
       const fhaSeries = chart.series.push(new am4charts.ColumnSeries())
       fhaSeries.data = [{ ...populationOfAgeVsIncome.fha, value: max + 0.1 }]
       fhaSeries.config = config.line('selected', 'column', 'vertical1')
+      fhaSeries.columns.width = am4core.Percent(100)
 
       const fhaLabel = fhaSeries.bullets.push(new am4charts.LabelBullet())
       fhaLabel.fontSize = 13
