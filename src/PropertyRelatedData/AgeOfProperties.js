@@ -54,6 +54,10 @@ const AgeOfProperties = () => {
       const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
       dateAxis.config = config.dateAxis('age')
       dateAxis.title.text = 'Year Built'
+      dateAxis.baseInterval = {
+        timeUnit: 'year',
+        count: 2
+      }
 
       const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
       valueAxis.config = config.valueAxis('min')
@@ -71,17 +75,29 @@ const AgeOfProperties = () => {
       comparable1Series.data = ageOfProperties.comparable1
       comparable1Series.config = config.line('comparable1', null, 'curved')
 
-      const comparable1AvgSeries = chart.series.push(new am4charts.ColumnSeries())
+      const comparable1AvgSeries = chart.series.push(
+        new am4charts.ColumnSeries()
+      )
       comparable1AvgSeries.data = ageOfProperties.comparable1Avg
-      comparable1AvgSeries.config = config.line('comparable1', 'column', 'bullet')
+      comparable1AvgSeries.config = config.line(
+        'comparable1',
+        'column',
+        'bullet'
+      )
 
       const comparable2Series = chart.series.push(new am4charts.LineSeries())
       comparable2Series.data = ageOfProperties.comparable2
       comparable2Series.config = config.line('comparable2', null, 'curved')
 
-      const comparable2AvgSeries = chart.series.push(new am4charts.ColumnSeries())
+      const comparable2AvgSeries = chart.series.push(
+        new am4charts.ColumnSeries()
+      )
       comparable2AvgSeries.data = ageOfProperties.comparable2Avg
-      comparable2AvgSeries.config = config.line('comparable2', 'column', 'bullet')
+      comparable2AvgSeries.config = config.line(
+        'comparable2',
+        'column',
+        'bullet'
+      )
 
       const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
       selectedSoldSeries.data = ageOfProperties.selectedSold
@@ -97,7 +113,9 @@ const AgeOfProperties = () => {
         'bullet'
       )
 
-      const ageOfPropertySeries = chart.series.push(new am4charts.ColumnSeries())
+      const ageOfPropertySeries = chart.series.push(
+        new am4charts.ColumnSeries()
+      )
       ageOfPropertySeries.data = [
         { date: ageOfProperties.ageOfSelected, value: max + 20 }
       ]

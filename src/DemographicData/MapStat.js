@@ -161,8 +161,8 @@ const MapStat = () => {
       <Stat selected>
         <Background type="selected" />
         <Title h2>{propertyInfo.selected}</Title>
-        <Icon src={carWhite} location={1} />
-        <Icon src={schoolWhite} location={2} />
+        <Icon src={schoolWhite} location={1} />
+        <Icon src={carWhite} location={2} />
         <Icon src={crimeWhite} location={3} />
         <Average location={1}>
           {getAverageValue(schoolRatings.selected.values)}
@@ -187,8 +187,8 @@ const MapStat = () => {
       <Stat comparable1>
         <Background type="comparable1" />
         <Title h2>{propertyInfo.comparable1}</Title>
-        <Icon src={carWhite} location={1} />
-        <Icon src={schoolWhite} location={2} />
+        <Icon src={schoolWhite} location={1} />
+        <Icon src={carWhite} location={2} />
         <Icon src={crimeWhite} location={3} />
         <Average location={1}>
           {getAverageValue(schoolRatings.comparable1.values)}
@@ -213,8 +213,8 @@ const MapStat = () => {
       <Stat comparable2>
         <Background type="comparable2" />
         <Title h2>{propertyInfo.comparable2}</Title>
-        <Icon src={carBlack} location={1} />
-        <Icon src={schoolBlack} location={2} />
+        <Icon src={schoolBlack} location={1} />
+        <Icon src={carBlack} location={2} />
         <Icon src={crimeBlack} location={3} />
         <Average location={1}>
           {getAverageValue(schoolRatings.comparable2.values)}

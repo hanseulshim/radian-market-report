@@ -157,11 +157,11 @@ const line = (category, type, chart) => {
     columns:
       chart === 'bullet' || chart === 'vertical'
         ? {
-            width: '25%'
+            width: '35%'
           }
         : chart === 'vertical1'
         ? {
-            width: '7%'
+            width: '35%'
           }
         : {},
     tensionX: chart === 'curved' || chart === 'curvedVert' ? 0.75 : 1,

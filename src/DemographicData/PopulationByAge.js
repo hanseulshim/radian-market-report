@@ -38,7 +38,7 @@ const PopulationByAge = () => {
       categoryAxis.config = config.categoryAxis('bullet')
       categoryAxis.renderer.grid.template.disabled = true
       categoryAxis.renderer.line.strokeOpacity = 0.1
-      categoryAxis.renderer.labels.template.location = 0.1
+      categoryAxis.renderer.labels.template.location = 0.5
 
       const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
       valueAxis.config = config.valueAxis('bullet')
@@ -129,6 +129,7 @@ const PopulationByAge = () => {
       bullet.fill = am4core.color(BRANDY_PUNCH)
       bullet.strokeOpacity = 0
       bullet.fillOpacity = 0.5
+      bullet.dx = 15
 
       series.heatRules.push({
         property: 'radius',
