@@ -7,73 +7,80 @@ import config from '../config'
 import ActiveListingsSold from '../assets/ActiveListingsSold.png'
 
 const Container = styled.div`
-  grid-area: chart3;
+	grid-area: chart3;
 `
 const Legend = styled.img`
-  height: 15px;
+	height: 15px;
 `
 
 const Inventory = () => {
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch('./data.json')
-      const data = await res.json()
-      const { inventory } = data
+	useEffect(() => {
+		const fetchData = async () => {
+			const res = await fetch('./data.json')
+			const data = await res.json()
+			const { inventory } = data
 
-      const chart = am4core.createFromConfig(
-        config.chart(),
-        'inventoryChart',
-        am4charts.XYChart
-      )
+			const chart = am4core.createFromConfig(
+				config.chart(),
+				'inventoryChart',
+				am4charts.XYChart
+			)
 
-      chart.id = 'inventoryChart'
+			chart.id = 'inventoryChart'
 
-      const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
-      dateAxis.config = config.dateAxis()
+			const dateAxis = chart.xAxes.push(new am4charts.DateAxis())
+			dateAxis.config = config.dateAxis()
 
-      const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-      valueAxis.config = config.valueAxis('min')
+			const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+			valueAxis.config = config.valueAxis('min')
 
-      const selectedSeries = chart.series.push(new am4charts.LineSeries())
-      selectedSeries.data = inventory.selected
-      selectedSeries.config = config.line('selected', 'filled')
+			const selectedSeries = chart.series.push(new am4charts.LineSeries())
+			selectedSeries.data = inventory.selected
+			selectedSeries.config = config.line('selected', 'filled')
 
-      const comparable1Series = chart.series.push(new am4charts.LineSeries())
-      comparable1Series.data = inventory.comparable1
-      comparable1Series.config = config.line('comparable1')
+			const comparable1Series = chart.series.push(new am4charts.LineSeries())
+			comparable1Series.data = inventory.comparable1
+			comparable1Series.config = config.line('comparable1')
 
-      const comparable2Series = chart.series.push(new am4charts.LineSeries())
-      comparable2Series.data = inventory.comparable2
-      comparable2Series.config = config.line('comparable2')
+			const comparable2Series = chart.series.push(new am4charts.LineSeries())
+			comparable2Series.data = inventory.comparable2
+			comparable2Series.config = config.line('comparable2')
 
-      const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
-      selectedSoldSeries.data = inventory.selectedSold
-      selectedSoldSeries.config = config.line('selected', 'dash')
+			const selectedSoldSeries = chart.series.push(new am4charts.LineSeries())
+			selectedSoldSeries.data = inventory.selectedSold
+			selectedSoldSeries.config = config.line('selected', 'dash')
 
-      const comparable1SoldSeries = chart.series.push(new am4charts.LineSeries())
-      comparable1SoldSeries.data = inventory.comparable1Sold
-      comparable1SoldSeries.config = config.line('comparable1', 'dash')
+			const comparable1SoldSeries = chart.series.push(
+				new am4charts.LineSeries()
+			)
+			comparable1SoldSeries.data = inventory.comparable1Sold
+			comparable1SoldSeries.config = config.line('comparable1', 'dash')
 
-      const comparable2SoldSeries = chart.series.push(new am4charts.LineSeries())
-      comparable2SoldSeries.data = inventory.comparable2Sold
-      comparable2SoldSeries.config = config.line('comparable2', 'dash')
+			const comparable2SoldSeries = chart.series.push(
+				new am4charts.LineSeries()
+			)
+			comparable2SoldSeries.data = inventory.comparable2Sold
+			comparable2SoldSeries.config = config.line('comparable2', 'dash')
 
-      return () => {
-        chart.dispose()
-      }
-    }
-    fetchData()
-  }, [])
+			chart.events.on('ready', () => {
+				window.chartCount++
+			})
+			return () => {
+				chart.dispose()
+			}
+		}
+		fetchData()
+	}, [])
 
-  return (
-    <Container>
-      <Text chartTitle>
-        <span>Inventory</span>
-        <Legend src={ActiveListingsSold} />
-      </Text>
-      <div id={'inventoryChart'} style={{ width: '100%', height: 200 }} />
-    </Container>
-  )
+	return (
+		<Container>
+			<Text chartTitle>
+				<span>Inventory</span>
+				<Legend src={ActiveListingsSold} />
+			</Text>
+			<div id={'inventoryChart'} style={{ width: '100%', height: 250 }} />
+		</Container>
+	)
 }
 
 export default Inventory

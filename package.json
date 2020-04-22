@@ -1,59 +1,54 @@
 {
-  "name": "radian-market-report",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@amcharts/amcharts4": "^4.7.11",
-    "@fortawesome/fontawesome-svg-core": "^1.2.26",
-    "@fortawesome/free-solid-svg-icons": "^5.12.0",
-    "@fortawesome/react-fontawesome": "^0.1.8",
-    "@turf/bbox": "^6.0.1",
-    "@turf/center": "^6.0.1",
-    "@turf/helpers": "^6.1.4",
-    "@turf/union": "^6.0.3",
-    "antd": "^3.26.2",
-    "jspdf": "^1.5.3",
-    "moment": "^2.24.0",
-    "numeral": "^2.0.6",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "react-map-gl": "^5.1.4",
-    "react-scripts": "3.2.0",
-    "styled-components": "^4.4.1",
-    "viewport-mercator-project": "^7.0.0"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "deploy:alpha": "react-scripts build && aws s3 sync  ./build s3://alpha.boostlabs/radian/ --acl public-read --profile boost",
-    "deploy:beta": "react-scripts build && aws s3 sync  ./build s3://beta.boostlabs/radian/ --acl public-read --profile boost",
-    "deploy:dev": "react-scripts build && aws s3 sync  ./build s3://dev.boostlabs/radian/ --acl public-read --profile boost"
-  },
-  "homepage": ".",
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "devDependencies": {
-    "eslint": "^6.7.2",
-    "eslint-config-standard": "^14.1.0",
-    "eslint-plugin-import": "^2.18.2",
-    "eslint-plugin-node": "^10.0.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "eslint-plugin-react": "^7.17.0",
-    "eslint-plugin-standard": "^4.0.1"
-  }
+	"name": "radian-market-report",
+	"version": "0.1.0",
+	"private": true,
+	"dependencies": {
+		"@amcharts/amcharts4": "^4.7.11",
+		"@fortawesome/fontawesome-svg-core": "^1.2.26",
+		"@fortawesome/free-solid-svg-icons": "^5.12.0",
+		"@fortawesome/react-fontawesome": "^0.1.8",
+		"@turf/bbox": "^6.0.1",
+		"@turf/center": "^6.0.1",
+		"@turf/helpers": "^6.1.4",
+		"@turf/union": "^6.0.3",
+		"antd": "^3.26.2",
+		"jspdf": "^1.5.3",
+		"moment": "^2.24.0",
+		"numeral": "^2.0.6",
+		"react": "^16.12.0",
+		"react-dom": "^16.12.0",
+		"react-map-gl": "^5.1.4",
+		"react-scripts": "3.2.0",
+		"styled-components": "^4.4.1",
+		"viewport-mercator-project": "^7.0.0"
+	},
+	"scripts": {
+		"start": "react-scripts start",
+		"build": "react-scripts build",
+		"test": "react-scripts test",
+		"eject": "react-scripts eject",
+		"deploy:alpha": "react-scripts build && aws s3 sync  ./build s3://alpha.boostlabs/radian/ --acl public-read --profile boost",
+		"deploy:beta": "react-scripts build && aws s3 sync  ./build s3://beta.boostlabs/radian/ --acl public-read --profile boost",
+		"deploy:dev": "react-scripts build && aws s3 sync  ./build s3://dev.boostlabs/radian/ --acl public-read --profile boost"
+	},
+	"homepage": ".",
+	"eslintConfig": {
+		"extends": "react-app"
+	},
+	"browserslist": {
+		"production": [
+			">0.2%",
+			"not dead",
+			"not op_mini all"
+		],
+		"development": [
+			"last 1 chrome version",
+			"last 1 firefox version",
+			"last 1 safari version"
+		]
+	},
+	"devDependencies": {
+		"eslint": "^6.8.0",
+		"eslint-plugin-react": "^7.19.0"
+	}
 }
