@@ -137,6 +137,7 @@ const MapContainer = () => {
 						],
 						{ padding: { top: 300, bottom: 50, left: 0, right: 350 } }
 					)
+					window.chartCount++
 					setViewPort({
 						...viewport,
 						longitude,
