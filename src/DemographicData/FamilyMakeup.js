@@ -34,11 +34,11 @@ const ChartContainer = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	height: 300px;
+	height: 290px;
 `
 const Chart = styled.div`
-  width: 245px;
-  height: 250px;
+  width: 230px;
+  height: 230px;
   position:relative
   background-color: ${(props) =>
 		props.id === 'selectedFamilyMakeupChart'
@@ -78,17 +78,17 @@ const FamilyMakeup = () => {
 				series.dataFields.value = 'value'
 				series.dataFields.name = 'name'
 				series.minRadius = 25
-				series.maxRadius = 55
+				series.maxRadius = 45
 
 				const icon = series.nodes.template.createChild(am4core.Image)
 				icon.horizontalCenter = 'middle'
 				icon.verticalCenter = 'middle'
-				icon.maxHeight = 70
+				icon.maxHeight = 60
 
 				// Add adapter functions for dynamic icon images and sizes
 				icon.adapter.add('pixelHeight', (pixelHeight, target) => {
 					if (target.dataItem && target.dataItem.value > 0.1) {
-						return target.dataItem.value * 90
+						return target.dataItem.value * 100
 					} else return 20
 				})
 				icon.adapter.add('href', (href, target) => {

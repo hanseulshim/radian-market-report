@@ -144,7 +144,7 @@ const FamilyMakeupPopulation = () => {
 				id={'familyMakeupPopulationChart'}
 				style={{
 					width: '90%',
-					height: 300,
+					height: 250,
 				}}
 			></div>
 		</Container>

@@ -12,7 +12,6 @@
 		"@turf/helpers": "^6.1.4",
 		"@turf/union": "^6.0.3",
 		"antd": "^3.26.2",
-		"jspdf": "^1.5.3",
 		"moment": "^2.24.0",
 		"numeral": "^2.0.6",
 		"react": "^16.12.0",

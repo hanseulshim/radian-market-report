@@ -42,7 +42,7 @@ const PageFour = styled.div`
 		'chart2 chart2 chart2'
 		'sectionInfo sectionInfo sectionInfo'
 		'chart3 chart4 chart4';
-	padding: 0 50px;
+	padding: 0 40px;
 	padding-bottom: 50px;
 `
 
