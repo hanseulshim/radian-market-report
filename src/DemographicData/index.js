@@ -34,8 +34,6 @@ const PageFour = styled.div`
 	margin-top: 25px;
 	display: -ms-grid;
 	display: grid;
-	-ms-grid-columns: 1fr 50px 1fr 50px 1fr;
-	grid-template-columns: 1fr 1fr 1fr;
 	-ms-grid-rows: auto;
 	grid-template-rows: auto;
 	grid-template-areas:
@@ -43,11 +41,9 @@ const PageFour = styled.div`
 		'info chart1 chart1'
 		'chart2 chart2 chart2'
 		'sectionInfo sectionInfo sectionInfo'
-		'chart3 chart4 chart4'
-		'chart5 chart5 chart5';
-
+		'chart3 chart4 chart4';
 	padding: 0 50px;
-	grid-column-gap: 50px;
+	padding-bottom: 50px;
 `
 
 const DemographicData = () => (
@@ -66,7 +62,6 @@ const DemographicData = () => (
 			<FamilyMakeupInfo />
 			<FamilyMakeupPopulation />
 			<FamilyMakeup />
-			<div style={{ gridArea: 'chart5' }}></div>{' '}
 		</PageFour>
 	</>
 )

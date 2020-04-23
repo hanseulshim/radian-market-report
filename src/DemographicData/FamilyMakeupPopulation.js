@@ -139,15 +139,12 @@ const FamilyMakeupPopulation = () => {
 			<Title subChartTitle style={{ marginLeft: 0, marginBottom: 0 }}>
 				Population Across Markets
 			</Title>
-			<div style={{ marginBottom: '10px' }}>
-				Comparison numbers are based on annual change
-			</div>
+			<span>Comparison numbers are based on annual change</span>
 			<div
 				id={'familyMakeupPopulationChart'}
 				style={{
 					width: '100%',
 					height: 300,
-					marginTop: '20px',
 				}}
 			></div>
 		</Container>
