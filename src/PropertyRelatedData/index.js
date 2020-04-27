@@ -33,10 +33,11 @@ const PageOne = styled.div`
 		'chart4 chart4 chart4 chart4 chart4 chart4 chart5 chart5 chart5 chart5 chart5 chart5';
 	padding: 0 50px;
 	grid-column-gap: 10px;
+	page-break-after: always;
+	margin-bottom: 25px;
 `
 
 const PageTwo = styled.div`
-	margin-top: 25px;
 	display: -ms-grid;
 	display: grid;
 	-ms-grid-columns: 1fr 25px 1fr 25px 1fr;

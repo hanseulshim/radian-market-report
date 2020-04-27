@@ -1,36 +1,36 @@
 html,
 body {
-  height: 100%;
-  background: #ececec;
+	height: 100%;
+	background: #ececec;
 }
 
 body {
-  margin: 0;
-  color: #000000;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  font-size: 14px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+	margin: 0;
+	color: #000000;
+	font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+		'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+		sans-serif;
+	font-size: 14px;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 .ant-table-thead > tr > th.stat-column,
 .ant-table-tbody > tr.stat-row > td {
-  padding: 5px 0 5px 2px;
-  background: #f6f6f5;
-  border-top: 1px solid #e8e8e8;
-  color: #000;
-  border-bottom: none;
-  font-size: 13px;
+	padding: 5px 0 5px 2px;
+	background: #f6f6f5;
+	border-top: 1px solid #e8e8e8;
+	color: #000;
+	border-bottom: none;
+	font-size: 13px;
 }
 
 .ant-table-thead > tr > th.stat-column {
-  padding-top: 15px;
-  border: none;
+	padding-top: 15px;
+	border: none;
 }
 
 .stat-table {
-  background: #f6f6f5;
-  padding: 10px;
+	background: #f6f6f5;
+	padding: 10px;
 }
