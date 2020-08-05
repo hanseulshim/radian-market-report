@@ -6,58 +6,69 @@ import config from '../config'
 import Text from '../common/Text'
 
 const Container = styled.div`
-  grid-area: chart2;
+	grid-area: chart2;
 `
 
 const InventoryPerDom = () => {
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch('./data.json')
-      const data = await res.json()
-      const { inventoryPerDom } = data
+	useEffect(() => {
+		const fetchData = async () => {
+			const res = await fetch('./data.json')
+			const data = await res.json()
+			const { inventoryPerDom } = data
 
-      const chart = am4core.createFromConfig(
-        config.chart(),
-        'inventoryPerDomChart',
-        am4charts.XYChart
-      )
-      chart.data = inventoryPerDom.selected
-      chart.id = 'inventoryOfListingsPerDOMChart'
+			const chart = am4core.createFromConfig(
+				config.chart(),
+				'inventoryPerDomChart',
+				am4charts.XYChart
+			)
+			chart.data = inventoryPerDom.selected
+			chart.id = 'inventoryOfListingsPerDOMChart'
 
-      const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
-      categoryAxis.config = config.categoryAxis()
+			const categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis())
+			categoryAxis.config = config.categoryAxis()
 
-      const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
-      valueAxis.config = config.valueAxis('min')
+			const valueAxis = chart.yAxes.push(new am4charts.ValueAxis())
+			valueAxis.config = config.valueAxis('min')
 
-      const selectedSeries = chart.series.push(new am4charts.ColumnSeries())
-      selectedSeries.data = inventoryPerDom.selected
-      selectedSeries.config = config.line('selected', 'column', 'category')
+			const selectedSeries = chart.series.push(new am4charts.ColumnSeries())
+			selectedSeries.data = inventoryPerDom.selected
+			selectedSeries.config = config.line('selected', 'column', 'category')
 
-      const comparable1Series = chart.series.push(new am4charts.ColumnSeries())
-      comparable1Series.data = inventoryPerDom.comparable1
-      comparable1Series.config = config.line('comparable1', 'column', 'category')
+			const comparable1Series = chart.series.push(new am4charts.ColumnSeries())
+			comparable1Series.data = inventoryPerDom.comparable1
+			comparable1Series.config = config.line(
+				'comparable1',
+				'column',
+				'category'
+			)
 
-      const comparable2Series = chart.series.push(new am4charts.ColumnSeries())
-      comparable2Series.data = inventoryPerDom.comparable2
-      comparable2Series.config = config.line('comparable2', 'column', 'category')
+			const comparable2Series = chart.series.push(new am4charts.ColumnSeries())
+			comparable2Series.data = inventoryPerDom.comparable2
+			comparable2Series.config = config.line(
+				'comparable2',
+				'column',
+				'category'
+			)
 
-      return () => {
-        chart.dispose()
-      }
-    }
-    fetchData()
-  }, [])
+			chart.events.on('ready', () => {
+				window.chartCount++
+			})
+			return () => {
+				chart.dispose()
+			}
+		}
+		fetchData()
+	}, [])
 
-  return (
-    <Container>
-      <Text subChartTitle>Inventory of Listings per DOM</Text>
-      <div
-        id={'inventoryPerDomChart'}
-        style={{ width: '100%', height: 150 }}
-      ></div>
-    </Container>
-  )
+	return (
+		<Container>
+			<Text subChartTitle>Inventory of Listings per DOM</Text>
+			<div
+				id={'inventoryPerDomChart'}
+				style={{ width: '100%', height: 150 }}
+			></div>
+		</Container>
+	)
 }
 
 export default InventoryPerDom

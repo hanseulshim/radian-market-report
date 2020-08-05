@@ -6,19 +6,21 @@ import * as am4core from '@amcharts/amcharts4/core'
 am4core.options.commercialLicense = true
 
 const Container = styled.div`
-  max-width: 1200px;
-  margin: auto;
-  background: #fff;
-  position: relative;
+	max-width: 1200px;
+	margin: auto;
+	background: #fff;
+	position: relative;
 `
 
 const App = () => {
-  return (
-    <Container>
-      <PropertyRelatedData />
-      <DemographicData />
-    </Container>
-  )
+	window.chartCount = 0
+
+	return (
+		<Container>
+			<PropertyRelatedData />
+			<DemographicData />
+		</Container>
+	)
 }
 
 export default App
